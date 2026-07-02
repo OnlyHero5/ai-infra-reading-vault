@@ -53,9 +53,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[21-Speculative-01-核心概念]] | 算法枚举、SpecInput 阶段、插件注册 |
-| 启动链路 | [[21-Speculative-02-源码走读]] | SpeculativeAlgorithm、Worker、Reject Sampling |
-| HTTP Server | [[21-Speculative-03-数据流与交互]] | Scheduler 触发点、与 KV Cache 交互 |
-| OpenAI API | [[21-Speculative-04-关键问题]] | 算法选型、Overlap 限制、PD 分离兼容 |
+| 02 | [[21-Speculative-02-源码走读]] | SpeculativeAlgorithm、Worker、Reject Sampling |
+| 03 | [[21-Speculative-03-数据流与交互]] | Scheduler 触发点、与 KV Cache 交互 |
+| 04 | [[21-Speculative-04-关键问题]] | 算法选型、Overlap 限制、PD 分离兼容 |
 | ✓ | [[21-Speculative-05-checkpoint]] | 验收清单 |
 
 ---

@@ -189,8 +189,7 @@ updated: 2026-07-02
 **Code（类定义位置）：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_common/attention_forward_methods.py
-# （deepseek_v2.py L153-L159 导入）
+# 来源：python/sglang/srt/models/deepseek_v2.py L153-L159
 from sglang.srt.models.deepseek_common.attention_forward_methods import (
  AttnForwardMethod,
  DeepseekMHAForwardMixin,
@@ -199,7 +198,7 @@ from sglang.srt.models.deepseek_common.attention_forward_methods import (
 )
 ```
 
-**Comment：** Mixin 模式把 3000+ 行 deepseek_v2.py 按 backend 切开；读代码时先找 `dispatch_attn_forward_method` 再进对应 mixin。
+**Comment：** Mixin 模式把 3000+ 行 deepseek_v2.py 按 backend 切开；`attention_forward_methods/__init__.py` 负责导出这些 mixin，读代码时先找 `dispatch_attn_forward_method` 再进对应 mixin。
 
 ---
 

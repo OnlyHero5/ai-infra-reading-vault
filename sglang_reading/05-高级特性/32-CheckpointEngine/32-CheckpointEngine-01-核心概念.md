@@ -315,3 +315,18 @@ def req_inference(
 | `UpdateWeightsFromIPCReqInput` | HTTP body 结构 | io_struct.py |
 | `wait_weights_before_ready` | 启动等待权重屏障 | server_args.py |
 | `initial_weights_loaded` | 权重就绪标志 | tokenizer_manager.py |
+
+---
+
+## 与 Slime 阅读对照（RL 后训练）
+
+**Explain：** 本模块的 CheckpointEngine 路径是 Slime online RL 中 **Train→Rollout 权重推送** 的 SGLang 侧实现。读完本批后，若做 RL 后训练，继续读 Slime 权重同步批。
+
+| SGLang | Slime | 文档 |
+|--------|-------|------|
+| `update_weights_from_ipc` | `update_weight_from_distributed` | [[32-CheckpointEngine-02-源码走读]] · [[24-WeightSync-Dist-02-源码走读]] |
+| CheckpointEngine ZMQ IPC | NCCL broadcast 编排 | [[32-CheckpointEngine-03-数据流与交互]] · [[24-WeightSync-Dist-03-数据流与交互]] |
+| ModelLoader HF 格式 | `megatron_to_hf` 转换 | [[12-ModelLoader-01-核心概念]] · [[25-WeightSync-Disk-01-核心概念]] |
+
+→ [[与Slime阅读对照]] · [[91_dashboard/cross-library-map]] · [[全链路RL训练追踪]] · [[91_dashboard/dual-library-path|双库联合路径]]
+

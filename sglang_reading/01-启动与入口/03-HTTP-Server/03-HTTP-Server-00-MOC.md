@@ -30,9 +30,9 @@ updated: 2026-07-02
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[03-HTTP-Server-01-核心概念]] | 三进程架构、`_GlobalState`、HTTP vs Engine API |
-| 启动链路 | [[03-HTTP-Server-02-源码走读]] | **主文档**：`engine.py` + `http_server.py` 按调用顺序精读 |
-| HTTP Server | [[03-HTTP-Server-03-数据流与交互]] | 启动时序、`POST /generate` 请求路径 |
-| OpenAI API | [[03-HTTP-Server-04-关键问题]] | 单/多 tokenizer、warmup、API Key 易错点 |
+| 02 | [[03-HTTP-Server-02-源码走读]] | **主文档**：`engine.py` + `http_server.py` 按调用顺序精读 |
+| 03 | [[03-HTTP-Server-03-数据流与交互]] | 启动时序、`POST /generate` 请求路径 |
+| 04 | [[03-HTTP-Server-04-关键问题]] | 单/多 tokenizer、warmup、API Key 易错点 |
 | ✓ | [[03-HTTP-Server-05-checkpoint]] | 验收清单 |
 
 ## 源码范围

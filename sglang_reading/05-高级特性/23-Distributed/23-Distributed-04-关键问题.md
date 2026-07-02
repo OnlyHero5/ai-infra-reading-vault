@@ -59,6 +59,7 @@ updated: 2026-07-02
 **Code（错误）：**
 
 ```python
+# 错误示例：绕过 SGLang GroupCoordinator
 import torch.distributed as dist
 dist.all_reduce(tensor) # 使用 default group，非 TP group
 ```

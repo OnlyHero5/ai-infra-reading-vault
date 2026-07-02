@@ -54,9 +54,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[10-Detokenizer-01-核心概念]] | 增量解码、DecodeStatus、进程边界 |
-| 启动链路 | [[10-Detokenizer-02-源码走读]] | **主文档**：DetokenizerManager 全链路精读 |
-| HTTP Server | [[10-Detokenizer-03-数据流与交互]] | ZMQ 消息流、IO 结构、上下游时序 |
-| OpenAI API | [[10-Detokenizer-04-关键问题]] | 内存上限、UTF-8 边界、多 Worker fan-out |
+| 02 | [[10-Detokenizer-02-源码走读]] | **主文档**：DetokenizerManager 全链路精读 |
+| 03 | [[10-Detokenizer-03-数据流与交互]] | ZMQ 消息流、IO 结构、上下游时序 |
+| 04 | [[10-Detokenizer-04-关键问题]] | 内存上限、UTF-8 边界、多 Worker fan-out |
 | ✓ | [[10-Detokenizer-05-checkpoint]] | 验收：能否说明 token id → 流式字符串的增量路径 |
 
 ---

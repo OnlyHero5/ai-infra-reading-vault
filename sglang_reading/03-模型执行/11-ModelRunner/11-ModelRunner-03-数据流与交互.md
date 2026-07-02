@@ -16,7 +16,7 @@ updated: 2026-07-02
 
 ## 1. 架构位置
 
-ModelRunner 处于 **Scheduler 与模型层（Models 通用）之间**，是 GPU 算力消耗的核心。
+**Explain：** ModelRunner 处于 **Scheduler 与模型层（Models 通用）之间**，是 GPU 算力消耗的核心。Scheduler 只决定 batch 怎么跑，真正把 `ScheduleBatch` 物化为 GPU forward 的入口在 TpModelWorker 与 ModelRunner。
 
 ```mermaid
 sequenceDiagram

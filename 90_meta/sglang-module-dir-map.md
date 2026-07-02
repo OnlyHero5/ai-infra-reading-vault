@@ -1,17 +1,15 @@
 ---
-type: index-doc
-title: "10-模块与目录对照"
-doc_type: concept
+type: doc
+title: "SGLang 目录与专题对照"
 tags:
- - sglang/index-layer
- - sglang/batch/30
- - sglang/doc/concept
-updated: 2026-07-02
+  - meta
+  - maintenance
+updated: 2026-07-03
 ---
 
-# 10 · 模块与目录对照
+# SGLang 目录与专题对照
 
-> 阅读时常见困惑：**目录名**（如 `00-方法论`）与 **正文标题**（如「阅读方法论」）不一致。下表为权威对照。
+> **维护者专用** — 阶段文件夹名 vs 专题模块名。读者请用 [[SGLang源码阅读指南]] 或阶段 MOC 导航。
 
 | 模块 | 阶段 | 专题目录 | 核心文档 |
 |:----:|------|----------|----------|

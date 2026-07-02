@@ -315,7 +315,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L416-L447
+# 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
 class BaseKVCacheMethod(QuantizeMethodBase):
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)

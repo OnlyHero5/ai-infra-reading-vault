@@ -58,9 +58,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[06-TokenizerManager-01-核心概念]] | ReqState、Mixin 分层、分词策略与控制面分离 |
-| 启动链路 | [[06-TokenizerManager-02-源码走读]] | `generate_request`、handle_loop、ZMQ 收发精读 |
-| HTTP Server | [[06-TokenizerManager-03-数据流与交互]] | ZMQ 通道、上下游、典型 generate 时序 |
-| OpenAI API | [[06-TokenizerManager-04-关键问题]] | FAQ、与 Scheduler 边界、pause/LoRA 热更新 |
+| 02 | [[06-TokenizerManager-02-源码走读]] | `generate_request`、handle_loop、ZMQ 收发精读 |
+| 03 | [[06-TokenizerManager-03-数据流与交互]] | ZMQ 通道、上下游、典型 generate 时序 |
+| 04 | [[06-TokenizerManager-04-关键问题]] | FAQ、与 Scheduler 边界、pause/LoRA 热更新 |
 | ✓ | [[06-TokenizerManager-05-checkpoint]] | 验收：能否追踪 HTTP 请求到首次 token 回传路径 |
 
 ---

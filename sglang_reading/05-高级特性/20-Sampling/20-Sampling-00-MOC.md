@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[20-Sampling-01-核心概念]] | SamplingParams、SamplingBatchInfo、GrammarManager 架构 |
-| 启动链路 | [[20-Sampling-02-源码走读]] | Sampler、penalty orchestrator、constrained 编译与 mask 精读 |
-| HTTP Server | [[20-Sampling-03-数据流与交互]] | logits → sample → Scheduler 回写 token 的逐步时序 |
-| OpenAI API | [[20-Sampling-04-关键问题]] | 约束类型优先级、greedy vs 随机采样、stop 处理 |
+| 02 | [[20-Sampling-02-源码走读]] | Sampler、penalty orchestrator、constrained 编译与 mask 精读 |
+| 03 | [[20-Sampling-03-数据流与交互]] | logits → sample → Scheduler 回写 token 的逐步时序 |
+| 04 | [[20-Sampling-04-关键问题]] | 约束类型优先级、greedy vs 随机采样、stop 处理 |
 | ✓ | [[20-Sampling-05-checkpoint]] | 验收：能否追踪 json_schema 从 API 到 vocab_mask 的路径 |
 
 ---

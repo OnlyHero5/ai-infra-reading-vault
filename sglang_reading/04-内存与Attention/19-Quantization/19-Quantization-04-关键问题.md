@@ -103,7 +103,7 @@ class Fp8Config(QuantizationConfig):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L449-L456
+# 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L58
  def process_weights_after_loading(self, layer) -> None:
  if layer.k_scale > 0.0 and layer.v_scale > 0.0:
  k_scale = layer.k_scale.to("cpu").tolist()
@@ -206,7 +206,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L449-L456
+# 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L55
  def process_weights_after_loading(self, layer) -> None:
  if layer.k_scale > 0.0 and layer.v_scale > 0.0:
  k_scale = layer.k_scale.to("cpu").tolist()

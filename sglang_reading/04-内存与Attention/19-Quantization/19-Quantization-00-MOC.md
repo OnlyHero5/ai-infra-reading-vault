@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[19-Quantization-01-核心概念]] | Config+Method 双轨、FP8/GPTQ/AWQ 体系、KV 量化 |
-| 启动链路 | [[19-Quantization-02-源码走读]] | `create_weights`/`apply`、`dispatch_w8a8_block_fp8_linear` 精读 |
-| HTTP Server | [[19-Quantization-03-数据流与交互]] | ModelLoader → process_weights → forward apply 全链路 |
-| OpenAI API | [[19-Quantization-04-关键问题]] | backend 选型、Marlin reorder、MoE FP4 expert |
+| 02 | [[19-Quantization-02-源码走读]] | `create_weights`/`apply`、`dispatch_w8a8_block_fp8_linear` 精读 |
+| 03 | [[19-Quantization-03-数据流与交互]] | ModelLoader → process_weights → forward apply 全链路 |
+| 04 | [[19-Quantization-04-关键问题]] | backend 选型、Marlin reorder、MoE FP4 expert |
 | ✓ | [[19-Quantization-05-checkpoint]] | 验收：能否说明 Linear 与 MoE 量化 method 的分工 |
 
 ---

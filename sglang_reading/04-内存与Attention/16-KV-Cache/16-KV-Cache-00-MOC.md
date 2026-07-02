@@ -59,9 +59,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[16-KV-Cache-01-核心概念]] | Token vs Page 分配、HiCache 分层、Storage 后端术语 |
-| 启动链路 | [[16-KV-Cache-02-源码走读]] | `alloc`/`free`、`alloc_extend`/`alloc_decode`、pool_host 精读 |
-| HTTP Server | [[16-KV-Cache-03-数据流与交互]] | Scheduler → Allocator → KV Pool → Attention 的数据流 |
-| OpenAI API | [[16-KV-Cache-04-关键问题]] | page_size 选型、OOM 与 retract、与 RadixAttention 协作 |
+| 02 | [[16-KV-Cache-02-源码走读]] | `alloc`/`free`、`alloc_extend`/`alloc_decode`、pool_host 精读 |
+| 03 | [[16-KV-Cache-03-数据流与交互]] | Scheduler → Allocator → KV Pool → Attention 的数据流 |
+| 04 | [[16-KV-Cache-04-关键问题]] | page_size 选型、OOM 与 retract、与 RadixAttention 协作 |
 | ✓ | [[16-KV-Cache-05-checkpoint]] | 验收：能否画出 allocator 与 RadixCache 的调用边界 |
 
 ---

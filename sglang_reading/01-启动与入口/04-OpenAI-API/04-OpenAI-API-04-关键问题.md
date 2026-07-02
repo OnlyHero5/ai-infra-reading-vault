@@ -146,6 +146,7 @@ yield f"data: {json.dumps({'choices': [{'text': content['text']}]})}\n\n"
 TokenizerManager 上可配置自定义 Chat Serving 类（例如某模型需要专用 parser）。`http_server` 实例化时用：
 
 ```python
+# 示例：serving_chat_class 调用形态
 _global_state.tokenizer_manager.serving_chat_class(
  _global_state.tokenizer_manager, _global_state.template_manager
 )

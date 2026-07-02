@@ -289,7 +289,7 @@ flowchart TB
 
 **正例（必须）：**
 
-```markdown
+~~~markdown
 `launch_server.py` 根据 `server_args` 选择 HTTP / gRPC / Ray / Encoder 四条启动路径：
 
 ```python
@@ -307,7 +307,7 @@ def run_server(server_args):
 ```
 
 **解读：** 默认走 `else` 分支，即 HTTP 模式；`grpc_mode` 与 `encoder_only` 为专用部署形态……
-```
+~~~
 
 ### 6.2 内嵌代码块格式
 

@@ -4,14 +4,17 @@ title: "阅读进度"
 tags:
   - dashboard
   - sglang/index-layer
+  - slime/meta
 updated: 2026-07-02
 ---
 
 # 阅读进度
 
-> 基于 frontmatter `batch` / `doc_type` 自动统计。人工进度见 [[progress]]。
+> 基于 frontmatter `batch` / `doc_type` 自动统计。  
+> 人工进度：[[progress|SGLang]] · [[Slime-progress|Slime]]  
+> 联合路径：[[91_dashboard/dual-library-path|双库联合路径]]
 
-## 批次覆盖
+## SGLang 批次覆盖
 
 ```dataview
 TABLE WITHOUT ID
@@ -25,7 +28,21 @@ GROUP BY batch
 SORT number(batch) ASC
 ```
 
-## 最近更新的模块文档
+## Slime 批次覆盖
+
+```dataview
+TABLE WITHOUT ID
+  batch AS "批次",
+  length(rows) AS "文档数",
+  length(filter(rows, (r) => r.doc_type = "moc")) AS "MOC",
+  length(filter(rows, (r) => r.doc_type = "walkthrough")) AS "走读"
+FROM "slime_reading"
+WHERE batch AND !contains(file.path, "_TEMPLATE")
+GROUP BY batch
+SORT number(batch) ASC
+```
+
+## SGLang 最近更新的模块文档
 
 ```dataview
 TABLE module AS "模块", doc_type AS "类型", updated AS "更新"
@@ -35,13 +52,33 @@ SORT updated DESC
 LIMIT 20
 ```
 
-## 索引层文档
+## Slime 最近更新的模块文档
+
+```dataview
+TABLE module AS "模块", doc_type AS "类型", updated AS "更新"
+FROM "slime_reading"
+WHERE module AND doc_type AND updated
+SORT updated DESC
+LIMIT 20
+```
+
+## SGLang 索引层文档
 
 ```dataview
 TABLE WITHOUT ID
   link(file.link, title) AS "文档",
   file.folder AS "目录"
 FROM "sglang_reading/07-总结与索引"
+SORT file.name ASC
+```
+
+## Slime 索引层文档
+
+```dataview
+TABLE WITHOUT ID
+  link(file.link, title) AS "文档",
+  file.folder AS "目录"
+FROM "slime_reading/08-总结与索引"
 SORT file.name ASC
 ```
 

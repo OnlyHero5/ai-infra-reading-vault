@@ -86,14 +86,14 @@ updated: 2026-07-02
 # MinFreeSlots 需要 --min-free-slots-delay 或 DFlash 自动公式
 
 # ✅ 正确：Scheduler 中的独立初始化
-# 来源：scheduler.py L887-L896（MinFreeSlots）
+# 来源：python/sglang/srt/managers/scheduler.py L887-L896（MinFreeSlots）
 min_free_slots = resolve_min_free_slots(
  self.server_args.min_free_slots_delay,
  self.max_running_requests,
  is_dflash=self.spec_algorithm.is_dflash(),
 )
 
-# 来源：scheduler.py L1049-L1056（PrefillDelayer）
+# 来源：python/sglang/srt/managers/scheduler.py L1049-L1056（PrefillDelayer）
 if self.server_args.enable_prefill_delayer:
  if self.server_args.disaggregation_mode != "decode":
  self.prefill_delayer = PrefillDelayer(...)

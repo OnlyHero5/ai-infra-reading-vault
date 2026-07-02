@@ -56,9 +56,9 @@ flowchart TB
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[23-Distributed-01-核心概念]] | 并行维度、ProcessGroup、通信原语 |
-| 启动链路 | [[23-Distributed-02-源码走读]] | parallel_state、communication_op、DP Controller |
-| HTTP Server | [[23-Distributed-03-数据流与交互]] | 请求路由、collective 调用链 |
-| OpenAI API | [[23-Distributed-04-关键问题]] | 组网、性能调优、Elastic EP |
+| 02 | [[23-Distributed-02-源码走读]] | parallel_state、communication_op、DP Controller |
+| 03 | [[23-Distributed-03-数据流与交互]] | 请求路由、collective 调用链 |
+| 04 | [[23-Distributed-04-关键问题]] | 组网、性能调优、Elastic EP |
 | ✓ | [[23-Distributed-05-checkpoint]] | 验收清单 |
 
 ---

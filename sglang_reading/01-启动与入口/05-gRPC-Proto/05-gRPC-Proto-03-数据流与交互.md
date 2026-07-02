@@ -18,6 +18,10 @@ updated: 2026-07-02
 
 ## 1. 架构位置（layer:entrypoint + layer:runtime-core）
 
+**Explain：** gRPC 请求先进入 Rust Tonic 服务，再通过 PyBridge 提交到 Python RuntimeHandle，最终仍汇入 TokenizerManager 与 Scheduler；因此 gRPC 是协议入口，不是独立推理后端。
+
+**Code：**
+
 ```mermaid
 sequenceDiagram
  participant Client as gRPC Client
@@ -39,7 +43,7 @@ sequenceDiagram
  Tonic-->>Client: stream TextGenerateResponse
 ```
 
-gRPC 层 **不绕过** TokenizerManager：与 HTTP 共用同一调度入口，差异仅在 **请求编解码** 与 **传输协议**。
+**Comment：** gRPC 层 **不绕过** TokenizerManager：与 HTTP 共用同一调度入口，差异仅在 **请求编解码** 与 **传输协议**。
 
 ---
 

@@ -276,6 +276,7 @@ Scheduler 收到 IPC 消息，`unwrap_pickle_fields()`，构造 `Req(rid=..., or
 ### 步骤 4：ScheduleBatch.init_new + prepare_for_extend
 
 ```python
+# 伪代码：ScheduleBatch prefill 准备过程
 batch = ScheduleBatch.init_new([req], req_to_token_pool, allocator, tree_cache, ...)
 batch.prepare_for_extend() # forward_mode=EXTEND, 分配 KV, 填充张量
 ```
@@ -283,6 +284,7 @@ batch.prepare_for_extend() # forward_mode=EXTEND, 分配 KV, 填充张量
 ### 步骤 5：ForwardBatch.init_new → ModelRunner.forward
 
 ```python
+# 伪代码：ScheduleBatch 到 ForwardBatch 的转换
 forward_batch = ForwardBatch.init_new(batch)
 logits = model_runner.forward(forward_batch)
 # 采样 → 更新 req.output_ids
@@ -291,6 +293,7 @@ logits = model_runner.forward(forward_batch)
 ### 步骤 6：循环 decode
 
 ```python
+# 伪代码：decode 循环骨架
 while not all(req.finished() for req in batch.reqs):
  batch.prepare_for_decode()
  forward_batch = ForwardBatch.init_new(batch)

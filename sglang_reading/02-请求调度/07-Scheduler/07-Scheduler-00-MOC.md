@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[07-Scheduler-01-核心概念]] | 术语、Mixin 组合、Continuous Batching 设计动机 |
-| 启动链路 | [[07-Scheduler-02-源码走读]] | **主文档**：初始化 → 收请求 → 组 batch → 前向 → 出结果 |
-| HTTP Server | [[07-Scheduler-03-数据流与交互]] | ZMQ IPC、Req 生命周期、与 TpWorker/Detokenizer 边界 |
-| OpenAI API | [[07-Scheduler-04-关键问题]] | overlap vs normal、retract、PP 与 overlap 互斥 |
+| 02 | [[07-Scheduler-02-源码走读]] | **主文档**：初始化 → 收请求 → 组 batch → 前向 → 出结果 |
+| 03 | [[07-Scheduler-03-数据流与交互]] | ZMQ IPC、Req 生命周期、与 TpWorker/Detokenizer 边界 |
+| 04 | [[07-Scheduler-04-关键问题]] | overlap vs normal、retract、PP 与 overlap 互斥 |
 | ✓ | [[07-Scheduler-05-checkpoint]] | 验收：能否说明三层队列与 event loop 分派 |
 
 ---

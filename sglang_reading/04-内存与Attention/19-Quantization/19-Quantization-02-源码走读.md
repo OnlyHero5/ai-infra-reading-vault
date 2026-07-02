@@ -248,7 +248,7 @@ def _dispatch_explicit_backend(backend: Fp8GemmRunnerBackend) -> Callable:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/schemes/gptq_linear.py L295-L320
+# 来源：python/sglang/srt/layers/quantization/gptq/schemes/gptq_linear.py L25-L60
 class GPTQLinearScheme(GPTQLinearSchemeBase):
  def __init__(self, quant_config: GPTQConfig):
  self.quant_config = quant_config
@@ -310,7 +310,7 @@ class GPTQLinearScheme(GPTQLinearSchemeBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L416-L447
+# 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
 class BaseKVCacheMethod(QuantizeMethodBase):
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)

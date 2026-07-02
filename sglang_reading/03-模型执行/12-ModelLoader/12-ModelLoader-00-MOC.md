@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[12-ModelLoader-01-核心概念]] | LoadConfig、Loader 体系、weight iterator、device_loading_context |
-| 启动链路 | [[12-ModelLoader-02-源码走读]] | DefaultModelLoader、weight_utils、safetensors 精读 |
-| HTTP Server | [[12-ModelLoader-03-数据流与交互]] | ModelRunner → Loader → Model.load_weights 全链路 |
-| OpenAI API | [[12-ModelLoader-04-关键问题]] | 量化加载、远程加载、TP 分片、热更新 |
+| 02 | [[12-ModelLoader-02-源码走读]] | DefaultModelLoader、weight_utils、safetensors 精读 |
+| 03 | [[12-ModelLoader-03-数据流与交互]] | ModelRunner → Loader → Model.load_weights 全链路 |
+| 04 | [[12-ModelLoader-04-关键问题]] | 量化加载、远程加载、TP 分片、热更新 |
 | ✓ | [[12-ModelLoader-05-checkpoint]] | 验收：能否说明 LoadFormat 与 Loader 映射关系 |
 
 ---

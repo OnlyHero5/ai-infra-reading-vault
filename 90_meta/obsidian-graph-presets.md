@@ -9,23 +9,13 @@ tags:
  - map
  - obsidian
  - graph
- - sglang/index-layer
- - sglang/doc/concept
-status: done
-created: 2026-07-02
-updated: 2026-07-02
+ - meta
+updated: 2026-07-03
 ---
 
 # Obsidian 图谱过滤预设
 
-> **默认配置已写入** `.obsidian/graph.json`（过滤 + 颜色分组）。 
-> 本页提供备用过滤式；颜色图例见 [[91_dashboard/graph-hub]]。
-
-## 为什么旧图谱全是噪音
-
-Obsidian Graph 默认用**文件名**作节点标签。原先 32 个模块各有 `README.md`、`01-核心概念.md` …，全局图上就会出现几十个同名节点，完全无法区分。
-
-**已修复：** 211 篇笔记文件名全部唯一；每篇有 YAML `tags`（`sglang/batch/NN`、`sglang/module/...`、`sglang/doc/...`）。
+> **默认配置已写入** `.obsidian/graph.json`。颜色图例见 [[91_dashboard/graph-hub]]。
 
 ## 推荐预设（复制到 Graph 搜索框）
 
@@ -106,7 +96,19 @@ path:sglang_reading -tag:#sglang/doc/checkpoint -path:_TEMPLATE -path:sglang
 | `[doc_type:faq]` | 珊瑚 | FAQ |
 | `[doc_type:checkpoint]` | 灰 | 验收 |
 
-**默认过滤：** `path:sglang_reading -path:_TEMPLATE`（勿用 `-path:sglang`，会误排除 `sglang_reading`）
+**默认过滤：** `(path:sglang_reading OR path:slime_reading) -path:_TEMPLATE`（勿用 `-path:sglang`，会误排除 `sglang_reading`）
+
+### 9. Slime 模块 MOC 主干
+
+```text
+tag:#slime/doc/moc -path:_TEMPLATE path:slime_reading
+```
+
+### 10. 双库全量（仍不含 upstream 源码）
+
+```text
+(path:sglang_reading OR path:slime_reading) -path:_TEMPLATE -path:sglang -path:slime
+```
 
 详情见 [[91_dashboard/graph-hub]]。
 
@@ -120,12 +122,13 @@ path:sglang_reading -tag:#sglang/doc/checkpoint -path:_TEMPLATE -path:sglang
 | 前缀缓存 | [[15-RadixAttention-00-MOC]] | 1 |
 | PD 分离 | [[22-Disaggregation-00-MOC]] | 1 |
 | 五层架构 | [[00-方法论-01-核心概念]] | 1 |
-| 阅读总入口 | [[SGLang源码阅读指南]] | 1 |
+| RL 闭环 | [[全链路RL训练追踪]] | 1–2 |
+| 双库联合路径 | [[91_dashboard/dual-library-path]] | 1 |
+| 跨库对照 | [[91_dashboard/cross-library-map]] | 1 |
+| Slime 总入口 | [[Slime源码阅读指南]] | 1 |
 
 ## 维护规则
 
-- 新建批次文档必须 `{模块目录名}-{文档类型}.md`，禁止再用泛化文件名。
-- 必须写 frontmatter `tags`（见 [[90_meta/obsidian-syntax-rules]]）。
-- 不为图上多点创建空壳页；普通术语用纯文本。
-- 代码块内 `[[`（Python 类型、TOML）不是链接。
-- 超过 150 节点时用 tag 预设或 Local Graph，不要裸开全局图。
+- 新建文档须唯一文件名 + frontmatter `tags`（见 [[90_meta/obsidian-syntax-rules]]）
+- 代码块内 `[[` 不是链接
+- 节点过多时用 tag 预设或 Local Graph

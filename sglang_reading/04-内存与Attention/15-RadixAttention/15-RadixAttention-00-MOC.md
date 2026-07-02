@@ -57,9 +57,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[15-RadixAttention-01-核心概念]] | RadixKey、TreeNode、lock_ref 与 match/insert/evict 三操作 |
-| 启动链路 | [[15-RadixAttention-02-源码走读]] | 按调用顺序精读 `match_prefix`、`cache_unfinished_req`、UnifiedRadixCache |
-| HTTP Server | [[15-RadixAttention-03-数据流与交互]] | Scheduler → RadixCache → ForwardBatch 的 prefix indices 传递 |
-| OpenAI API | [[15-RadixAttention-04-关键问题]] | page 对齐、EAGLE bigram、HiCache 与 SWA 多 component 边界 |
+| 02 | [[15-RadixAttention-02-源码走读]] | 按调用顺序精读 `match_prefix`、`cache_unfinished_req`、UnifiedRadixCache |
+| 03 | [[15-RadixAttention-03-数据流与交互]] | Scheduler → RadixCache → ForwardBatch 的 prefix indices 传递 |
+| 04 | [[15-RadixAttention-04-关键问题]] | page 对齐、EAGLE bigram、HiCache 与 SWA 多 component 边界 |
 | ✓ | [[15-RadixAttention-05-checkpoint]] | 读者自测：不打开 sglang/ 能否口述 prefix 命中路径 |
 
 ---

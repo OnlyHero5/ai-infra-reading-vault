@@ -57,9 +57,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[13-Models-通用-01-核心概念]] | Registry 术语、Decoder 层模式、EntryClass 约定 |
-| 启动链路 | [[13-Models-通用-02-源码走读]] | registry / llama / qwen3 按调用顺序精读 |
-| HTTP Server | [[13-Models-通用-03-数据流与交互]] | ModelLoader → ModelRunner → forward 全链路 |
-| OpenAI API | [[13-Models-通用-04-关键问题]] | Llama vs Qwen3、PP 切层、权重映射 |
+| 02 | [[13-Models-通用-02-源码走读]] | registry / llama / qwen3 按调用顺序精读 |
+| 03 | [[13-Models-通用-03-数据流与交互]] | ModelLoader → ModelRunner → forward 全链路 |
+| 04 | [[13-Models-通用-04-关键问题]] | Llama vs Qwen3、PP 切层、权重映射 |
 | ✓ | [[13-Models-通用-05-checkpoint]] | 验收：能否说明 Registry 扫描与 resolve 流程 |
 
 ---

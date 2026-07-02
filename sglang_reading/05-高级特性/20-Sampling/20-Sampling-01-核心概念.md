@@ -266,7 +266,7 @@ class BaseGrammarBackend:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/penaltylib/frequency_penalty.py L403-L440
+# 来源：python/sglang/srt/sampling/penaltylib/frequency_penalty.py L6-L63
 class BatchedFrequencyPenalizer(_BatchedPenalizer):
  def _cumulate_output_tokens(self, output_ids: torch.Tensor):
  self.cumulated_frequency_penalties.scatter_add_(

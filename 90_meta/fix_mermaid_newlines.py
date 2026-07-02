@@ -30,18 +30,19 @@ def fix_file(path: Path) -> int:
 
 
 def main() -> int:
-    root = Path(__file__).resolve().parents[1] / "sglang_reading"
-    if not root.is_dir():
-        print(f"Missing directory: {root}", file=sys.stderr)
-        return 1
-
+    vault = Path(__file__).resolve().parents[1]
+    roots = [vault / "sglang_reading", vault / "slime_reading"]
     changed: list[tuple[str, int]] = []
     total = 0
-    for md in sorted(root.rglob("*.md")):
-        count = fix_file(md)
-        if count:
-            changed.append((str(md.relative_to(root.parent)), count))
-            total += count
+    for root in roots:
+        if not root.is_dir():
+            print(f"Missing directory: {root}", file=sys.stderr)
+            continue
+        for md in sorted(root.rglob("*.md")):
+            count = fix_file(md)
+            if count:
+                changed.append((str(md.relative_to(vault)), count))
+                total += count
 
     print(f"Changed {len(changed)} files, {total} replacements")
     for rel, count in changed:

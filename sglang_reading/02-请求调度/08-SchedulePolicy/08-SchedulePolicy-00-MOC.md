@@ -57,9 +57,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[08-SchedulePolicy-01-核心概念]] | 策略枚举、前缀匹配、预算模型、延迟器动机 |
-| 启动链路 | [[08-SchedulePolicy-02-源码走读]] | **主文档**：三文件按调用顺序精读 |
-| HTTP Server | [[08-SchedulePolicy-03-数据流与交互]] | 与 Scheduler / RadixCache / KV Pool 的交互 |
-| OpenAI API | [[08-SchedulePolicy-04-关键问题]] | 策略选型、NO_TOKEN/OTHER 语义、易错点 |
+| 02 | [[08-SchedulePolicy-02-源码走读]] | **主文档**：三文件按调用顺序精读 |
+| 03 | [[08-SchedulePolicy-03-数据流与交互]] | 与 Scheduler / RadixCache / KV Pool 的交互 |
+| 04 | [[08-SchedulePolicy-04-关键问题]] | 策略选型、NO_TOKEN/OTHER 语义、易错点 |
 | ✓ | [[08-SchedulePolicy-05-checkpoint]] | 验收：能否说明 calc_priority 与 PrefillAdder 两阶段 |
 
 ---

@@ -60,6 +60,8 @@ flowchart TB
         values = kv_indices[:key_len].to(dtype=torch.int64, copy=True)
 ```
 
+**Comment：** `RadixKey` 是逻辑前缀，`values` 是物理 KV slot；二者长度经 `page_aligned` 对齐后才能安全写入 radix tree。
+
 ---
 
 ## 3. 新请求 Prefill 数据流

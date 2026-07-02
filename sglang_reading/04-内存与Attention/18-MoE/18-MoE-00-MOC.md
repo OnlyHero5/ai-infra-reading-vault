@@ -54,9 +54,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[18-MoE-01-核心概念]] | 五阶段流水线、Router/TopK/Dispatcher/GEMM/Combine 资源特征 |
-| 启动链路 | [[18-MoE-02-源码走读]] | `FusedMoE.forward_impl`、DeepEP、EPLB 权重迁移精读 |
-| HTTP Server | [[18-MoE-03-数据流与交互]] | MoE 层与 TP/EP group、量化 method 的交互边界 |
-| OpenAI API | [[18-MoE-04-关键问题]] | topk 选型、通信 bound 优化、与 DeepSeek 专用层衔接 |
+| 02 | [[18-MoE-02-源码走读]] | `FusedMoE.forward_impl`、DeepEP、EPLB 权重迁移精读 |
+| 03 | [[18-MoE-03-数据流与交互]] | MoE 层与 TP/EP group、量化 method 的交互边界 |
+| 04 | [[18-MoE-04-关键问题]] | topk 选型、通信 bound 优化、与 DeepSeek 专用层衔接 |
 | ✓ | [[18-MoE-05-checkpoint]] | 验收：能否画出 dispatch → GEMM → combine 数据流 |
 
 ---

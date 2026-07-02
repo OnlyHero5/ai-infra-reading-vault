@@ -54,9 +54,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[14-Models-专用-01-核心概念]] | MLA、MoE、DSA、Context Parallel 术语 |
-| 启动链路 | [[14-Models-专用-02-源码走读]] | AttentionMLA / MoE / DecoderLayer / ForCausalLM 精读 |
-| HTTP Server | [[14-Models-专用-03-数据流与交互]] | CP metadata、MoE dispatch、与 Scheduler 边界 |
-| OpenAI API | [[14-Models-专用-04-关键问题]] | MLA vs MHA 选型、DeepEP、EPLB 衔接 |
+| 02 | [[14-Models-专用-02-源码走读]] | AttentionMLA / MoE / DecoderLayer / ForCausalLM 精读 |
+| 03 | [[14-Models-专用-03-数据流与交互]] | CP metadata、MoE dispatch、与 Scheduler 边界 |
+| 04 | [[14-Models-专用-04-关键问题]] | MLA vs MHA 选型、DeepEP、EPLB 衔接 |
 | ✓ | [[14-Models-专用-05-checkpoint]] | 验收：能否说明 dense/sparse 层判定与 MLA dispatch |
 
 ---

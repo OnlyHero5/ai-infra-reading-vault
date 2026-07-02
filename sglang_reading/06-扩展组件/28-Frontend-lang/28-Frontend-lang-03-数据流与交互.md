@@ -86,6 +86,7 @@ flowchart LR
 **步骤 1 — 用户代码**
 
 ```python
+# 用户代码示例
 @sgl.function
 def qa(s, question):
  s += "Q: " + question + "\nA:"

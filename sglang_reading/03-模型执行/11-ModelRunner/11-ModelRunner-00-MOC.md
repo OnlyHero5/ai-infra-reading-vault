@@ -55,9 +55,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[11-ModelRunner-01-核心概念]] | ForwardBatch、ForwardMode、执行器分层、CUDA Graph |
-| 启动链路 | [[11-ModelRunner-02-源码走读]] | **主文档**：ModelRunner / TpWorker 精读 |
-| HTTP Server | [[11-ModelRunner-03-数据流与交互]] | Scheduler → TP Worker → ModelRunner 逐步时序 |
-| OpenAI API | [[11-ModelRunner-04-关键问题]] | Graph replay、draft worker、PP 与 overlap |
+| 02 | [[11-ModelRunner-02-源码走读]] | **主文档**：ModelRunner / TpWorker 精读 |
+| 03 | [[11-ModelRunner-03-数据流与交互]] | Scheduler → TP Worker → ModelRunner 逐步时序 |
+| 04 | [[11-ModelRunner-04-关键问题]] | Graph replay、draft worker、PP 与 overlap |
 | ✓ | [[11-ModelRunner-05-checkpoint]] | 验收：能否说明 ScheduleBatch → ForwardBatch 衔接点 |
 
 ---

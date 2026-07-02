@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[17-Attention-01-核心概念]] | 后端分层、HybridAttnBackend、Extend vs Decode 语义 |
-| 启动链路 | [[17-Attention-02-源码走读]] | FlashInfer/Triton 子类、metadata 三阶段、kernel launch |
-| HTTP Server | [[17-Attention-03-数据流与交互]] | ForwardBatch → backend → paged KV 读写时序 |
-| OpenAI API | [[17-Attention-04-关键问题]] | 后端选型、CUDA Graph lint 契约、MLA/DSA 特化路径 |
+| 02 | [[17-Attention-02-源码走读]] | FlashInfer/Triton 子类、metadata 三阶段、kernel launch |
+| 03 | [[17-Attention-03-数据流与交互]] | ForwardBatch → backend → paged KV 读写时序 |
+| 04 | [[17-Attention-04-关键问题]] | 后端选型、CUDA Graph lint 契约、MLA/DSA 特化路径 |
 | ✓ | [[17-Attention-05-checkpoint]] | 验收：能否口述 extend 与 decode 的 kernel 差异 |
 
 ---

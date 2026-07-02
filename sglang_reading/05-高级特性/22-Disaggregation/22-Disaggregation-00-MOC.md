@@ -55,9 +55,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[22-Disaggregation-01-核心概念]] | DisaggregationMode、四队列模型、KVPoll |
-| 启动链路 | [[22-Disaggregation-02-源码走读]] | metadata gate、PrefillBootstrapQueue、DecodeReqToTokenPool |
-| HTTP Server | [[22-Disaggregation-03-数据流与交互]] | **端到端 PD 六步数据流**（本模块重点） |
-| OpenAI API | [[22-Disaggregation-04-关键问题]] | Backend 选型、HiCache、TCO 决策 |
+| 02 | [[22-Disaggregation-02-源码走读]] | metadata gate、PrefillBootstrapQueue、DecodeReqToTokenPool |
+| 03 | [[22-Disaggregation-03-数据流与交互]] | **端到端 PD 六步数据流**（本模块重点） |
+| 04 | [[22-Disaggregation-04-关键问题]] | Backend 选型、HiCache、TCO 决策 |
 | ✓ | [[22-Disaggregation-05-checkpoint]] | 验收清单 |
 
 ---

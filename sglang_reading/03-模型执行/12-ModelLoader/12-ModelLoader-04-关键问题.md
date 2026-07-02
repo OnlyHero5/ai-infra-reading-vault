@@ -27,6 +27,8 @@ updated: 2026-07-02
         """Whether .pt weights can be used."""
 ```
 
+**Comment：** Loader 层只决定“从哪里读”和“允许哪些格式兜底”；实际 TP 切片仍交给各层参数的 `weight_loader`。
+
 ---
 
 ## Q2：TP rank 如何只加载自己的分片？

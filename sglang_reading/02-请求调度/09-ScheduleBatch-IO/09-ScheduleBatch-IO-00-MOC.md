@@ -56,9 +56,9 @@ flowchart LR
 | 顺序 | 文件 | 一句话说明 |
 |------|------|------------|
 | 01 | [[09-ScheduleBatch-IO-01-核心概念]] | Req / ScheduleBatch / IPC 分层术语 |
-| 启动链路 | [[09-ScheduleBatch-IO-02-源码走读]] | **主文档**：三文件按调用顺序精读 |
-| HTTP Server | [[09-ScheduleBatch-IO-03-数据流与交互]] | HTTP → Scheduler → 输出的完整 IPC 链路 |
-| OpenAI API | [[09-ScheduleBatch-IO-04-关键问题]] | ScheduleBatch vs ForwardBatch、PickleWrapper、多模态 pad |
+| 02 | [[09-ScheduleBatch-IO-02-源码走读]] | **主文档**：三文件按调用顺序精读 |
+| 03 | [[09-ScheduleBatch-IO-03-数据流与交互]] | HTTP → Scheduler → 输出的完整 IPC 链路 |
+| 04 | [[09-ScheduleBatch-IO-04-关键问题]] | ScheduleBatch vs ForwardBatch、PickleWrapper、多模态 pad |
 | ✓ | [[09-ScheduleBatch-IO-05-checkpoint]] | 验收：能否画出 Req → ScheduleBatch → ForwardBatch 转换时机 |
 
 ---

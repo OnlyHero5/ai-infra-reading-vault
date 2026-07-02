@@ -118,7 +118,7 @@ class FusedMoEMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L430-L447
+# 来源：python/sglang/srt/layers/quantization/kv_cache.py L32-L63
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)
  layer.v_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)
