@@ -77,10 +77,6 @@ sglang_reading/
 
 本目录已适配 Obsidian vault（根目录 `F:\源码阅读`）。**关系图谱**默认过滤与颜色分组见 `.obsidian/graph.json`；[[obsidian-graph-presets]] 含手动预设。Dataview 仪表盘：[[91_dashboard/home|阅读仪表盘]]。
 
-## 归档说明
-
-[[07-总结与索引/_archive/_archive-MOC|`07-总结与索引/_archive/`]] 为过时草稿，请勿阅读；请使用 onboard 六件套与全链路追踪。
-
 ## 当前进度
 
 **32 个专题全部完成** — 维护进度见 [[progress]]（维护者用）

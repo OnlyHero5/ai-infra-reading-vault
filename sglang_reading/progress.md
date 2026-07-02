@@ -39,7 +39,7 @@ updated: 2026-07-02
 
 **2026-07-02 · MOC 完整性审计与阶段导航补全**
 
-- 全库审计：**31/31 专题批次六件套完整**（无缺失正文、无薄 stub）；详见 `90_meta/audit_report.txt`
+- 全库审计：**31/31 专题批次六件套完整**（无缺失正文、无薄 stub）；可运行 `python 90_meta/audit_moc.py` 复验
 - **新建** 阶段 MOC：`03-模型执行`、`04-内存与Attention`、`05-高级特性`、`06-扩展组件`
 - **修复断链**：26-sgl-kernel `25-Quantization` → `19-Quantization`；32-CheckpointEngine `README` → `07-总结与索引-MOC`
 - **新建** `07-总结与索引/_archive/_archive-MOC.md`；`07-总结与索引-MOC` 补 frontmatter

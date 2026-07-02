@@ -134,7 +134,6 @@ python 90_meta/fix_mermaid_newlines.py
 - **禁止**在 H1、正文、Mermaid、双链 alias 中使用「批次 NN」——这是维护者进度编号，不是读者语言。
 - 用**模块名 / 专题名**（如「启动链路与 CLI」「HTTP Server 入口」）替代。
 - frontmatter 保留 `batch:` 与 `tags: sglang/batch/NN` 供图谱过滤；读者界面不展示。
-- 维护脚本：`90_meta/strip_reader_batch_wording.mjs`、`90_meta/strip_batch_pass2.mjs`
 
 ### 4.2 禁止误链
 
@@ -178,9 +177,6 @@ Obsidian 标注块可用于调试备忘：
 ```markdown
 > [!tip] 调试提示
 > Prefill 卡住时先查 [[sglang_reading/02-请求调度/07-Scheduler/04-关键问题|Scheduler 关键问题]]。
-
-> [!warning] 归档
-> `_archive/` 下为过时草稿，请勿从主路径链入。
 ```
 
 ---
