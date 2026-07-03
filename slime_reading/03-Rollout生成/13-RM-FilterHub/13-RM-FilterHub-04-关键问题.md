@@ -127,7 +127,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code（filter 判定）：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L10-L11
+## 来源：slime/rollout/filter_hub/dynamic_sampling_filters.py L10-L11
     rewards = [sample.get_reward_value(args) for sample in samples]
     keep = torch.tensor(rewards, dtype=torch.float64).std() > 1e-6
 ```
@@ -141,7 +141,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-## 来源：slime/slime/utils/types.py L246-L247
+## 来源：slime/utils/types.py L246-L247
     def get_reward_value(self, args) -> float:
         return self.reward if not args.reward_key else self.reward[args.reward_key]
 ```
@@ -161,7 +161,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L69-L71
+## 来源：slime/rollout/rm_hub/__init__.py L69-L71
     if rm_type.startswith("boxed_"):
         response = extract_boxed_answer(response) or ""
         rm_type = rm_type[len("boxed_") :]
@@ -180,7 +180,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L29-L30
+## 来源：slime/rollout/rm_hub/__init__.py L29-L30
         timeout = aiohttp.ClientTimeout(total=120)
 ```
 

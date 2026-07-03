@@ -59,7 +59,7 @@ flowchart TB
 **Code：**
 
 ```python
-## 来源：cp_utils.py L127-L168（reduce_train_step_metrics 核心）
+## 来源：slime/backends/megatron_utils/cp_utils.py L127-L168（reduce_train_step_metrics 核心）
     for x in losses_reduced:
         values = x["values"] if values is None else values + x["values"]
     dist.all_reduce(values, group=dp_with_cp_group)

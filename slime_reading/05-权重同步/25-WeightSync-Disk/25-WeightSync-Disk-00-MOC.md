@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 25-WeightSync-Disk
 batch: "25"
 doc_type: moc
@@ -55,7 +55,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：actor.py L140-L161
+## 来源：slime/backends/megatron_utils/actor.py L140-L161
         if self.args.colocate:
             assert self.args.update_weight_mode == "full"
             update_weight_cls = UpdateWeightFromTensor

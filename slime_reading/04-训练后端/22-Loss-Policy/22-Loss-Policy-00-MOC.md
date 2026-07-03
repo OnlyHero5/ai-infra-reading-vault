@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 22-Loss-Policy
 batch: "22"
 doc_type: moc
@@ -53,7 +53,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：loss.py L1264-L1279
+## 来源：slime/backends/megatron_utils/loss.py L1264-L1279
     match args.loss_type:
         case "policy_loss":
             func = policy_loss_function

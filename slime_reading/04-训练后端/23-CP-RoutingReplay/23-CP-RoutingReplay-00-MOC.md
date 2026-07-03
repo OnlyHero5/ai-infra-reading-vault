@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 23-CP-RoutingReplay
 batch: "23"
 doc_type: moc
@@ -59,7 +59,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：actor.py L436-L495（节选）
+## 来源：slime/backends/megatron_utils/actor.py L436-L495（节选）
         if self.args.use_rollout_routing_replay:
             self.fill_routing_replay(data_iterator, num_microbatches, rollout_data)
         ...

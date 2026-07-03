@@ -79,7 +79,7 @@ flowchart TB
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_distributed.py L290-L304
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L290-L304
     cumulative = [0]
     for c in engine_gpu_counts:
         cumulative.append(cumulative[-1] + c)
@@ -176,7 +176,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：update_weight/hf_weight_iterator_direct.py L66-L77
+## 来源：slime/backends/megatron_utils/update_weight/hf_weight_iterator_direct.py L66-L77
     if pp_size > 1:
         handles = []
         for info, param in zip(megatron_local_param_infos, params, strict=False):
@@ -216,7 +216,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_distributed.py L358-L374
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L358-L374
 def post_process_weights(
     restore_weights_before_load: bool,
     post_process_quantization: bool,
@@ -240,7 +240,7 @@ def post_process_weights(
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_distributed.py L50-L55
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L50-L55
     def pop_metrics(self) -> dict[str, float]:
         out, self.update_weight_metrics = self.update_weight_metrics, {}
         return out

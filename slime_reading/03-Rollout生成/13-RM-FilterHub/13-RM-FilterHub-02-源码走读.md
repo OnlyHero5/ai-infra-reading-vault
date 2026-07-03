@@ -26,7 +26,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L263-L286
+## 来源：slime/rollout/sglang_rollout.py L263-L286
     if args.group_rm:
         return sample
 
@@ -64,7 +64,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L326-L331
+## 来源：slime/rollout/sglang_rollout.py L326-L331
     if not state.aborted and args.group_rm:
         with trace_span(group, "group_reward_model"):
             rewards = await batched_async_rm(args, group)
@@ -88,7 +88,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L99-L110
+## 来源：slime/rollout/rm_hub/__init__.py L99-L110
 async def batched_async_rm(
     args,
     samples: list[Sample],
@@ -114,7 +114,7 @@ async def batched_async_rm(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L34-L52
+## 来源：slime/rollout/rm_hub/__init__.py L34-L52
 async def remote_rm(args, sample: Sample, max_retries: int = 10):
     payload = {
         "prompt": sample.prompt,
@@ -151,7 +151,7 @@ async def remote_rm(args, sample: Sample, max_retries: int = 10):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_utils.py L384-L426
+## 来源：slime/rollout/rm_hub/math_utils.py L384-L426
 def last_boxed_only_string(string):
     idx = string.rfind("\\boxed")
     if idx < 0:
@@ -179,7 +179,7 @@ def extract_boxed_answer(solution: str) -> str:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_utils.py L351-L362
+## 来源：slime/rollout/rm_hub/math_utils.py L351-L362
 def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
     are_equal = False
     try:
@@ -210,7 +210,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_dapo_utils.py L199-L212
+## 来源：slime/rollout/rm_hub/math_dapo_utils.py L199-L212
     match = re.findall(answer_pattern, solution_str)
     extracted_answer = match[-1] if match else "[INVALID]"
     pred = normalize_final_answer(extracted_answer)
@@ -231,7 +231,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_dapo_utils.py L226-L237
+## 来源：slime/rollout/rm_hub/math_dapo_utils.py L226-L237
     pred = pred[-100:]
 
     boxed_pred = last_boxed_only_string(pred)
@@ -249,7 +249,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_dapo_utils.py L59-L62
+## 来源：slime/rollout/rm_hub/math_dapo_utils.py L59-L62
     left = "\\boxed{"
     assert s[: len(left)] == left, f"box error: {s}"
     assert s[-1] == "}", f"box error: {s}"
@@ -265,7 +265,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/deepscaler.py L36-L42
+## 来源：slime/rollout/rm_hub/deepscaler.py L36-L42
     for ground_truth in processed_ground_truths:
         is_correct = grade_answer_mathd(model_answer, ground_truth) or grade_answer_sympy(model_answer, ground_truth)
         if is_correct:
@@ -287,7 +287,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L394-L433
+## 来源：slime/rollout/sglang_rollout.py L394-L433
     dynamic_filter = (
         load_function(args.dynamic_sampling_filter_path) if args.dynamic_sampling_filter_path is not None else None
     )
@@ -313,7 +313,7 @@ def are_equal_under_sympy(ground_truth_normalized: str, given_normalized: str):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/base_types.py L24-L37
+## 来源：slime/rollout/filter_hub/base_types.py L24-L37
 class MetricGatherer:
     def on_dynamic_filter_drop(self, reason: str | None):
         if not reason:
@@ -338,7 +338,7 @@ class MetricGatherer:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L568（节选上下文）
+## 来源：slime/rollout/sglang_rollout.py L568（节选上下文）
             sample.custom_rm_path = dataset_cfg.custom_rm_path
 ```
 
@@ -353,7 +353,7 @@ class MetricGatherer:
 **Code：**
 
 ```python
-## 来源：slime/slime/utils/types.py L246-L247
+## 来源：slime/utils/types.py L246-L247
     def get_reward_value(self, args) -> float:
         return self.reward if not args.reward_key else self.reward[args.reward_key]
 ```
@@ -370,7 +370,7 @@ class MetricGatherer:
 **Code：**
 
 ```python
-## 来源：slime/slime/utils/arguments.py L1316-L1356（节选）
+## 来源：slime/utils/arguments.py L1316-L1356（节选）
         def add_reward_model_arguments(parser):
             parser.add_argument("--rm-type", type=str, default=None, ...)
             parser.add_argument("--reward-key", type=str, default=None, ...)

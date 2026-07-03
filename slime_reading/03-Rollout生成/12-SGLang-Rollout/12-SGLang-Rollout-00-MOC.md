@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 12-SGLang-Rollout
 batch: "12"
 doc_type: moc
@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # SGLang Rollout · 专题概述
 
-> **源码范围：** `slime/slime/rollout/sglang_rollout.py`（641 行）
+> **源码范围：** `slime/rollout/sglang_rollout.py`（641 行）
 
 ---
 
@@ -62,7 +62,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L618-L640
+## 来源：slime/rollout/sglang_rollout.py L618-L640
 def generate_rollout(
     args: Namespace, rollout_id: int, data_source: Any, evaluation: bool = False
 ) -> RolloutFnTrainOutput | RolloutFnEvalOutput:

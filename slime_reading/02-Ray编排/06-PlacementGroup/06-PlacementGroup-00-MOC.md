@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 06-PlacementGroup
 batch: "06"
 doc_type: moc

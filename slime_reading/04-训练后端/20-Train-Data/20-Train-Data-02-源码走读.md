@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：dp_schedule.py L82-L111
+## 来源：slime/utils/dp_schedule.py L82-L111
 def build_dp_schedule(
     args: Any,
     train_parallel_config: dict,
@@ -53,7 +53,7 @@ def build_dp_schedule(
 **Code：**
 
 ```python
-## 来源：dp_schedule.py L127-L148
+## 来源：slime/utils/dp_schedule.py L127-L148
     rollout_id_to_samples: dict[int, list[int]] = {}
     for sample_pos, rid in enumerate(rollout_indices):
         rollout_id_to_samples.setdefault(rid, []).append(sample_pos)
@@ -76,7 +76,7 @@ def build_dp_schedule(
 **Code：**
 
 ```python
-## 来源：dp_schedule.py L55-L79
+## 来源：slime/utils/dp_schedule.py L55-L79
 def _pack_step_into_mbs(
     step_lengths: list[int],
     *,
@@ -108,7 +108,7 @@ def _pack_step_into_mbs(
 **Code：**
 
 ```python
-## 来源：dp_schedule.py L167-L207
+## 来源：slime/utils/dp_schedule.py L167-L207
         target_K = max(((len(step_mbs) + align_to - 1) // align_to) * align_to, align_to)
         if target_K != len(step_mbs):
             if args.use_dynamic_batch_size:
@@ -142,7 +142,7 @@ def _pack_step_into_mbs(
 **Code：**
 
 ```python
-## 来源：seqlen_balancing.py L146-L177
+## 来源：slime/utils/seqlen_balancing.py L146-L177
 def get_seqlen_balanced_partitions(seqlen_list: list[int], k_partitions: int, equal_size: bool):
     assert len(seqlen_list) >= k_partitions
     partitions = karmarkar_karp(seqlen_list=seqlen_list, k_partitions=k_partitions, equal_size=equal_size)
@@ -154,7 +154,7 @@ def get_seqlen_balanced_partitions(seqlen_list: list[int], k_partitions: int, eq
 **Code：**
 
 ```python
-## 来源：seqlen_balancing.py L180-L229
+## 来源：slime/utils/seqlen_balancing.py L180-L229
 def first_fit_pack(total_lengths, max_tokens_per_bin):
     bins: list[list[int]] = []
     bin_sums: list[int] = []
@@ -191,7 +191,7 @@ def expand_bins_by_splitting(bins: list[list[int]], target_count: int, lengths) 
 **Code：**
 
 ```python
-## 来源：utils/data.py L292-L303
+## 来源：slime/utils/data.py L292-L303
 def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
     assert len(rollout_data_ref) == dp_size
     rollout_data = ray.get(rollout_data_ref[dp_rank].inner)
@@ -218,7 +218,7 @@ def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L28-L64
+## 来源：slime/backends/megatron_utils/data.py L28-L64
 def get_batch(
     data_iterator: "DataIterator",
     keys: Sequence[str],
@@ -240,7 +240,7 @@ def get_batch(
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L88-L104
+## 来源：slime/backends/megatron_utils/data.py L88-L104
     else:
         tokens = [slice_with_cp(t, pad_token_id) for t in tokens]
         cu_seqlens = [0]
@@ -263,7 +263,7 @@ def get_batch(
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L69-L87, L137-L142
+## 来源：slime/backends/megatron_utils/data.py L69-L87, L137-L142
     if allgather_cp:
         cu_seqlens_list: list[int] = [0]
         for t in tokens:
@@ -286,7 +286,7 @@ def get_batch(
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L121-L147
+## 来源：slime/backends/megatron_utils/data.py L121-L147
     for loss_mask, total_length, response_length in zip(
         batch["loss_masks"], batch["total_lengths"], batch["response_lengths"], strict=True,
     ):
@@ -311,7 +311,7 @@ def get_batch(
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L201-L245
+## 来源：slime/backends/megatron_utils/data.py L201-L245
 class DataIterator:
     def get_next(self, keys: Sequence[str]) -> dict[str, list[object] | None]:
         batch = {}
@@ -340,7 +340,7 @@ def get_data_iterator(rollout_data: RolloutBatch) -> list[DataIterator]:
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L262-L328
+## 来源：slime/backends/megatron_utils/data.py L262-L328
     if mpu.get_tensor_model_parallel_rank() == 0 and mpu.is_pipeline_last_stage():
         ...
         for key, val in rollout_data.items():
@@ -370,7 +370,7 @@ def get_data_iterator(rollout_data: RolloutBatch) -> list[DataIterator]:
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L166-L198
+## 来源：slime/backends/megatron_utils/data.py L166-L198
 def gather_log_data(metric_name, args, rollout_id, log_dict):
     reduced = gather_and_reduce_log_dict(
         log_dict,
@@ -394,7 +394,7 @@ def gather_log_data(metric_name, args, rollout_id, log_dict):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L512-L540
+## 来源：slime/backends/megatron_utils/data.py L512-L540
 def tensors_to_cpu(tensor_list):
     if tensor_list is None:
         return None
@@ -419,7 +419,7 @@ def tensors_to_gpu(tensor_list, device=None):
 **Code：**
 
 ```python
-## 来源：seqlen_balancing.py L109-L117
+## 来源：slime/utils/seqlen_balancing.py L109-L117
     while len(states_pq) > 1:
         state0 = heapq.heappop(states_pq)
         state1 = heapq.heappop(states_pq)
@@ -440,7 +440,7 @@ def tensors_to_gpu(tensor_list, device=None):
 **Code：**
 
 ```python
-## 来源：seqlen_balancing.py L126-L137
+## 来源：slime/utils/seqlen_balancing.py L126-L137
 def greedy_partition(seqlen_list, k_partitions, equal_size):
     bias = sum(seqlen_list) + 1 if equal_size else 0
     sorted_seqlen = [(seqlen + bias, i) for i, seqlen in enumerate(seqlen_list)]
@@ -459,7 +459,7 @@ def greedy_partition(seqlen_list, k_partitions, equal_size):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L106-L113
+## 来源：slime/backends/megatron_utils/data.py L106-L113
     max_seqlen = (cu_seqlens[1:] - cu_seqlens[:-1]).max().item()
     packed_seq_params = PackedSeqParams(
         cu_seqlens_q=cu_seqlens,
@@ -479,7 +479,7 @@ def greedy_partition(seqlen_list, k_partitions, equal_size):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L150-L161
+## 来源：slime/backends/megatron_utils/data.py L150-L161
     multimodal_train_inputs = batch.get("multimodal_train_inputs", None)
     if multimodal_train_inputs is not None:
         multimodal_data = {}
@@ -498,7 +498,7 @@ def greedy_partition(seqlen_list, k_partitions, equal_size):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L474-L491
+## 来源：slime/backends/megatron_utils/data.py L474-L491
 def log_passrate(rollout_id, args, rollout_data):
     ...
             log_dict |= compute_pass_rate(
@@ -517,7 +517,7 @@ def log_passrate(rollout_id, args, rollout_data):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L496-L508
+## 来源：slime/backends/megatron_utils/data.py L496-L508
 def log_perf_data(rollout_id, args, extra_metrics=None):
     train_metric_utils.log_perf_data_raw(
         rollout_id=rollout_id,
@@ -537,7 +537,7 @@ def log_perf_data(rollout_id, args, extra_metrics=None):
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L345-L359
+## 来源：slime/backends/megatron_utils/data.py L345-L359
         if args.ci_test and reduced_log_dict is not None:
             if rollout_id == 0 and not getattr(args, "use_rollout_routing_replay", False):
                 assert abs(reduced_log_dict["rollout/log_probs"] - reduced_log_dict["rollout/ref_log_probs"]) < 1e-8

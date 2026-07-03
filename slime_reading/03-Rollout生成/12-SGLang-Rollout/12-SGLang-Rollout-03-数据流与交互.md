@@ -53,7 +53,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-## 来源：slime/slime/ray/rollout.py L440-L441, L651-L653
+## 来源：slime/ray/rollout.py L440-L441, L651-L653
         self.generate_rollout = load_function(self.args.rollout_function_path)
         self.eval_generate_rollout = load_function(self.args.eval_function_path)
         # ...
@@ -65,7 +65,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/base_types.py L7-L26
+## 来源：slime/rollout/base_types.py L7-L26
 @dataclass
 class RolloutFnTrainOutput:
     samples: list[list[Sample]]
@@ -97,7 +97,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L175-L200
+## 来源：slime/rollout/sglang_rollout.py L175-L200
     payload = {
         "sampling_params": sampling_params,
         "return_logprob": True,
@@ -132,7 +132,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L205-L218
+## 来源：slime/rollout/sglang_rollout.py L205-L218
     if "output_token_logprobs" in output["meta_info"]:
         new_response_tokens = [item[1] for item in output["meta_info"]["output_token_logprobs"]]
         new_response_log_probs = [item[0] for item in output["meta_info"]["output_token_logprobs"]]
@@ -162,7 +162,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/ray/rollout.py L1309-L1321
+## 来源：slime/ray/rollout.py L1309-L1321
 def compute_metrics_from_samples(args, samples):
     response_lengths = [sample.effective_response_length for sample in samples]
     log_dict = {}
@@ -180,7 +180,7 @@ def compute_metrics_from_samples(args, samples):
 **Code：**
 
 ```python
-## 来源：slime/slime/ray/rollout.py L1427-L1454
+## 来源：slime/ray/rollout.py L1427-L1454
 def _compute_top_p_kept_vocab_metrics(args, all_samples: list[Sample]):
     total_kept = 0
     total_tokens = 0
@@ -247,7 +247,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L608-L615
+## 来源：slime/rollout/sglang_rollout.py L608-L615
     return {
         dataset_cfg.name: {
             "rewards": [sample.reward if not reward_key else sample.reward[reward_key] for sample in data],

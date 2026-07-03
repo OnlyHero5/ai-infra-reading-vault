@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 21-Loss-Advantages
 batch: "21"
 doc_type: moc
@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Loss · Advantages · 专题概述
 
-> 源码主文件：`slime/slime/backends/megatron_utils/loss.py`（优势/回报计算 + logprob/value 提取）
+> 源码主文件：`slime/backends/megatron_utils/loss.py`（优势/回报计算 + logprob/value 提取）
 
 ---
 
@@ -66,7 +66,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：actor.py L440–509（节选）
+## 来源：slime/backends/megatron_utils/actor.py L440-L509（节选）
             if self.args.compute_advantages_and_returns:
                 if "ref" in self.weights_backuper.backup_tags:
                     self._switch_model("ref")

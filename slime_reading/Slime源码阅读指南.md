@@ -3,6 +3,7 @@ type: index
 title: "Slime 源码阅读指南"
 tags:
   - slime/index
+  - slime/doc/index
 updated: 2026-07-03
 ---
 

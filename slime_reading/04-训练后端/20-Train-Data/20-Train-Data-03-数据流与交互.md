@@ -74,7 +74,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-## 来源：ray/rollout.py L829-L851（节选）
+## 来源：slime/ray/rollout.py L829-L851（节选）
     def _split_train_data_by_dp(self, data):
         dp_size = self.train_parallel_config["dp_size"]
         total_lengths = [len(t) for t in data["tokens"]]
@@ -102,7 +102,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-## 来源：actor.py L225-L232（节选）
+## 来源：slime/backends/megatron_utils/actor.py L225-L232（节选）
         rollout_data = process_rollout_data(
             self.args, rollout_data_ref, dp_rank, dp_size
         )

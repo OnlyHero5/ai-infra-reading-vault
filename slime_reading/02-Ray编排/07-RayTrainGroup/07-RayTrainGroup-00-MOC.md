@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 07-RayTrainGroup
 batch: "07"
 doc_type: moc

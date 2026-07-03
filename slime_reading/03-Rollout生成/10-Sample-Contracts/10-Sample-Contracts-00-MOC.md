@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 10-Sample-Contracts
 batch: "10"
 doc_type: moc

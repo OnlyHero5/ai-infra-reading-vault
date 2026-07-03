@@ -66,7 +66,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：loss.py L720–764（分支骨架）
+## 来源：slime/backends/megatron_utils/loss.py L720-L764（分支骨架）
     elif args.advantage_estimator in ["grpo", "gspo", "cispo"]:
         rewards = torch.tensor(rewards, dtype=torch.float32, device=kl[0].device)
         returns = get_grpo_returns(rewards, kl)
@@ -102,7 +102,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：ppo_utils.py L11–51（节选）
+## 来源：slime/utils/ppo_utils.py L11-L51（节选）
 @torch.compile(dynamic=True)
 def compute_approx_kl(log_probs, log_probs_base, kl_loss_type, importance_ratio=None):
     log_ratio = log_probs.float() - log_probs_base.float()
@@ -138,7 +138,7 @@ def compute_approx_kl(log_probs, log_probs_base, kl_loss_type, importance_ratio=
 **Code：**
 
 ```python
-## 来源：on_policy_distillation.py L32–43（注释）
+## 来源：slime/rollout/on_policy_distillation.py L32-L43（注释）
 # For pure on-policy distillation without task rewards, we return 0.0 for each sample.
 # The actual learning signal comes from the OPD KL penalty applied in compute_advantages_and_returns.
 ```

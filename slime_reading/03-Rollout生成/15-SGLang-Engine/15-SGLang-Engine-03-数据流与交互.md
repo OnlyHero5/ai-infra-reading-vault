@@ -268,8 +268,8 @@ sequenceDiagram
 **Code：**
 
 ```python
-## 来源：update_weight_from_distributed.py L317-L323
-## 来源：sglang_engine.py L452-L462
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L317-L323
+## 来源：slime/backends/sglang_utils/sglang_engine.py L452-L462
     refs = [engine.destroy_weights_update_group.remote(group_name) for engine in rollout_engines]
     dist.destroy_process_group(model_update_groups)
     ray.get(refs)

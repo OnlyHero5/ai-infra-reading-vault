@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L201-L217
+## 来源：slime/backends/megatron_utils/data.py L201-L217
 class DataIterator:
     """Iterator over a rollout dict following an explicit micro-batch index schedule."""
 
@@ -60,13 +60,15 @@ class DataIterator:
 **Code：**
 
 ```python
-## 来源：dp_schedule.py L8-L23（模块 docstring 节选）
+## 来源：slime/utils/dp_schedule.py L8-L23（模块 docstring 节选）
 # The scheduling philosophy is **pack first, distribute second**:
 #   1. Group samples by rollout id ...
 #   2. For each step, pack its samples into K micro-batches ...
 #   3. Adjust K to a multiple of dp_size * (mb_group if vpp>1 else 1) ...
 #   4. Distribute the K mbs across dp_size ranks ...
 ```
+
+**中文释义：** 调度策略是“先打包，再分发”：按 rollout id 分组，切成 global batch 对应的训练 step；每个 step 打包为 K 个 micro-batch，再让 K 与 DP/VPP 约束对齐，最后分配给各 DP rank。
 
 ---
 
@@ -84,7 +86,7 @@ class DataIterator:
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L63-L64, L88-L90
+## 来源：slime/backends/megatron_utils/data.py L63-L64, L88-L90
     batch["unconcat_tokens"] = tokens
     ...
     else:
@@ -100,7 +102,7 @@ class DataIterator:
 **Code：**
 
 ```python
-## 来源：megatron_utils/data.py L122-L130
+## 来源：slime/backends/megatron_utils/data.py L122-L130
         prompt_length = total_length - response_length
         loss_mask = F.pad(loss_mask, (prompt_length - 1, 1), value=0)
 ```
@@ -114,7 +116,7 @@ class DataIterator:
 **Code：**
 
 ```python
-## 来源：utils/data.py L292-L303
+## 来源：slime/utils/data.py L292-L303
 def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
     assert len(rollout_data_ref) == dp_size
     rollout_data = ray.get(rollout_data_ref[dp_rank].inner)
@@ -141,7 +143,7 @@ def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
 **Code：**
 
 ```python
-## 来源：seqlen_balancing.py L146-L161
+## 来源：slime/utils/seqlen_balancing.py L146-L161
 def get_seqlen_balanced_partitions(seqlen_list: list[int], k_partitions: int, equal_size: bool):
     """get order of seq lengths to make partitions balanced ..."""
     assert len(seqlen_list) >= k_partitions

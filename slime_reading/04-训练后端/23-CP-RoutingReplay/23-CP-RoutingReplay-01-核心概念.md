@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：cp_utils.py L307-L317
+## 来源：slime/backends/megatron_utils/cp_utils.py L307-L317
     chunk_size = (token_len + 2 * cp_size - 1) // (2 * cp_size)
     pad = 2 * cp_size * chunk_size - token_len
     ...

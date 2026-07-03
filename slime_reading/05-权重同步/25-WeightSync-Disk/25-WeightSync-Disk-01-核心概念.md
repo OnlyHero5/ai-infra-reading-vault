@@ -71,7 +71,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_disk.py L61-L98
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_disk.py L61-L98
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -105,7 +105,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_disk_delta.py L80-L96
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_disk_delta.py L80-L96
     @torch.no_grad()
     def update_weights(self) -> None:
         if not self._baseline_captured:
@@ -137,14 +137,14 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：disk_delta.py L29-L33
+## 来源：slime/utils/disk_delta.py L29-L33
 def overwrite_encode(new: np.ndarray, changed_mask: np.ndarray) -> np.ndarray:
     pos = np.flatnonzero(changed_mask).astype("<u4")
     return np.concatenate([np.array([pos.size], "<u4").view(np.uint8), pos.view(np.uint8), new[changed_mask]])
 ```
 
 ```python
-## 来源：update_weight_from_disk_delta.py L227-L235
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_disk_delta.py L227-L235
             if self.delta_encoding == "xor":
                 diff = new ^ old
                 changed = int(np.count_nonzero(diff))
@@ -163,7 +163,7 @@ def overwrite_encode(new: np.ndarray, changed_mask: np.ndarray) -> np.ndarray:
 **Code：**
 
 ```python
-## 来源：disk_delta.py L111-L124
+## 来源：slime/utils/disk_delta.py L111-L124
 def init_local_checkpoint(local_ckpt_dir: str, base_dir: str) -> None:
     with _apply_lock(local_ckpt_dir):
         if _read_applied_version(local_ckpt_dir) is not None:
@@ -185,7 +185,7 @@ def init_local_checkpoint(local_ckpt_dir: str, base_dir: str) -> None:
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_tensor.py L147-L175
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_tensor.py L147-L175
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1

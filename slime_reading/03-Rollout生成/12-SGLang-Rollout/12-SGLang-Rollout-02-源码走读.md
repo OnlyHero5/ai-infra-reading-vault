@@ -26,7 +26,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L618-L640
+## 来源：slime/rollout/sglang_rollout.py L618-L640
 def generate_rollout(
     args: Namespace, rollout_id: int, data_source: Any, evaluation: bool = False
 ) -> RolloutFnTrainOutput | RolloutFnEvalOutput:
@@ -54,7 +54,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L390-L407
+## 来源：slime/rollout/sglang_rollout.py L390-L407
     state = GenerateState(args)
 
     dynamic_filter = (
@@ -79,7 +79,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L137-L150
+## 来源：slime/rollout/sglang_rollout.py L137-L150
     def submit_generate_tasks(self, samples: list[list[Sample]]) -> None:
         for group in samples:
             self.pendings.add(
@@ -98,7 +98,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L408-L439
+## 来源：slime/rollout/sglang_rollout.py L408-L439
     while len(data) < target_data_size:
         while state.remaining_batch_size < target_data_size:
             samples = data_source(args.over_sampling_batch_size)
@@ -130,7 +130,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L447-L467
+## 来源：slime/rollout/sglang_rollout.py L447-L467
     aborted_samples = await abort(args, rollout_id)
 
     assert len(data) == args.rollout_batch_size
@@ -153,7 +153,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L294-L333
+## 来源：slime/rollout/sglang_rollout.py L294-L333
 async def generate_and_rm_group(
     args: Namespace, group: list[Sample], sampling_params: dict[str, Any], evaluation: bool = False
 ) -> list[Sample] | list[list[Sample]]:
@@ -196,7 +196,7 @@ async def generate_and_rm_group(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L230-L239
+## 来源：slime/rollout/sglang_rollout.py L230-L239
     if args.partial_rollout and args.mask_offpolicy_in_partial_rollout and sample.response_length > 0:
         sample.loss_mask = [0] * sample.response_length
 
@@ -214,7 +214,7 @@ async def generate_and_rm_group(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L241-L286
+## 来源：slime/rollout/sglang_rollout.py L241-L286
     state = GenerateState(args)
 
     async with state.semaphore:
@@ -255,7 +255,7 @@ async def generate_and_rm_group(
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L43-L62
+## 来源：slime/rollout/sglang_rollout.py L43-L62
 def _prepare_prompt_ids(sample: Sample, tokenizer, processor: Any) -> list[int]:
     raw_multimodal_inputs = sample.multimodal_inputs or {}
     has_multimodal_inputs = any(value is not None for value in raw_multimodal_inputs.values())
@@ -277,7 +277,7 @@ def _prepare_prompt_ids(sample: Sample, tokenizer, processor: Any) -> list[int]:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L165-L172
+## 来源：slime/rollout/sglang_rollout.py L165-L172
     prompt_ids = _prepare_prompt_ids(sample, state.tokenizer, state.processor)
 
     if sampling_params["max_new_tokens"] == 0:
@@ -290,7 +290,7 @@ def _prepare_prompt_ids(sample: Sample, tokenizer, processor: Any) -> list[int]:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L158-L220
+## 来源：slime/rollout/sglang_rollout.py L158-L220
     state = GenerateState(args)
     url = f"http://{args.sglang_router_ip}:{args.sglang_router_port}/generate"
 
@@ -325,7 +325,7 @@ def _prepare_prompt_ids(sample: Sample, tokenizer, processor: Any) -> list[int]:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L336-L372
+## 来源：slime/rollout/sglang_rollout.py L336-L372
 async def abort(args: Namespace, rollout_id: int) -> list[list[Sample]]:
     aborted_samples = []
 
@@ -365,7 +365,7 @@ async def abort(args: Namespace, rollout_id: int) -> list[list[Sample]]:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L561-L582
+## 来源：slime/rollout/sglang_rollout.py L561-L582
     for _i, prompt_sample in enumerate(dataset.samples):
         for j in range(dataset_cfg.n_samples_per_eval_prompt):
             sample = copy.deepcopy(prompt_sample)
@@ -395,7 +395,7 @@ async def abort(args: Namespace, rollout_id: int) -> list[list[Sample]]:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L65-L81
+## 来源：slime/rollout/sglang_rollout.py L65-L81
 def get_model_url(args: Namespace, model_name: str, endpoint: str = "/generate") -> str:
     routers = getattr(args, "sglang_model_routers", None)
     if routers and model_name in routers:

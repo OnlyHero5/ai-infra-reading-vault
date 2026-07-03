@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：arguments.py L1804–1805
+## 来源：slime/utils/arguments.py L1804-L1805
     if args.use_rollout_logprobs:
         assert not args.use_tis, "use_rollout_logprobs and use_tis cannot be set at the same time."
 ```
@@ -48,7 +48,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：loss.py L700–703
+## 来源：slime/backends/megatron_utils/loss.py L700-L703
     if args.kl_coef == 0 or not log_probs:
         xs = log_probs or rollout_log_probs or values
         kl = [torch.zeros_like(x, dtype=torch.float32, device=x.device) for x in xs]
@@ -63,7 +63,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：loss.py L731–735
+## 来源：slime/backends/megatron_utils/loss.py L731-L735
         for reward, k in zip(old_rewards, kl, strict=False):
             k *= kl_coef
             if cp_rank == 0:
@@ -85,7 +85,7 @@ updated: 2026-07-02
 **Code（失败路径）：**
 
 ```python
-## 来源：loss.py L644–646
+## 来源：slime/backends/megatron_utils/loss.py L644-L646
     if teacher_log_probs is None:
         raise ValueError(f"OPD with opd_type='{args.opd_type}' requires teacher_log_probs, but it is missing.")
 ```
@@ -97,7 +97,7 @@ updated: 2026-07-02
 **Explain：** 代码注释（L775）指出 OpenRLHF 常做 advantage norm，veRL 未必。Slime 默认由 CLI 控制；`reinforce_plus_plus*` **强制**开启。CP 下必须重建 mask chunk，否则会触发 shape assert：
 
 ```python
-## 来源：loss.py L813–815
+## 来源：slime/backends/megatron_utils/loss.py L813-L815
             assert (
                 all_advs.size() == all_masks.size()
             ), f"Shape mismatch before whitening: advantages {all_advs.size()}, masks {all_masks.size()}"

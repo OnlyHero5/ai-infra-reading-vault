@@ -124,7 +124,7 @@ cd slime && pytest tests/test_cispo_loss.py tests/test_ppo_logprob_entropy_gpu.p
 **Code（运行时选用 vanilla vs custom / ICEPOP）：**
 
 ```python
-## 来源：loss.py L987-L1014
+## 来源：slime/backends/megatron_utils/loss.py L987-L1014
     if args.get_mismatch_metrics or args.use_tis:
         assert "rollout_log_probs" in batch, "rollout_log_probs must be provided for TIS"
         ...

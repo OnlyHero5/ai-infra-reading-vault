@@ -44,7 +44,7 @@ Actor / critic 分步调用 `forward_only` + `train`，每步设置不同 `loss_
 **Code：**
 
 ```python
-## 来源：loss.py L911-L912
+## 来源：slime/backends/megatron_utils/loss.py L911-L912
     advantages = torch.cat(batch["advantages"], dim=0)
     old_log_probs = batch["rollout_log_probs"] if args.use_rollout_logprobs else batch.get("log_probs")
 ```
@@ -73,7 +73,7 @@ Actor / critic 分步调用 `forward_only` + `train`，每步设置不同 `loss_
 **Code：**
 
 ```python
-## 来源：loss.py L855-L878
+## 来源：slime/backends/megatron_utils/loss.py L855-L878
 def icepop_function(args, *, pg_loss, train_log_probs, rollout_log_probs, loss_masks, **kwargs):
     rollout_log_probs = torch.cat(rollout_log_probs, dim=0)
     old_log_probs = torch.cat(train_log_probs, dim=0)
@@ -99,7 +99,7 @@ def icepop_function(args, *, pg_loss, train_log_probs, rollout_log_probs, loss_m
 **Code：**
 
 ```python
-## 来源：loss.py L1290-L1298
+## 来源：slime/backends/megatron_utils/loss.py L1290-L1298
     if not args.calculate_per_token_loss:
         loss = (
             loss

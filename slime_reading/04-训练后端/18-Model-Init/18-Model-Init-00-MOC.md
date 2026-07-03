@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 18-Model-Init
 batch: "18"
 doc_type: moc

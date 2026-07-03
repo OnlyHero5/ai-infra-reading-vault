@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 05-Tools-DataPrep
 batch: "05"
 doc_type: moc

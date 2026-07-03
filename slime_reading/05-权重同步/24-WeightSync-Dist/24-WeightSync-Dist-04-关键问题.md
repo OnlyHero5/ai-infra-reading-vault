@@ -62,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_distributed.py L189-L191
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L189-L191
             if (
                 buffer_size + param_size
             ) * mpu.get_expert_model_parallel_world_size() > self.args.update_weight_buffer_size:
@@ -90,7 +90,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：update_weight/update_weight_from_distributed.py L142-L146
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L142-L146
         for chunk_iter in (self._iter_non_expert_chunks(), self._iter_expert_chunks()):
             for hf_chunk in chunk_iter:
                 ...

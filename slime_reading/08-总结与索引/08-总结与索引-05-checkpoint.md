@@ -44,7 +44,7 @@ updated: 2026-07-02
 ## 已知局限
 
 1. **行号漂移** — 基线 commit `22cdc6e1`；以函数名为锚在 upstream 检索。
-2. **megatron_server.py** — 仅在 07-可观测与CI 摘要；无独立专题批。
+2. **megatron_server.py** — 见 [[Slime-未独立成专题导读]] §2；暂无独立专题。
 3. **知识图谱更新** — [[08-总结与索引-00-MOC]] 可选跑 `/understand --full` + `/understand-domain` 终版（见 [[08-总结与索引-04-导读路径]]）。
 
 ---

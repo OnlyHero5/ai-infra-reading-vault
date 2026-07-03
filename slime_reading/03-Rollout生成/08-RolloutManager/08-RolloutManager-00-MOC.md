@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 08-RolloutManager
 batch: "08"
 doc_type: moc
@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # RolloutManager · 专题概述
 
-> 源码主文件：`slime/slime/ray/rollout.py`（`RolloutManager` 类 + 辅助函数）
+> 源码主文件：`slime/ray/rollout.py`（`RolloutManager` 类 + 辅助函数）
 
 ---
 

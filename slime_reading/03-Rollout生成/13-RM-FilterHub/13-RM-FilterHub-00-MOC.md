@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 13-RM-FilterHub
 batch: "13"
 doc_type: moc
@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # RM-FilterHub · 专题概述
 
-> 源码主目录：`slime/slime/rollout/rm_hub/`、`slime/slime/rollout/filter_hub/`
+> 源码主目录：`slime/rollout/rm_hub/`、`slime/rollout/filter_hub/`
 
 ---
 
@@ -62,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L55-L96
+## 来源：slime/rollout/rm_hub/__init__.py L55-L96
 async def async_rm(args, sample: Sample, **kwargs):
     # Per-sample custom_rm_path (from eval dataset config) takes priority
     if sample.custom_rm_path:

@@ -53,7 +53,7 @@ RM 与 Filter 均运行在 **Rollout 进程**（`sglang_rollout.generate_rollout
 **Code：**
 
 ```python
-## 来源：slime/slime/utils/types.py（字段节选）
+## 来源：slime/utils/types.py（字段节选）
 @dataclass
 class Sample:
     prompt: str | list[int] = ""
@@ -74,7 +74,7 @@ class Sample:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/base_types.py L5-L8
+## 来源：slime/rollout/filter_hub/base_types.py L5-L8
 @dataclass
 class DynamicFilterOutput:
     keep: bool
@@ -126,7 +126,7 @@ class DynamicFilterOutput:
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L401-L412
+## 来源：slime/rollout/sglang_rollout.py L401-L412
     target_data_size = args.rollout_batch_size
 
     data = []
@@ -160,7 +160,7 @@ flowchart LR
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
+## 来源：slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
 def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
     rewards = [sample.get_reward_value(args) for sample in samples]
     keep = torch.tensor(rewards, dtype=torch.float64).std() > 1e-6
@@ -184,7 +184,7 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L467
+## 来源：slime/rollout/sglang_rollout.py L467
     return RolloutFnTrainOutput(samples=data, metrics=metric_gatherer.collect()), aborted_samples
 ```
 
@@ -206,7 +206,7 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/utils/eval_config.py L200-L201
+## 来源：slime/utils/eval_config.py L200-L201
         if self.rm_type is not None:
             metadata["rm_type"] = self.rm_type
 ```

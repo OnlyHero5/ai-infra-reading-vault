@@ -61,7 +61,7 @@ flowchart TB
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/__init__.py L56-L63
+## 来源：slime/rollout/rm_hub/__init__.py L56-L63
     if sample.custom_rm_path:
         rm_function = load_function(sample.custom_rm_path)
         return await rm_function(args, sample, **kwargs)
@@ -106,7 +106,7 @@ CLI 定义见 `arguments.py` 的 `add_reward_model_arguments`。
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_utils.py L484-L493
+## 来源：slime/rollout/rm_hub/math_utils.py L484-L493
 def grade_answer_verl(solution_str, ground_truth):
     if not ground_truth:
         return False
@@ -134,7 +134,7 @@ def grade_answer_verl(solution_str, ground_truth):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/math_dapo_utils.py L279-L292
+## 来源：slime/rollout/rm_hub/math_dapo_utils.py L279-L292
     solution_str = solution_str[-300:]
 
     correct, pred = verify(solution_str, ground_truth, strict_box_verify, pause_tokens_index)
@@ -164,7 +164,7 @@ def grade_answer_verl(solution_str, ground_truth):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/rm_hub/deepscaler.py L4-L14
+## 来源：slime/rollout/rm_hub/deepscaler.py L4-L14
 def get_deepscaler_rule_based_reward(response, label):
     if "</think>" in response:
         model_solution = response.split("</think>")[-1]
@@ -192,7 +192,7 @@ def get_deepscaler_rule_based_reward(response, label):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
+## 来源：slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
 def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
     rewards = [sample.get_reward_value(args) for sample in samples]
     keep = torch.tensor(rewards, dtype=torch.float64).std() > 1e-6
@@ -217,7 +217,7 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/filter_hub/base_types.py L5-L21
+## 来源：slime/rollout/filter_hub/base_types.py L5-L21
 @dataclass
 class DynamicFilterOutput:
     keep: bool

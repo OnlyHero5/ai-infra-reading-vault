@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 11-DataSource
 batch: "11"
 doc_type: moc

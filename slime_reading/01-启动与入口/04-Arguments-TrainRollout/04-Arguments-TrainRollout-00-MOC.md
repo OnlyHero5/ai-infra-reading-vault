@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 04-Arguments-TrainRollout
 batch: "04"
 doc_type: moc

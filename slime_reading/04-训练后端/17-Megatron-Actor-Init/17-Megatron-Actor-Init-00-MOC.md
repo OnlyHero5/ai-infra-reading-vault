@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 17-Megatron-Actor-Init
 batch: "17"
 doc_type: moc

@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 03-Arguments-Ray
 batch: "03"
 doc_type: moc
@@ -14,7 +14,7 @@ updated: 2026-07-02
 # Arguments-Ray · 专题概述
 
 > **专题 03** | 阶段 I 启动与入口 | **代码热点专题**（内嵌代码 ≥400 行）  
-> 源码：`slime/slime/utils/arguments.py` 之 **Ray / Cluster / Colocate** 段 + `parse_args` + `slime_validate_args` 集群相关 validate
+> 源码：`slime/utils/arguments.py` 之 **Ray / Cluster / Colocate** 段 + `parse_args` + `slime_validate_args` 集群相关 validate
 
 ---
 

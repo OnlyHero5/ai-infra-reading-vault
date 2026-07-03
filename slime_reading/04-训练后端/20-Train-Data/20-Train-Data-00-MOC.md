@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 20-Train-Data
 batch: "20"
 doc_type: moc
@@ -62,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-## 来源：rollout.py L829-L851（节选）
+## 来源：slime/ray/rollout.py L829-L851（节选）
     def _split_train_data_by_dp(self, data):
         dp_size = self.train_parallel_config["dp_size"]
         total_lengths = [len(t) for t in data["tokens"]]

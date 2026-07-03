@@ -31,7 +31,7 @@ Slime 提供**两个粒度**的 rollout 定制：
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L249-L261
+## 来源：slime/rollout/sglang_rollout.py L249-L261
         with state.dp_rank_context() as _:
             custom_func_path = getattr(sample, "generate_function_path", None) or args.custom_generate_function_path
 
@@ -60,7 +60,7 @@ Slime 提供**两个粒度**的 rollout 定制：
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L84-L118
+## 来源：slime/rollout/sglang_rollout.py L84-L118
 class GenerateState(metaclass=SingletonMeta):
     def __init__(self, args: Namespace) -> None:
         self.args = args
@@ -100,7 +100,7 @@ class GenerateState(metaclass=SingletonMeta):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L309-L333
+## 来源：slime/rollout/sglang_rollout.py L309-L333
     for sample in group:
         if sample.session_id is None:
             sample.session_id = str(uuid.uuid4())
@@ -138,7 +138,7 @@ class GenerateState(metaclass=SingletonMeta):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L401-L439
+## 来源：slime/rollout/sglang_rollout.py L401-L439
     target_data_size = args.rollout_batch_size
     data = []
     while len(data) < target_data_size:
@@ -173,7 +173,7 @@ class GenerateState(metaclass=SingletonMeta):
 **Code：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L174-L218
+## 来源：slime/rollout/sglang_rollout.py L174-L218
     payload = {
         "sampling_params": sampling_params,
         "return_logprob": True,

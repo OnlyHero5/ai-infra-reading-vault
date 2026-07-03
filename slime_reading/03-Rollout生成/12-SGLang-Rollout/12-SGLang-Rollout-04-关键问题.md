@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code（CLI 定义）：**
 
 ```python
-## 来源：slime/slime/utils/arguments.py L473-L480
+## 来源：slime/utils/arguments.py L473-L480
             parser.add_argument(
                 "--custom-generate-function-path",
                 type=str,
@@ -95,7 +95,7 @@ async def custom_generate(args, sample, sampling_params):
 **触发条件（generate 侧）：**
 
 ```python
-## 来源：slime/slime/rollout/sglang_rollout.py L107-L108
+## 来源：slime/rollout/sglang_rollout.py L107-L108
         if args.rollout_top_p != 1.0:
             self.sampling_params["custom_params"] = {"return_top_p_token_ids": True}
 ```

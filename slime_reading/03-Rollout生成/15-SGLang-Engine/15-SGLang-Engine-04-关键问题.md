@@ -51,7 +51,7 @@ updated: 2026-07-02
 **正确顺序：**
 
 ```python
-## 来源：update_weight_from_distributed.py L109-L111
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L109-L111
 ray.get([engine.pause_generation.remote() for engine in self.rollout_engines])
 ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 ```
@@ -123,7 +123,7 @@ ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 **Code — async abort：**
 
 ```python
-## 来源：server_control.py L66-L67
+## 来源：slime/backends/sglang_utils/server_control.py L66-L67
 async def abort_servers_until_idle(urls: list[str]) -> None:
     await asyncio.gather(*(abort_server_until_idle(url) for url in urls))
 ```

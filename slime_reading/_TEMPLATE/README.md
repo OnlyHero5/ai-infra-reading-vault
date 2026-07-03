@@ -75,6 +75,8 @@ def train(args):
 - 主循环见批次 02 源码走读 §2
 ```
 
+若 `Code` 摘录为长英文 README/docstring/help text，必须在代码块后补 `**中文释义：** ...`，再进入 `Comment`。源码原文不改写，读者说明保持中文。
+
 ---
 
 ## checkpoint 模板

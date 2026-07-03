@@ -1,5 +1,5 @@
----
-type: batch-doc
+﻿---
+type: module-moc
 module: 14-Alt-Rollout
 batch: "14"
 doc_type: moc

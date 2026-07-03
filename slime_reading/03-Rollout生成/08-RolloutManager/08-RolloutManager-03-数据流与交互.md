@@ -150,6 +150,8 @@ train_data = {
 """
 ```
 
+**中文释义：** DP 调度的原则是“先打包，再分发”：先按 rollout 分组并切成训练 step，再把每个 step 的样本打包成 K 个 micro-batch，最后把这些 micro-batch 分给各个 DP rank。
+
 **输出结构：**
 
 | 变量 | 形状 / 类型 | 含义 |
