@@ -37,7 +37,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1576-L1579
+## 来源：slime/utils/arguments.py L1576-L1579
     if sglang_ns is not None:
         for key, value in vars(sglang_ns).items():
             setattr(args, key, value)
@@ -63,7 +63,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)
@@ -73,7 +73,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L437-L439
+## 来源：slime/ray/rollout.py L437-L439
         data_source_cls = load_function(self.args.data_source_path)
         self.data_source = data_source_cls(args)
         self.generate_rollout = load_function(self.args.rollout_function_path)
@@ -88,7 +88,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L341-L351
+## 来源：slime/utils/arguments.py L341-L351
             parser.add_argument(
                 "--rollout-temperature",
                 type=float,
@@ -106,7 +106,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L176-L199
+## 来源：slime/backends/sglang_utils/arguments.py L176-L199
 def sglang_parse_args():
     parser = argparse.ArgumentParser(add_help=False)
     add_sglang_arguments(parser)
@@ -138,7 +138,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L128-L133
+## 来源：slime/utils/arguments.py L128-L133
             parser.add_argument(
                 "--megatron-to-hf-mode",
                 choices=["raw", "bridge"],
@@ -154,7 +154,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L631-L647
+## 来源：slime/utils/arguments.py L631-L647
             parser.add_argument(
                 "--prompt-data",
                 type=str,
@@ -178,14 +178,14 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1856
+## 来源：slime/utils/arguments.py L1856
     args.use_critic = args.advantage_estimator == "ppo"
 ```
 
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1921-L1923
+## 来源：slime/utils/arguments.py L1921-L1923
     if args.n_samples_per_prompt == 1:
         args.grpo_std_normalization = False
         logger.info("n_samples_per_prompt is set to 1, grpo_std_normalization will be set to False.")
@@ -198,7 +198,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L99-L114
+## 来源：docs/en/get_started/customization.md L99-L114
 async def custom_generate(args, sample: Sample, sampling_params: dict) -> list[Sample]:
     segments = await run_agent_and_split_segments(args, sample, sampling_params)
     rollout_id = sample.rollout_id if sample.rollout_id is not None else sample.index
@@ -241,7 +241,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L9-L31
+## 来源：slime/backends/sglang_utils/arguments.py L9-L31
 def add_sglang_router_arguments(parser):
     parser.add_argument(
         "--sglang-router-ip",
@@ -271,7 +271,7 @@ def add_sglang_router_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1911-L1919
+## 来源：slime/utils/arguments.py L1911-L1919
     if args.num_steps_per_rollout is not None:
         global_batch_size = args.rollout_batch_size * args.n_samples_per_prompt // args.num_steps_per_rollout
         if args.global_batch_size is not None:
@@ -288,7 +288,7 @@ def add_sglang_router_arguments(parser):
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L487-L492
+## 来源：docs/en/get_started/customization.md L487-L492
 # python tests/plugin_contracts/test_plugin_rollout_contracts.py \
 #   --rollout-function-path my_project.custom_rollout.generate_rollout
 ```
@@ -300,7 +300,7 @@ def add_sglang_router_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1953-L1959
+## 来源：slime/utils/arguments.py L1953-L1959
     if args.custom_config_path:
         with open(args.custom_config_path) as f:
             data = yaml.safe_load(f) or {}

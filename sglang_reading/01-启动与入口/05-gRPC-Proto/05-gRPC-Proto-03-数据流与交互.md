@@ -61,7 +61,7 @@ sequenceDiagram
 **GenerateReqInput 构造处（Python）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_bridge.py L275-L278
+## 来源：python/sglang/srt/entrypoints/grpc_bridge.py L275-L278
         if req_type == "generate":
             from sglang.srt.managers.io_struct import GenerateReqInput
 
@@ -195,7 +195,7 @@ sglang serve --grpc-mode --model-path ...
 **Sidecar 端口默认值：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L170-L174
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L170-L174
     sidecar_port = (
         server_args.grpc_http_sidecar_port
         if server_args.grpc_http_sidecar_port is not None

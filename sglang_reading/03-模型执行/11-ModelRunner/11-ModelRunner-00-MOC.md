@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # ModelRunner 与执行器
 
-> **阶段 III · 模型执行** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 III · 模型执行** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/model_executor/`、`srt/managers/tp_worker.py`
 
 ---
@@ -69,7 +69,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L482-L509
+## 来源：python/sglang/srt/managers/tp_worker.py L482-L509
     def forward_batch_generation(
         self,
         batch: Optional[ScheduleBatch],

@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L373-L374
+## 来源：python/sglang/srt/model_loader/loader.py L373-L374
 # 提交版本：70df09b
         fall_back_to_pt: bool = True
         """Whether .pt weights can be used."""
@@ -56,7 +56,7 @@ for name, w in safetensors_weights_iterator(files):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L1462-L1463
+## 来源：python/sglang/srt/model_executor/model_runner.py L1462-L1463
 # 提交版本：70df09b
         # Remove monkey_patch when linear.py quant remove dependencies with vllm
         monkey_patch_vllm_parallel_state()
@@ -75,7 +75,7 @@ for name, w in safetensors_weights_iterator(files):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/weight_utils.py L216-L221
+## 来源：python/sglang/srt/model_loader/weight_utils.py L216-L221
 # 提交版本：70df09b
 def replace_prefix(key: str, prefix_mapping: dict[str, str]) -> str:
     for prefix, new_prefix in prefix_mapping.items():
@@ -94,7 +94,7 @@ def replace_prefix(key: str, prefix_mapping: dict[str, str]) -> str:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L355-L356, L394-L395
+## 来源：python/sglang/srt/model_loader/loader.py L355-L356, L394-L395
 # 提交版本：70df09b
     # default number of thread when enable multithread weight loading
     DEFAULT_NUM_THREADS = 8

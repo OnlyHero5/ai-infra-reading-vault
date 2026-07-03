@@ -33,7 +33,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1027-L1085
+## 来源：python/sglang/srt/observability/metrics_collector.py L1027-L1085
     @classmethod
     def init_new(
         cls,
@@ -110,7 +110,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L590-L603
+## 来源：python/sglang/srt/managers/scheduler.py L590-L603
     def init_metrics_collector(
         self, tp_rank: int, pp_rank: int, dp_rank: Optional[int]
     ) -> None:
@@ -141,7 +141,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1260-L1295
+## 来源：python/sglang/srt/observability/metrics_collector.py L1260-L1295
     def log_stats(self, stats: SchedulerStats) -> None:
         # Basics
         self._log_gauge_queue_count(self.num_running_reqs, stats.num_running_reqs)
@@ -195,7 +195,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
+## 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
     def observe_weight_load(self, duration_seconds: float, source: str) -> None:
         # Edge-triggered: engine is paused during the update, so log_stats
         # won't fire — write the gauge inline at end of update_weights_from_*.
@@ -219,7 +219,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/metrics_reporter.py L654-L660
+## 来源：python/sglang/srt/managers/scheduler_components/metrics_reporter.py L654-L660
             # Utilization / LoRA / HiCache
             self._calculate_utilization()
             self.stats.fwd_occupancy = self.fwd_occupancy
@@ -244,7 +244,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/common.py L1589-L1599
+## 来源：python/sglang/srt/utils/common.py L1589-L1599
 def add_prometheus_middleware(app):
     # We need to import prometheus_client after setting the env variable `PROMETHEUS_MULTIPROC_DIR`
     from prometheus_client import CollectorRegistry, make_asgi_app, multiprocess
@@ -272,7 +272,7 @@ def add_prometheus_middleware(app):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L199-L210
+## 来源：python/sglang/srt/observability/metrics_collector.py L199-L210
 def resolve_collector_class(
     server_args: Optional[ServerArgs], role: str, default_cls: type
 ) -> type:
@@ -301,7 +301,7 @@ def resolve_collector_class(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1385-L1408
+## 来源：python/sglang/srt/observability/metrics_collector.py L1385-L1408
     def emit_constants(
         self,
         max_total_num_tokens: int,
@@ -342,7 +342,7 @@ def resolve_collector_class(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/request_logger.py L88-L111
+## 来源：python/sglang/srt/utils/request_logger.py L88-L111
     def log_received_request(
         self,
         obj: Union[GenerateReqInput, EmbeddingReqInput],
@@ -383,7 +383,7 @@ def resolve_collector_class(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/req_time_stats.py L260-L271
+## 来源：python/sglang/srt/observability/req_time_stats.py L260-L271
     def set_metrics_collector(
         self, collector: Union[SchedulerMetricsCollector, TokenizerMetricsCollector]
     ):
@@ -412,7 +412,7 @@ def resolve_collector_class(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1051-L1052
+## 来源：python/sglang/srt/observability/metrics_collector.py L1051-L1052
         collector: Optional[SchedulerMetricsCollector] = None
         if enable_metrics:
 ```
@@ -431,7 +431,7 @@ def resolve_collector_class(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L178
+## 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L178
     def update_weights_from_ipc(self, recv_req: UpdateWeightsFromIPCReqInput):
         """Update the online model parameter from IPC for checkpoint-engine integration."""
         with self._observe_weight_load("ipc"):

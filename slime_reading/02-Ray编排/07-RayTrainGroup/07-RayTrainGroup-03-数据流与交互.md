@@ -31,7 +31,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L117-L118
+## 来源：slime/ray/actor_group.py L117-L118
 # 提交版本：22cdc6e1
 if rank == 0:
     master_addr, master_port = ray.get(actor.get_master_addr_and_port.remote())
@@ -46,7 +46,7 @@ if rank == 0:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L191-L210
+## 来源：slime/ray/placement_group.py L191-L210
 # 提交版本：22cdc6e1
 actor_start_rollout_ids = ray.get(
     actor_model.async_init(actor_args, role="actor", ...)
@@ -77,7 +77,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L146-L148
+## 来源：slime/ray/actor_group.py L146-L148
 # 提交版本：22cdc6e1
 return [
     actor.train.remote(rollout_id, rollout_data_ref, external_data=external_data)
@@ -88,7 +88,7 @@ return [
 **Comment：**
 
 - 大数据路径可用 nixl tensor transport（绕过 object store）
-- 详见 [[20-Train-Data]]
+- 详见 [[20-Train-Data-00-MOC]]
 
 ---
 
@@ -108,7 +108,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L155-L157
+## 来源：slime/ray/actor_group.py L155-L157
 # 提交版本：22cdc6e1
 return ray.get([actor.update_weights.remote() for actor in self._actor_handlers])
 ```
@@ -116,7 +116,7 @@ return ray.get([actor.update_weights.remote() for actor in self._actor_handlers]
 **Comment：**
 
 - 与 `async_train` 不同：**必须同步** 才能开始下一轮 generate
-- 见 [[24-WeightSync-Dist]]
+- 见 [[24-WeightSync-Dist-00-MOC]]
 
 ---
 
@@ -127,7 +127,7 @@ return ray.get([actor.update_weights.remote() for actor in self._actor_handlers]
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L159-L163
+## 来源：slime/ray/actor_group.py L159-L163
 # 提交版本：22cdc6e1
 def onload(self):
     return ray.get([actor.wake_up.remote() for actor in self._actor_handlers])
@@ -139,7 +139,7 @@ def offload(self):
 **Comment：**
 
 - train.py 在 generate 前 offload train / onload rollout（标志位控制）
-- Megatron sleep 释放显存给 SGLang（批次 17）
+- Megatron sleep 释放显存给 SGLang（[[17-Megatron-Actor-Init-00-MOC]]）
 
 ---
 
@@ -150,7 +150,7 @@ def offload(self):
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L125-L128
+## 来源：slime/ray/train_actor.py L125-L128
 # 提交版本：22cdc6e1
 if not self.args.debug_rollout_only and self.args.rank == 0:
     ray.get(self.rollout_manager.set_train_parallel_config.remote(self.train_parallel_config))
@@ -159,7 +159,7 @@ if not self.args.debug_rollout_only and self.args.rank == 0:
 **Comment：**
 
 - 只需 rank 0 上报一次
-- RolloutManager 缓存 config 供 [[10-Sample-Contracts]] 的 batch 对齐
+- RolloutManager 缓存 config 供 [[10-Sample-Contracts-00-MOC]] 的 batch 对齐
 
 ---
 
@@ -170,7 +170,7 @@ if not self.args.debug_rollout_only and self.args.rank == 0:
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L165-L166
+## 来源：slime/ray/actor_group.py L165-L166
 # 提交版本：22cdc6e1
 def clear_memory(self):
     return ray.get([actor.clear_memory.remote() for actor in self._actor_handlers])

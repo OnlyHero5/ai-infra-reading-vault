@@ -46,7 +46,7 @@ Completion 基本是 prompt → `GenerateReqInput` 的单向映射。
 **Code（正确模式 — Completion 流式）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L316-L318
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L316-L318
                 # Generate delta
                 delta = text[offset:]
                 stream_offsets[index] = len(content["text"])
@@ -69,7 +69,7 @@ yield f"data: {json.dumps({'choices': [{'text': content['text']}]})}\n\n"
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L71-L86
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L71-L86
         # NOTE: with openai API, the prompt's logprobs are always not computed
         if request.echo and request.logprobs:
             logger.warning(
@@ -97,7 +97,7 @@ yield f"data: {json.dumps({'choices': [{'text': content['text']}]})}\n\n"
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L64-L71
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L64-L71
         _, adapter_from_model = self._parse_model_parameter(request_model)
 
         # Model parameter adapter takes precedence
@@ -131,7 +131,7 @@ yield f"data: {json.dumps({'choices': [{'text': content['text']}]})}\n\n"
 **Code（正确 — kick-start pattern）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L198-L202
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L198-L202
         # Kick-start the generator to trigger validation before HTTP 200 is sent.
         try:
             first_chunk = await generator.__anext__()

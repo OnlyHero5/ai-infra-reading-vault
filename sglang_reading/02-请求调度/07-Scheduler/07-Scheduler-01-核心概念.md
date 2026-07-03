@@ -49,7 +49,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L965-L984
+## 来源：python/sglang/srt/managers/scheduler.py L965-L984
 # 提交版本：70df09b
     def init_running_status(self):
         # Set by the ShutdownReq handler to break the event loop for graceful shutdown.
@@ -110,7 +110,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L298-L306
+## 来源：python/sglang/srt/managers/scheduler.py L298-L306
 class Scheduler(
     SchedulerDisaggregationDecodeMixin,
     SchedulerDisaggregationPrefillMixin,
@@ -137,7 +137,7 @@ class Scheduler(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L965-L984
+## 来源：python/sglang/srt/managers/scheduler.py L965-L984
     def init_running_status(self):
         # Set by the ShutdownReq handler to break the event loop for graceful shutdown.
         self.gracefully_exit = False
@@ -208,7 +208,7 @@ class Scheduler(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2687-L2699
+## 来源：python/sglang/srt/managers/scheduler.py L2687-L2699
         if new_batch is not None:
             # Run prefill first if possible
             ret = new_batch
@@ -239,7 +239,7 @@ class Scheduler(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L371-L389
+## 来源：python/sglang/srt/managers/scheduler.py L371-L389
         self.ps = ParallelState(
             tp_rank=tp_rank,
             tp_size=server_args.tp_size,

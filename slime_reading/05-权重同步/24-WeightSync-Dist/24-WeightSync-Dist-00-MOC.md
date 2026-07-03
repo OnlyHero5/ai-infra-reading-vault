@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # NCCL 分布式权重同步（WeightSync-Dist）
 
-> **阶段 V · 权重同步** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 V · 权重同步** | Git：`22cdc6e1`  
 > **源码范围：** `actor.py`（`update_weights`）、`update_weight/common.py`、`update_weight_from_distributed.py`、`hf_weight_iterator_direct.py`
 
 ---
@@ -64,7 +64,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L154-L161
+## 来源：slime/backends/megatron_utils/actor.py L154-L161
             assert self.args.update_weight_mode == "full"
             if self.args.update_weight_transport == "disk":
                 update_weight_cls = UpdateWeightFromDisk
@@ -77,7 +77,7 @@ flowchart LR
 
 **Comment：**
 
-- colocate 走 `UpdateWeightFromTensor`（CUDA IPC，见批次 25）
+- colocate 走 `UpdateWeightFromTensor`（CUDA IPC，见[[25-WeightSync-Disk-00-MOC]]）
 - delta 模式强制 disk transport（见 [[25-WeightSync-Disk-00-MOC]]）
 - `weight_updater` 在 init 创建，`update_weights()` 每 rollout 调用
 
@@ -87,7 +87,7 @@ flowchart LR
 
 | 参数 | 作用 |
 |------|------|
-| `--update-weight-transport nccl` | 启用本批次路径 |
+| `--update-weight-transport nccl` | 启用本专题路径 |
 | `--update-weight-buffer-size` | 单次 broadcast 字节上限（默认见 arguments） |
 | `--megatron-to-hf-mode raw\|bridge` | HF 转换策略；`raw` 时 `HfWeightIteratorDirect` 用于 checkpoint 等 |
 | `--colocate` | **禁用** NCCL 路径，改走 tensor IPC |
@@ -98,7 +98,7 @@ flowchart LR
 
 1. **日志：** 观察 `[slime-pp_0] Update weights` tqdm 进度与 bucket 数。
 2. **CI：** `--ci-test` 时 actor 随机抽查 engine `weight_version` 与 updater 一致。
-3. **对比：** 同模型切换 `--update-weight-transport disk` 对比延迟（批次 25）。
+3. **对比：** 同模型切换 `--update-weight-transport disk` 对比延迟（[[25-WeightSync-Disk-00-MOC]]）。
 
 ---
 

@@ -31,15 +31,6 @@ updated: 2026-07-02
 - [ ] 能指出 DataSource 在 **generate → train → update_weights** 中位于 generate **入口**（供给 prompt）
 - [ ] 能说明 checkpoint 文件 `global_dataset_state_dict_{rollout_id}.pt` 存什么
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/11` + `slime/doc/*`
-- [ ] 六件套文件名均为 `11-DataSource-*.md`（无泛化 `01-核心概念.md`）
-- [ ] 全批内嵌源码 ≥ 15 段、合计 ≥ 200 行
-- [ ] Mermaid 块内换行使用 `<br/>`，无 `\n`
-- [ ] 已更新 [[Slime-progress]] 批次 11 → ✅
-- [ ] 双链指向相邻批次（08 RolloutManager、10 Sample、12 SGLang-Rollout）无 `./` 相对路径
-
 ## 深度检查（可选）
 
 - [ ] 能解释 epoch 回绕时 `get_samples` 单次调用跨边界的行为

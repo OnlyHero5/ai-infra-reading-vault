@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：cp_utils.py L9-L44
+## 来源：cp_utils.py L9-L44
 def get_logits_and_tokens_offset_with_cp(total_length: int, response_length: int):
     cp_rank = mpu.get_context_parallel_rank()
     cp_size = mpu.get_context_parallel_world_size()
@@ -50,7 +50,7 @@ def get_logits_and_tokens_offset_with_cp(total_length: int, response_length: int
 **Code：**
 
 ```python
-# 来源：cp_utils.py L287-L317
+## 来源：cp_utils.py L287-L317
 def slice_with_cp(tokens: torch.Tensor, pad_value):
     cp_rank = mpu.get_context_parallel_rank()
     cp_size = mpu.get_context_parallel_world_size()
@@ -76,7 +76,7 @@ def slice_with_cp(tokens: torch.Tensor, pad_value):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L320-L344
+## 来源：cp_utils.py L320-L344
 def slice_log_prob_with_cp(log_prob, total_length, response_length):
     assert len(log_prob) == response_length
     if cp_size == 1:
@@ -97,7 +97,7 @@ def slice_log_prob_with_cp(log_prob, total_length, response_length):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L235-L284
+## 来源：cp_utils.py L235-L284
 def all_gather_with_cp(tensor: torch.Tensor, total_length: int, response_length: int) -> torch.Tensor:
     cp_group = mpu.get_context_parallel_group()
     cp_size = mpu.get_context_parallel_world_size()
@@ -121,7 +121,7 @@ def all_gather_with_cp(tensor: torch.Tensor, total_length: int, response_length:
 **Code：**
 
 ```python
-# 来源：cp_utils.py L91-L124
+## 来源：cp_utils.py L91-L124
     else:
         cp_chunk_lengths: list[int] = []
         chunked_loss_masks: list[torch.Tensor] = []
@@ -150,7 +150,7 @@ def all_gather_with_cp(tensor: torch.Tensor, total_length: int, response_length:
 **Code：**
 
 ```python
-# 来源：cp_utils.py L127-L168
+## 来源：cp_utils.py L127-L168
 def reduce_train_step_metrics(losses_reduced, *, calculate_per_token_loss, step_global_batch_size, cp_size, dp_with_cp_group):
     keys = losses_reduced[0]["keys"]
     values = None
@@ -174,7 +174,7 @@ def reduce_train_step_metrics(losses_reduced, *, calculate_per_token_loss, step_
 **Code：**
 
 ```python
-# 来源：cp_utils.py L171-L194
+## 来源：cp_utils.py L171-L194
 def rollout_log_metric_contribution(per_rank_reducer_sum, *, cp_size, num_rollouts_in_rollout, dp_size):
     sum_value = cp_size * per_rank_reducer_sum
     count = num_rollouts_in_rollout / dp_size
@@ -190,7 +190,7 @@ def rollout_log_metric_contribution(per_rank_reducer_sum, *, cp_size, num_rollou
 **Code：**
 
 ```python
-# 来源：cp_utils.py L197-L232
+## 来源：cp_utils.py L197-L232
 def gather_and_reduce_log_dict(log_dict, *, dp_size, dp_src_rank, dp_group):
     if dist.get_rank() == dp_src_rank:
         gathered = [None] * dp_size
@@ -219,7 +219,7 @@ def gather_and_reduce_log_dict(log_dict, *, dp_size, dp_src_rank, dp_group):
 **Code：**
 
 ```python
-# 来源：routing_replay.py L13-L54
+## 来源：routing_replay.py L13-L54
 class RoutingReplay:
     all_routing_replays = []
 
@@ -252,7 +252,7 @@ class RoutingReplay:
 **Code：**
 
 ```python
-# 来源：routing_replay.py L57-L82
+## 来源：routing_replay.py L57-L82
 def get_routing_replay_compute_topk(old_compute_topk):
     def compute_topk(scores, topk, num_groups=None, group_topk=None):
         if os.environ.get("ENABLE_ROUTING_REPLAY", "0") == "1":
@@ -281,7 +281,7 @@ def get_routing_replay_compute_topk(old_compute_topk):
 **Code：**
 
 ```python
-# 来源：routing_replay.py L85-L93
+## 来源：routing_replay.py L85-L93
 def register_routing_replay(module):
     if os.environ.get("ENABLE_ROUTING_REPLAY", "0") == "1":
         module.routing_replay = RoutingReplay()
@@ -314,7 +314,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L67-L80
+## 来源：cp_utils.py L67-L80
     if sample_denoms is None:
         sample_denoms = [m.sum() for m in loss_masks]
     if cp_size == 1:
@@ -334,7 +334,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L114-L124
+## 来源：cp_utils.py L114-L124
         def sum_of_token(x: torch.Tensor) -> torch.Tensor:
             return sum(
                 (x_i * chunked_loss_mask).sum()
@@ -352,7 +352,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L266-L270
+## 来源：cp_utils.py L266-L270
     elif chunk_0.shape[0] != 0 and chunk_1.shape[0] == 0:
         left = zero(logits_offset[0][0] - (prompt_length - 1))
         right = zero(total_length - 1 - logits_offset[0][1])
@@ -368,7 +368,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L20-L29
+## 来源：cp_utils.py L20-L29
     prompt_length = total_length - response_length
     chunk_size = (total_length + 2 * cp_size - 1) // (2 * cp_size)
     logits_0 = (max(chunk_0[0], prompt_length - 1), min(chunk_0[1], total_length - 1))
@@ -383,7 +383,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L228-L229
+## 来源：cp_utils.py L228-L229
             else:
                 reduced[key] = sum(values) / dp_size
 ```
@@ -397,7 +397,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：routing_replay.py L43-L54
+## 来源：routing_replay.py L43-L54
     def clear_forward(self):
         self.forward_index = 0
 
@@ -416,7 +416,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：routing_replay.py L68-L71
+## 来源：routing_replay.py L68-L71
                 assert (
                     top_indices.shape[0] == scores.shape[0] and top_indices.shape[1] == topk
                 ), f"top_indices shape {top_indices.shape} does not match scores shape {scores.shape} and topk {topk}"
@@ -431,7 +431,7 @@ def register_routing_replay(module):
 **Code：**
 
 ```python
-# 来源：routing_replay.py L7-L10
+## 来源：routing_replay.py L7-L10
 def set_routing_replay(replay):
     global ROUTING_REPLAY
     ROUTING_REPLAY = replay
@@ -456,7 +456,7 @@ def set_routing_replay(replay):
 **Code：**
 
 ```python
-# 来源：model.py L576-L638（train_one_step.forward_step 闭包）
+## 来源：model.py L576-L638（train_one_step.forward_step 闭包）
         batch = get_batch(
             data_iterator,
             _with_rollout_top_p_token_keys(
@@ -520,7 +520,7 @@ def set_routing_replay(replay):
 
 ## 21. loss.py _allgather_cp_redistribute
 
-**Explain：** batch 21 文档详述；本批仅需知 allgather-CP logits 算完 logprob 后需 redistribute 回 CP local layout。
+**Explain：** [[21-Loss-Advantages-00-MOC]] 文档详述；本专题仅需知 allgather-CP logits 算完 logprob 后需 redistribute 回 CP local layout。
 
 ---
 
@@ -531,7 +531,7 @@ def set_routing_replay(replay):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L150-L152
+## 来源：cp_utils.py L150-L152
     Tests pass a mock ``dp_with_cp_group`` and monkeypatch ``dist.all_reduce``
     to a no-op, then pre-aggregate virtual ranks themselves
 ```
@@ -551,7 +551,7 @@ def set_routing_replay(replay):
 **Code：**
 
 ```python
-# 来源：cp_utils.py L294-L301
+## 来源：cp_utils.py L294-L301
         if isinstance(pad_value, Callable):
             pad_func = pad_value
             tokens = pad_func(tokens, pad)

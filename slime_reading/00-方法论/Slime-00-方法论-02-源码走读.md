@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # 方法论 · 源码走读
 
-> 本批走读 **项目自述与安装元数据**，建立阅读 Slime 运行时源码的心智模型。  
+> 本专题走读 **项目自述与安装元数据**，建立阅读 Slime 运行时源码的心智模型。  
 > 基线 commit `22cdc6e1`。
 
 ---
@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README.md L9-L16
+## 来源：README.md L9-L16
 # **slime** is an LLM post-training framework for RL scaling, providing two core capabilities:
 # 1.  **High-Performance Training**: Supports efficient training in various modes
 #     by connecting Megatron with SGLang;
@@ -36,7 +36,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README.md L14-L16
+## 来源：README.md L14-L16
 # Megatron training, SGLang rollout, custom data generation, reward computation,
 # verifier feedback, and environment interaction all flow through the same
 # training / rollout / Data Buffer path.
@@ -56,7 +56,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README_zh.md L89-L93
+## 来源：README_zh.md L89-L93
 # - **training (Megatron)**：负责主训练流程，从 Data Buffer 读取数据，
 #   训练完后将参数同步至 rollout 模块；
 # - **rollout (SGLang + router)**：生成新数据（含 reward/verifier），存储至 Data Buffer；
@@ -77,7 +77,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README.md L103-L108
+## 来源：README.md L103-L108
 # - [`examples/multi_agent`](examples/multi_agent/README.md):
 #     Multi-agent rollout via a custom `--rollout-function-path`.
 # - [`examples/search-r1`](examples/search-r1/):
@@ -101,7 +101,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L15-L21
+## 来源：docs/en/blogs/introducing_slime.md L15-L21
 # - **Versatile** – fully customizable rollout interface;
 #   colocated or decoupled, synchronous or asynchronous, RL or SFT cold start.
 # - **Performant** - integrating SGLang for inference and Megatron-LM for training, natively.
@@ -124,7 +124,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L45-L45
+## 来源：docs/en/blogs/introducing_slime.md L45-L45
 # we didn't wrap the code with trainer classes, but simply exposed
 # the training loop in entrypoint `train.py`.
 ```
@@ -143,7 +143,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L57-L59
+## 来源：docs/en/blogs/introducing_slime.md L57-L59
 # - slime internally launches SGLang servers in a **server-based mode**.
 # - slime implements **seamless pass-through** for all SGLang parameters
 #   (with a `--sglang` prefix) ...
@@ -153,7 +153,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L65-L91（透传机制核心）
+## 来源：slime/backends/sglang_utils/arguments.py L65-L91（透传机制核心）
     def new_add_argument_wrapper(*name_or_flags, **kwargs):
         new_name_or_flags_list = []
         for item_flag in name_or_flags:
@@ -180,7 +180,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L77-L80
+## 来源：docs/en/blogs/introducing_slime.md L77-L80
 # **Optimizing weight updates**: RL training involves frequent updates to model weights.
 #   - Parameter updates for MoE models under various parallelism strategies
 #   - Bucketed parameter update support to reduce overhead
@@ -189,7 +189,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L82-L86
+## 来源：docs/en/blogs/introducing_slime.md L82-L86
 # **`/abort_request` for dynamic sampling**: ... Immediate termination of on-going requests.
 #   Reclaiming partially generated content, which enables partial rollouts.
 ```
@@ -197,7 +197,7 @@ updated: 2026-07-02
 **Comment：**
 
 - 权重同步实现见 [[24-WeightSync-Dist-00-MOC]]
-- partial rollout 参数 `--partial-rollout` 见批次 04
+- partial rollout 参数 `--partial-rollout` 见[[04-Arguments-TrainRollout-00-MOC]]
 
 ---
 
@@ -208,7 +208,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L92-L98
+## 来源：docs/en/blogs/introducing_slime.md L92-L98
 # 1. Provides a customizable rollout interface.
 # 2. Uses Ray for GPU management and asynchronous execution.
 # 3. Integrates SGLang for inference and Megatron for training.
@@ -218,7 +218,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L105-L106
+## 来源：docs/en/blogs/introducing_slime.md L105-L106
 # - **SFT**: Load Megatron and use token prediction loss.
 # - **Rejection Sampling**: Use SGLang for filter, followed by Megatron SFT.
 ```
@@ -232,7 +232,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：setup.py L13-L28
+## 来源：setup.py L13-L28
 class bdist_wheel(_bdist_wheel):
     def finalize_options(self):
         _bdist_wheel.finalize_options(self)
@@ -251,7 +251,7 @@ class bdist_wheel(_bdist_wheel):
 **Code：**
 
 ```python
-# 来源：setup.py L8-L10
+## 来源：setup.py L8-L10
 def _fetch_requirements(path):
     with open(path) as fd:
         return [r.strip() for r in fd.readlines() if r.strip() and not r.startswith("#")]
@@ -271,7 +271,7 @@ def _fetch_requirements(path):
 **Code：**
 
 ```python
-# 来源：requirements.txt L1-L26（分段摘录）
+## 来源：requirements.txt L1-L26（分段摘录）
 # accelerate
 # datasets
 # httpx[http2]
@@ -302,7 +302,7 @@ def _fetch_requirements(path):
 **Code：**
 
 ```python
-# 来源：README.md L164-L168
+## 来源：README.md L164-L168
 # 1.  **Megatron arguments**: slime reads Megatron arguments directly.
 # 2.  **SGLang arguments**: ... prefixed with `--sglang-`.
 # 3.  **slime-specific arguments**: slime/utils/arguments.py

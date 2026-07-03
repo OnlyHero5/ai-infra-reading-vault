@@ -50,7 +50,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L994（调用点，语义等价）
+## 来源：slime/backends/megatron_utils/model.py L994（调用点，语义等价）
 iteration, _ = load_checkpoint(
     model, optimizer, opt_param_scheduler, checkpointing_context, skip_load_to_model_and_opt
 )
@@ -76,7 +76,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L107-L113
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L107-L113
     hf_weight_iterator = HfWeightIteratorDirect(
         args=args,
         model=model,
@@ -89,7 +89,7 @@ flowchart TB
 **Comment：**
 
 - `convert_to_global_name=True` 与 NCCL 同步一致，跨 PP/EP 全局命名
-- chunk 大小受 `--update-weight-buffer-size` 等参数影响（见批次 24）
+- chunk 大小受 `--update-weight-buffer-size` 等参数影响（见[[24-WeightSync-Dist-00-MOC]]）
 
 ---
 
@@ -100,7 +100,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/update_weight/update_weight_from_disk.py（导入关系）
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_disk.py（导入关系）
 from ..hf_checkpoint_saver import save_hf_model_to_path
 ```
 
@@ -115,7 +115,7 @@ from ..hf_checkpoint_saver import save_hf_model_to_path
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L338-L347
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L338-L347
 def _copy_hf_assets(origin_hf_dir, output_dir):
     for item in origin.iterdir():
         if item.is_file():
@@ -135,7 +135,7 @@ def _copy_hf_assets(origin_hf_dir, output_dir):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L255-L265
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L255-L265
 def _finalize_distributed_shards(path, local_state):
     if dist.is_available() and dist.is_initialized():
         states = [None] * dist.get_world_size()

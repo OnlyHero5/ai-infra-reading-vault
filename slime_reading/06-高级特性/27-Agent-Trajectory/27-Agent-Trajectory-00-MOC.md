@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Agent Trajectory 与 Sample 线性化
 
-> **阶段 VI · 高级特性** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 VI · 高级特性** | Git：`22cdc6e1`  
 > **源码范围：** `slime/agent/trajectory.py`、`adapters/*`、`docs/en/get_started/agent.md`
 
 ---
@@ -64,7 +64,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L283-L305
+## 来源：slime/agent/trajectory.py L283-L305
     def record_turn(self, sid, *, turn: TurnRecord, prompt_messages, response_message, metadata=None):
         root = self._trees.setdefault(sid, MessageNode())
         node, depth = self._find_mount_point(root, prompt_messages)
@@ -82,7 +82,7 @@ flowchart LR
 
 ## 与文档 / 测试
 
-- 产品路线图：[[agent.md 对应]] `docs/en/get_started/agent.md`（内嵌于 01/03）
+- 产品路线图：`slime/docs/en/get_started/agent.md`（内嵌于 01/03）
 - 验证：`tests/test_agent/` 覆盖 drift / fork / rewrite merge
 
 ---

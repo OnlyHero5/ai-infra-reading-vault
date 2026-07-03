@@ -8,8 +8,6 @@ tags:
  - sglang/batch/27
  - sglang/module/model-gateway
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # model-gateway 验收清单
@@ -21,13 +19,6 @@ updated: 2026-07-02
 - [ ] 能说出 `AppState`、`RouterTrait::route_chat`、`select_worker_for_model` 的职责
 - [ ] 能追踪 `/v1/chat/completions` 逐步路径（03-数据流与交互.md）
 - [ ] 能解释 PD readiness 的双 worker 要求
-
-## 维护者检查
-
-- [x] 覆盖关键 file：`server.rs`, `routers/factory.rs`, `routers/http/router.rs`, `routers/router_manager.rs`, `core/worker_registry.rs`, `core/worker.rs`
-- [x] 来源路径与 git `70df09b` 一致
-- [x] **03-数据流与交互.md 已从薄稿扩写为完整 ETC + Mermaid**
-- [ ] 已更新 [[progress]]（由 P8 整合）
 
 ## 验证统计（2026-07-02 人工复核）
 

@@ -44,31 +44,9 @@ updated: 2026-07-02
 
 ---
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/14` + `slime/doc/*`
-- [ ] 六件套文件名前缀 `14-Alt-Rollout-`（无泛化 README）
-- [ ] 内嵌源码 ≥ 15 段、合计 ≥ 200 行
-- [ ] Mermaid 块内换行使用 `<br/>`，无 `\n`
-- [ ] 03-数据流 覆盖 fully-async 与 train_async 配合
-- [ ] 已更新 [[Slime-progress]] 批次 14 → ✅
-
----
-
-## 回归验证（维护者可选）
-
-```bash
-# fully-async CI（需 GPU 环境）
-python slime/tests/test_qwen2.5_0.5B_fully_async_short.py
-```
-
-预期：与 `test_qwen2.5_0.5B_async_short` 同等通过，仅 rollout-function-path 不同。
-
----
-
 ## 延伸阅读
 
-- [[14-Alt-Rollout-00-MOC]] — 批次入口
+- [[14-Alt-Rollout-00-MOC]] — 专题入口
 - [[12-SGLang-Rollout-00-MOC]] — 默认 rollout 路径
 - [[20-Train-Data-00-MOC]] — Sample → train tensor（下游）
 - Slime 文档：`docs/en/advanced/on-policy-distillation.md`、`docs/en/developer_guide/profiling.md`

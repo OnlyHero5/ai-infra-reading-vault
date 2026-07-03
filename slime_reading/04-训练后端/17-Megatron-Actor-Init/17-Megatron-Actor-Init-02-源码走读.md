@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L47-L57
+## 来源：slime/backends/megatron_utils/actor.py L47-L57
 @with_defer(lambda: Timer().start("train_wait"))
 def init(
     self,
@@ -52,7 +52,7 @@ def init(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L59-L65
+## 来源：slime/backends/megatron_utils/actor.py L59-L65
 monkey_patch_torch_dist()
 super().init(args, role, with_ref, with_opd_teacher)
 
@@ -78,7 +78,7 @@ self.prof = TrainProfiler(args)
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L78-L85
+## 来源：slime/backends/megatron_utils/actor.py L78-L85
 if args.offload_train:
     if (x := args.train_memory_margin_bytes) > 0:
         logger.info(f"Set torch_memory_saver.memory_margin_bytes to {x}")
@@ -91,7 +91,7 @@ self.model, self.optimizer, self.opt_param_scheduler, loaded_rollout_id = initia
 
 **Comment：**
 
-- `initialize_model_and_optimizer` 详见 [[18-Model-Init]]；此处只关心返回的 `loaded_rollout_id`
+- `initialize_model_and_optimizer` 详见 [[18-Model-Init-00-MOC]]；此处只关心返回的 `loaded_rollout_id`
 - `train_memory_margin_bytes` 在 `debug_rollout_only` 下被 arguments 强制为 0
 
 ---
@@ -103,7 +103,7 @@ self.model, self.optimizer, self.opt_param_scheduler, loaded_rollout_id = initia
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L87-L101
+## 来源：slime/backends/megatron_utils/actor.py L87-L101
 vpp_size = mpu.get_virtual_pipeline_model_parallel_world_size() or 1
 if vpp_size > 1:
     from megatron.core.utils import get_model_config
@@ -135,7 +135,7 @@ start_rollout_id = loaded_rollout_id + 1
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L108-L131
+## 来源：slime/backends/megatron_utils/actor.py L108-L131
 self.weights_backuper = TensorBackuper.create(
     source_getter=lambda: named_params_and_buffers(
         self.args,
@@ -173,7 +173,7 @@ if self.args.keep_old_actor:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L133-L168
+## 来源：slime/backends/megatron_utils/actor.py L133-L168
 if self.args.vocab_size is None:
     hf_vocab = getattr(self.hf_config, "vocab_size", None)
     self.args.vocab_size = hf_vocab if hf_vocab is not None else self.tokenizer.vocab_size
@@ -208,7 +208,7 @@ self.weight_updater = update_weight_cls(
 
 **Comment：**
 
-- colocate 模式训练与推理共享 GPU，必须 tensor 直传（见 [[24-WeightSync-Dist]]）
+- colocate 模式训练与推理共享 GPU，必须 tensor 直传（见 [[24-WeightSync-Dist-00-MOC]]）
 - delta 模式仅 disk transport，引擎侧 reload HF checkpoint
 
 ---
@@ -220,7 +220,7 @@ self.weight_updater = update_weight_cls(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L170-L188
+## 来源：slime/backends/megatron_utils/actor.py L170-L188
 clear_memory()
 
 if self.args.offload_train:
@@ -243,7 +243,7 @@ return start_rollout_id
 **Comment：**
 
 - init 末尾 sleep 是为 **立刻** 把 GPU 让给 Rollout（与 train 循环内 sleep 同理）
-- `rollout_data_postprocess` 是可选 hook，在 [[19-Train-Step]] `train_actor` 中调用
+- `rollout_data_postprocess` 是可选 hook，在 [[19-Train-Step-00-MOC]] `train_actor` 中调用
 
 ---
 
@@ -254,7 +254,7 @@ return start_rollout_id
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L190-L207
+## 来源：slime/backends/megatron_utils/actor.py L190-L207
 @timer
 def sleep(self) -> None:
     assert self.args.offload_train
@@ -289,7 +289,7 @@ def sleep(self) -> None:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L209-L220
+## 来源：slime/backends/megatron_utils/actor.py L209-L220
 @timer
 def wake_up(self) -> None:
     assert self.args.offload_train
@@ -318,7 +318,7 @@ def wake_up(self) -> None:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/initialize.py L33-L53
+## 来源：slime/backends/megatron_utils/initialize.py L33-L53
 def _initialize_distributed(args, get_embedding_ranks=None, get_position_embedding_ranks=None):
     mpu.initialize_model_parallel(
         args.tensor_model_parallel_size,
@@ -353,7 +353,7 @@ def _initialize_distributed(args, get_embedding_ranks=None, get_position_embeddi
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/initialize.py L14-L30
+## 来源：slime/backends/megatron_utils/initialize.py L14-L30
 def _set_random_seed(
     seed_: int,
     data_parallel_random_init: bool = False,
@@ -384,7 +384,7 @@ def _set_random_seed(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/initialize.py L88-L104
+## 来源：slime/backends/megatron_utils/initialize.py L88-L104
 if args.deterministic_mode:
     if args.rank == 0:
         logger.info("> running in deterministic mode")
@@ -407,7 +407,7 @@ if getattr(args, "custom_megatron_init_path", None):
 **Comment：**
 
 - 自定义 hook 在 Megatron 标准 init 之后执行，可注册额外 buffer 或 patch
-- 与 [[28-Customization]] 中的 `load_function` 模式一致
+- 与 [[28-Customization-00-MOC]] 中的 `load_function` 模式一致
 
 ---
 
@@ -418,7 +418,7 @@ if getattr(args, "custom_megatron_init_path", None):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L380-L382, L558-L560, L583-L585
+## 来源：slime/backends/megatron_utils/actor.py L380-L382, L558-L560, L583-L585
 def train(self, rollout_id: int, rollout_data_ref: Box, external_data=None):
     if self.args.debug_rollout_only:
         return None

@@ -63,7 +63,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2062-L2084
+## 来源：python/sglang/srt/models/deepseek_v2.py L2062-L2084
         self.self_attn = DeepseekV2AttentionMLA(
             config=config,
             hidden_size=self.hidden_size,
@@ -109,7 +109,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1836-L1855
+## 来源：python/sglang/srt/models/deepseek_v2.py L1836-L1855
     def forward(
         self,
         positions: torch.Tensor,
@@ -153,7 +153,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1528-L1538
+## 来源：python/sglang/srt/models/deepseek_v2.py L1528-L1538
                 x.add_(final_hidden_states)
             else:
                 x.add_(final_hidden_states, alpha=self.routed_scaling_factor)
@@ -178,7 +178,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2824-L2832
+## 来源：python/sglang/srt/models/deepseek_v2.py L2824-L2832
         elif self.mla_enable_prefill_cp:
             if can_cp_split(len_input_ids, self.cp_size, forward_batch):
                 forward_batch.attn_cp_metadata = prepare_context_parallel_metadata(
@@ -197,7 +197,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2966
+## 来源：python/sglang/srt/models/deepseek_v2.py L2966
 EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausalLM]
 ```
 
@@ -210,7 +210,7 @@ HF `architectures: ["DeepseekV3ForCausalLM"]` → 同一文件内 V3 类；权�
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2834-L2837
+## 来源：python/sglang/srt/models/deepseek_v2.py L2834-L2837
         with get_attn_tp_context().maybe_input_scattered(forward_batch):
             hidden_states = self.model(
                 input_ids, positions, forward_batch, input_embeds, pp_proxy_tensors

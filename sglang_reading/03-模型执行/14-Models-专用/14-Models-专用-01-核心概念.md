@@ -51,7 +51,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1607-L1625
+## 来源：python/sglang/srt/models/deepseek_v2.py L1607-L1625
         # For tensor parallel attention
         if self.q_lora_rank is not None:
             self.fused_qkv_a_proj_with_mqa = ReplicatedLinear(
@@ -84,7 +84,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1646-L1674
+## 来源：python/sglang/srt/models/deepseek_v2.py L1646-L1674
         if self.use_dsa:
             is_neox_style = not getattr(config, "indexer_rope_interleave", False)
             self.indexer = Indexer(
@@ -127,7 +127,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L564-L573
+## 来源：python/sglang/srt/models/deepseek_v2.py L564-L573
         if _is_deepep_fusion:
             # 256 routed + EP_size shared slots = 272 experts total (for EP=16)
             num_experts_for_moe = config.n_routed_experts + self.moe_ep_size
@@ -151,7 +151,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2102-L2127
+## 来源：python/sglang/srt/models/deepseek_v2.py L2102-L2127
         if self.is_layer_sparse:
             self.mlp = DeepseekV2MoE(
                 config=config,
@@ -189,7 +189,7 @@ updated: 2026-07-02
 **Code（类定义位置）：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L153-L159
+## 来源：python/sglang/srt/models/deepseek_v2.py L153-L159
 from sglang.srt.models.deepseek_common.attention_forward_methods import (
  AttnForwardMethod,
  DeepseekMHAForwardMixin,
@@ -209,7 +209,7 @@ from sglang.srt.models.deepseek_common.attention_forward_methods import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2813-L2832
+## 来源：python/sglang/srt/models/deepseek_v2.py L2813-L2832
         if self.dsa_enable_prefill_cp:
             if can_dsa_cp_split(
                 len_input_ids, self.cp_size, self.use_dsa, forward_batch
@@ -241,7 +241,7 @@ from sglang.srt.models.deepseek_common.attention_forward_methods import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2736-L2745
+## 来源：python/sglang/srt/models/deepseek_v2.py L2736-L2745
         if server_args.disable_shared_experts_fusion:
             return
 
@@ -273,7 +273,7 @@ from sglang.srt.models.deepseek_common.attention_forward_methods import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2663-L2676
+## 来源：python/sglang/srt/models/deepseek_v2.py L2663-L2676
         self.fuse_qkv_a_proj = (
             hasattr(config, "q_lora_rank") and config.q_lora_rank is not None
         )
@@ -299,7 +299,7 @@ from sglang.srt.models.deepseek_common.attention_forward_methods import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2800-L2847
+## 来源：python/sglang/srt/models/deepseek_v2.py L2800-L2847
     @torch.no_grad()
     def forward(
         self,

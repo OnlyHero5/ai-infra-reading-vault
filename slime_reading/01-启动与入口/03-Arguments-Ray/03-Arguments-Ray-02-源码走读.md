@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L38-L105
+## 来源：slime/utils/arguments.py L38-L105
         def add_cluster_arguments(parser):
             parser.add_argument("--actor-num-nodes", type=int, default=1, help="Number of nodes for training actor")
             parser.add_argument(
@@ -107,7 +107,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1495-L1516
+## 来源：slime/utils/arguments.py L1495-L1516
         if add_custom_arguments is not None:
             parser = add_custom_arguments(parser)
 
@@ -133,7 +133,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1530-L1543
+## 来源：slime/utils/arguments.py L1530-L1543
 def _pre_parse_mode():
     temp_parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
     temp_parser.add_argument("--train-backend", type=str, choices=["megatron"], default="megatron")
@@ -151,7 +151,7 @@ def _pre_parse_mode():
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1546-L1589
+## 来源：slime/utils/arguments.py L1546-L1589
 def parse_args(add_custom_arguments=None):
     configure_logger()
     add_slime_arguments = get_slime_extra_args_provider(add_custom_arguments)
@@ -204,7 +204,7 @@ def parse_args(add_custom_arguments=None):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L184-L199
+## 来源：slime/backends/megatron_utils/arguments.py L184-L199
 def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
     args = _megatron_parse_args(extra_args_provider=extra_args_provider, ignore_unknown_args=True)
     hf_config = None
@@ -226,7 +226,7 @@ def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1856-L1906
+## 来源：slime/utils/arguments.py L1856-L1906
     args.use_critic = args.advantage_estimator == "ppo"
     args.critic_num_gpus_per_node = args.actor_num_gpus_per_node
     args.critic_num_nodes = args.actor_num_nodes
@@ -293,7 +293,7 @@ def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1891-L1892（colocate 块内已处理 None）
+## 来源：slime/utils/arguments.py L1891-L1892（colocate 块内已处理 None）
         if args.rollout_num_gpus is None:
             args.rollout_num_gpus = args.actor_num_gpus_per_node * args.actor_num_nodes
 ```
@@ -307,7 +307,7 @@ def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1986-L1997
+## 来源：slime/utils/arguments.py L1986-L1997
     if args.update_weight_mode == "delta":
         if args.update_weight_transport != "disk":
             raise ValueError(
@@ -329,7 +329,7 @@ def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1851-L1854
+## 来源：slime/utils/arguments.py L1851-L1854
     args.rollout_external = args.rollout_external_engine_addrs is not None
 
     if args.rollout_external and not args.debug_train_only:
@@ -345,7 +345,7 @@ def megatron_parse_args(extra_args_provider, skip_hf_validate=False):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L19-L32
+## 来源：slime/utils/arguments.py L19-L32
 def reset_arg(parser, name, **kwargs):
     for action in parser._actions:
         if name in action.option_strings:
@@ -365,7 +365,7 @@ def reset_arg(parser, name, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L141-L154
+## 来源：slime/backends/sglang_utils/arguments.py L141-L154
 def validate_args(args):
     args.sglang_dp_size = args.sglang_data_parallel_size
     args.sglang_pp_size = args.sglang_pipeline_parallel_size
@@ -391,6 +391,6 @@ def validate_args(args):
 | 定义 | `add_cluster_arguments` | CLI 字段 |
 | 解析 | `parse_args` | 合并 namespace |
 | 校验 | `slime_validate_args` | colocate/offload 默认值 |
-| 下游 | `create_placement_groups` | PG bundle（批次 06） |
+| 下游 | `create_placement_groups` | PG bundle（[[06-PlacementGroup-00-MOC]]） |
 
 → [[03-Arguments-Ray-03-数据流与交互]]

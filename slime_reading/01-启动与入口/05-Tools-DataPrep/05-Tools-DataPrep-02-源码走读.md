@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L21-L41
+## 来源：tools/convert_hf_to_torch_dist.py L21-L41
 # 提交版本：22cdc6e1
 def add_convertion_args(parser):
     parser.add_argument("--hf-checkpoint", type=str, required=True, help="HuggingFace model path")
@@ -54,7 +54,7 @@ def add_convertion_args(parser):
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L44-L84
+## 来源：tools/convert_hf_to_torch_dist.py L44-L84
 # 提交版本：22cdc6e1
 def get_args():
     args = parse_args(add_convertion_args)
@@ -96,7 +96,7 @@ def get_args():
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L97-L115
+## 来源：tools/convert_hf_to_torch_dist.py L97-L115
 # 提交版本：22cdc6e1
 world_size = int(os.getenv("WORLD_SIZE") or os.getenv("SLURM_NTASKS") or 1)
 local_rank = int(os.getenv("LOCAL_RANK") or os.getenv("SLURM_LOCALID") or 0)
@@ -126,7 +126,7 @@ init(args)
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L87-L93, L117-L120
+## 来源：tools/convert_hf_to_torch_dist.py L87-L93, L117-L120
 # 提交版本：22cdc6e1
 if torch.version.hip:
     from slime.utils.rocm_checkpoint_writer import ROCmFileSystemWriterAsync
@@ -148,7 +148,7 @@ if hasattr(torch.version, "hip") and torch.version.hip is not None:
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L121-L137
+## 来源：tools/convert_hf_to_torch_dist.py L121-L137
 # 提交版本：22cdc6e1
 model = get_model(get_model_provider_func(args), ModelType.encoder_or_decoder, wrap_with_ddp=False)
 hf_model_path = args.hf_checkpoint
@@ -176,7 +176,7 @@ save_checkpoint(1, model, None, None, 0)
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L139-L148
+## 来源：tools/convert_hf_to_torch_dist.py L139-L148
 # 提交版本：22cdc6e1
 if dist.get_rank() == 0:
     tracker_filename = get_checkpoint_tracker_filename(args.save)
@@ -203,7 +203,7 @@ dist.destroy_process_group()
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L19-L31
+## 来源：tools/convert_torch_dist_to_hf.py L19-L31
 # 提交版本：22cdc6e1
 class UnpicklerWrapper(pickle.Unpickler):
     @override
@@ -230,7 +230,7 @@ pickle.Unpickler = UnpicklerWrapper
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L34-L63
+## 来源：tools/convert_torch_dist_to_hf.py L34-L63
 # 提交版本：22cdc6e1
 class WrappedStorageReader(dist_cp.FileSystemReader):
     @override
@@ -265,7 +265,7 @@ class EmptyStateDictLoadPlanner(dist_cp.default_planner.DefaultLoadPlanner):
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L66-L103
+## 来源：tools/convert_torch_dist_to_hf.py L66-L103
 # 提交版本：22cdc6e1
 def get_expert_param(args, name, param):
     if ".experts." not in name:
@@ -299,7 +299,7 @@ def get_named_params(args, state_dict):
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L178-L244
+## 来源：tools/convert_torch_dist_to_hf.py L178-L244
 # 提交版本：22cdc6e1
 parser = argparse.ArgumentParser()
 parser.add_argument("--input-dir", type=str, required=True)
@@ -336,7 +336,7 @@ if args.origin_hf_dir:
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L106-L126
+## 来源：tools/convert_torch_dist_to_hf.py L106-L126
 # 提交版本：22cdc6e1
 def save_tensors(args, model_name, state_dict, output_dir, chunk_size, vocab_size=None, origin_hf_dir=None):
     modeltensors = [{}]
@@ -367,7 +367,7 @@ def save_tensors(args, model_name, state_dict, output_dir, chunk_size, vocab_siz
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/processors/padding_remover.py L6-L12
+## 来源：slime/backends/megatron_utils/megatron_to_hf/processors/padding_remover.py L6-L12
 # 提交版本：22cdc6e1
 def remove_padding(name: str, param: torch.Tensor, vocab_size: int) -> torch.Tensor:
     if strip_param_name_prefix(name) in {"embedding.word_embeddings.weight", "output_layer.weight"}:

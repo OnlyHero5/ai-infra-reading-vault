@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L483-L506
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L483-L506
 def run_detokenizer_process(
     server_args: ServerArgs,
     port_args: PortArgs,
@@ -71,7 +71,7 @@ def run_detokenizer_process(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L94-L159
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L94-L159
     def __init__(
         self,
         server_args: ServerArgs,
@@ -155,7 +155,7 @@ def run_detokenizer_process(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L161-L169
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L161-L169
     def event_loop(self):
         """The event loop that handles requests"""
         while True:
@@ -181,7 +181,7 @@ def run_detokenizer_process(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L56-L60, L470-L480
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L56-L60, L470-L480
 # Maximum number of request states that detokenizer can hold. When exceeded,
 # oldest request states will be evicted. Default: 65536 (1<<16).
 # For more details, see: https://github.com/sgl-project/sglang/issues/2812
@@ -203,7 +203,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L207-L262
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L207-L262
     def _grouped_batch_decode(
         self,
         ids_list: List[List[int]],
@@ -276,7 +276,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L271-L297
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L271-L297
     def _decode_batch_token_id_output(self, recv_obj: BatchTokenIDOutput):
         bs = len(recv_obj.rids)
 
@@ -321,7 +321,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L349-L370
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L349-L370
             new_text = read_texts[i][len(surr_texts[i]) :]
             if recv_obj.finished_reasons[i] is None:
                 # Streaming. Invariant: sent_offset >= decoded_text_len. The
@@ -361,7 +361,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L387-L455
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L387-L455
     @staticmethod
     def _b64_encode_per_request(
         data_list: Optional[List[Optional[torch.Tensor]]],
@@ -447,7 +447,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L171-L201
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L171-L201
     def trim_matched_stop(
         self, output: Union[str, List[int]], finished_reason: Dict, no_stop_trim: bool
     ):
@@ -497,7 +497,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/communicator.py L38-L58
+## 来源：python/sglang/srt/managers/communicator.py L38-L58
     async def queueing_call(self, obj: T):
         ready_event = asyncio.Event()
         if self._result_event is not None or len(self._ready_queue) > 0:
@@ -535,7 +535,7 @@ DETOKENIZER_MAX_STATES = int(os.environ.get("SGLANG_DETOKENIZER_MAX_STATES", 1 <
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/communicator.py L86-L96
+## 来源：python/sglang/srt/managers/communicator.py L86-L96
     def handle_recv(self, recv_obj: T):
         self._result_values.append(recv_obj)
         if len(self._result_values) == self._fan_out:

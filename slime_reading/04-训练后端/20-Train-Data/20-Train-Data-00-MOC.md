@@ -3,7 +3,7 @@ type: batch-doc
 module: 20-Train-Data
 batch: "20"
 doc_type: moc
-title: "Train Data · 批次概述"
+title: "Train Data · 专题概述"
 tags:
   - slime/batch/20
   - slime/module/train-data
@@ -11,16 +11,15 @@ tags:
 updated: 2026-07-02
 ---
 
-# Train Data · 批次概述
+# Train Data · 专题概述
 
-> **批次 20** | 阶段 IV 训练后端 | 基线 commit `22cdc6e1`  
 > 主题：Rollout 样本 → `RolloutBatch` → DP 分区 → CP-ready micro-batch
 
 ---
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套后，读者应能：
+读完本专题六件套后，读者应能：
 
 1. 说明 `RolloutManager._split_train_data_by_dp` 如何调用 `build_dp_schedule`，以及 `process_rollout_data` 在 Actor 侧如何还原 `partition`
 2. 解释 `get_batch` 如何把 per-sample token list 变成 Megatron `PackedSeqParams`（含 CP zigzag / allgather-CP 两路径）
@@ -44,7 +43,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 文件 / 符号 | 本批覆盖 |
+| 优先级 | 文件 / 符号 | 本专题覆盖 |
 |--------|-------------|---------|
 | P0 | `megatron_utils/data.py` — `get_batch`, `DataIterator`, `get_data_iterator` | ✅ |
 | P0 | `utils/dp_schedule.py` — `build_dp_schedule` | ✅ |
@@ -63,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：rollout.py L829-L851（节选）
+## 来源：rollout.py L829-L851（节选）
     def _split_train_data_by_dp(self, data):
         dp_size = self.train_parallel_config["dp_size"]
         total_lengths = [len(t) for t in data["tokens"]]

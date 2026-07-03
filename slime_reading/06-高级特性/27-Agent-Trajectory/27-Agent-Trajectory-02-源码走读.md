@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L161-L166
+## 来源：slime/agent/adapters/common.py L161-L166
         mgr_kwargs: dict[str, int] = {}
         if fork_threshold_tokens is not None:
             mgr_kwargs["fork_threshold_tokens"] = fork_threshold_tokens
@@ -44,7 +44,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L475-L517
+## 来源：slime/agent/adapters/common.py L475-L517
         async with aiohttp.ClientSession(timeout=timeout) as sess, sess.post(
             f"{sglang_url}/generate",
             json={
@@ -80,7 +80,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L362-L391
+## 来源：slime/agent/adapters/common.py L362-L391
             try:
                 response = await self._respond(request, body, reply, in_tok, out_tok, stream)
             except (ConnectionResetError, asyncio.CancelledError) as e:
@@ -106,7 +106,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L283-L305
+## 来源：slime/agent/trajectory.py L283-L305
     def record_turn(self, sid, *, turn, prompt_messages, response_message, metadata=None):
         if not prompt_messages:
             logger.warning("record_turn(sid=%s): empty prompt_messages; skipping", sid)
@@ -129,7 +129,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L411-L426
+## 来源：slime/agent/trajectory.py L411-L426
         rewritten_node = asst_children[0]
         if (
             rewritten_node.children
@@ -152,7 +152,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L465-L477
+## 来源：slime/agent/trajectory.py L465-L477
         for asst_node in asst_nodes:
             trained = not asst_node.response_trained
             asst_node.response_trained = True
@@ -172,7 +172,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L201-L211
+## 来源：slime/agent/trajectory.py L201-L211
         if kind is DriftKind.REALIGN:
             self._align_to_prompt(turn.prompt_ids)
         else:
@@ -192,7 +192,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L324-L344
+## 来源：slime/agent/trajectory.py L324-L344
         root = self._trees.get(sid)
         if root is None:
             return []
@@ -218,7 +218,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L261-L276
+## 来源：slime/agent/adapters/common.py L261-L276
         samples = self.manager.get_trajectory(sid, base_sample=base_sample, reward=reward, ...)
         for s in samples:
             rlen = int(s.response_length or 0)
@@ -237,7 +237,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/openai.py L47-L48
+## 来源：slime/agent/adapters/openai.py L47-L48
     def _register_routes(self, app: web.Application) -> None:
         app.router.add_post("/v1/chat/completions", self._run_turn)
 ```
@@ -251,7 +251,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/anthropic.py L48-L50
+## 来源：slime/agent/adapters/anthropic.py L48-L50
     def _register_routes(self, app: web.Application) -> None:
         app.router.add_post("/v1/messages", self._run_turn)
         app.router.add_post("/v1/messages/count_tokens", _count_tokens)
@@ -266,7 +266,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L110-L117
+## 来源：slime/agent/adapters/common.py L110-L117
 def tool_call_dict(name: str, arguments: dict | None) -> dict:
     return {"type": "function", "function": {"name": name, "arguments": arguments or {}}}
 ```

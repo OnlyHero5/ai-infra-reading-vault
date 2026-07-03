@@ -124,10 +124,6 @@ updated: 2026-07-02
 - [ ] 仅读本模块 sglang_reading，能口头说明本模块职责
 - [ ] 能画出本模块在全局架构中的位置
 
-## 维护者检查
-
-- [ ] frontmatter tags 完整
-- [ ] 已更新 [[progress]]
 ```
 
 ---

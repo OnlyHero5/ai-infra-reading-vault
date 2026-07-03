@@ -17,7 +17,7 @@ updated: 2026-07-02
 
 ## 1. RolloutBatch 调度相关字段
 
-**Explain：** 本批字段在 RolloutManager tensorize 后、Actor `train()` 前写入。与 [[21-Loss-Advantages-03-数据流与交互]] 的 loss 字段互补。
+**Explain：** 本专题字段在 RolloutManager tensorize 后、Actor `train()` 前写入。与 [[21-Loss-Advantages-03-数据流与交互]] 的 loss 字段互补。
 
 | 键 | 写入方 | 消费方 |
 |----|--------|--------|
@@ -35,7 +35,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：types.py — RolloutBatch 为 dict 别名
+## 来源：types.py — RolloutBatch 为 dict 别名
 RolloutBatch = dict[str, Any]
 ```
 
@@ -74,7 +74,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：ray/rollout.py L829-L851（节选）
+## 来源：ray/rollout.py L829-L851（节选）
     def _split_train_data_by_dp(self, data):
         dp_size = self.train_parallel_config["dp_size"]
         total_lengths = [len(t) for t in data["tokens"]]
@@ -102,7 +102,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：actor.py L225-L232（节选）
+## 来源：actor.py L225-L232（节选）
         rollout_data = process_rollout_data(
             self.args, rollout_data_ref, dp_rank, dp_size
         )
@@ -120,7 +120,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L327-L351（节选）
+## 来源：slime/backends/megatron_utils/model.py L327-L351（节选）
     def forward_step(data_iterator: DataIterator, model: GPTModel, return_schedule_plan: bool = False):
         batch = get_batch(
             data_iterator,
@@ -153,7 +153,7 @@ sequenceDiagram
 
 ## 7. 与 CP / VPP 的交互
 
-| 并行维 | 本批影响点 |
+| 并行维 | 本专题影响点 |
 |--------|-----------|
 | CP | `max_per_bin *= cp_size`；`get_batch` 切片 |
 | VPP | `get_data_iterator` 返回 `vpp_size` 份 iterator |

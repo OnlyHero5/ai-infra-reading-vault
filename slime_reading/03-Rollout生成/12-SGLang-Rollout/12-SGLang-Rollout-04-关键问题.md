@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code（CLI 定义）：**
 
 ```python
-# 来源：slime/slime/utils/arguments.py L473-L480
+## 来源：slime/slime/utils/arguments.py L473-L480
             parser.add_argument(
                 "--custom-generate-function-path",
                 type=str,
@@ -53,7 +53,7 @@ updated: 2026-07-02
 **Code（参考实现）：**
 
 ```python
-# 来源：tests/plugin_contracts/test_plugin_generate_contracts.py L71-L77
+## 来源：tests/plugin_contracts/test_plugin_generate_contracts.py L71-L77
 async def custom_generate(args, sample: Sample, sampling_params: dict):
     sample.tokens = [11, 12, 13]
     sample.response = "generated"
@@ -95,7 +95,7 @@ async def custom_generate(args, sample, sampling_params):
 **触发条件（generate 侧）：**
 
 ```python
-# 来源：slime/slime/rollout/sglang_rollout.py L107-L108
+## 来源：slime/slime/rollout/sglang_rollout.py L107-L108
         if args.rollout_top_p != 1.0:
             self.sampling_params["custom_params"] = {"return_top_p_token_ids": True}
 ```
@@ -105,7 +105,7 @@ async def custom_generate(args, sample, sampling_params):
 **Explain：** 验证多段 append 时 top-p ragged tensor 正确 merge——custom multi-turn generate 必须走 `append_response_tokens` 而非手写 tensor。
 
 ```python
-# 来源：tests/test_rollout_metrics.py L67-L94
+## 来源：tests/test_rollout_metrics.py L67-L94
 def test_append_response_tokens_merges_top_p_tensors():
     sample = Sample(
         tokens=[0, 1],
@@ -137,7 +137,7 @@ def test_append_response_tokens_merges_top_p_tensors():
 **Explain：** metric 只统计 `loss_mask==1` 的 token 的 kept vocab 宽度；agent 场景 tool token（mask=0）不应抬高 metric。
 
 ```python
-# 来源：tests/test_rollout_metrics.py L20-L36
+## 来源：tests/test_rollout_metrics.py L20-L36
 def test_top_p_kept_vocab_metric_uses_loss_mask():
     samples = [
         Sample(
@@ -160,7 +160,7 @@ def test_top_p_kept_vocab_metric_uses_loss_mask():
 **测试：`test_top_p_kept_vocab_metric_skips_removed_samples`**
 
 ```python
-# 来源：tests/test_rollout_metrics.py L40-L50
+## 来源：tests/test_rollout_metrics.py L40-L50
 def test_top_p_kept_vocab_metric_skips_removed_samples():
     samples = [
         Sample(
@@ -183,7 +183,7 @@ def test_top_p_kept_vocab_metric_skips_removed_samples():
 **测试：`test_append_response_tokens_pads_top_p_for_non_trainable_tokens`**
 
 ```python
-# 来源：tests/test_rollout_metrics.py L150-L167
+## 来源：tests/test_rollout_metrics.py L150-L167
 def test_append_response_tokens_pads_top_p_for_non_trainable_tokens():
     sample = Sample(
         tokens=[0, 1],
@@ -220,7 +220,7 @@ sample.append_response_tokens(tokens=[10], trainable=False)
 **测试：`test_append_response_tokens_decodes_routed_experts`**
 
 ```python
-# 来源：tests/test_rollout_metrics.py L129-L146
+## 来源：tests/test_rollout_metrics.py L129-L146
 def test_append_response_tokens_decodes_routed_experts():
     sample = Sample(tokens=[101, 102, 103])
 
@@ -246,7 +246,7 @@ def test_append_response_tokens_decodes_routed_experts():
 **测试：`test_append_response_tokens_can_skip_terminal_status_for_streaming_chunks`**
 
 ```python
-# 来源：tests/test_rollout_metrics.py L98-L121
+## 来源：tests/test_rollout_metrics.py L98-L121
     sample.append_response_tokens(
         _make_args(),
         tokens=[10, 20],

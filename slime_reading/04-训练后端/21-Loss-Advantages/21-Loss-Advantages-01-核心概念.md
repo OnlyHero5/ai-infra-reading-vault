@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Loss · Advantages · 核心概念
 
-> 本批聚焦 **训练前** 从 rollout 张量推导 `advantages` / `returns`，以及从模型 logits 提取 response 对齐的 logprob / value。Policy loss 本身见 [[22-Loss-Policy-01-核心概念]]。
+> 本专题聚焦 **训练前** 从 rollout 张量推导 `advantages` / `returns`，以及从模型 logits 提取 response 对齐的 logprob / value。Policy loss 本身见 [[22-Loss-Policy-01-核心概念]]。
 
 ---
 
@@ -26,7 +26,7 @@ flowchart LR
     R["Rollout 采样<br/>rewards + rollout_log_probs"]
     F["Forward-only<br/>log_probs / ref / teacher / values"]
     A["compute_advantages_and_returns"]
-    L["policy_loss / value_loss<br/>（批次 22）"]
+    L["policy_loss / value_loss<br/>（[[22-Loss-Policy-00-MOC]]）"]
 
     R --> F --> A --> L
 ```
@@ -61,12 +61,12 @@ flowchart LR
 | `reinforce_plus_plus` | 否 | 折扣回报，末 token 加 reward | `get_reinforce_plus_plus_returns` |
 | `reinforce_plus_plus_baseline` | 否 | 组内 baseline 后的 broadcast advantage | `get_reinforce_plus_plus_baseline_advantages` |
 
-**Explain：** `gspo` / `cispo` 与 `grpo` **共用同一 advantage 分支**；差异在批次 22 的 `policy_loss_function`（序列级 KL vs CISPO clip）。
+**Explain：** `gspo` / `cispo` 与 `grpo` **共用同一 advantage 分支**；差异在[[22-Loss-Policy-00-MOC]] 的 `policy_loss_function`（序列级 KL vs CISPO clip）。
 
 **Code：**
 
 ```python
-# 来源：loss.py L720–764（分支骨架）
+## 来源：loss.py L720–764（分支骨架）
     elif args.advantage_estimator in ["grpo", "gspo", "cispo"]:
         rewards = torch.tensor(rewards, dtype=torch.float32, device=kl[0].device)
         returns = get_grpo_returns(rewards, kl)
@@ -102,7 +102,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L11–51（节选）
+## 来源：ppo_utils.py L11–51（节选）
 @torch.compile(dynamic=True)
 def compute_approx_kl(log_probs, log_probs_base, kl_loss_type, importance_ratio=None):
     log_ratio = log_probs.float() - log_probs_base.float()
@@ -138,7 +138,7 @@ def compute_approx_kl(log_probs, log_probs_base, kl_loss_type, importance_ratio=
 **Code：**
 
 ```python
-# 来源：on_policy_distillation.py L32–43（注释）
+## 来源：on_policy_distillation.py L32–43（注释）
 # For pure on-policy distillation without task rewards, we return 0.0 for each sample.
 # The actual learning signal comes from the OPD KL penalty applied in compute_advantages_and_returns.
 ```

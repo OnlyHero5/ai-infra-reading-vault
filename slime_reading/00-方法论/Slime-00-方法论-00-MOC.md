@@ -3,7 +3,7 @@ type: batch-doc
 module: 00-方法论
 batch: "01"
 doc_type: moc
-title: "方法论 · 批次概述"
+title: "方法论 · 专题概述"
 tags:
   - slime/batch/01
   - slime/module/methodology
@@ -11,16 +11,15 @@ tags:
 updated: 2026-07-02
 ---
 
-# 方法论 · 批次概述
+# 方法论 · 专题概述
 
-> **批次 01** | 阶段 0 地基 | 基线 commit `22cdc6e1`  
 > 源码范围：项目自述文档 + 安装元数据（非运行时模块）
 
 ---
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套后，读者应能：
+读完本专题六件套后，读者应能：
 
 1. 用一句话说明 Slime 解决什么问题（RL scaling 下的 LLM post-training）
 2. 画出 **Training / Rollout / Data Buffer** 三角，并口述 `generate → train → update_weights` 闭环
@@ -43,7 +42,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 文件 | 本批覆盖 |
+| 优先级 | 文件 | 本专题覆盖 |
 |--------|------|---------|
 | P0 | `README.md` / `README_zh.md` | 架构总览、参数三类、生态 |
 | P0 | `docs/en/blogs/introducing_slime.md` | 愿景、customizability、native 设计 |
@@ -88,12 +87,12 @@ flowchart TB
 
 ## 入口：三类参数从哪来
 
-**Explain：** README 明确参数分 Megatron / SGLang / slime 三类；本批只建立概念，实现见批次 03–04。
+**Explain：** README 明确参数分 Megatron / SGLang / slime 三类；本专题只建立概念，实现见[[03-Arguments-Ray-00-MOC]]–[[04-Arguments-TrainRollout-00-MOC]]。
 
 **Code：**
 
 ```python
-# 来源：README_zh.md L160-L166（结构等价于 arguments 设计）
+## 来源：README_zh.md L160-L166（结构等价于 arguments 设计）
 # 1. Megatron 参数：直接 --tensor-model-parallel-size 等
 # 2. SGLang 参数：--sglang- 前缀透传，如 --sglang-mem-fraction-static
 # 3. slime 自身参数：slime/utils/arguments.py
@@ -127,7 +126,7 @@ flowchart LR
 - [ ] 能口述 Slime 两大能力：Megatron 训练 + SGLang Rollout / 自定义数据生成
 - [ ] 能画出三角并标出 `generate → train → update_weights` 方向
 - [ ] 能说明为何选择单一 SGLang backend 而非多推理框架抽象
-- [ ] 知道后续批次阅读顺序：02 → 03 → 04 → 06 → 08 …
+- [ ] 知道后续专题阅读顺序：02 → 03 → 04 → 06 → 08 …
 
 ---
 

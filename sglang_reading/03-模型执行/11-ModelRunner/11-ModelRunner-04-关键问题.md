@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L225-L227
+## 来源：python/sglang/srt/managers/tp_worker.py L225-L227
 # 提交版本：70df09b
 class TpModelWorker(BaseTpWorker):
     """A tensor parallel model worker."""
@@ -39,7 +39,7 @@ class TpModelWorker(BaseTpWorker):
 **Code（模式判断）：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L128-L161
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L128-L161
 # 提交版本：70df09b
     def is_decode(self):
         return self == ForwardMode.DECODE
@@ -88,7 +88,7 @@ class TpModelWorker(BaseTpWorker):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L335-L338
+## 来源：python/sglang/srt/model_executor/model_runner.py L335-L338
 # 提交版本：70df09b
 class ModelRunnerOutput:
     logits_output: Union[LogitsProcessorOutput, PPProxyTensors]
@@ -115,7 +115,7 @@ update_weights_from_disk(..., recapture_cuda_graph=True)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L19-L25
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L19-L25
 # 提交版本：70df09b
 ScheduleBatch -> ForwardBatch
 
@@ -135,7 +135,7 @@ ScheduleBatch -> ForwardBatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L506-L507
+## 来源：python/sglang/srt/managers/tp_worker.py L506-L507
 # 提交版本：70df09b
         if self.pp_group.is_last_rank:
             out = self.model_runner.forward(
@@ -150,7 +150,7 @@ ScheduleBatch -> ForwardBatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L73-L78
+## 来源：python/sglang/srt/managers/tp_worker.py L73-L78
 # 提交版本：70df09b
     @property
     def war_fastpath_runner(self):
@@ -171,7 +171,7 @@ ScheduleBatch -> ForwardBatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L219-L222
+## 来源：python/sglang/srt/managers/tp_worker.py L219-L222
 # 提交版本：70df09b
     def forward_batch_embedding(self, batch: ScheduleBatch):
         forward_batch = ForwardBatch.init_new(batch, self.model_runner)

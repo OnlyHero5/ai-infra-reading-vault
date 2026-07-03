@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # MoE 层
 
-> **阶段 IV · 内存与 Attention** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 IV · 内存与 Attention** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `layers/moe/`（router、dispatcher、fused_moe_triton、EPLB）
 
 ---
@@ -68,7 +68,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/moe/router.py L13-L76
+## 来源：python/sglang/srt/layers/moe/router.py L13-L76
 @triton.jit
 def fused_moe_router_cudacore_kernel(
     input_ptr,  # input (bs, hidden_dim)

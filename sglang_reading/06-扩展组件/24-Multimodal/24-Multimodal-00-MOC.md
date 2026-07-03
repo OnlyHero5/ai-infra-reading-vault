@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # 多模态 VLM（Multimodal）
 
-> 阶段 VI · 扩展组件 | 状态：已完成 | Git：`70df09b`
+> 阶段 VI · 扩展组件 | Git：`70df09b`
 
 ## 1. 本模块在全局架构中的位置
 
@@ -57,7 +57,7 @@ Client (messages + media)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L44-L68
+## 来源：python/sglang/srt/managers/multimodal_processor.py L44-L68
 def get_mm_processor(
     hf_config,
     server_args: ServerArgs,

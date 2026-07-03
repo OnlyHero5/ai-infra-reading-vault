@@ -14,7 +14,7 @@ updated: 2026-07-02
 # Loss · Policy · 源码走读
 
 > 走读顺序：`compute_policy_loss` / `compute_cispo_loss` → `policy_loss_function` → `value_loss_function` → `sft_loss_function` → `loss_function`  
-> 基线 `22cdc6e1` · **本批内嵌代码热点 ≥400 行**
+> 基线 `22cdc6e1` · **本专题内嵌代码热点 ≥400 行**
 
 ---
 
@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L124-L148
+## 来源：ppo_utils.py L124-L148
 @torch.compile(dynamic=True)
 def compute_policy_loss(
     ppo_kl: torch.Tensor,
@@ -57,7 +57,7 @@ def compute_policy_loss(
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L151-L171
+## 来源：ppo_utils.py L151-L171
 @torch.compile(dynamic=True)
 def compute_cispo_loss(
     ppo_kl: torch.Tensor,
@@ -80,7 +80,7 @@ def compute_cispo_loss(
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L95-L121
+## 来源：ppo_utils.py L95-L121
 def compute_gspo_kl(
     full_log_probs: list[torch.Tensor],
     full_old_log_probs: list[torch.Tensor],
@@ -103,7 +103,7 @@ def compute_gspo_kl(
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L11-L51
+## 来源：ppo_utils.py L11-L51
 @torch.compile(dynamic=True)
 def compute_approx_kl(
     log_probs: torch.Tensor,
@@ -139,7 +139,7 @@ def compute_approx_kl(
 **Code：**
 
 ```python
-# 来源：loss.py L911-L932
+## 来源：loss.py L911-L932
     advantages = torch.cat(batch["advantages"], dim=0)
     old_log_probs = batch["rollout_log_probs"] if args.use_rollout_logprobs else batch.get("log_probs")
 
@@ -168,7 +168,7 @@ def compute_approx_kl(
 **Code：**
 
 ```python
-# 来源：loss.py L934-L961
+## 来源：loss.py L934-L961
     need_full_log_probs = args.use_opsm or args.advantage_estimator == "gspo"
 
     full_log_probs = None
@@ -204,7 +204,7 @@ def compute_approx_kl(
 **Code：**
 
 ```python
-# 来源：loss.py L963-L984
+## 来源：loss.py L963-L984
     if args.advantage_estimator == "gspo":
         ppo_kl = compute_gspo_kl(
             full_log_probs=full_log_probs,
@@ -235,7 +235,7 @@ def compute_approx_kl(
 **Code：**
 
 ```python
-# 来源：loss.py L831-L852
+## 来源：loss.py L831-L852
 def vanilla_tis_function(
     args,
     *,
@@ -267,7 +267,7 @@ def vanilla_tis_function(
 **Code：**
 
 ```python
-# 来源：loss.py L1015-L1029
+## 来源：loss.py L1015-L1029
         pg_loss, modified_response_masks, tis_metrics = tis_func(**tis_kwargs)
 
         sum_of_sample_mean = get_sum_of_sample_mean(
@@ -286,7 +286,7 @@ def vanilla_tis_function(
 **Code：**
 
 ```python
-# 来源：loss.py L1042-L1067
+## 来源：loss.py L1042-L1067
     pg_loss = pg_loss_reducer(pg_loss)
     pg_clipfrac = sum_of_sample_mean(pg_clipfrac)
     ppo_kl = sum_of_sample_mean(ppo_kl)
@@ -323,7 +323,7 @@ def vanilla_tis_function(
 **Code：**
 
 ```python
-# 来源：loss.py L855-L878
+## 来源：loss.py L855-L878
 def icepop_function(
     args,
     *,
@@ -359,7 +359,7 @@ def icepop_function(
 **Code：**
 
 ```python
-# 来源：loss.py L1136-L1167
+## 来源：loss.py L1136-L1167
     old_values = torch.cat(batch["values"], dim=0)
 
     _, values = get_values(
@@ -390,7 +390,7 @@ def icepop_function(
 **Code：**
 
 ```python
-# 来源：loss.py L1192-L1216
+## 来源：loss.py L1192-L1216
     _, log_probs_and_entropy = get_log_probs_and_entropy(
         logits,
         args=args,
@@ -422,7 +422,7 @@ def icepop_function(
 **Code：**
 
 ```python
-# 来源：loss.py L1254-L1262
+## 来源：loss.py L1254-L1262
     num_tokens = sum([torch.clamp_min(loss_mask.sum(), 1) for loss_mask in batch["loss_masks"]])
 
     sum_of_sample_mean = get_sum_of_sample_mean(
@@ -435,7 +435,7 @@ def icepop_function(
 ```
 
 ```python
-# 来源：loss.py L1281-L1320
+## 来源：loss.py L1281-L1320
     if args.allgather_cp and mpu.get_context_parallel_world_size() > 1:
         loss = loss + 0 * logits.sum()
 
@@ -472,7 +472,7 @@ def icepop_function(
 **Code：**
 
 ```python
-# 来源：tests/test_cispo_loss.py L22-L31
+## 来源：tests/test_cispo_loss.py L22-L31
 def test_compute_cispo_loss_matches_closed_form_surrogate(eps_clip, eps_clip_high, ratios, clamped):
     ppo_kl = -torch.tensor([math.log(r) for r in ratios])
 
@@ -483,7 +483,7 @@ def test_compute_cispo_loss_matches_closed_form_surrogate(eps_clip, eps_clip_hig
 ```
 
 ```python
-# 来源：tests/test_cispo_loss.py L35-L48
+## 来源：tests/test_cispo_loss.py L35-L48
 def test_compute_cispo_loss_gradient_flows_only_through_log_probs(...):
     log_ratios = torch.tensor([math.log(r) for r in ratios], requires_grad=True)
     ppo_kl = -log_ratios
@@ -505,7 +505,7 @@ def test_compute_cispo_loss_gradient_flows_only_through_log_probs(...):
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L54-L92
+## 来源：ppo_utils.py L54-L92
 def compute_opsm_mask(
     args: Namespace,
     full_log_probs: list[torch.Tensor],
@@ -532,7 +532,7 @@ def compute_opsm_mask(
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L261-L275
+## 来源：ppo_utils.py L261-L275
             log_prob_logits = vocab_parallel_logits.masked_fill(~log_prob_keep_mask, float("-inf"))
             if local_target_rows.numel() > 0:
                 log_prob_logits[local_target_rows, masked_target_1d[local_target_rows]] = vocab_parallel_logits[
@@ -547,12 +547,12 @@ def compute_opsm_mask(
 
 ## 18. get_grpo_returns — advantage 侧依赖
 
-**Explain：** 批次 21 调用；policy loss 侧 GSPO 用序列 KL。此处列出便于理解 ppo_utils 全文件边界。
+**Explain：** [[21-Loss-Advantages-00-MOC]] 调用；policy loss 侧 GSPO 用序列 KL。此处列出便于理解 ppo_utils 全文件边界。
 
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L361-L368
+## 来源：ppo_utils.py L361-L368
 def get_grpo_returns(rewards, kl):
     returns = []
     for i in range(len(rewards)):
@@ -569,7 +569,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L604-L609
+## 来源：ppo_utils.py L604-L609
         else:
             full_advantages, full_returns = chunked_gae(
                 rewards=full_rewards,
@@ -588,7 +588,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1305-L1318
+## 来源：loss.py L1305-L1318
             "values": torch.tensor(
                 [num_tokens if args.calculate_per_token_loss else 0]
                 + list(log.values()),
@@ -605,7 +605,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1093-L1108
+## 来源：loss.py L1093-L1108
     if args.get_mismatch_metrics or args.use_tis:
         reported_loss["ois"] = sum_of_sample_mean_for_mismatch_metrics(ois).clone().detach()
         for metric_key, metric_value in tis_metrics.items():
@@ -624,7 +624,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1073-L1077
+## 来源：loss.py L1073-L1077
     if "rollout_log_probs" in batch and batch["rollout_log_probs"]:
         rollout_log_probs = torch.cat(batch["rollout_log_probs"], dim=0)
         log_probs_to_compare = log_probs if args.use_rollout_logprobs else old_log_probs
@@ -640,7 +640,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1031-L1040
+## 来源：loss.py L1031-L1040
     if getattr(args, "custom_pg_loss_reducer_function_path", None) is not None:
         custom_pg_loss_reducer_func = load_function(args.custom_pg_loss_reducer_function_path)
         pg_loss_masks = modified_response_masks if (args.get_mismatch_metrics or args.use_tis) else batch["loss_masks"]
@@ -660,7 +660,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1158-L1160
+## 来源：loss.py L1158-L1160
     if values.numel() == 0:
         loss += 0 * values.sum()
 ```
@@ -674,7 +674,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：loss.py L1276-L1277
+## 来源：loss.py L1276-L1277
     if args.recompute_loss_function:
         loss, log = checkpoint(func, args, batch, logits, sum_of_sample_mean, use_reentrant=False)
 ```
@@ -688,7 +688,7 @@ def get_grpo_returns(rewards, kl):
 **Code：**
 
 ```python
-# 来源：ppo_utils.py L405-L434
+## 来源：ppo_utils.py L405-L434
         if cp_size > 1:
             full_kl_response = all_gather_with_cp(local_kl_chunk, total_len, response_len)
         ...
@@ -702,7 +702,7 @@ def get_grpo_returns(rewards, kl):
 
 ## 27. 走读小结
 
-**Explain：** 本批 loss 栈与 Megatron `forward_step` 契约：`loss_function` 负责 rescale，各 `*_loss_function` 只产出未缩放标量与 detached metrics。
+**Explain：** 本专题 loss 栈与 Megatron `forward_step` 契约：`loss_function` 负责 rescale，各 `*_loss_function` 只产出未缩放标量与 detached metrics。
 
 | 函数 | 梯度 | 关键输入 |
 |------|------|----------|

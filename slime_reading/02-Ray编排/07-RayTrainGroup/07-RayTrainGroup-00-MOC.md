@@ -3,7 +3,7 @@ type: batch-doc
 module: 07-RayTrainGroup
 batch: "07"
 doc_type: moc
-title: "RayTrainGroup · 批次概述"
+title: "RayTrainGroup · 专题概述"
 tags:
   - slime/batch/07
   - slime/module/ray-train-group
@@ -13,7 +13,6 @@ updated: 2026-07-02
 
 # RayTrainGroup 与 TrainRayActor
 
-> **阶段 II · Ray 编排** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `actor_group.py`（RayTrainGroup API）、`train_actor.py`（分布式 init）、`ray_actor.py`（master 地址）
 
 ---
@@ -27,7 +26,7 @@ flowchart TB
     PG["06-PlacementGroup<br/>allocate_train_group"]
     RTG["RayTrainGroup"]
     TRA["TrainRayActor × world_size"]
-    MGA["MegatronTrainRayActor<br/>批次17"]
+    MGA["MegatronTrainRayActor<br/>[[17-Megatron-Actor-Init-00-MOC]]"]
     PG --> RTG --> TRA --> MGA
     TR["train.py 主循环"] -->|"async_train / update_weights"| RTG
 ```
@@ -59,7 +58,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L121-L129
+## 来源：slime/ray/actor_group.py L121-L129
 # 提交版本：22cdc6e1
 def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
     """
@@ -79,11 +78,11 @@ def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
 
 ---
 
-## 衔接批次
+## 衔接专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
-| 上游 | [[06-PlacementGroup]] | PG 三元组传入 `RayTrainGroup.__init__` |
-| 下游 | [[17-Megatron-Actor-Init]] | 默认 `MegatronTrainRayActor` 实现 init/train |
-| 下游 | [[19-Train-Step]] | `async_train` → `MegatronTrainRayActor.train` |
-| 下游 | [[24-WeightSync-Dist]] | `update_weights` → 各 rank broadcast |
+| 上游 | [[06-PlacementGroup-00-MOC]] | PG 三元组传入 `RayTrainGroup.__init__` |
+| 下游 | [[17-Megatron-Actor-Init-00-MOC]] | 默认 `MegatronTrainRayActor` 实现 init/train |
+| 下游 | [[19-Train-Step-00-MOC]] | `async_train` → `MegatronTrainRayActor.train` |
+| 下游 | [[24-WeightSync-Dist-00-MOC]] | `update_weights` → 各 rank broadcast |

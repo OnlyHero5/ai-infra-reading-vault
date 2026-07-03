@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # 分布式并行（Distributed）
 
-> **阶段 V · 高级特性** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 V · 高级特性** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/distributed/`、`data_parallel_controller.py`、`elastic_ep/`
 
 ---
@@ -70,7 +70,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L1967-L1979
+## 来源：python/sglang/srt/distributed/parallel_state.py L1967-L1979
 def initialize_model_parallel(
     tensor_model_parallel_size: int = 1,
     expert_model_parallel_size: int = 1,

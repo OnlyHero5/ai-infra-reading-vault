@@ -3,7 +3,7 @@ type: batch-doc
 module: 22-Loss-Policy
 batch: "22"
 doc_type: moc
-title: "Loss · Policy · 批次概述"
+title: "Loss · Policy · 专题概述"
 tags:
   - slime/batch/22
   - slime/module/loss-policy
@@ -11,14 +11,13 @@ tags:
 updated: 2026-07-02
 ---
 
-# Loss · Policy · 批次概述
+# Loss · Policy · 专题概述
 
-> **批次 22** | 阶段 IV 训练后端 | 状态：✅ 已完成 | 基线 commit `22cdc6e1`  
 > 源码：`loss.py`（policy / value / sft / dispatch）+ `utils/ppo_utils.py`
 
 ---
 
-## 本批目标
+## 本专题目标
 
 1. 追踪 `loss_function` 如何按 `args.loss_type` 分发并 rescale 给 Megatron
 2. 对比 **PPO clip**、**GSPO 序列 KL**、**CISPO stop-gradient ratio** 三条 policy 分支
@@ -54,7 +53,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：loss.py L1264-L1279
+## 来源：loss.py L1264-L1279
     match args.loss_type:
         case "policy_loss":
             func = policy_loss_function
@@ -79,4 +78,4 @@ updated: 2026-07-02
 
 - `tests/test_cispo_loss.py` — CISPO 闭式与 stop-gradient
 - `tests/test_ppo_logprob_entropy_gpu.py` — vocab parallel logprob
-- `tests/test_loss_cp_invariance.py` — CP 下 loss（与批次 23 共用）
+- `tests/test_loss_cp_invariance.py` — CP 下 loss（与[[23-CP-RoutingReplay-00-MOC]] 共用）

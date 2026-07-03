@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L86-L90
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L86-L90
 def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
     """
     Args:
@@ -45,7 +45,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L110-L112
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L110-L112
     # 1. Initialize the singleton client that connects to the backend Scheduler
     server_args = app.state.server_args
     async_scheduler_client.initialize(server_args)
@@ -65,7 +65,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L179-L185
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L179-L185
         except EOFError:
             logger.error(
                 f"Rank {i} scheduler is dead. Please check if there are relevant logs."
@@ -89,7 +89,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L171-L176
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L171-L176
             if server_args.dit_cpu_offload and component_name in (
                 "transformer",
                 "transformer_2",
@@ -112,7 +112,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L116-L117
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L116-L117
     # 2. Start the ZMQ Broker in the background to handle offline requests
     broker_task = asyncio.create_task(run_zeromq_broker(server_args))
 ```
@@ -131,7 +131,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L98-L100
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L98-L100
     except Exception as e:
         logger.error("Server warmup failed; aborting startup: %s", e, exc_info=True)
         os.kill(os.getpid(), signal.SIGTERM)
@@ -151,7 +151,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L220-L223
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L220-L223
     """Launch a pool-based disaggregated server with N:M:K independent role instances.
 
     DiffusionServer orchestrates the full pipeline, dispatching at every
@@ -172,7 +172,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L1-L4
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L1-L4
 # Copied and adapted from: https://github.com/hao-ai-lab/FastVideo
 
 # SPDX-License-Identifier: Apache-2.0

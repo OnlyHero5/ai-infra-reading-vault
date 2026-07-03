@@ -49,7 +49,7 @@ obj = GenerateReqInput(
 **Code（校验逻辑）：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L817-L822
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L817-L822
 # 提交版本：70df09b
             if self.tokenizer is None:
                 raise ValueError(
@@ -73,7 +73,7 @@ obj = GenerateReqInput(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L619-L623
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L619-L623
 # 提交版本：70df09b
             async with self.is_pause_cond:
                 await self.is_pause_cond.wait_for(lambda: not self.is_pause)
@@ -102,7 +102,7 @@ obj = GenerateReqInput(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1983-L1996
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1983-L1996
 # 提交版本：70df09b
                 if is_stream:
                     if incremental:
@@ -131,7 +131,7 @@ RadixAttention 按 **token id 序列** 做前缀共享。若输入是 arbitrary 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L806-L811
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L806-L811
 # 提交版本：70df09b
             if not self.server_args.disable_radix_cache:
                 raise ValueError(
@@ -150,7 +150,7 @@ RadixAttention 按 **token id 序列** 做前缀共享。若输入是 arbitrary 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L463-L477
+## 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L463-L477
 # 提交版本：70df09b
             if isinstance(
                 recv_obj, (PauseGenerationReqInput, ContinueGenerationReqInput)
@@ -182,7 +182,7 @@ RadixAttention 按 **token id 序列** 做前缀共享。若输入是 arbitrary 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager_score_mixin.py L80-L107
+## 来源：python/sglang/srt/managers/tokenizer_manager_score_mixin.py L80-L107
 # 提交版本：70df09b
     def _build_multi_item_token_sequence(
         self, query: List[int], items: List[List[int]], delimiter_token_id: int

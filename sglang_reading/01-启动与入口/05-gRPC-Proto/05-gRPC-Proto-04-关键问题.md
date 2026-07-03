@@ -57,7 +57,7 @@ sglang serve --grpc-mode --model-path meta-llama/Llama-3.2-1B-Instruct
 **Code（错误现象）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L160-L166
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L160-L166
     except ImportError as e:
         raise ImportError(
             "gRPC mode requires the smg-grpc-servicer package. "
@@ -78,7 +78,7 @@ sglang serve --grpc-mode --model-path meta-llama/Llama-3.2-1B-Instruct
 **Code（会抛 RuntimeError 的情况）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L235-L244
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L235-L244
     elif server_args.enable_metrics:
         # User explicitly asked for metrics but the installed servicer can't
         # start the sidecar that serves them — fail loud rather than silently
@@ -94,7 +94,7 @@ sglang serve --grpc-mode --model-path meta-llama/Llama-3.2-1B-Instruct
 **Code（无 metrics 时仅 warning）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L246-L251
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L246-L251
         logger.warning(
             "Installed smg-grpc-servicer does not accept "
             "'on_request_manager_ready'; HTTP sidecar disabled "
@@ -207,7 +207,7 @@ fn resolve_max_message_size() -> usize {
 **Explain：** 历史命名空间占位；实际二进制在 `sglang.srt.grpc._core`（Rust cdylib）。`__init__.py` 仅注释：
 
 ```python
-# 来源：python/sglang/srt/grpc/__init__.py
+## 来源：python/sglang/srt/grpc/__init__.py
 # SGLang gRPC module
 ```
 

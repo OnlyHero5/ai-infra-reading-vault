@@ -52,7 +52,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L473-L482
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L473-L482
         if not self.server_args.keep_mm_feature_on_device:
             # move feature tensors to cpu
             for feature_name in self.FEATURE_NAMES:
@@ -88,7 +88,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L48-L81
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L48-L81
 @dataclasses.dataclass
 class BaseMultiModalProcessorOutput:
     # input_text with all multimodality placeholder token expanded
@@ -136,7 +136,7 @@ class BaseMultiModalProcessorOutput:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L84-L98
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L84-L98
 @dataclasses.dataclass
 class MultimodalSpecialTokens:
     image_token: Optional[Union[str, List[str]]] = None
@@ -165,7 +165,7 @@ class MultimodalSpecialTokens:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L16-L41
+## 来源：python/sglang/srt/managers/multimodal_processor.py L16-L41
 def import_processors(package_name: str, overwrite: bool = False):
     package = importlib.import_module(package_name)
     for _, name, ispkg in pkgutil.iter_modules(package.__path__, package_name + "."):
@@ -213,7 +213,7 @@ def import_processors(package_name: str, overwrite: bool = False):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L2547-L2550
+## 来源：python/sglang/srt/server_args.py L2547-L2550
     keep_mm_feature_on_device: A[
         bool,
         "Keep multimodal feature tensors on device after processing to save D2H copy.",
@@ -221,7 +221,7 @@ def import_processors(package_name: str, overwrite: bool = False):
 ```
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L473-L482
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L473-L482
         if not self.server_args.keep_mm_feature_on_device:
             # move feature tensors to cpu
             for feature_name in self.FEATURE_NAMES:
@@ -254,7 +254,7 @@ def import_processors(package_name: str, overwrite: bool = False):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L33-L38
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L33-L38
 from sglang.srt.utils.cuda_ipc_transport_utils import (
     MM_FEATURE_CACHE_SIZE,
     MM_ITEM_MEMORY_POOL_RECYCLE_INTERVAL,

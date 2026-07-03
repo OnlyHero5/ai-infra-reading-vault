@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L2002-L2009
+## 来源：python/sglang/srt/distributed/parallel_state.py L2002-L2009
     Let's say we have a total of 8 GPUs denoted by g0 ... g7 and we
     use 2 GPUs to parallelize the model tensor, and 4 GPUs to parallelize
     the model pipeline. The present function will
@@ -43,7 +43,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L244-L245
+## 来源：python/sglang/srt/distributed/parallel_state.py L244-L245
     use_custom_allreduce: bool  # a hint of whether to use CustomAllreduce
     use_torch_symm_mem_all_reduce: (
 ```
@@ -67,7 +67,7 @@ dist.all_reduce(tensor) # 使用 default group，非 TP group
 **Code（正确）：**
 
 ```python
-# 来源：python/sglang/srt/distributed/communication_op.py L18-L20
+## 来源：python/sglang/srt/distributed/communication_op.py L18-L20
 def tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
     """All-reduce the input tensor across model parallel group."""
     return get_tp_group().all_reduce(input_)
@@ -84,7 +84,7 @@ def tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L84-L98
+## 来源：python/sglang/srt/distributed/parallel_state.py L84-L98
 def get_torch_distributed_pg_options(group_name=None):
     if not _is_npu:
         return None
@@ -113,7 +113,7 @@ def get_torch_distributed_pg_options(group_name=None):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L79-L80
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L79-L80
     ROUND_ROBIN = auto()
     FOLLOW_BOOTSTRAP_ROOM = auto()
 ```
@@ -129,7 +129,7 @@ def get_torch_distributed_pg_options(group_name=None):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/elastic_ep/elastic_ep.py L147-L174
+## 来源：python/sglang/srt/elastic_ep/elastic_ep.py L147-L174
 def try_recover_ranks(global_ranks: List[int]) -> bool:
     from mooncake import ep as mooncake_ep
 

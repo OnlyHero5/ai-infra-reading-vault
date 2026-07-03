@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1541-L1547
+## 来源：python/sglang/srt/models/deepseek_v2.py L1541-L1547
 class DeepseekV2AttentionMLA(
     nn.Module,
     DeepseekMHAForwardMixin,
@@ -42,7 +42,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1836-L1855
+## 来源：python/sglang/srt/models/deepseek_v2.py L1836-L1855
     def forward(
         self,
         positions: torch.Tensor,
@@ -72,7 +72,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1867-L1868
+## 来源：python/sglang/srt/models/deepseek_v2.py L1867-L1868
         if self.attn_mha.kv_b_proj is None:
             self.attn_mha.kv_b_proj = self.kv_b_proj
 ```
@@ -84,7 +84,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1585-L1589
+## 来源：python/sglang/srt/models/deepseek_v2.py L1585-L1589
         self.use_dsa = is_deepseek_dsa(config)
         self.dsa_enable_prefill_cp = dsa_enable_prefill_cp
         self.mla_enable_prefill_cp = mla_enable_prefill_cp
@@ -103,7 +103,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L595-L635
+## 来源：python/sglang/srt/models/deepseek_v2.py L595-L635
         self.gate = MoEGate(
             config=config,
             quant_config=quant_config,
@@ -152,13 +152,13 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L580-L581
+## 来源：python/sglang/srt/models/deepseek_v2.py L580-L581
         n_hash_layers = getattr(config, "num_hash_layers", 0)
         self.is_hash = layer_id < n_hash_layers and not (is_deepseek_v4 and is_nextn)
 ```
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L637-L647
+## 来源：python/sglang/srt/models/deepseek_v2.py L637-L647
         if self.is_hash and not (is_nextn and is_deepseek_v4):
             self.topk = HashTopK(
                 topk=config.num_experts_per_tok + self.num_fused_shared_experts,
@@ -181,7 +181,7 @@ class DeepseekV2AttentionMLA(
 **Code（forward 签名）：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L853-L860
+## 来源：python/sglang/srt/models/deepseek_v2.py L853-L860
     def forward(
         self,
         hidden_states: torch.Tensor,
@@ -201,7 +201,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2195-L2254
+## 来源：python/sglang/srt/models/deepseek_v2.py L2195-L2254
         hidden_states_orig = hidden_states
         hidden_states, residual = (
             self.layer_communicator.prepare_attn_and_capture_last_layer_outputs(
@@ -271,7 +271,7 @@ class DeepseekV2AttentionMLA(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2136-L2160
+## 来源：python/sglang/srt/models/deepseek_v2.py L2136-L2160
         if self.dsa_enable_prefill_cp or self.mla_enable_prefill_cp:
             # DSACPLayerCommunicator is flavor-agnostic; its internal gates
             # read both dsa_use_prefill_cp and mla_use_prefill_cp. The rename
@@ -310,7 +310,7 @@ class DeepseekV2AttentionMLA(
 **Code（概念入口，文件内调用）：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L37-L40（导入）
+## 来源：python/sglang/srt/models/deepseek_v2.py L37-L40（导入）
 from sglang.srt.batch_overlap.two_batch_overlap import (
     MaybeTboDeepEPDispatcher,
     model_forward_maybe_tbo,
@@ -324,7 +324,7 @@ from sglang.srt.batch_overlap.two_batch_overlap import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2723-L2724
+## 来源：python/sglang/srt/models/deepseek_v2.py L2723-L2724
         q_lora_rank = config.q_lora_rank if hasattr(config, "q_lora_rank") else None
         get_attn_tp_context().init_context(q_lora_rank, is_deepseek_dsa(config))
 ```
@@ -336,7 +336,7 @@ from sglang.srt.batch_overlap.two_batch_overlap import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2871-L2877
+## 来源：python/sglang/srt/models/deepseek_v2.py L2871-L2877
     @classmethod
     def get_model_config_for_expert_location(cls, config):
         return ModelConfigForExpertLocation(
@@ -353,7 +353,7 @@ from sglang.srt.batch_overlap.two_batch_overlap import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2857-L2858
+## 来源：python/sglang/srt/models/deepseek_v2.py L2857-L2858
     def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]], is_nextn=False):
         self.do_load_weights(weights, is_nextn)
 ```
@@ -367,7 +367,7 @@ from sglang.srt.batch_overlap.two_batch_overlap import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L285-L294
+## 来源：python/sglang/srt/models/deepseek_v2.py L285-L294
     def forward(
         self,
         x,

@@ -51,7 +51,7 @@ python tools/convert_torch_dist_to_hf.py \
 **Code：**
 
 ```bash
-# 来源：docs/en/get_started/quick_start.md L92（说明）+ convert 脚本行为
+## 来源：docs/en/get_started/quick_start.md L92（说明）+ convert 脚本行为
 # 提交版本：22cdc6e1
 torchrun --nproc_per_node=8 \
   tools/convert_hf_to_torch_dist.py \
@@ -105,7 +105,7 @@ PYTHONPATH=/root/Megatron-LM python tools/convert_hf_to_torch_dist.py \
 **Code：**
 
 ```bash
-# 来源：docs/en/get_started/quick_start.md L399-L407（摘录）
+## 来源：docs/en/get_started/quick_start.md L399-L407（摘录）
 --hf-checkpoint /root/Qwen3-4B-FP8
 --ref-load /root/Qwen3-4B_torch_dist   # 仍是 bf16 转换结果
 ```
@@ -132,7 +132,7 @@ PYTHONPATH=/root/Megatron-LM python tools/convert_hf_to_torch_dist.py \
 **Comment：**
 
 - 断言见 `convert_hf_to_torch_dist.py` L118–119
-- 详见 [[docs/en/platform_support/amd_tutorial]]（slime 文档）
+- 详见 `slime/docs/en/platform_support/amd_tutorial.md`（slime 文档）
 
 ## Q7：convert_torch_dist_to_hf 输出目录已存在？
 
@@ -141,7 +141,7 @@ PYTHONPATH=/root/Megatron-LM python tools/convert_hf_to_torch_dist.py \
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L209-L210
+## 来源：tools/convert_torch_dist_to_hf.py L209-L210
 # 提交版本：22cdc6e1
 if os.path.exists(args.output_dir) and not args.force:
     raise ValueError(f"Output directory {args.output_dir} already exists. Use --force to overwrite it.")
@@ -155,7 +155,7 @@ if os.path.exists(args.output_dir) and not args.force:
 | OpenRLHF | 多 HuggingFace 直接训练 |
 | verl | FSDP/Megatron 混合，转换脚本各异 |
 
-Slime 选择 **Megatron dist ckpt 原生路径**，换取大模型 TP/PP/EP 与训练 checkpoint 一致；代价是多一步离线 convert（本批）。
+Slime 选择 **Megatron dist ckpt 原生路径**，换取大模型 TP/PP/EP 与训练 checkpoint 一致；代价是多一步离线 convert（本专题）。
 
 ## Q9：--add-missing-from-origin-hf 何时开？
 
@@ -176,11 +176,11 @@ python tools/convert_torch_dist_to_hf.py \
 - 会扫描 origin 下所有 `.safetensors` 键，跳过已在 converted_names 中的
 - 适合发布 **完整 HF  repo**，而非最小权重集
 
-## Q10：本批与批次 26 Checkpoint-M2HF 的分工？
+## Q10：本专题与[[26-Checkpoint-M2HF-00-MOC]] Checkpoint-M2HF 的分工？
 
-| 批次 | 内容 |
+| 专题 | 内容 |
 |------|------|
 | **05 Tools-DataPrep** | 离线 CLI 工具 + 训练前 ref-load + quick_start 操作 |
 | **26 Checkpoint-M2HF** | 训练运行时 `megatron_to_hf`、`hf_checkpoint_saver`、与 update_weights 集成 |
 
-本批读者只需知道：**同一套 naming 规则**，离线/在线两条入口。
+本专题读者只需知道：**同一套 naming 规则**，离线/在线两条入口。

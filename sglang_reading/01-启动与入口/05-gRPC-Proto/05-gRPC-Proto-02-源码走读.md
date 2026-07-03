@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```protobuf
-# 来源：proto/sglang/runtime/v1/sglang.proto L58-L101
+## 来源：proto/sglang/runtime/v1/sglang.proto L58-L101
 message TextGenerateRequest {
   string text = 1;
   optional SamplingParams sampling_params = 2;
@@ -415,7 +415,7 @@ pub(crate) fn build_text_generate_dict(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_bridge.py L262-L291
+## 来源：python/sglang/srt/entrypoints/grpc_bridge.py L262-L291
     def submit_request(
         self,
         *,
@@ -453,7 +453,7 @@ pub(crate) fn build_text_generate_dict(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_bridge.py L293-L324
+## 来源：python/sglang/srt/entrypoints/grpc_bridge.py L293-L324
     async def _run_generate(self, obj, chunk_callback, stream: bool, request):
         ready_event = None
         try:
@@ -501,7 +501,7 @@ pub(crate) fn build_text_generate_dict(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L156-L254（节选）
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L156-L254（节选）
 async def serve_grpc(server_args, model_info=None):
     """Start the standalone gRPC server with integrated scheduler."""
     try:
@@ -608,7 +608,7 @@ async def serve_grpc(server_args, model_info=None):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_server.py L107-L127
+## 来源：python/sglang/srt/entrypoints/grpc_server.py L107-L127
             req = ProfileReq(
                 req_type=ProfileReqType.START_PROFILE,
                 output_dir=body.get("output_dir"),

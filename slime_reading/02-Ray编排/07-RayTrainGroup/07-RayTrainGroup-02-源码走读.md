@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L29-L46
+## 来源：slime/ray/actor_group.py L29-L46
 # 提交版本：22cdc6e1
 def __init__(
     self,
@@ -47,7 +47,7 @@ def __init__(
 **Comment：**
 
 - world_size = `num_nodes * num_gpus_per_node`
-- PG 必须非 None（由批次 06 保证）
+- PG 必须非 None（由[[06-PlacementGroup-00-MOC]] 保证）
 
 ---
 
@@ -58,7 +58,7 @@ def __init__(
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L90-L103
+## 来源：slime/ray/actor_group.py L90-L103
 # 提交版本：22cdc6e1
 if self._actor_cls is None:
     from slime.backends.megatron_utils.actor import MegatronTrainRayActor
@@ -88,7 +88,7 @@ TrainRayActor = ray.remote(**actor_options)(actor_impl)
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L105-L119
+## 来源：slime/ray/actor_group.py L105-L119
 # 提交版本：22cdc6e1
 self._actor_handlers = []
 master_addr, master_port = None, None
@@ -120,7 +120,7 @@ for rank in range(world_size):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L121-L129
+## 来源：slime/ray/actor_group.py L121-L129
 # 提交版本：22cdc6e1
 def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
     self.args = args
@@ -144,7 +144,7 @@ def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L50-L70
+## 来源：slime/ray/train_actor.py L50-L70
 # 提交版本：22cdc6e1
 def init(self, args, role, with_ref=False, with_opd_teacher=False):
     self.args = args
@@ -166,7 +166,7 @@ def init(self, args, role, with_ref=False, with_opd_teacher=False):
 **Comment：**
 
 - `init_gloo_group` 供 CPU tensor gather 等辅助路径
-- MegatronTrainRayActor.init 在 super().init 之后继续加载模型（批次 17）
+- MegatronTrainRayActor.init 在 super().init 之后继续加载模型（[[17-Megatron-Actor-Init-00-MOC]]）
 
 ---
 
@@ -177,7 +177,7 @@ def init(self, args, role, with_ref=False, with_opd_teacher=False):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L131-L149
+## 来源：slime/ray/actor_group.py L131-L149
 # 提交版本：22cdc6e1
 def async_train(self, rollout_id, rollout_data_ref, external_data=None):
     if isinstance(external_data, list):
@@ -206,7 +206,7 @@ def async_train(self, rollout_id, rollout_data_ref, external_data=None):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L155-L157
+## 来源：slime/ray/actor_group.py L155-L157
 # 提交版本：22cdc6e1
 def update_weights(self):
     """Broadcast weights from rank 0 to all other ranks."""
@@ -215,7 +215,7 @@ def update_weights(self):
 
 **Comment：**
 
-- rank 0 推送到 SGLang + 内部 broadcast 逻辑在 MegatronTrainRayActor（批次 24）
+- rank 0 推送到 SGLang + 内部 broadcast 逻辑在 MegatronTrainRayActor（[[24-WeightSync-Dist-00-MOC]]）
 - train 主循环：`actor_model.update_weights()` 无需额外 ray.get
 
 ---
@@ -227,7 +227,7 @@ def update_weights(self):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L151-L163
+## 来源：slime/ray/actor_group.py L151-L163
 # 提交版本：22cdc6e1
 def save_model(self, rollout_id, force_sync=False):
     return ray.get([actor.save_model.remote(rollout_id, force_sync=force_sync) for actor in self._actor_handlers])
@@ -253,7 +253,7 @@ def offload(self):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L168-L169
+## 来源：slime/ray/actor_group.py L168-L169
 # 提交版本：22cdc6e1
 def set_rollout_manager(self, rollout_manager):
     return ray.get([actor.set_rollout_manager.remote(rollout_manager) for actor in self._actor_handlers])
@@ -273,7 +273,7 @@ def set_rollout_manager(self, rollout_manager):
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L20-L25
+## 来源：slime/ray/train_actor.py L20-L25
 # 提交版本：22cdc6e1
 def get_local_gpu_id():
     cvd = os.environ.get("CUDA_VISIBLE_DEVICES", None)
@@ -297,7 +297,7 @@ def get_local_gpu_id():
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L64-L84
+## 来源：slime/ray/actor_group.py L64-L84
 # 提交版本：22cdc6e1
 if self.args.offload_train and self.args.train_backend == "megatron":
     import torch_memory_saver

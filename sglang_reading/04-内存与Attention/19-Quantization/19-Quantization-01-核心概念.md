@@ -45,7 +45,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L20-L32
+## 来源：python/sglang/srt/layers/quantization/base_config.py L20-L32
 class QuantizeMethodBase(ABC):
     """Base class for different quantized methods."""
 
@@ -98,7 +98,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
+## 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
 class QuantizeMethodBase(ABC):
     """Base class for different quantized methods."""
 
@@ -123,7 +123,6 @@ class QuantizeMethodBase(ABC):
         This can be used for example, to transpose weights for computation.
         """
         return
-
 
 class LinearMethodBase(QuantizeMethodBase):
     """Base class for different (maybe quantized) linear methods."""
@@ -173,7 +172,7 @@ class LinearMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
+## 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
 def dispatch_w8a8_block_fp8_linear() -> Callable:
     """
     Dispatch to the appropriate FP8 block linear implementation.
@@ -193,12 +192,11 @@ def dispatch_w8a8_block_fp8_linear() -> Callable:
 ```
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8.py L124-L156
+## 来源：python/sglang/srt/layers/quantization/fp8.py L124-L156
         raise RuntimeError(
             "DeepSeek-V4 FP4 experts require torch.float4_e2m1fn_x2 support."
         )
     return fp4_dtype
-
 
 if _use_aiter or _use_hip_int4:
     from aiter.ops.shuffle import (
@@ -212,11 +210,9 @@ if _use_aiter:
         use_aiter_triton_gemm_w8a8_tuned_gfx950,
     )
 
-
 ACTIVATION_SCHEMES = ["static", "dynamic"]
 
 logger = logging.getLogger(__name__)
-
 
 class Fp8Config(QuantizationConfig):
     """Config class for FP8."""
@@ -236,7 +232,7 @@ class Fp8Config(QuantizationConfig):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L51-L90
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L51-L90
 class GPTQConfig(QuantizationConfig):
     """Config class for GPTQ.
 
@@ -280,7 +276,7 @@ class GPTQConfig(QuantizationConfig):
 ```
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
 def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
     # compat: gptqmodel and autogptq (eol) main use checkpoint_format: str
     # compat: autogptq <=0.7.1 is_marlin_format: bool
@@ -296,7 +292,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/awq/awq.py L362-L370
+## 来源：python/sglang/srt/layers/quantization/awq/awq.py L362-L370
         return None
 
     def get_linear_scheme(self, layer: torch.nn.Module):
@@ -315,7 +311,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
+## 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
 class BaseKVCacheMethod(QuantizeMethodBase):
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)
@@ -336,7 +332,7 @@ class BaseKVCacheMethod(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/unquant.py L488-L502
+## 来源：python/sglang/srt/layers/quantization/unquant.py L488-L502
             # otherwise use_fp8=True for FP8 dispatch path
             use_fp8 = not envs.SGLANG_DEEPEP_BF16_DISPATCH.get()
             quant_info = DeepGemmMoeQuantInfo(

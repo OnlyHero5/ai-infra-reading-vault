@@ -33,7 +33,7 @@ updated: 2026-07-02
 **Code（单 worker 在 uvicorn 前注入）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2281-L2288
+## 来源：python/sglang/srt/entrypoints/http_server.py L2281-L2288
 # 提交版本：70df09b
     # Set global states
     set_global_state(
@@ -63,7 +63,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L595-L599
+## 来源：python/sglang/srt/entrypoints/http_server.py L595-L599
 # 提交版本：70df09b
     if (
         not envs.SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION.get()
@@ -83,7 +83,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2007-L2009
+## 来源：python/sglang/srt/entrypoints/http_server.py L2007-L2009
 # 提交版本：70df09b
     if not success:
         logger.error(f"Initialization failed. warmup error: {last_traceback}")
@@ -108,7 +108,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L224-L227
+## 来源：python/sglang/srt/entrypoints/http_server.py L224-L227
 # 提交版本：70df09b
     # API key authentication is not supported in multi-tokenizer mode
     assert (
@@ -127,7 +127,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2223-L2226
+## 来源：python/sglang/srt/entrypoints/http_server.py L2223-L2226
 # 提交版本：70df09b
     Server = GranianEmbeddedServer if tokenizer_worker_num == 1 else Granian
     target = (
@@ -146,7 +146,7 @@ updated: 2026-07-02
 **Code（正确：区分 disconnect vs 真错误）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L802-L809
+## 来源：python/sglang/srt/entrypoints/http_server.py L802-L809
 # 提交版本：70df09b
             except ValueError as e:
                 # A client disconnect also surfaces here. It's a client-side
@@ -171,7 +171,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L835-L860
+## 来源：python/sglang/srt/entrypoints/engine.py L835-L860
 # 提交版本：70df09b
         if server_args.node_rank >= 1:
             # In multi-node cases, non-zero rank nodes do not need to run tokenizer or detokenizer,

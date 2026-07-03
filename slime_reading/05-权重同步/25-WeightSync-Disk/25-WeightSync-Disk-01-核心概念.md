@@ -32,12 +32,12 @@ updated: 2026-07-02
 
 ## 1. 四种路径与三轴选型
 
-**Explain：** 与 [[24-WeightSync-Dist-01-核心概念]] 共享同一 `actor.py` 分支；本批覆盖 **disk full**、**disk delta**、**colocate tensor** 三条。
+**Explain：** 与 [[24-WeightSync-Dist-01-核心概念]] 共享同一 `actor.py` 分支；本专题覆盖 **disk full**、**disk delta**、**colocate tensor** 三条。
 
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L139-L161
+## 来源：slime/backends/megatron_utils/actor.py L139-L161
         if self.args.colocate:
             assert self.args.update_weight_mode == "full"
             update_weight_cls = UpdateWeightFromTensor
@@ -60,7 +60,7 @@ updated: 2026-07-02
 | `UpdateWeightFromDisk` | 分离 + full + disk | 共享 FS 写完整 HF 目录 |
 | `UpdateWeightFromDiskDelta` | 分离 + delta + disk | 共享 FS 写压缩 diff |
 | `UpdateWeightFromTensor` | colocate + full | CUDA IPC（+ 可选 NCCL 远端） |
-| `UpdateWeightFromDistributed` | 分离 + full + nccl | 见批次 24 |
+| `UpdateWeightFromDistributed` | 分离 + full + nccl | 见[[24-WeightSync-Dist-00-MOC]] |
 
 ---
 
@@ -71,7 +71,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk.py L61-L98
+## 来源：update_weight/update_weight_from_disk.py L61-L98
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -105,7 +105,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L80-L96
+## 来源：update_weight/update_weight_from_disk_delta.py L80-L96
     @torch.no_grad()
     def update_weights(self) -> None:
         if not self._baseline_captured:
@@ -137,14 +137,14 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：disk_delta.py L29-L33
+## 来源：disk_delta.py L29-L33
 def overwrite_encode(new: np.ndarray, changed_mask: np.ndarray) -> np.ndarray:
     pos = np.flatnonzero(changed_mask).astype("<u4")
     return np.concatenate([np.array([pos.size], "<u4").view(np.uint8), pos.view(np.uint8), new[changed_mask]])
 ```
 
 ```python
-# 来源：update_weight_from_disk_delta.py L227-L235
+## 来源：update_weight_from_disk_delta.py L227-L235
             if self.delta_encoding == "xor":
                 diff = new ^ old
                 changed = int(np.count_nonzero(diff))
@@ -163,7 +163,7 @@ def overwrite_encode(new: np.ndarray, changed_mask: np.ndarray) -> np.ndarray:
 **Code：**
 
 ```python
-# 来源：disk_delta.py L111-L124
+## 来源：disk_delta.py L111-L124
 def init_local_checkpoint(local_ckpt_dir: str, base_dir: str) -> None:
     with _apply_lock(local_ckpt_dir):
         if _read_applied_version(local_ckpt_dir) is not None:
@@ -185,7 +185,7 @@ def init_local_checkpoint(local_ckpt_dir: str, base_dir: str) -> None:
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L147-L175
+## 来源：update_weight/update_weight_from_tensor.py L147-L175
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -216,7 +216,7 @@ def init_local_checkpoint(local_ckpt_dir: str, base_dir: str) -> None:
 
 ---
 
-## 8. 与 Checkpoint 批次的关系
+## 8. 与 Checkpoint 专题的关系
 
 **Explain：** `save_hf_model_to_path`（full disk）与 [[26-Checkpoint-M2HF-00-MOC]] 共用 HF 转换栈；delta 的 gather 复用 distributed 路径的 `_iter_hf_tensors` / TP-EP all-gather。
 

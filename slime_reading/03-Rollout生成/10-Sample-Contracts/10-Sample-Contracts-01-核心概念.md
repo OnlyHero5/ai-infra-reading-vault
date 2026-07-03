@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L97-L106
+## 来源：slime/utils/types.py L97-L106
 # 提交版本：22cdc6e1
 group_index: int | None = None
 index: int | None = None
@@ -46,7 +46,7 @@ tokens: list[int] = field(default_factory=list)
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L114-L128
+## 来源：slime/utils/types.py L114-L128
 # 提交版本：22cdc6e1
 response: str = ""
 response_length: int = 0
@@ -80,7 +80,7 @@ teacher_log_probs: list[float] | None = None
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L130-L140
+## 来源：slime/utils/types.py L130-L140
 # 提交版本：22cdc6e1
 class Status(Enum):
     PENDING = "pending"
@@ -106,7 +106,7 @@ status: Status = Status.PENDING
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L421-L424
+## 来源：slime/utils/types.py L421-L424
 # 提交版本：22cdc6e1
 RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str]]
 ```
@@ -114,7 +114,7 @@ RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str
 **Comment：**
 
 - 非 dataclass，运行时 dict
-- 转换逻辑在 `megatron_utils.actor._get_rollout_data`（批次 20）
+- 转换逻辑在 `megatron_utils.actor._get_rollout_data`（[[20-Train-Data-00-MOC]]）
 
 ---
 
@@ -125,7 +125,7 @@ RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L7-L26
+## 来源：slime/rollout/base_types.py L7-L26
 # 提交版本：22cdc6e1
 @dataclass
 class RolloutFnTrainOutput:
@@ -153,7 +153,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 # 提交版本：22cdc6e1
 def load_function(path):
     """
@@ -180,7 +180,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L249-L251
+## 来源：slime/utils/types.py L249-L251
 # 提交版本：22cdc6e1
 @property
 def effective_response_length(self):

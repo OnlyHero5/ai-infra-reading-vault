@@ -53,7 +53,7 @@ sequenceDiagram
 **Code（HTTP 层输入结构）：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L152-L177
+## 来源：python/sglang/srt/managers/io_struct.py L152-L177
 # 提交版本：70df09b
 class GenerateReqInput:
     # Request ID(s). If omitted, generated during normalization. For batch
@@ -98,7 +98,7 @@ class GenerateReqInput:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L382-L408
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L382-L408
 # 提交版本：70df09b
     def init_ipc_channels(self, port_args: PortArgs):
         context = zmq.asyncio.Context(2)
@@ -152,7 +152,7 @@ class GenerateReqInput:
 **上游调用示例（Engine）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py（概念摘录）
+## 来源：python/sglang/srt/entrypoints/engine.py（概念摘录）
 # 提交版本：70df09b
 # Engine.generate / async_generate 内部：
 async for output in self.tokenizer_manager.generate_request(obj):
@@ -172,7 +172,7 @@ HTTP 层把 JSON body 转为 `GenerateReqInput`，分配 `rid`，设置 `stream=
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L2850-L2870（概念摘录）
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L2850-L2870（概念摘录）
 # 提交版本：70df09b
     def _init_req_state(
         self,
@@ -210,7 +210,7 @@ Scheduler 每 decode step 产生 token ids；Detokenizer 增量 decode 为 `outp
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L2055-L2068（概念摘录）
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L2055-L2068（概念摘录）
 # 提交版本：70df09b
                     out_dict = {
                         "output_ids": state.output_ids.copy(),
@@ -253,7 +253,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L453-L484
+## 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L453-L484
 # 提交版本：70df09b
     async def update_weights_from_tensor(
         self: TokenizerManager,
@@ -320,7 +320,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L488-L498
+## 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L488-L498
 # 提交版本：70df09b
     async def _distribute_result_to_workers(self, recv_obj):
         if isinstance(recv_obj, BaseReq):

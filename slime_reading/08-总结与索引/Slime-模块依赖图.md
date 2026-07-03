@@ -76,7 +76,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：train.py L1-L6
+## 来源：train.py L1-L6
 import ray
 
 from slime.ray.placement_group import create_placement_groups, create_rollout_manager, create_training_models
@@ -94,7 +94,7 @@ from slime.utils.misc import should_run_periodic_action
 **Code（典型 import 模式）：**
 
 ```python
-# 来源：slime/ray/rollout.py L1-L30（节选）
+## 来源：slime/ray/rollout.py L1-L30（节选）
 from slime.backends.sglang_utils.sglang_config import SglangConfig
 from slime.rollout.base_types import call_rollout_fn
 from slime.utils.misc import load_function
@@ -110,7 +110,7 @@ from slime.utils.types import Sample
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L1-L40（节选）
+## 来源：slime/backends/megatron_utils/actor.py L1-L40（节选）
 from slime.backends.megatron_utils.loss import compute_advantages_and_returns, loss_function
 from slime.backends.megatron_utils.model import initialize_model_and_optimizer, train
 from slime.utils.misc import Box
@@ -147,7 +147,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)

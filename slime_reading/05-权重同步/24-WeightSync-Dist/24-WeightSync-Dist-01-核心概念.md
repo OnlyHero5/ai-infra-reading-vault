@@ -31,14 +31,14 @@ updated: 2026-07-02
 
 ---
 
-## 1. 四种权重同步路径（本批聚焦 NCCL）
+## 1. 四种权重同步路径（本专题聚焦 NCCL）
 
-**Explain：** Slime 按 `colocate`、`update_weight_mode`、`update_weight_transport` 三轴选型。本批次覆盖 **分离部署 + full + nccl** 组合。
+**Explain：** Slime 按 `colocate`、`update_weight_mode`、`update_weight_transport` 三轴选型。本专题覆盖 **分离部署 + full + nccl** 组合。
 
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L139-L161
+## 来源：slime/backends/megatron_utils/actor.py L139-L161
         if self.args.colocate:
             assert (
                 self.args.update_weight_mode == "full"
@@ -76,7 +76,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L75-L80
+## 来源：update_weight/update_weight_from_distributed.py L75-L80
         self._is_pp_src_rank = (
             mpu.get_data_parallel_rank(with_context_parallel=True) == 0 and mpu.get_tensor_model_parallel_rank() == 0
         )
@@ -99,7 +99,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/common.py L15-L50
+## 来源：update_weight/common.py L15-L50
 def all_gather_param(name: str, param: torch.nn.Parameter) -> torch.Tensor:
     if "expert_bias" in name:
         return param
@@ -129,7 +129,7 @@ def all_gather_param(name: str, param: torch.nn.Parameter) -> torch.Tensor:
 **Code：**
 
 ```python
-# 来源：update_weight/common.py L160-L167
+## 来源：update_weight/common.py L160-L167
 def _named_params_and_buffers_global(
     args: Namespace, model: Sequence[torch.nn.Module]
 ) -> Iterator[tuple[str, torch.Tensor]]:
@@ -139,7 +139,7 @@ def _named_params_and_buffers_global(
     """
 ```
 
-**Comment：** EP rank 对 expert 索引加 `expert_offset`；MTP speculative 层走独立 regex 分支。converter 路由见批次 26 [[26-Checkpoint-M2HF-00-MOC]]。
+**Comment：** EP rank 对 expert 索引加 `expert_offset`；MTP speculative 层走独立 regex 分支。converter 路由见[[26-Checkpoint-M2HF-00-MOC]] [[26-Checkpoint-M2HF-00-MOC]]。
 
 ---
 
@@ -150,7 +150,7 @@ def _named_params_and_buffers_global(
 **Code：**
 
 ```python
-# 来源：update_weight/hf_weight_iterator_base.py L6-L15
+## 来源：update_weight/hf_weight_iterator_base.py L6-L15
     @staticmethod
     def create(args, model, **kwargs):
         from .hf_weight_iterator_bridge import HfWeightIteratorBridge
@@ -173,7 +173,7 @@ def _named_params_and_buffers_global(
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L288-L311
+## 来源：update_weight/update_weight_from_distributed.py L288-L311
     world_size = sum(engine_gpu_counts) + 1  # +1 for training rank 0
     cumulative = [0]
     for c in engine_gpu_counts:

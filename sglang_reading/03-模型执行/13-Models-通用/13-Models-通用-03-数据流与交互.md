@@ -57,7 +57,7 @@ flowchart TB
 **Code（ForwardBatch 在 Attention 中的使用）：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L228-L233
+## 来源：python/sglang/srt/models/llama.py L228-L233
     def forward(
         self,
         positions: torch.Tensor,
@@ -93,7 +93,7 @@ Server 启动，ModelConfig 加载 `hf_config.architectures`。
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/utils.py L216-L224
+## 来源：python/sglang/srt/model_loader/utils.py L216-L224
     supported_archs = ModelRegistry.get_supported_archs()
     is_native_supported = any(arch in supported_archs for arch in architectures)
 
@@ -120,7 +120,7 @@ Decode：每步 1 token；positions 递增；读已有 KV + 写新 slot。
 **Code（Model 层循环）：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L407-L416
+## 来源：python/sglang/srt/models/llama.py L407-L416
         for i in range(self.start_layer, self.end_layer):
             if i in self.layers_to_capture:
                 aux_hidden_states.append(hidden_states + residual)
@@ -156,7 +156,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L418-L424
+## 来源：python/sglang/srt/models/llama.py L418-L424
         if not self.pp_group.is_last_rank:
             return PPProxyTensors(
                 {
@@ -177,7 +177,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L397-L410
+## 来源：python/sglang/srt/models/qwen3.py L397-L410
         # Self Attention
         hidden_states, residual = self.layer_communicator.prepare_attn(
             hidden_states,

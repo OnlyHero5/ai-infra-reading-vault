@@ -19,7 +19,7 @@ updated: 2026-07-02
 
 ```mermaid
 flowchart TB
-    ADV["compute_advantages_and_returns<br/>批次21"]
+    ADV["compute_advantages_and_returns<br/>[[21-Loss-Advantages-00-MOC]]"]
     TR["train() / train_one_step"]
     FS["forward_step + get_batch"]
     LF["loss_function"]
@@ -59,7 +59,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：cp_utils.py L127-L168（reduce_train_step_metrics 核心）
+## 来源：cp_utils.py L127-L168（reduce_train_step_metrics 核心）
     for x in losses_reduced:
         values = x["values"] if values is None else values + x["values"]
     dist.all_reduce(values, group=dp_with_cp_group)

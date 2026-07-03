@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L79-L81
+## 来源：python/sglang/srt/distributed/parallel_state.py L79-L81
 # Reuse the user-provided distributed timeout for model-parallel subgroup
 # creation so runtime collectives do not silently fall back to backend defaults.
 _MODEL_PARALLEL_GROUP_TIMEOUT: Optional[timedelta] = None
@@ -47,7 +47,7 @@ _MODEL_PARALLEL_GROUP_TIMEOUT: Optional[timedelta] = None
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L286-L298
+## 来源：python/sglang/srt/distributed/parallel_state.py L286-L298
         if is_cuda_alike():
             device_id = (
                 0 if envs.SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS.get() else local_rank
@@ -74,7 +74,7 @@ _MODEL_PARALLEL_GROUP_TIMEOUT: Optional[timedelta] = None
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L401-L416
+## 来源：python/sglang/srt/distributed/parallel_state.py L401-L416
         if use_custom_allreduce and self.world_size > 1:
             # Initialize a custom fast all-reduce implementation.
             try:
@@ -104,7 +104,7 @@ _MODEL_PARALLEL_GROUP_TIMEOUT: Optional[timedelta] = None
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L205-L213
+## 来源：python/sglang/srt/distributed/parallel_state.py L205-L213
 @register_custom_op(mutates_args=["output"])
 def reg_all_to_all_single(
     output: torch.Tensor, input: torch.Tensor, group_name: str
@@ -127,7 +127,7 @@ def reg_all_to_all_single(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/communication_op.py L28-L40
+## 来源：python/sglang/srt/distributed/communication_op.py L28-L40
 def tensor_model_parallel_fused_allreduce_rmsnorm(
     input_: torch.Tensor,
     residual_inp_: torch.Tensor,
@@ -154,11 +154,10 @@ def tensor_model_parallel_fused_allreduce_rmsnorm(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/communication_op.py L65-L84
+## 来源：python/sglang/srt/distributed/communication_op.py L65-L84
 def attention_tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
     """All-reduce the input tensor across attention parallel group."""
     return get_attn_tp_group().all_reduce(input_)
-
 
 def attention_tensor_model_parallel_quant_all_reduce(
     input_: torch.Tensor,
@@ -166,11 +165,9 @@ def attention_tensor_model_parallel_quant_all_reduce(
     """All-reduce the input tensor across attention parallel group."""
     return get_attn_tp_group().quant_all_reduce(input_)
 
-
 def moe_tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
     """All-reduce the input tensor across moe parallel group."""
     return get_moe_tp_group().all_reduce(input_)
-
 
 def moe_expert_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
     """All-reduce the input tensor across moe expert parallel group."""
@@ -188,7 +185,7 @@ def moe_expert_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L46-L54
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L46-L54
 from sglang.srt.managers.scheduler import run_scheduler_process
 from sglang.srt.observability.cpu_monitor import start_cpu_monitor_thread
 from sglang.srt.observability.req_time_stats import DPControllerReqTimeStats
@@ -211,7 +208,7 @@ from sglang.srt.server_args import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L80
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L80
 class LoadBalanceMethod(Enum):
     """Load balance method."""
 
@@ -230,7 +227,7 @@ class LoadBalanceMethod(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L102-L104
+## 来源：python/sglang/srt/distributed/parallel_state.py L102-L104
 @dataclass
 class GraphCaptureContext:
     stream: torch.get_device_module().Stream
@@ -247,7 +244,7 @@ class GraphCaptureContext:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/device_communicators/shm_broadcast.py L444-L476
+## 来源：python/sglang/srt/distributed/device_communicators/shm_broadcast.py L444-L476
     def enqueue(self, obj):
         assert self._is_writer, "Only writers can enqueue"
         serialized_obj = pickle.dumps(obj, protocol=pickle.HIGHEST_PROTOCOL)
@@ -294,7 +291,7 @@ class GraphCaptureContext:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L113-L119
+## 来源：python/sglang/srt/distributed/parallel_state.py L113-L119
 def _split_tensor_dict(
     tensor_dict: Dict[str, Union[torch.Tensor, Any]],
 ) -> Tuple[List[Tuple[str, Any]], List[torch.Tensor]]:

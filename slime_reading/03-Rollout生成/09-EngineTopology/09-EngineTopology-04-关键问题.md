@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code（文档准则）：**
 
 ```markdown
-# 来源：slime/docs/en/advanced/pd-disaggregation.md L5-L15
+## 来源：slime/docs/en/advanced/pd-disaggregation.md L5-L15
 ## When to Use
 
 Use PD Disaggregation when:
@@ -71,7 +71,7 @@ flowchart TB
 **Code（Router 分支）：**
 
 ```python
-# 来源：slime/ray/rollout.py L1048-L1053
+## 来源：slime/ray/rollout.py L1048-L1053
 # 提交版本：22cdc6e1
     if has_pd_disaggregation:
         router_args.pd_disaggregation = True
@@ -95,7 +95,7 @@ flowchart TB
 **Code（两条路径汇合点）：**
 
 ```python
-# 来源：slime/ray/rollout.py L1244-L1254
+## 来源：slime/ray/rollout.py L1244-L1254
 # 提交版本：22cdc6e1
     if args.prefill_num_servers is not None:
         return SglangConfig.from_prefill_num_servers(args)
@@ -130,7 +130,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1235-L1238
+## 来源：slime/ray/rollout.py L1235-L1238
 # 提交版本：22cdc6e1
         expected = args.rollout_num_gpus
         actual = config.total_num_gpus
@@ -152,7 +152,7 @@ flowchart TB
 **Code（YAML 示例 + 代码对应）：**
 
 ```yaml
-# 来源：slime/docs/en/advanced/pd-disaggregation.md L37-L52（摘录）
+## 来源：slime/docs/en/advanced/pd-disaggregation.md L37-L52（摘录）
 sglang:
   - name: actor
     update_weights: true
@@ -166,7 +166,7 @@ sglang:
 ```
 
 ```python
-# 来源：slime/ray/rollout.py L1135-L1137
+## 来源：slime/ray/rollout.py L1135-L1137
 # 提交版本：22cdc6e1
             gpus_per_engine = group_cfg.num_gpus_per_engine
             num_gpu_per_engine_local = min(gpus_per_engine, args.num_gpus_per_node)
@@ -188,7 +188,7 @@ sglang:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1120-L1121
+## 来源：slime/ray/rollout.py L1120-L1121
 # 提交版本：22cdc6e1
         has_pd = model_cfg.has_pd_disaggregation
         router_ip, router_port = _start_router(args, has_pd_disaggregation=has_pd, force_new=(model_idx > 0))
@@ -209,7 +209,7 @@ sglang:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L146-L152
+## 来源：slime/ray/rollout.py L146-L152
 # 提交版本：22cdc6e1
         if self.args.debug_train_only or self.worker_type == "placeholder":
             self.num_new_engines = 0
@@ -231,7 +231,7 @@ sglang:
 **Code（测试注释）：**
 
 ```python
-# 来源：slime/tests/test_qwen3_4B_external_pd.py L4-L5（摘录）
+## 来源：slime/tests/test_qwen3_4B_external_pd.py L4-L5（摘录）
 # - 1 prefill (--disaggregation-mode prefill, mooncake transfer backend)
 # - 1 decode
 ```
@@ -292,7 +292,7 @@ sglang:
 **Code（文档摘录）：**
 
 ```markdown
-# 来源：slime/docs/en/advanced/pd-disaggregation.md L63-L73
+## 来源：slime/docs/en/advanced/pd-disaggregation.md L63-L73
 ## Why This Matters for RL
 
 PD lets slime keep the training loop unchanged while using a rollout topology

@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L98-L101
+## 来源：python/sglang/srt/constrained/grammar_manager.py L98-L101
             if self.grammar_backend is None:
                 error_msg = "Grammar-based generation (json_schema, regex, ebnf, structural_tag) is not supported when the server is launched with --grammar-backend none"
                 req.set_finish_with_abort(error_msg)
@@ -48,7 +48,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L102-L109
+## 来源：python/sglang/srt/constrained/grammar_manager.py L102-L109
                 if req.sampling_params.json_schema is not None:
                     key = ("json", req.sampling_params.json_schema)
                 elif req.sampling_params.regex is not None:
@@ -78,7 +78,7 @@ sampling_params.json_schema = '{"type":"object","properties":{"name":{"type":"st
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L75-L96
+## 来源：python/sglang/srt/constrained/grammar_manager.py L75-L96
     def _get_request_thinking_budget(self, req: Req) -> int | None:
         custom_params = req.sampling_params.custom_params
         if not isinstance(custom_params, dict):
@@ -116,7 +116,7 @@ sampling_params.json_schema = '{"type":"object","properties":{"name":{"type":"st
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/sampler.py L121-L128
+## 来源：python/sglang/srt/layers/sampler.py L121-L128
         if sampling_info.is_all_greedy:
             if _use_aiter and not _disable_aiter_greedy_sample:
                 batch_next_token_ids = torch.empty(
@@ -136,7 +136,7 @@ sampling_params.json_schema = '{"type":"object","properties":{"name":{"type":"st
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L176-L235
+## 来源：python/sglang/srt/constrained/grammar_manager.py L176-L235
         for i, req in enumerate(self.grammar_queue):
             if i not in ready_req_idxs:
                 self.grammar_queue[i].grammar_wait_ct += 1
@@ -212,7 +212,7 @@ sampling_params.json_schema = '{"type":"object","properties":{"name":{"type":"st
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_params.py L45-L72
+## 来源：python/sglang/srt/sampling/sampling_params.py L45-L72
 def raise_if_tokenizer_required(
     tokenizer, stop_strs, stop_regex_strs, min_new_tokens=0
 ):

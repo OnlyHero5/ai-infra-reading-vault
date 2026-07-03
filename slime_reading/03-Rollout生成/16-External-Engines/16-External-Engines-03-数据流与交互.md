@@ -49,7 +49,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L430-L454
+## 来源：slime/ray/rollout.py L430-L454
         rollout_init_handles: list[Any] = []
         if self.args.debug_train_only:
             self.servers: dict[str, Any] = {}
@@ -93,7 +93,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/http_utils.py L291-L309
+## 来源：slime/utils/http_utils.py L291-L309
 async def post(url, payload, max_retries=60, headers=None):
     # If distributed mode is enabled and actors exist, dispatch via Ray.
     if _distributed_post_enabled and _post_actors:
@@ -110,7 +110,7 @@ async def post(url, payload, max_retries=60, headers=None):
 
 **Comment：**
 
-- URL 通常指向 `http://{router_ip}:{router_port}/generate` 或 OpenAI 兼容端点（见批次 12）。
+- URL 通常指向 `http://{router_ip}:{router_port}/generate` 或 OpenAI 兼容端点（见[[12-SGLang-Rollout-00-MOC]]）。
 - external 模式下 Router 在 **训练 job 所在机器** 启动，须确保训练节点到外部 SGLang 的网络可达。
 
 ---
@@ -140,7 +140,7 @@ flowchart LR
 **Code：**
 
 ```bash
-# 来源：docs/en/advanced/external-rollout-engines.md L62-L68
+## 来源：docs/en/advanced/external-rollout-engines.md L62-L68
 --update-weight-mode full
 --update-weight-transport disk
 --update-weight-disk-dir /shared/fs/full-updates
@@ -160,7 +160,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L546-L549, L578-L581
+## 来源：slime/ray/rollout.py L546-L549, L578-L581
     def generate(self, rollout_id):
         # ...
         self.health_monitoring_resume()
@@ -172,7 +172,7 @@ flowchart LR
 ```
 
 ```python
-# 来源：slime/ray/rollout.py L464-L470
+## 来源：slime/ray/rollout.py L464-L470
         self._health_monitors = []
         if not self.args.debug_train_only and self.args.use_fault_tolerance:
             for srv in self.servers.values():
@@ -194,7 +194,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L14-L29
+## 来源：slime/backends/sglang_utils/external.py L14-L29
 @dataclasses.dataclass(frozen=True)
 class ExternalEngineInfo:
     url: str
@@ -227,7 +227,7 @@ class ExternalEngineInfo:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1048-L1056
+## 来源：slime/ray/rollout.py L1048-L1056
     if has_pd_disaggregation:
         router_args.pd_disaggregation = True
         router_args.disable_circuit_breaker = True
@@ -269,7 +269,7 @@ class ExternalEngineInfo:
 **Code：**
 
 ```python
-# 来源：tests/test_qwen3_4B_external_pd.py L361-L362（测试配置摘录）
+## 来源：tests/test_qwen3_4B_external_pd.py L361-L362（测试配置摘录）
                 "no_proxy": f"127.0.0.1,localhost,{external_host}",
                 "NO_PROXY": f"127.0.0.1,localhost,{external_host}",
 ```

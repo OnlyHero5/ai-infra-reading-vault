@@ -22,13 +22,6 @@ updated: 2026-07-02
 - [ ] 能解释 RolloutBatch 与 Sample 列表的关系
 - [ ] 能写出 load_function 的路径格式并举一个 CLI 挂载示例
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/10` + `slime/doc/*`
-- [ ] 代码块含 `# 提交版本：22cdc6e1`
-- [ ] 已更新 [[Slime-progress]] 批次 10 为 ✅
-- [ ] （图谱增量）运行 `/understand --language zh` + `/understand-domain`
-
 ## 快速自测题
 
 1. **top-p offsets 长度？** `response_length + 1`。

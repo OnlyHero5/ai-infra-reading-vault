@@ -29,17 +29,6 @@ updated: 2026-07-02
 
 ---
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/15` + `slime/doc/*`
-- [ ] 文件名前缀 `15-SGLang-Engine-`，无泛化 `README` / `01-核心概念`
-- [ ] Mermaid 块内无 `\n`（使用 `<br/>`）
-- [ ] 双链格式 `[[15-SGLang-Engine-01-核心概念]]`，无 `./` 相对路径
-- [ ] 已更新 [[Slime-progress]] 批次 15 为 ✅
-- [ ] 03-数据流含 NCCL group 建立完整时序（connect → init_weights_update_group → broadcast）
-
----
-
 ## 快速口试参考
 
 1. **谁创建 SGLangEngine actor？** → `RolloutManager.ServerGroup.start_engines`，`ray.remote(SGLangEngine)`。
@@ -48,8 +37,8 @@ updated: 2026-07-02
 
 ---
 
-## 相关批次
+## 相关专题
 
-- 上游：批次 08 RolloutManager（engine 创建）
-- 下游：批次 24 WeightSync-Dist（Megatron 侧完整 sync 逻辑）
+- 上游：[[08-RolloutManager-00-MOC]] RolloutManager（engine 创建）
+- 下游：[[24-WeightSync-Dist-00-MOC]] WeightSync-Dist（Megatron 侧完整 sync 逻辑）
 - SGLang 对照：[[03-HTTP-Server-00-MOC]]

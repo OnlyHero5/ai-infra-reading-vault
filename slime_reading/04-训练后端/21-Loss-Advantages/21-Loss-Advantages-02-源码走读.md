@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：loss.py L470–481
+## 来源：loss.py L470–481
 def get_log_probs_and_entropy(
     logits: torch.Tensor,
     *,
@@ -50,7 +50,7 @@ def get_log_probs_and_entropy(
 **Code：**
 
 ```python
-# 来源：loss.py L491–508
+## 来源：loss.py L491–508
     assert non_loss_data
     assert logits.dtype == torch.float32, f"{logits.dtype}"
     logits = logits.squeeze(0)
@@ -73,7 +73,7 @@ def get_log_probs_and_entropy(
 **Code：**
 
 ```python
-# 来源：loss.py L510–511, L230–279（_build_shifted_tokens 核心）
+## 来源：loss.py L510–511, L230–279（_build_shifted_tokens 核心）
     full_tokens = _build_shifted_tokens(T, device, unconcat_tokens, total_lengths, response_lengths, args.allgather_cp)
 
     # _build_shifted_tokens 内（cp1 / allgather 路径）：
@@ -98,7 +98,7 @@ def get_log_probs_and_entropy(
 **Code：**
 
 ```python
-# 来源：loss.py L513–525, L40–51
+## 来源：loss.py L513–525, L40–51
     top_p_keep_mask = None
     if top_p_token_ids is not None and top_p_token_offsets is not None:
         top_p_keep_mask = _build_topp_keep_mask(
@@ -122,7 +122,7 @@ def get_rollout_top_p_logprob_kwargs(args, batch):
 **Code：**
 
 ```python
-# 来源：loss.py L527–546
+## 来源：loss.py L527–546
     log_prob_full, entropy_full = calculate_log_probs_and_entropy(
         logits,
         full_tokens,
@@ -154,7 +154,7 @@ def get_rollout_top_p_logprob_kwargs(args, batch):
 **Code：**
 
 ```python
-# 来源：loss.py L552–561, L216–227（_allgather_cp_redistribute 尾部）
+## 来源：loss.py L552–561, L216–227（_allgather_cp_redistribute 尾部）
     if args.allgather_cp:
         _allgather_cp_redistribute(
             res,
@@ -180,7 +180,7 @@ def get_rollout_top_p_logprob_kwargs(args, batch):
 **Code：**
 
 ```python
-# 来源：loss.py L456–465
+## 来源：loss.py L456–465
     else:
         # cp1
         offset = 0
@@ -205,7 +205,7 @@ def get_rollout_top_p_logprob_kwargs(args, batch):
 **Code：**
 
 ```python
-# 来源：loss.py L564–617
+## 来源：loss.py L564–617
 def get_values(
     logits: torch.Tensor,
     *,
@@ -255,7 +255,7 @@ def get_values(
 **Code：**
 
 ```python
-# 来源：loss.py L661–713
+## 来源：loss.py L661–713
 def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) -> None:
     rollout_log_probs: list[torch.Tensor] | None = rollout_data.get("rollout_log_probs")
     log_probs: list[torch.Tensor] | None = (
@@ -296,7 +296,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **Code：**
 
 ```python
-# 来源：loss.py L715–718
+## 来源：loss.py L715–718
     if args.custom_advantage_function_path is not None:
         custom_adv_fn = load_function(args.custom_advantage_function_path)
         custom_adv_fn(args, rollout_data)
@@ -308,7 +308,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **Code：**
 
 ```python
-# 来源：loss.py L720–724, ppo_utils.py L361–368
+## 来源：loss.py L720–724, ppo_utils.py L361–368
     elif args.advantage_estimator in ["grpo", "gspo", "cispo"]:
         rewards = torch.tensor(rewards, dtype=torch.float32, device=kl[0].device)
         returns = get_grpo_returns(rewards, kl)
@@ -328,7 +328,7 @@ def get_grpo_returns(rewards: torch.Tensor, kl: list[torch.Tensor]):
 **Code：**
 
 ```python
-# 来源：loss.py L726–738
+## 来源：loss.py L726–738
     elif args.advantage_estimator == "ppo":
         old_rewards = rewards
         rewards = []
@@ -351,7 +351,7 @@ def get_grpo_returns(rewards: torch.Tensor, kl: list[torch.Tensor]):
 **Code：**
 
 ```python
-# 来源：loss.py L740–761
+## 来源：loss.py L740–761
     elif args.advantage_estimator == "reinforce_plus_plus":
         rewards = torch.tensor(rewards, dtype=torch.float32, device=kl[0].device)
         returns = get_reinforce_plus_plus_returns(
@@ -381,7 +381,7 @@ def get_grpo_returns(rewards: torch.Tensor, kl: list[torch.Tensor]):
 **Code：**
 
 ```python
-# 来源：loss.py L766–773
+## 来源：loss.py L766–773
     if args.use_opd:
         apply_opd_kl_to_advantages(
             args=args,
@@ -396,7 +396,7 @@ def get_grpo_returns(rewards: torch.Tensor, kl: list[torch.Tensor]):
 **Code：**
 
 ```python
-# 来源：loss.py L776–825
+## 来源：loss.py L776–825
     if args.normalize_advantages:
         all_advs = torch.cat(advantages)
         cp_size = mpu.get_context_parallel_world_size()
@@ -448,7 +448,7 @@ def get_grpo_returns(rewards: torch.Tensor, kl: list[torch.Tensor]):
 **Code：**
 
 ```python
-# 来源：loss.py L620–658
+## 来源：loss.py L620–658
 def apply_opd_kl_to_advantages(
     args: Namespace,
     rollout_data: RolloutBatch,

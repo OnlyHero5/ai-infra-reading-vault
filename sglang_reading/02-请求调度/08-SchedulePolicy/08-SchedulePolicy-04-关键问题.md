@@ -35,7 +35,7 @@ updated: 2026-07-02
 **Code — Scheduler 对返回值的处理：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2884-L2907
+## 来源：python/sglang/srt/managers/scheduler.py L2884-L2907
             if res != AddReqResult.CONTINUE:
                 if res == AddReqResult.NO_TOKEN:
                     if self.enable_hierarchical_cache:
@@ -86,14 +86,14 @@ updated: 2026-07-02
 # MinFreeSlots 需要 --min-free-slots-delay 或 DFlash 自动公式
 
 # ✅ 正确：Scheduler 中的独立初始化
-# 来源：python/sglang/srt/managers/scheduler.py L887-L896（MinFreeSlots）
+## 来源：python/sglang/srt/managers/scheduler.py L887-L896（MinFreeSlots）
 min_free_slots = resolve_min_free_slots(
  self.server_args.min_free_slots_delay,
  self.max_running_requests,
  is_dflash=self.spec_algorithm.is_dflash(),
 )
 
-# 来源：python/sglang/srt/managers/scheduler.py L1049-L1056（PrefillDelayer）
+## 来源：python/sglang/srt/managers/scheduler.py L1049-L1056（PrefillDelayer）
 if self.server_args.enable_prefill_delayer:
  if self.server_args.disaggregation_mode != "decode":
  self.prefill_delayer = PrefillDelayer(...)
@@ -108,7 +108,7 @@ if self.server_args.enable_prefill_delayer:
 **Code — deprioritize 排序 key：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L303-L314
+## 来源：python/sglang/srt/managers/schedule_policy.py L303-L314
     @staticmethod
     def _sort_by_longest_prefix(
         waiting_queue: List[Req], temporary_deprioritized: Set[int]
@@ -132,7 +132,7 @@ if self.server_args.enable_prefill_delayer:
 **Explain：** **不会**。它只影响 Scheduler **估算** decode 占用多少 KV，防止 `max_new_tokens=100000` 的请求让 prefill 过度保守。实际 stop 仍由 sampling params 控制。
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L64-L70
+## 来源：python/sglang/srt/managers/schedule_policy.py L64-L70
 # Clip the estimation of max_new_tokens for the request whose max_new_tokens is very large.
 # This can prevent the server from being too conservative.
 # Note that this only clips the estimation in the scheduler but does not change the stop
@@ -151,7 +151,7 @@ CLIP_MAX_NEW_TOKENS = int(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L797-L835（add_chunked_req 节选）
+## 来源：python/sglang/srt/managers/schedule_policy.py L797-L835（add_chunked_req 节选）
     def add_chunked_req(self, req: Req):
         if self.dllm_config is not None:
             _rem_tokens = self._get_dllm_remain_tokens()
@@ -216,7 +216,7 @@ SGLang 的差异化在于 **Radix 树深度集成到排序** 以及 **overlap + 
 **Explain：** 必须 **overlap scheduling 开启**（`disable_overlap_schedule=False`）。否则构造时 assert 失败。decode-only 引擎即使传 flag 也会被忽略。
 
 ```python
-# 来源：python/sglang/srt/managers/prefill_delayer.py L110-L112
+## 来源：python/sglang/srt/managers/prefill_delayer.py L110-L112
         assert (
             not server_args.disable_overlap_schedule
         ), "To use PrefillDelayer, disable_overlap_schedule must be False."

@@ -27,14 +27,6 @@ updated: 2026-07-02
 - [ ] 能解释 `cu_seqlens * cp_size` 的含义
 - [ ] 能说明 `first_fit_pack` 与 `expand_bins_by_splitting` 的协作
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/20` + `slime/doc/*`
-- [ ] 六件套前缀 `20-Train-Data-`
-- [ ] Mermaid 使用 `<br/>` 换行
-- [ ] 已更新 [[Slime-progress]] 批次 20 → ✅
-- [ ] 双链 [[21-Loss-Advantages-00-MOC]]、[[19-Train-Step-00-MOC]]、[[08-RolloutManager-00-MOC]]
-
 ## 建议动手验证
 
 - [ ] 阅读 `tests/test_dp_schedule.py` 对照不变量

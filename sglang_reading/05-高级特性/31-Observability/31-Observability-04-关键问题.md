@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L1070-L1071
+## 来源：python/sglang/srt/server_args.py L1070-L1071
     enable_metrics: A[bool, "Enable log prometheus metrics."] = False
     grpc_http_sidecar_port: A[
 ```
@@ -55,7 +55,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1051-L1052
+## 来源：python/sglang/srt/observability/metrics_collector.py L1051-L1052
         collector: Optional[SchedulerMetricsCollector] = None
         if enable_metrics:
 ```
@@ -74,7 +74,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L169
+## 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L169
     def update_weights_from_ipc(self, recv_req: UpdateWeightsFromIPCReqInput):
         """Update the online model parameter from IPC for checkpoint-engine integration."""
         with self._observe_weight_load("ipc"):
@@ -95,7 +95,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1040-L1044
+## 来源：python/sglang/srt/observability/metrics_collector.py L1040-L1044
         enable_metrics = server_args.enable_metrics
         is_stats_logging_rank = ps.attn_tp_rank == 0
         current_scheduler_metrics_enabled = enable_metrics and (
@@ -117,7 +117,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/request_logger.py L44-L55
+## 来源：python/sglang/srt/utils/request_logger.py L44-L55
 class RequestLogger:
     def __init__(
         self,
@@ -146,14 +146,14 @@ class RequestLogger:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1265-L1266
+## 来源：python/sglang/srt/observability/metrics_collector.py L1265-L1266
         self._log_gauge(self.gen_throughput, stats.gen_throughput)
         self._log_gauge(self.cache_hit_rate, stats.cache_hit_rate)
 ```
 
 **Comment：**
 
-- 与RadixAttention RadixAttention 联动。
+- 与 [[15-RadixAttention-00-MOC|RadixAttention]] 联动。
 - HiCache L3 另有 storage 相关 cached_tokens metrics。
 
 ---

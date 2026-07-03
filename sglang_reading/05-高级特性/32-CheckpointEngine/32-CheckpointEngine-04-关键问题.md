@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L2505-L2508
+## 来源：python/sglang/srt/server_args.py L2505-L2508
     checkpoint_engine_wait_weights_before_ready: A[
         bool,
         "If set, the server will wait for initial weights to be loaded via checkpoint-engine or other update methods before serving inference requests.",
@@ -42,7 +42,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L25-L31
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L25-L31
 try:
     from checkpoint_engine.worker import update_weights_from_ipc
 except ImportError:
@@ -66,7 +66,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L122-L128
+## 来源：python/sglang/srt/checkpoint_engine/update.py L122-L128
                     f"{endpoint}/update_weights_from_ipc",
                     json={
                         "zmq_handles": dict(
@@ -90,7 +90,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L161-L172
+## 来源：python/sglang/srt/checkpoint_engine/update.py L161-L172
     if update_method == "broadcast" or update_method == "all":
         with timer("Update weights without setting ranks"):
             ps.update(checkpoint_name, req_func)
@@ -119,7 +119,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
+## 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
     def observe_weight_load(self, duration_seconds: float, source: str) -> None:
         # Edge-triggered: engine is paused during the update, so log_stats
         # won't fire — write the gauge inline at end of update_weights_from_*.
@@ -143,7 +143,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L102-L108
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L102-L108
     def get_device_uuid(self) -> str:
         """Get the UUID of current device."""
         # Get device UUID for current device

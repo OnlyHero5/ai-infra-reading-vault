@@ -8,8 +8,6 @@ tags:
  - sglang/batch/01
  - sglang/module/methodology
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 阅读方法论 验收清单
@@ -26,15 +24,6 @@ updated: 2026-07-02
  - `launch_server.run_server` — HTTP/gRPC/Ray/Encoder 四选一
 - [x] 能追踪 `sglang serve --model-path M` 的代码路径（见 03-数据流与交互.md §4）
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 已生成 batch-01 范围 knowledge-graph.json（9 个 file/config/document 节点 + 模块/concept）
-- [x] meta.json 标注 `scope: batch-01-initial`
-- [x] 内嵌代码来源注释与 commit 一致
-- [x] 已更新 [[progress]]
 
 ## 内嵌源码统计
 

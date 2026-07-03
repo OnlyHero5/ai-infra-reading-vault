@@ -38,9 +38,9 @@ flowchart TB
 
 | 上游 | 本模块输入 | 下游 |
 |------|----------|------|
-| [[11-ModelRunner-00-MOC|ModelRunner ModelRunner]] | `ForwardBatch`（mode、seq_lens、req_pool_indices） | logits |
-| [[16-KV-Cache-00-MOC|KV Cache KV-Cache]] | `out_cache_loc`、`req_to_token` 映射 | KV 读写 |
-| [[15-RadixAttention-00-MOC|RadixAttention RadixAttention]] | prefix 命中后的 cached indices | extend 只算新 token |
+| [[11-ModelRunner-00-MOC|ModelRunner]] | `ForwardBatch`（mode、seq_lens、req_pool_indices） | logits |
+| [[16-KV-Cache-00-MOC|KV Cache]] | `out_cache_loc`、`req_to_token` 映射 | KV 读写 |
+| [[15-RadixAttention-00-MOC|RadixAttention]] | prefix 命中后的 cached indices | extend 只算新 token |
 
 ---
 
@@ -51,7 +51,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/hybrid_attn_backend.py L28-L64
+## 来源：python/sglang/srt/layers/attention/hybrid_attn_backend.py L28-L64
     def _select_backend(self, forward_mode: ForwardMode) -> AttentionBackend:
         """
         Select the appropriate attention backend based on the forward mode.
@@ -100,7 +100,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L6922-L6933
+## 来源：python/sglang/srt/server_args.py L6922-L6933
     def get_attention_backends(self):
         prefill_attention_backend_str = (
             self.prefill_attention_backend
@@ -135,7 +135,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L105-L116（节选）
+## 来源：python/sglang/srt/layers/radix_attention.py L105-L116（节选）
         self.pos_encoding_mode = pos_encoding_mode
         self.logit_capping_method = logit_capping_method
         self.xai_temperature_len = -1
@@ -153,7 +153,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/triton_backend.py L81-L100
+## 来源：python/sglang/srt/layers/attention/triton_backend.py L81-L100
 @dataclass
 class ForwardMetadata:
     attn_logits: torch.Tensor
@@ -199,7 +199,7 @@ class ForwardMetadata:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L118-L135
+## 来源：python/sglang/srt/layers/radix_attention.py L118-L135
         if k is not None:
             # For cross-layer sharing, kv can be None
             assert v is not None
@@ -234,7 +234,7 @@ class ForwardMetadata:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L45-L51
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L45-L51
     def init_forward_metadata(self, forward_batch: ForwardBatch):
         """Eager entry point. Default = ``_out_graph(fb) + _in_graph(fb)``.
 

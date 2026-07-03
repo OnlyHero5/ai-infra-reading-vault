@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/ir.py L64-L77
+## 来源：python/sglang/lang/ir.py L64-L77
     def to_openai_kwargs(self):
         # OpenAI does not support top_k, so we drop it here
         if self.regex is not None:
@@ -54,7 +54,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L422-L432
+## 来源：python/sglang/lang/interpreter.py L422-L432
     def _thread_worker_func(self):
         error = None
 
@@ -82,13 +82,12 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/api.py L35-L46
+## 来源：python/sglang/lang/api.py L35-L46
 def Runtime(*args, **kwargs):
     # Avoid importing unnecessary dependency
     from sglang.lang.backend.runtime_endpoint import Runtime
 
     return Runtime(*args, **kwargs)
-
 
 def Engine(*args, **kwargs):
     # Avoid importing unnecessary dependency
@@ -111,7 +110,7 @@ def Engine(*args, **kwargs):
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L604-L613
+## 来源：python/sglang/lang/interpreter.py L604-L613
                 if self.backend.is_chat_model:
                     # Speculative execution on models with only chat interface.
                     # Store the calls into a temporary list.
@@ -138,7 +137,7 @@ def Engine(*args, **kwargs):
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L375-L377
+## 来源：python/sglang/lang/interpreter.py L375-L377
         if size > 1 and str(self.text_):
             self.submit(SglCommitLazy())
 
@@ -158,7 +157,7 @@ def Engine(*args, **kwargs):
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L524-L531
+## 来源：python/sglang/lang/interpreter.py L524-L531
     def _execute_image(self, expr: SglImage):
         path = expr.path
 
@@ -183,7 +182,7 @@ def Engine(*args, **kwargs):
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L110-L112
+## 来源：python/sglang/lang/interpreter.py L110-L112
     if num_threads == "auto":
         num_threads = max(96, multiprocessing.cpu_count() * 16)
     num_threads = min(num_threads, len(batch_arguments))

@@ -31,7 +31,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L1-L9
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L1-L9
 import asyncio
 import concurrent
 import concurrent.futures
@@ -54,7 +54,7 @@ from typing import Any, Dict, Iterator, List, Optional, Tuple, Union
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L41-L44
+## 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L41-L44
 IMAGE_FACTOR = 28
 MIN_PIXELS = 4 * 28 * 28
 MAX_PIXELS = envs.SGLANG_IMAGE_MAX_PIXELS.get()
@@ -72,7 +72,7 @@ MAX_RATIO = 200
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L80-L95（函数首部示意）
+## 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L80-L95（函数首部示意）
 def smart_resize(
     height: int,
     width: int,
@@ -102,7 +102,7 @@ def smart_resize(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L14-L14
+## 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L14-L14
 from sglang.srt.layers.rotary_embedding import MRotaryEmbedding
 ```
 
@@ -117,7 +117,7 @@ from sglang.srt.layers.rotary_embedding import MRotaryEmbedding
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L71-L78
+## 来源：python/sglang/srt/managers/multimodal_processor.py L71-L78
     if uses_transformers_backend:
         from sglang.srt.multimodal.processors.transformers_auto import (
             TransformersAutoMultimodalProcessor,
@@ -139,7 +139,7 @@ from sglang.srt.layers.rotary_embedding import MRotaryEmbedding
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/vit_cuda_graph_runner.py L357-L388
+## 来源：python/sglang/srt/multimodal/vit_cuda_graph_runner.py L357-L388
     def run(
         self,
         x: torch.Tensor,
@@ -185,7 +185,7 @@ from sglang.srt.layers.rotary_embedding import MRotaryEmbedding
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/evs/evs_core.py L74-L97
+## 来源：python/sglang/srt/multimodal/evs/evs_core.py L74-L97
     # Core EVS
     similarity = torch.nn.functional.cosine_similarity(
         video_embeds[1:, ...], video_embeds[:-1, ...], dim=-1
@@ -223,7 +223,7 @@ from sglang.srt.layers.rotary_embedding import MRotaryEmbedding
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L23-L31
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L23-L31
 from sglang.srt.utils import (
     envs,
     is_cpu,
@@ -246,7 +246,7 @@ from sglang.srt.utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L80-L83
+## 来源：python/sglang/srt/managers/multimodal_processor.py L80-L83
     raise ValueError(
         f"No processor registered for architecture: {hf_config.architectures}.\n"
         f"Registered architectures: {[model_cls.__name__ for model_cls in PROCESSOR_MAPPING.keys()]}"
@@ -264,7 +264,7 @@ from sglang.srt.utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L16-L41
+## 来源：python/sglang/srt/managers/multimodal_processor.py L16-L41
 def import_processors(package_name: str, overwrite: bool = False):
     package = importlib.import_module(package_name)
     for _, name, ispkg in pkgutil.iter_modules(package.__path__, package_name + "."):
@@ -302,7 +302,7 @@ def import_processors(package_name: str, overwrite: bool = False):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L71-L78
+## 来源：python/sglang/srt/managers/multimodal_processor.py L71-L78
     if uses_transformers_backend:
         from sglang.srt.multimodal.processors.transformers_auto import (
             TransformersAutoMultimodalProcessor,
@@ -314,4 +314,3 @@ def import_processors(package_name: str, overwrite: bool = False):
 ```
 
 **Comment：** `model_impl=auto` 时通过 `get_resolved_model_impl` 判断是否走 Transformers 路径。
-

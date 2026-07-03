@@ -62,7 +62,7 @@ s.rollout_id = sample.rollout_id if sample.rollout_id is not None else sample.in
 `HarnessContext.model_label` 只写入 CLI 环境变量；adapter **忽略**，实际模型由 SGLang 加载权重决定。
 
 ```python
-# 来源：slime/agent/harness/common.py L46-L48
+## 来源：slime/agent/harness/common.py L46-L48
     model_label is the model name the harness advertises to its CLI. The slime
     adapter ignores it and serves whatever upstream sglang has loaded
 ```

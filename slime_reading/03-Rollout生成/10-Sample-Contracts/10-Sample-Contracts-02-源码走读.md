@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L253-L277
+## 来源：slime/utils/types.py L253-L277
 # 提交版本：22cdc6e1
 def append_response_tokens(
     self,
@@ -57,7 +57,7 @@ def append_response_tokens(
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L286-L292
+## 来源：slime/utils/types.py L286-L292
 # 提交版本：22cdc6e1
 previous_response_length = self.response_length
 if tokens:
@@ -71,7 +71,7 @@ if tokens:
 **Comment：**
 
 - 结尾 `_validate_response_metadata_lengths` 强校验
-- 与 [[27-Agent-Trajectory]] 的 tool token 路径紧密相关
+- 与 [[27-Agent-Trajectory-00-MOC]] 的 tool token 路径紧密相关
 
 ---
 
@@ -82,7 +82,7 @@ if tokens:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L13-L36
+## 来源：slime/utils/types.py L13-L36
 # 提交版本：22cdc6e1
 def _extract_rollout_top_p_token_data(
     meta_info: dict[str, Any],
@@ -114,7 +114,7 @@ def _extract_rollout_top_p_token_data(
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L12-L34
+## 来源：slime/utils/misc.py L12-L34
 # 提交版本：22cdc6e1
 def decode_int32_meta_array(meta_info: dict[str, Any], keys: str | Iterable[str]) -> torch.Tensor | None:
     if isinstance(keys, str):
@@ -146,7 +146,7 @@ def decode_int32_meta_array(meta_info: dict[str, Any], keys: str | Iterable[str]
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L362-L381
+## 来源：slime/utils/types.py L362-L381
 # 提交版本：22cdc6e1
 if not update_terminal_info or "finish_reason" not in meta_info:
     return
@@ -179,7 +179,7 @@ match meta_info["finish_reason"]["type"]:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L352-L360
+## 来源：slime/utils/types.py L352-L360
 # 提交版本：22cdc6e1
 routed_experts = decode_int32_meta_array(meta_info, "routed_experts")
 if routed_experts is not None:
@@ -195,7 +195,7 @@ if routed_experts is not None:
 **Comment：**
 
 - 需要 `args.num_layers` / `moe_router_topk` 来自 Megatron 配置
-- 训练 replay 见 [[23-CP-RoutingReplay]]
+- 训练 replay 见 [[23-CP-RoutingReplay-00-MOC]]
 
 ---
 
@@ -206,7 +206,7 @@ if routed_experts is not None:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L222-L244
+## 来源：slime/utils/types.py L222-L244
 # 提交版本：22cdc6e1
 def to_dict(self):
     value = self.__dict__.copy()
@@ -242,7 +242,7 @@ def from_dict(data: dict):
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L246-L247
+## 来源：slime/utils/types.py L246-L247
 # 提交版本：22cdc6e1
 def get_reward_value(self, args) -> float:
     return self.reward if not args.reward_key else self.reward[args.reward_key]
@@ -250,7 +250,7 @@ def get_reward_value(self, args) -> float:
 
 **Comment：**
 
-- 见 [[13-RM-FilterHub]] 的多 RM 聚合
+- 见 [[13-RM-FilterHub-00-MOC]] 的多 RM 聚合
 
 ---
 
@@ -261,7 +261,7 @@ def get_reward_value(self, args) -> float:
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L13-L16
+## 来源：slime/rollout/base_types.py L13-L16
 # 提交版本：22cdc6e1
 @dataclass
 class RolloutFnEvalOutput:
@@ -282,7 +282,7 @@ class RolloutFnEvalOutput:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L411-L418
+## 来源：slime/utils/types.py L411-L418
 # 提交版本：22cdc6e1
 @dataclass(frozen=True)
 class ParamInfo:
@@ -296,7 +296,7 @@ class ParamInfo:
 
 **Comment：**
 
-- 详见 [[24-WeightSync-Dist]]
+- 详见 [[24-WeightSync-Dist-00-MOC]]
 
 ---
 
@@ -307,7 +307,7 @@ class ParamInfo:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L142-L144
+## 来源：slime/utils/types.py L142-L144
 # 提交版本：22cdc6e1
 metadata: dict = field(default_factory=dict)
 generate_function_path: str | None = None
@@ -317,4 +317,4 @@ custom_rm_path: str | None = None
 **Comment：**
 
 - RolloutManager 解析时 `load_function(path)` 加载
-- 见 [[28-Customization]]
+- 见 [[28-Customization-00-MOC]]

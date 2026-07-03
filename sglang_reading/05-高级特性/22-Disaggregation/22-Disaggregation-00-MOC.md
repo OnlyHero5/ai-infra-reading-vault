@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # PD 分离：Prefill-Decode 分离（Disaggregation）
 
-> **阶段 V · 高级特性** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 V · 高级特性** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/disaggregation/`、`srt/managers/disagg_service.py`
 
 ---
@@ -69,7 +69,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/disagg_service.py L14-L44
+## 来源：python/sglang/srt/managers/disagg_service.py L14-L44
 def start_disagg_service(
     server_args: ServerArgs,
 ):

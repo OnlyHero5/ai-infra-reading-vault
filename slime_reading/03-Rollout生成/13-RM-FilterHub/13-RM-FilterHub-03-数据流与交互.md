@@ -53,7 +53,7 @@ RM 与 Filter 均运行在 **Rollout 进程**（`sglang_rollout.generate_rollout
 **Code：**
 
 ```python
-# 来源：slime/slime/utils/types.py（字段节选）
+## 来源：slime/slime/utils/types.py（字段节选）
 @dataclass
 class Sample:
     prompt: str | list[int] = ""
@@ -74,7 +74,7 @@ class Sample:
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/filter_hub/base_types.py L5-L8
+## 来源：slime/slime/rollout/filter_hub/base_types.py L5-L8
 @dataclass
 class DynamicFilterOutput:
     keep: bool
@@ -97,7 +97,7 @@ class DynamicFilterOutput:
 **Code（multi-agent 示例）：**
 
 ```python
-# 来源：slime/examples/multi_agent/agent_system.py L224（节选）
+## 来源：slime/examples/multi_agent/agent_system.py L224（节选）
     rewards = await batched_async_rm(args, args.results_dict["solver"])
 ```
 
@@ -115,7 +115,7 @@ class DynamicFilterOutput:
 | `remote_rm` | HTTP JSON | 服务定义（常为 dict） | `--reward-key` |
 | `custom_rm_path` | Sample 全字段 | 用户定义 | 建议 float 或 dict |
 
-**Explain：** `RolloutManager._post_process_rewards`（批次 08）可能在 tensor 化前对 reward 做后处理（`--custom-reward-post-process-path`），本批 RM Hub 只负责 **原始打分**。
+**Explain：** `RolloutManager._post_process_rewards`（[[08-RolloutManager-00-MOC]]）可能在 tensor 化前对 reward 做后处理（`--custom-reward-post-process-path`），本专题 RM Hub 只负责 **原始打分**。
 
 ---
 
@@ -126,7 +126,7 @@ class DynamicFilterOutput:
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/sglang_rollout.py L401-L412
+## 来源：slime/slime/rollout/sglang_rollout.py L401-L412
     target_data_size = args.rollout_batch_size
 
     data = []
@@ -160,7 +160,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
+## 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L9-L15
 def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
     rewards = [sample.get_reward_value(args) for sample in samples]
     keep = torch.tensor(rewards, dtype=torch.float64).std() > 1e-6
@@ -184,14 +184,14 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/sglang_rollout.py L467
+## 来源：slime/slime/rollout/sglang_rollout.py L467
     return RolloutFnTrainOutput(samples=data, metrics=metric_gatherer.collect()), aborted_samples
 ```
 
 **Comment：**
 
 - metrics key 形如 `rollout/dynamic_filter/drop_zero_std_1.0`
-- 训练侧 `process_rollout_data` 消费 `Sample.reward` 计算 advantage（批次 21）
+- 训练侧 `process_rollout_data` 消费 `Sample.reward` 计算 advantage（[[21-Loss-Advantages-00-MOC]]）
 
 ---
 
@@ -206,7 +206,7 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/slime/utils/eval_config.py L200-L201
+## 来源：slime/slime/utils/eval_config.py L200-L201
         if self.rm_type is not None:
             metadata["rm_type"] = self.rm_type
 ```
@@ -239,4 +239,4 @@ def check_reward_nonzero_std(args, samples: list[Sample], **kwargs):
 
 ## 边界：与 buffer / loss mask 侧 filter 的关系
 
-本批覆盖 **dynamic sampling filter**（rollout 生成环内）。`--buffer-filter-path`、`--rollout-sample-filter-path` 等在更后阶段作用于 buffer/loss mask，详见 [[28-Customization-01-核心概念]]（buffer-filter、rollout-sample-filter 等 Train 侧 hook）。
+本专题覆盖 **dynamic sampling filter**（rollout 生成环内）。`--buffer-filter-path`、`--rollout-sample-filter-path` 等在更后阶段作用于 buffer/loss mask，详见 [[28-Customization-01-核心概念]]（buffer-filter、rollout-sample-filter 等 Train 侧 hook）。

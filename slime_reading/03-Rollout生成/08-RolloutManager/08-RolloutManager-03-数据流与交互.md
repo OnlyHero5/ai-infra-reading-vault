@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # RolloutManager · 数据流与交互
 
-> 本批核心数据流：**Sample list → tensor dict → Ray ObjectRef per DP**
+> 本专题核心数据流：**Sample list → tensor dict → Ray ObjectRef per DP**
 
 ---
 
@@ -57,7 +57,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L93-L128（节选）
+## 来源：slime/utils/types.py L93-L128（节选）
 @dataclass
 class Sample:
     group_index: int | None = None
@@ -88,7 +88,7 @@ class Sample:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L660-L663
+## 来源：slime/ray/rollout.py L660-L663
             _validate_rollout_id_annotated(data)
             while isinstance(data[0], list):
                 data = list(itertools.chain.from_iterable(data))
@@ -139,7 +139,7 @@ train_data = {
 **Code：**
 
 ```python
-# 来源：slime/utils/dp_schedule.py L1-L23（模块 docstring 节选）
+## 来源：slime/utils/dp_schedule.py L1-L23（模块 docstring 节选）
 """The scheduling philosophy is **pack first, distribute second**:
 
   1. Group samples by rollout id (``rollout_indices[i]``) and split rollouts
@@ -164,7 +164,7 @@ train_data = {
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L855-L886（概念重组）
+## 来源：slime/ray/rollout.py L855-L886（概念重组）
         for r in range(dp_size):
             partition = partitions[r]
             rollout_data = {"partition": partition}
@@ -196,7 +196,7 @@ train_data = {
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L887-L894
+## 来源：slime/ray/rollout.py L887-L894
             _tensorize_rollout_data_for_training(rollout_data)
             transport = getattr(self.args, "rollout_data_transport", "object-store")
             if transport == "nixl":
@@ -212,7 +212,7 @@ train_data = {
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L129-L135
+## 来源：slime/utils/misc.py L129-L135
 class Box:
     def __init__(self, inner):
         self._inner = inner
@@ -269,7 +269,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L826-L827
+## 来源：slime/ray/rollout.py L826-L827
     def set_train_parallel_config(self, config: dict):
         self.train_parallel_config = config
 ```

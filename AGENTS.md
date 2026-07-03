@@ -32,9 +32,9 @@
 
 | 读者看 | 维护者看 |
 |--------|----------|
-| `index.md`、`*源码阅读指南.md`、各专题 MOC/01–04 | `90_meta/*-module-dir-map.md` |
-| `91_dashboard/dual-library-path` | `*/PLAN.md`、`*progress*` |
-| `91_dashboard/cross-library-map` | `slime_reading/AGENT-DISPATCH.md` 等 |
+| `index.md`、`*源码阅读指南.md`、各专题 MOC/01–05 | `90_meta/obsidian-syntax-rules.md` |
+| `91_dashboard/dual-library-path` | `90_meta/audit_wikilinks.mjs` |
+| `91_dashboard/cross-library-map` | — |
 
 **禁止**在读者入口（index、指南、README）暴露内部编号、派工表、目录↔编号映射。
 
@@ -64,21 +64,20 @@
 
 ### ⚠️ 谨慎
 
-- 修改 `_TEMPLATE/`、`PLAN.md` 结构
+- 修改 `_TEMPLATE/` 结构
 - 相对链接批量改双链
 
 ### ✅ 自由
 
 - 编辑 `sglang_reading/`、`slime_reading/` 笔记
 - 更新 index、dashboard、交叉对照
-- 运行 `90_meta/fix_mermaid_newlines.py`
 
 ---
 
 ## 5. 写作规范
 
 - 正文中文；英文限标识符与术语
-- **Explain → Code → Comment**（见各库 `PLAN.md`）
+- **Explain → Code → Comment**（见各库 `_TEMPLATE/README.md`）
 - 架构图：Mermaid 或 ASCII；Mermaid 换行用 `<br/>`
 
 ---

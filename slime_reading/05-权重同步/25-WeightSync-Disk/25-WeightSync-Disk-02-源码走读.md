@@ -14,7 +14,7 @@ updated: 2026-07-02
 # 磁盘权重同步 · 源码走读
 
 > 走读顺序：`UpdateWeightFromDisk` → `UpdateWeightFromDiskDelta` → `disk_delta` → `UpdateWeightFromTensor`  
-> 基线 commit `22cdc6e1` · **本批内嵌代码热点 ≥400 行**
+> 基线 commit `22cdc6e1` · **本专题内嵌代码热点 ≥400 行**
 
 ---
 
@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk.py L21-L59
+## 来源：update_weight/update_weight_from_disk.py L21-L59
 class UpdateWeightFromDisk:
     """Full-weight sync through a shared filesystem and SGLang disk reload."""
 
@@ -61,7 +61,7 @@ class UpdateWeightFromDisk:
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk.py L61-L98
+## 来源：update_weight/update_weight_from_disk.py L61-L98
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -113,7 +113,7 @@ class UpdateWeightFromDisk:
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L30-L58
+## 来源：update_weight/update_weight_from_disk_delta.py L30-L58
 class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
     """
     Delta weight sync over a shared filesystem. PP-src ranks diff each gathered HF tensor against
@@ -145,7 +145,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L60-L75
+## 来源：update_weight/update_weight_from_disk_delta.py L60-L75
     def connect_rollout_engines(
         self,
         rollout_engines,
@@ -174,7 +174,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L98-L124
+## 来源：update_weight/update_weight_from_disk_delta.py L98-L124
     def _capture_baseline(self) -> None:
         if dist.get_rank() == 0:
             shutil.rmtree(self.delta_dir, ignore_errors=True)
@@ -207,7 +207,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L195-L239
+## 来源：update_weight/update_weight_from_disk_delta.py L195-L239
     def _encode_delta(self) -> None:
         self._version_dir = os.path.join(self.delta_dir, f"weight_v{self.weight_version:06d}")
         if self._is_pp_src_rank:
@@ -241,7 +241,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 ```
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L241-L269
+## 来源：update_weight/update_weight_from_disk_delta.py L241-L269
         def collect(fut):
             name, new, compressed, digest, changed = fut.result()
             snapshot[name] = new
@@ -275,7 +275,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L132-L167
+## 来源：update_weight/update_weight_from_disk_delta.py L132-L167
     def _write_delta_files(self) -> None:
         group = get_gloo_group()
         world, rank = dist.get_world_size(), dist.get_rank()
@@ -316,7 +316,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L169-L186
+## 来源：update_weight/update_weight_from_disk_delta.py L169-L186
     def _reload_engines(self) -> None:
         if self._commit_hook is not None:
             self._commit_hook(self.args, self._version_dir, list(self.rollout_engines))
@@ -345,7 +345,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L271-L290
+## 来源：update_weight/update_weight_from_disk_delta.py L271-L290
     def _record_metrics(self) -> None:
         counts = torch.tensor(
             [self.changed_bytes, self.total_bytes, self.wire_bytes],
@@ -373,7 +373,7 @@ class UpdateWeightFromDiskDelta(UpdateWeightFromDistributed):
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L293-L299
+## 来源：update_weight/update_weight_from_disk_delta.py L293-L299
 def _atomic_write(path: str, data: bytes) -> None:
     tmp = path + ".tmp"
     with open(tmp, "wb") as f:
@@ -392,7 +392,7 @@ def _atomic_write(path: str, data: bytes) -> None:
 **Code：**
 
 ```python
-# 来源：disk_delta.py L126-L152
+## 来源：disk_delta.py L126-L152
 def _tensor_locations(ckpt_dir: str) -> dict[str, tuple[str, int, int]]:
     locations: dict[str, tuple[str, int, int]] = {}
     for path in glob.glob(os.path.join(ckpt_dir, "*.safetensors")):
@@ -427,7 +427,7 @@ def make_tensor_reader(ckpt_dir: str):
 **Code：**
 
 ```python
-# 来源：disk_delta.py L204-L220
+## 来源：disk_delta.py L204-L220
         def apply_xor(item) -> None:
             name, compressed, path, offset, nbytes, want = item
             region = np.ndarray((nbytes,), dtype=np.uint8, buffer=open_mmaps[path][1], offset=offset)
@@ -454,7 +454,7 @@ def make_tensor_reader(ckpt_dir: str):
 **Code：**
 
 ```python
-# 来源：disk_delta.py L222-L231
+## 来源：disk_delta.py L222-L231
         def apply_overwrite(item) -> None:
             name, compressed, path, offset, nbytes, want = item
             delta = np.frombuffer(zstandard.ZstdDecompressor().decompress(bytes(compressed)), dtype=np.uint8)
@@ -474,7 +474,7 @@ def make_tensor_reader(ckpt_dir: str):
 **Code：**
 
 ```python
-# 来源：disk_delta.py L155-L164, L255-L264
+## 来源：disk_delta.py L155-L164, L255-L264
     applied = _read_applied_version(local_ckpt_dir)
     if applied == meta["version"]:
         return
@@ -497,7 +497,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：sglang_engine.py L396-L413
+## 来源：sglang_engine.py L396-L413
     def sync_local_checkpoint(self, target_version: int):
         from slime.utils.disk_delta import apply_deltas, init_local_checkpoint
 
@@ -521,7 +521,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：sglang_engine.py L415-L437
+## 来源：sglang_engine.py L415-L437
     def update_weights_from_disk(
         self,
         model_path: str,
@@ -548,7 +548,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L86-L117
+## 来源：update_weight/update_weight_from_tensor.py L86-L117
         total_actor_gpus = self.args.actor_num_nodes * self.args.actor_num_gpus_per_node
         colocate_engine_nums = 0
         for gpu_offset, gpu_count in zip(engine_gpu_offsets, engine_gpu_counts, strict=True):
@@ -577,7 +577,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L124-L137
+## 来源：update_weight/update_weight_from_tensor.py L124-L137
         if self._ipc_gather_group is None:
             for i in range(colocate_engine_nums):
                 group_ranks = list(range(colocate_gpu_offsets[i], colocate_gpu_offsets[i] + colocate_gpu_counts[i]))
@@ -600,7 +600,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L234-L287
+## 来源：update_weight/update_weight_from_tensor.py L234-L287
     if getattr(FlattenedTensorBucket, "supports_multi_dtypes", False):
         converted_named_tensors_by_dtypes = {"dtype": hf_named_tensors} if hf_named_tensors else {}
     else:
@@ -636,7 +636,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L147-L191
+## 来源：update_weight/update_weight_from_tensor.py L147-L191
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -673,7 +673,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L193-L216
+## 来源：update_weight/update_weight_from_tensor.py L193-L216
     def _send_hf_params(self, hf_named_tensors) -> tuple[list[ObjectRef], Any]:
         all_refs = []
         refs_colocated, long_lived_tensors = _send_to_colocated_engine(
@@ -706,7 +706,7 @@ def apply_deltas(local_ckpt_dir: str, delta_root: str, target_version: int) -> N
 **Code：**
 
 ```python
-# 来源：disk_delta.py L69-L78
+## 来源：disk_delta.py L69-L78
 @contextmanager
 def _apply_lock(local_ckpt_dir: str):
     sync = os.path.join(local_ckpt_dir, SYNC_DIR)
@@ -728,7 +728,7 @@ def _apply_lock(local_ckpt_dir: str):
 **Code：**
 
 ```python
-# 来源：disk_delta.py L49-L66
+## 来源：disk_delta.py L49-L66
 def _new_hasher(algorithm: str):
     if algorithm == "xxh3-128":
         import xxhash
@@ -753,7 +753,7 @@ def checksum(algorithm: str, buf) -> str:
 **Code：**
 
 ```python
-# 来源：sglang_engine.py L171-L182
+## 来源：sglang_engine.py L171-L182
         if self.args.update_weight_mode == "delta" and self.args.update_weight_transport == "disk":
             from slime.utils.disk_delta import init_local_checkpoint
 
@@ -782,7 +782,7 @@ def checksum(algorithm: str, buf) -> str:
 **Code：**
 
 ```python
-# 来源：tests/test_full_disk_weight_update.py L1-L5
+## 来源：tests/test_full_disk_weight_update.py L1-L5
 """E2E smoke test for full checkpoint weight updates through disk.
 
 Runs a tiny Qwen3.5-0.8B job where each weight sync writes a complete HF

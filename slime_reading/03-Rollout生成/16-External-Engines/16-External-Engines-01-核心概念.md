@@ -63,7 +63,7 @@ External 模式的核心边界：**Slime 不拥有 SGLang 进程生命周期**�
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L70-L76
+## 来源：slime/backends/sglang_utils/external.py L70-L76
 def _infer_worker_type(server_info: dict) -> str:
     if server_info.get("encoder_only"):
         return "encoder"
@@ -87,7 +87,7 @@ def _infer_worker_type(server_info: dict) -> str:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L106-L109
+## 来源：slime/ray/placement_group.py L106-L109
     if args.rollout_external:
         if args.debug_rollout_only:
             return 0, 0
@@ -122,7 +122,7 @@ def _infer_worker_type(server_info: dict) -> str:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L152-L165
+## 来源：slime/backends/sglang_utils/external.py L152-L165
     def recover(self):
         logger.warning("Fault tolerance is not supported for external rollout engines; skip recover.")
 
@@ -136,7 +136,7 @@ def _infer_worker_type(server_info: dict) -> str:
 **Comment：**
 
 - 外部 engine 崩溃由 **外部编排系统** 重启；Slime 侧 Ray actor 仅代理 HTTP，kill 后需人工或外部流程重建。
-- `health_monitor.py` 仍服务内置 engine 路径（批次 08 RolloutManager + `--use-fault-tolerance`）。
+- `health_monitor.py` 仍服务内置 engine 路径（[[08-RolloutManager-00-MOC]] RolloutManager + `--use-fault-tolerance`）。
 
 ---
 
@@ -147,7 +147,7 @@ def _infer_worker_type(server_info: dict) -> str:
 **Code：**
 
 ```python
-# 来源：slime/utils/http_utils.py L201-L210
+## 来源：slime/utils/http_utils.py L201-L210
 def get_rollout_num_engines(args) -> int:
     """Return the number of rollout HTTP engines behind the router."""
     if (num_engines := getattr(args, "rollout_num_engines", None)) is not None:

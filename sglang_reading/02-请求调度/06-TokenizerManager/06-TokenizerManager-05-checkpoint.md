@@ -8,8 +8,6 @@ tags:
  - sglang/batch/06
  - sglang/module/tokenizer-manager
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # TokenizerManager 验收清单
@@ -25,14 +23,6 @@ updated: 2026-07-02
 - [x] 能追踪一条流式生成请求：API → 分词 → ZMQ → Detokenizer 回传 → `_wait_one_response` yield
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
 
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 无遗漏 `tokenizer_manager.py` 及 mixin 节点
-- [x] 来源注释路径/行号与 git `70df09b` 一致
-- [x] 已更新 [[progress]] TokenizerManager → ✅
-
 ## 核心结论（3 句话）
 
 1. **TokenizerManager 是 API 与 Scheduler 之间的「前台」**：负责分词/校验/LoRA 解析，经 ZMQ 发送 `Tokenized*ReqInput`，并通过 `handle_loop` 接收 Detokenizer 输出唤醒 `generate_request`。
@@ -44,16 +34,3 @@ updated: 2026-07-02
 - `io_struct.py` 全量字段需结合ScheduleBatch-IO 阅读
 - Detokenizer 内部 decode 状态机留待后续图谱更新
 - Scheduler 如何将 `TokenizedGenerateReqInput` 并入 `ScheduleBatch` 留待后续图谱更新
-
-## 内嵌源码统计（维护者）
-
-| 文件 | 代码块数 | 约行数 |
-|------|----------|--------|
-| README.md | 1 | 35 |
-| 01-核心概念.md | 5 | 95 |
-| 02-源码走读.md | 12 | 210 |
-| 03-数据流与交互.md | 6 | 85 |
-| 04-关键问题.md | 6 | 75 |
-| **合计** | **30** | **~500** |
-
-满足 PLAN 要求：≥ 15 段、≥ 200 行。

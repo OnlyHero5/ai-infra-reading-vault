@@ -54,7 +54,7 @@ flowchart LR
 **Code（Scheduler 消费的 IPC 输入）：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L777-L802
+## 来源：python/sglang/srt/managers/io_struct.py L777-L802
 # 提交版本：70df09b
 class TokenizedGenerateReqInput(BaseReq, kw_only=True):
     input_text: Optional[Union[str, List[Union[str, List[str]]]]]
@@ -99,7 +99,7 @@ class TokenizedGenerateReqInput(BaseReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1651-L1671
+## 来源：python/sglang/srt/managers/scheduler.py L1651-L1671
     @scheduler_nvtx_method("scheduler.process_input_requests")
     def process_input_requests(self, recv_reqs: List):
         now = time.monotonic()
@@ -138,7 +138,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2288-L2296
+## 来源：python/sglang/srt/managers/scheduler.py L2288-L2296
     def _add_request_to_queue(self, req: Req, is_retracted: bool = False):
         if not self._set_or_validate_priority(req):
             return
@@ -161,7 +161,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3176-L3183
+## 来源：python/sglang/srt/managers/scheduler.py L3176-L3183
     def run_batch(
         self,
         batch: ScheduleBatch,
@@ -179,7 +179,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/batch_result_processor.py L82-L99
+## 来源：python/sglang/srt/managers/scheduler_components/batch_result_processor.py L82-L99
     def process_batch_result_prebuilt(self, batch: ScheduleBatch):
         assert self.disaggregation_mode == DisaggregationMode.DECODE
         use_free_group = self.server_args.disaggregation_decode_enable_radix_cache
@@ -220,7 +220,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code（调用边界）：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3235-L3237
+## 来源：python/sglang/srt/managers/scheduler.py L3235-L3237
                         batch_result = self.model_worker.forward_batch_generation(
                             batch, **fwd_kwargs
                         )
@@ -235,7 +235,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/request_receiver.py L101-L113
+## 来源：python/sglang/srt/managers/scheduler_components/request_receiver.py L101-L113
     def _pull_raw_reqs(self) -> Optional[List]:
         if self.ps.pp_rank == 0:
             if self.ps.attn_tp_rank == 0 and self.ps.attn_cp_rank == 0:
@@ -262,7 +262,7 @@ TokenizerManager 完成 tokenize 后发送 `TokenizedGenerateReqInput`。Schedul
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L655-L666
+## 来源：python/sglang/srt/managers/scheduler.py L655-L666
     def publish_load_snapshot(self, force: bool = False):
         writer = self.load_snapshot_writer
         if writer is None:

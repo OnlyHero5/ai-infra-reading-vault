@@ -8,8 +8,6 @@ tags:
  - sglang/batch/23
  - sglang/module/distributed
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 分布式并行 验收清单
@@ -21,10 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 GroupCoordinator、communication_op、DataParallelController 的职责
 - [x] 能解释为何层代码应调用 tensor_model_parallel_all_reduce 而非裸 dist
 - [x] 五篇正文 ≥ 15 段内嵌源码
-
-## 维护者检查
-
-- [x] 已更新 [[progress]]
 
 ## 核心结论
 

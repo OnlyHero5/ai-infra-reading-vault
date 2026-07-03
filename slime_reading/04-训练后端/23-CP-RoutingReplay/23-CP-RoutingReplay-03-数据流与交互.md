@@ -40,7 +40,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：ray/actor_group.py L88
+## 来源：ray/actor_group.py L88
             env_vars["ENABLE_ROUTING_REPLAY"] = "1"
 ```
 
@@ -83,7 +83,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：actor.py L284-L355（节选）
+## 来源：actor.py L284-L355（节选）
     def fill_routing_replay(self, data_iterator, num_microbatches, rollout_data):
         if "rollout_routed_experts" not in rollout_data:
             raise ValueError("rollout_routed_experts is required ...")
@@ -117,7 +117,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：data.py L350-L354
+## 来源：data.py L350-L354
             if (
                 rollout_id == 0
                 and not getattr(args, "use_rollout_routing_replay", False)

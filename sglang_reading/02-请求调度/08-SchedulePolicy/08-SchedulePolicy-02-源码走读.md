@@ -32,7 +32,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L158-L174, L235-L251
+## 来源：python/sglang/srt/managers/schedule_policy.py L158-L174, L235-L251
     def __init__(
         self,
         policy: str,
@@ -66,7 +66,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L176-L233
+## 来源：python/sglang/srt/managers/schedule_policy.py L176-L233
     def calc_priority(
         self, waiting_queue: List[Req], running_batch: Optional[ScheduleBatch] = None
     ) -> None:
@@ -142,7 +142,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L253-L301
+## 来源：python/sglang/srt/managers/schedule_policy.py L253-L301
     def _compute_prefix_matches(
         self, waiting_queue: List[Req], policy: CacheAwarePolicy
     ) -> Set[int]:
@@ -208,7 +208,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L303-L336, L405-L424
+## 来源：python/sglang/srt/managers/schedule_policy.py L303-L336, L405-L424
     @staticmethod
     def _sort_by_longest_prefix(
         waiting_queue: List[Req], temporary_deprioritized: Set[int]
@@ -257,7 +257,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L360-L399
+## 来源：python/sglang/srt/managers/schedule_policy.py L360-L399
     @staticmethod
     def _sort_by_priority_and_fcfs(
         waiting_queue: List[Req], priority_sign: int
@@ -316,7 +316,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L433-L540
+## 来源：python/sglang/srt/managers/schedule_policy.py L433-L540
 class PrefillAdder:
     def __init__(
         self,
@@ -442,7 +442,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L557-L579
+## 来源：python/sglang/srt/managers/schedule_policy.py L557-L579
     @property
     def rem_total_tokens(self):
         if self.is_all_swa:
@@ -480,7 +480,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L654-L675
+## 来源：python/sglang/srt/managers/schedule_policy.py L654-L675
     def budget_state(self):
         no_token = self.rem_total_tokens <= 0 or self.cur_rem_tokens <= 0
         if not no_token and self.is_hybrid_swa:
@@ -517,7 +517,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L677-L720
+## 来源：python/sglang/srt/managers/schedule_policy.py L677-L720
     def _update_prefill_budget(
         self,
         prefix_len: int,
@@ -579,7 +579,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L968-L1141（节选）
+## 来源：python/sglang/srt/managers/schedule_policy.py L968-L1141（节选）
     def add_one_req(
         self, req: Req, has_chunked_req: bool, truncation_align_size: Optional[int]
     ):
@@ -771,7 +771,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L1143-L1213
+## 来源：python/sglang/srt/managers/schedule_policy.py L1143-L1213
     def preempt_to_schedule(self, req: Req, server_args: ServerArgs) -> bool:
         """
         Preempt running requests to serve the new request if the priority threshold is met and token count sum is verified.
@@ -859,7 +859,7 @@ class PrefillAdder:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/prefill_delayer.py L43-L113
+## 来源：python/sglang/srt/managers/prefill_delayer.py L43-L113
 class PrefillDelayer:
     def __init__(
         self,
@@ -947,7 +947,7 @@ class PrefillDelayer:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/prefill_delayer.py L136-L299（节选）
+## 来源：python/sglang/srt/managers/prefill_delayer.py L136-L299（节选）
     def _negotiate_should_allow_prefill_pure(
         self,
         prev_state: Optional[_State],
@@ -1129,7 +1129,7 @@ class PrefillDelayer:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/prefill_delayer.py L331-L368
+## 来源：python/sglang/srt/managers/prefill_delayer.py L331-L368
 class PrefillDelayerSinglePassExecutor:
     def __init__(self, prefill_delayer: PrefillDelayer, token_usage: float):
         self._prefill_delayer = prefill_delayer
@@ -1184,7 +1184,7 @@ class PrefillDelayerSinglePassExecutor:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/min_free_slots_delayer.py L28-L41
+## 来源：python/sglang/srt/managers/min_free_slots_delayer.py L28-L41
 class MinFreeSlotsDelayer:
     """Delay fresh prefill admissions until at least ``min_free_slots`` running-
     request slots free up, batching them into one admission instead of one at a

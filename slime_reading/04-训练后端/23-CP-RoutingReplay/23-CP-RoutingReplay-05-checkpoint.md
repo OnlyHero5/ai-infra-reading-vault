@@ -26,17 +26,6 @@ updated: 2026-07-02
 
 - [ ] 能画 CP offset 与 response logprob 索引关系
 
-## 维护者检查
-
-- [ ] tags `slime/batch/23`
-- [ ] 前缀 `23-CP-RoutingReplay-`
-- [ ] [[Slime-progress]] 批次 23 → ✅
-
----
-
-**批次 23 状态：** ✅ 已完成
-- [ ] 双链 [[20-Train-Data-00-MOC]]、[[22-Loss-Policy-00-MOC]]
-
 ## 建议验证
 
 - [ ] `tests/test_loss_cp_invariance.py`

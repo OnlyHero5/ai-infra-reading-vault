@@ -3,7 +3,7 @@ type: batch-doc
 module: 18-Model-Init
 batch: "18"
 doc_type: moc
-title: "Model 初始化 · 批次概述"
+title: "Model 初始化 · 专题概述"
 tags:
   - slime/batch/18
   - slime/module/model-init
@@ -13,14 +13,13 @@ updated: 2026-07-02
 
 # Megatron Model 与 Optimizer 初始化
 
-> **阶段 IV · 训练后端** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `model_provider.py`（GPTModel 构建 / critic 头 / 自定义 provider）、`model.py`（`setup_model_and_optimizer`、`initialize_model_and_optimizer`、`forward_only`）
 
 ---
 
 ## 本模块在架构中的位置
 
-`initialize_model_and_optimizer` 在 [[17-Megatron-Actor-Init]] 的 `MegatronTrainRayActor.init` 中被调用：每个 GPU rank 构建 DDP 包裹的 GPTModel、Megatron optimizer、LR scheduler，并从 checkpoint 恢复 iteration。
+`initialize_model_and_optimizer` 在 [[17-Megatron-Actor-Init-00-MOC]] 的 `MegatronTrainRayActor.init` 中被调用：每个 GPU rank 构建 DDP 包裹的 GPTModel、Megatron optimizer、LR scheduler，并从 checkpoint 恢复 iteration。
 
 ```mermaid
 flowchart TB
@@ -60,7 +59,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L968-L1007
+## 来源：slime/backends/megatron_utils/model.py L968-L1007
 # 提交版本：22cdc6e1
 def initialize_model_and_optimizer(
     args: Namespace, role: str = "actor"
@@ -86,11 +85,11 @@ def initialize_model_and_optimizer(
 
 ---
 
-## 衔接批次
+## 衔接专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
-| 上游 | [[17-Megatron-Actor-Init]] | init 内调用本模块 |
-| 下游 | [[19-Train-Step]] | `train()` / `forward_only` 消费 model |
-| 下游 | [[21-Loss-Advantages]] | forward_only 算 log_probs/values |
-| 下游 | [[24-WeightSync-Dist]] | named_params 来自已初始化 model |
+| 上游 | [[17-Megatron-Actor-Init-00-MOC]] | init 内调用本模块 |
+| 下游 | [[19-Train-Step-00-MOC]] | `train()` / `forward_only` 消费 model |
+| 下游 | [[21-Loss-Advantages-00-MOC]] | forward_only 算 log_probs/values |
+| 下游 | [[24-WeightSync-Dist-00-MOC]] | named_params 来自已初始化 model |

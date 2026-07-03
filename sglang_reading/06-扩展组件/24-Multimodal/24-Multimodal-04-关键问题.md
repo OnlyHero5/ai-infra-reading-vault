@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L34-L41
+## 来源：python/sglang/srt/managers/multimodal_processor.py L34-L41
                 assert hasattr(cls, "models")
                 for arch in getattr(cls, "models"):
                     if overwrite:
@@ -43,7 +43,7 @@ updated: 2026-07-02
 **Code（正确流程）：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L41-L44
+## 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L41-L44
 IMAGE_FACTOR = 28
 MIN_PIXELS = 4 * 28 * 28
 MAX_PIXELS = envs.SGLANG_IMAGE_MAX_PIXELS.get()
@@ -68,7 +68,7 @@ input_text = input_text.replace("<image>", "<|image_pad|>" * 256)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multimodal_processor.py L64-L66
+## 来源：python/sglang/srt/managers/multimodal_processor.py L64-L66
         if not uses_transformers_backend or getattr(
             processor_cls, "supports_transformers_backend", False
         ):
@@ -85,7 +85,7 @@ input_text = input_text.replace("<image>", "<|image_pad|>" * 256)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L72-L81
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L72-L81
     def organize_results(self) -> List[Tuple[Modality, Any]]:
         """
 
@@ -109,7 +109,7 @@ input_text = input_text.replace("<image>", "<|image_pad|>" * 256)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/vit_cuda_graph_runner.py L115-L117, L246-L249, L371-L379
+## 来源：python/sglang/srt/multimodal/vit_cuda_graph_runner.py L115-L117, L246-L249, L371-L379
     def _get_graph_key(self, x_3d: torch.Tensor) -> int:
         # x_3d: [S, B, H], B=1, S as graph_key
         return x_3d.shape[0]
@@ -126,7 +126,7 @@ input_text = input_text.replace("<image>", "<|image_pad|>" * 256)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L65-L72
+## 来源：python/sglang/srt/multimodal/processors/qwen_vl.py L65-L72
 if _is_cpu and _is_cpu_amx_available:
     try:
         import transformers

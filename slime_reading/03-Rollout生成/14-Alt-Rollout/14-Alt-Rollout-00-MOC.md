@@ -13,14 +13,13 @@ updated: 2026-07-02
 
 # Alt-Rollout · 替代 Rollout 路径
 
-> **阶段 III · Rollout 生成** | 批次 14 | 基线 commit `22cdc6e1`  
 > **源码范围：** `slime/rollout/` 下 6 个可插拔 rollout 模块
 
 ---
 
 ## 本模块在架构中的位置
 
-Slime 通过 `--rollout-function-path` 将 **RolloutManager.generate** 委托给任意 Python 函数。默认路径是 `sglang_rollout.generate_rollout`（批次 12）；本批覆盖 **6 种替代实现**——从 fully-async 流水线、SSE 流式生成，到 SFT 离线 tokenize、OPD 教师 log-prob、profiling 占位、磁盘 replay。
+Slime 通过 `--rollout-function-path` 将 **RolloutManager.generate** 委托给任意 Python 函数。默认路径是 `sglang_rollout.generate_rollout`（[[12-SGLang-Rollout-00-MOC]]）；本专题覆盖 **6 种替代实现**——从 fully-async 流水线、SSE 流式生成，到 SFT 离线 tokenize、OPD 教师 log-prob、profiling 占位、磁盘 replay。
 
 ```mermaid
 flowchart TB
@@ -69,7 +68,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L440-L450
+## 来源：slime/ray/rollout.py L440-L450
 self.generate_rollout = load_function(self.args.rollout_function_path)
 self.eval_generate_rollout = load_function(self.args.eval_function_path)
 # ...
@@ -77,7 +76,7 @@ logger.info(f"import {self.args.rollout_function_path} as generate_rollout funct
 ```
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L251-L256
+## 来源：slime/rollout/fully_async_rollout.py L251-L256
 def generate_rollout_fully_async(args, rollout_id, data_buffer, evaluation: bool = False):
     """Slime ``--rollout-function-path`` entrypoint."""
     if evaluation:
@@ -95,7 +94,7 @@ def generate_rollout_fully_async(args, rollout_id, data_buffer, evaluation: bool
 
 ## 前置与衔接
 
-| 方向 | 批次 | 说明 |
+| 方向 | 专题 | 说明 |
 |------|------|------|
 | ← 上游 | [[12-SGLang-Rollout-00-MOC]] | 默认 rollout、`generate_and_rm_group` |
 | ← 上游 | [[11-DataSource-00-MOC]] | `data_buffer.get_samples` |

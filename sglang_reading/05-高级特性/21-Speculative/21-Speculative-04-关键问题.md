@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L127-L130
+## 来源：python/sglang/srt/speculative/spec_info.py L127-L130
     def carries_draft_hidden_states(self) -> bool:
         """Whether the disagg prefill->decode transfer carries draft hidden
         states (EAGLE-family only; STANDALONE's vanilla draft ignores them)."""
@@ -46,7 +46,7 @@ updated: 2026-07-02
 **Code（错误配置）：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_registry.py L96-L99
+## 来源：python/sglang/srt/speculative/spec_registry.py L96-L99
         if not server_args.disable_overlap_schedule and not self.supports_overlap:
             raise ValueError(
                 f"Speculative algorithm {self.name} does not support overlap scheduling."
@@ -75,7 +75,7 @@ python -m sglang.launch_server \
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/base_spec_worker.py L115-L118
+## 来源：python/sglang/srt/speculative/base_spec_worker.py L115-L118
         # Do NOT cast predict dtype here. The caller (e.g., _draft_extend_for_decode)
         # may run this under a plan stream; casting inside the plan stream creates a
         # cross-stream dependency that can lead to data races and break MTP acceptance.
@@ -93,7 +93,7 @@ python -m sglang.launch_server \
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L118-L119
+## 来源：python/sglang/srt/speculative/spec_info.py L118-L119
     def supports_target_verify_for_draft(self) -> bool:
         return self.is_dflash()
 ```
@@ -109,7 +109,7 @@ python -m sglang.launch_server \
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L218-L223
+## 来源：python/sglang/srt/speculative/spec_info.py L218-L223
         if self.is_eagle() and server_args.enable_multi_layer_eagle:
             from sglang.srt.speculative.multi_layer_eagle_worker_v2 import (
                 MultiLayerEagleWorkerV2,
@@ -129,7 +129,7 @@ python -m sglang.launch_server \
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L59-L77
+## 来源：python/sglang/srt/speculative/spec_info.py L59-L77
     @classmethod
     def register(
         cls,
@@ -173,7 +173,7 @@ python -m sglang.launch_server \
 **Code（SGLang verify 输入锚点）：**
 
 ```python
-# 来源：python/sglang/srt/speculative/eagle_info.py L17-L21
+## 来源：python/sglang/srt/speculative/eagle_info.py L17-L21
 @dataclass
 class EagleVerifyInput(SpecInput):
     draft_token: torch.Tensor

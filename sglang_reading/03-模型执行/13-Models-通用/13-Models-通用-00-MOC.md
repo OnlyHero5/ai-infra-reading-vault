@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Models 通用：通用模型实现（Registry / Llama / Qwen3）
 
-> **阶段 III · 模型执行** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 III · 模型执行** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/models/registry.py`、`llama.py`、`qwen3.py`
 
 ---
@@ -71,7 +71,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L94-L131
+## 来源：python/sglang/srt/models/registry.py L94-L131
 @lru_cache()
 def import_model_classes(package_name: str, strict: bool = False):
     model_arch_name_to_cls = {}
@@ -106,7 +106,6 @@ def import_model_classes(package_name: str, strict: bool = False):
                     model_arch_name_to_cls[entry.__name__] = entry
 
     return model_arch_name_to_cls
-
 
 ModelRegistry = _ModelRegistry()
 ModelRegistry.register("sglang.srt.models")

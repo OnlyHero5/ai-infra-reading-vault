@@ -24,15 +24,6 @@ updated: 2026-07-02
 - [ ] 能说明 `HfWeightIteratorDirect` 与 NCCL 路径的共享点与差异（非直接调用关系）
 - [ ] 能列举 3 个关键 CLI：`update_weight_transport`、`update_weight_buffer_size`、`megatron_to_hf_mode`
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/24` + `slime/doc/*`
-- [ ] 六件套文件名前缀为 `24-WeightSync-Dist-`
-- [ ] 全批内嵌代码 ≥ 15 段、≥ 200 行
-- [ ] Mermaid 块内无 `\n`（使用 `<br/>`）
-- [ ] 双链指向相邻批次（25 disk、17 actor、15 engine）可解析
-- [ ] 已更新 [[Slime-progress]] 批次 24 为 ✅
-
 ## 源码锚点核对（基线 `22cdc6e1`）
 
 | 文件 | 关键符号 | 已覆盖 |
@@ -50,4 +41,4 @@ updated: 2026-07-02
 
 ---
 
-**批次 24 状态：** ✅ 已完成
+**专题 24 完成状态：** ✅ 已完成

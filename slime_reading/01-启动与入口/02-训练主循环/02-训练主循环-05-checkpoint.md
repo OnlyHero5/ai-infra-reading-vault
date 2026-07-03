@@ -22,13 +22,6 @@ updated: 2026-07-02
 - [ ] 能说明 PPO critic-only 步 Actor 是否参与 `async_train`
 - [ ] 能解释 colocate 下 `offload` / `onload_weights` / `onload_kv` 顺序
 
-## 维护者检查
-
-- [ ] tags：`slime/batch/02` + `slime/doc/*`
-- [ ] 代码块 `# 来源：train.py L...` 等与 commit `22cdc6e1` 一致
-- [ ] Mermaid `<br/>` 换行
-- [ ] 已更新 [[Slime-progress]] 批次 02 为 ✅
-
 ## 快速自测题
 
 1. **`train_async` 为何 update 前要 `ray.get(rollout_data_next_future)`？** 防止权重更新打断进行中的 generate。

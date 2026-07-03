@@ -43,7 +43,7 @@ Rollout 阶段 SGLang 已产出 `rollout_log_probs`，但训练侧通常仍用 M
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L466-L493
+## 来源：slime/backends/megatron_utils/actor.py L466-L493
                 self._switch_model("old_actor" if self.args.keep_old_actor else "actor")
                 can_reuse_log_probs_in_loss = (
                     len(num_microbatches) == 1
@@ -69,7 +69,7 @@ Rollout 阶段 SGLang 已产出 `rollout_log_probs`，但训练侧通常仍用 M
                     )
 ```
 
-**Comment：** 条件极严的 `can_reuse_log_probs_in_loss` 允许在纯 GRPO 且无 ref/critic 时跳过 duplicate forward，把 rollout log-prob 直接喂 loss（批次 21 详述）。
+**Comment：** 条件极严的 `can_reuse_log_probs_in_loss` 允许在纯 GRPO 且无 ref/critic 时跳过 duplicate forward，把 rollout log-prob 直接喂 loss（[[21-Loss-Advantages-00-MOC]] 详述）。
 
 ### 2.2 Critic 与 Actor 为何分两次 train？
 
@@ -78,7 +78,7 @@ PPO 需要 **old values** 算 GAE。Critic 先 forward 得到 values，算 advan
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L402-L428
+## 来源：slime/backends/megatron_utils/actor.py L402-L428
     def train_critic(self, rollout_id: int, rollout_data: RolloutBatch):
         """Train critic and return CPU values (used as old-values for the next actor train)."""
         data_iterator = get_data_iterator(rollout_data)
@@ -135,7 +135,7 @@ flowchart TB
   TRN --> TOS
 ```
 
-Train Step 横跨 **Ray 远程调用**、**Actor 业务编排**、**Megatron PP 引擎** 三层；Loss 细节在批次 21–22，数据切分在批次 20。
+Train Step 横跨 **Ray 远程调用**、**Actor 业务编排**、**Megatron PP 引擎** 三层；Loss 细节在[[21-Loss-Advantages-00-MOC]]–[[22-Loss-Policy-00-MOC]]，数据切分在[[20-Train-Data-00-MOC]]。
 
 ---
 
@@ -149,7 +149,7 @@ Train Step 横跨 **Ray 远程调用**、**Actor 业务编排**、**Megatron PP 
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L704-L731（docstring 节选）
+## 来源：slime/backends/megatron_utils/model.py L704-L731（docstring 节选）
 def train(
     rollout_id: int,
     model: Sequence[DDP],

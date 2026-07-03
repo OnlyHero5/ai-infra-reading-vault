@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L254-L255
+## 来源：slime/rollout/fully_async_rollout.py L254-L255
 if evaluation:
     raise ValueError("fully-async rollout doesn't support evaluation mode")
 ```
@@ -103,7 +103,7 @@ if any(getattr(s, "status", None) == Sample.Status.ABORTED for s in result):
 **Code：**
 
 ```python
-# 来源：slime/rollout/on_policy_distillation.py L61-L64
+## 来源：slime/rollout/on_policy_distillation.py L61-L64
 # Return scalar rewards for GRPO/PPO advantage estimator
 # For pure on-policy distillation, we use 0.0 as the task reward.
 # The learning signal comes entirely from the OPD KL penalty.
@@ -126,7 +126,7 @@ scalar_rewards = [0.0] * len(samples)
 **Code：**
 
 ```python
-# 来源：slime/rollout/forge_load.py L102-L107
+## 来源：slime/rollout/forge_load.py L102-L107
 # IMPORTANT: do NOT overwrite sample.rollout_id with the current rollout_id.
 # Forcing all samples to share one rollout_id collapses them into a single
 # "rollout", which trips the num_rollouts >= global_batch_size assert in
@@ -163,7 +163,7 @@ scalar_rewards = [0.0] * len(samples)
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L58-L59
+## 来源：slime/rollout/fully_async_rollout.py L58-L59
 _global_worker = AsyncRolloutWorker(
     args, data_buffer, concurrency=args.sglang_server_concurrency * get_rollout_num_engines(args)
 )

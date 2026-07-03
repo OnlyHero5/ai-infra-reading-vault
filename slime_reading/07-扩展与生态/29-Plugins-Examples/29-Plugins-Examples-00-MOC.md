@@ -13,14 +13,14 @@ updated: 2026-07-02
 
 # Plugins 与 Examples 生态
 
-> **阶段 VII · 扩展与生态** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 VII · 扩展与生态** | Git：`22cdc6e1`  
 > **源码范围：** `slime_plugins/rollout_buffer`、`examples/search-r1`、`examples/multi_agent`
 
 ---
 
 ## 本模块在架构中的位置
 
-`slime/` 核心是训练闭环；**slime_plugins/** 放可选模型 Bridge / 算子扩展；**examples/** 放可运行的 RL 工作流样板。读者学完 [[28-Customization-00-MOC]] 后，本批回答「具体怎么接」。
+`slime/` 核心是训练闭环；**slime_plugins/** 放可选模型 Bridge / 算子扩展；**examples/** 放可运行的 RL 工作流样板。读者学完 [[28-Customization-00-MOC]] 后，本专题回答「具体怎么接」。
 
 ```mermaid
 flowchart LR
@@ -60,7 +60,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L145-L146
+## 来源：examples/search-r1/generate_with_search.py L145-L146
 async def generate(args, sample: Sample, sampling_params) -> Sample:
     assert not args.partial_rollout, "Partial rollout is not supported for this function at the moment."
 ```
@@ -72,4 +72,4 @@ async def generate(args, sample: Sample, sampling_params) -> Sample:
 ## 阅读路径
 
 ← [[28-Customization-00-MOC]]  
-→ [[08-总结与索引-00-MOC]]（批次 30 收官）
+→ [[08-总结与索引-00-MOC]]（[[08-总结与索引-00-MOC]] 收官）

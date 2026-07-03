@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L65-L87
+## 来源：slime/backends/megatron_utils/model_provider.py L65-L87
 # 提交版本：22cdc6e1
 if getattr(args, "custom_model_provider_path", None):
 
@@ -38,7 +38,7 @@ if getattr(args, "custom_model_provider_path", None):
 
 **Comment：**
 
-- 自定义 provider 与 `--custom-rm-path` 同样用 [[10-Sample-Contracts]] 的 `load_function`
+- 自定义 provider 与 `--custom-rm-path` 同样用 [[10-Sample-Contracts-00-MOC]] 的 `load_function`
 - Bridge 路径见 §2
 
 ---
@@ -50,7 +50,7 @@ if getattr(args, "custom_model_provider_path", None):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L87-L123
+## 来源：slime/backends/megatron_utils/model_provider.py L87-L123
 # 提交版本：22cdc6e1
 if args.megatron_to_hf_mode == "bridge":
     from megatron.bridge import AutoBridge
@@ -66,7 +66,7 @@ if args.megatron_to_hf_mode == "bridge":
 
 **Comment：**
 
-- 与 [[05-Tools-DataPrep]] 的 torch_dist convert 是 **替代路线**
+- 与 [[05-Tools-DataPrep-00-MOC]] 的 torch_dist convert 是 **替代路线**
 - critic 包装 `_critic_provide` 替换 output_layer
 
 ---
@@ -78,7 +78,7 @@ if args.megatron_to_hf_mode == "bridge":
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L25-L58
+## 来源：slime/backends/megatron_utils/model_provider.py L25-L58
 # 提交版本：22cdc6e1
 class LinearForLastLayer(torch.nn.Linear):
     def forward(self, input_, weight=None, runtime_gather_output=None):
@@ -103,7 +103,7 @@ class LinearForLastLayer(torch.nn.Linear):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L245-L269
+## 来源：slime/backends/megatron_utils/model_provider.py L245-L269
 # 提交版本：22cdc6e1
 def get_model_provider_func(args, role="actor"):
     return wrap_model_provider_with_freeze(_get_model_provider_func(args, role), args)
@@ -131,7 +131,7 @@ def freeze_model_params(model: GPTModel, args: argparse.Namespace):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L270-L318
+## 来源：slime/backends/megatron_utils/model.py L270-L318
 # 提交版本：22cdc6e1
 def setup_model_and_optimizer(args, role="actor"):
     assert not args.moe_use_upcycling
@@ -158,7 +158,7 @@ def setup_model_and_optimizer(args, role="actor"):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L204-L206
+## 来源：slime/backends/megatron_utils/model.py L204-L206
 # 提交版本：22cdc6e1
 args.train_iters = args.num_rollout * args.rollout_batch_size * args.n_samples_per_prompt // args.global_batch_size
 if args.lr_decay_iters is None:
@@ -167,7 +167,7 @@ if args.lr_decay_iters is None:
 
 **Comment：**
 
-- `num_rollout` 来自批次 06 的 RolloutManager 推导
+- `num_rollout` 来自[[06-PlacementGroup-00-MOC]] 的 RolloutManager 推导
 - 可显式 `--lr-decay-iters` 精确控制
 
 ---
@@ -179,7 +179,7 @@ if args.lr_decay_iters is None:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L345-L377
+## 来源：slime/backends/megatron_utils/model.py L345-L377
 # 提交版本：22cdc6e1
 def forward_only(
     f: Callable[..., dict[str, list[torch.Tensor]]],
@@ -195,5 +195,5 @@ def forward_only(
 
 **Comment：**
 
-- 回调 `f` 通常是 `get_log_probs_and_entropy` 或 `get_values`（批次 21）
+- 回调 `f` 通常是 `get_log_probs_and_entropy` 或 `get_values`（[[21-Loss-Advantages-00-MOC]]）
 - Megatron actor.init 末尾调用 forward_only 填充 ref/teacher log probs

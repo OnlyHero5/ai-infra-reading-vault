@@ -47,7 +47,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L78-L91
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L78-L91
 # 提交版本：70df09b
 class ForwardMode(IntEnum):
     # Extend a sequence. The KV cache of the beginning part of the sequence is already computed (e.g., system prompt).
@@ -111,7 +111,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L14-L26
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L14-L26
 # 提交版本：70df09b
 """
 Store information about a forward batch.
@@ -140,7 +140,7 @@ ScheduleBatch -> ForwardBatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L78-L161
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L78-L161
 # 提交版本：70df09b
 class ForwardMode(IntEnum):
     # Extend a sequence. The KV cache of the beginning part of the sequence is already computed (e.g., system prompt).
@@ -241,7 +241,7 @@ class ForwardMode(IntEnum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L335-L340
+## 来源：python/sglang/srt/model_executor/model_runner.py L335-L340
 # 提交版本：70df09b
 class ModelRunnerOutput:
     logits_output: Union[LogitsProcessorOutput, PPProxyTensors]
@@ -263,7 +263,7 @@ class ModelRunnerOutput:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L63-L101
+## 来源：python/sglang/srt/managers/tp_worker.py L63-L101
 # 提交版本：70df09b
 class BaseTpWorker(ABC):
     @abstractmethod

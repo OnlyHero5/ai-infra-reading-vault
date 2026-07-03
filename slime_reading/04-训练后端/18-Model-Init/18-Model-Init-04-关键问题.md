@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L291-L292
+## 来源：slime/backends/megatron_utils/model.py L291-L292
 # 提交版本：22cdc6e1
 assert not args.moe_use_upcycling
 assert args.load is not None or args.pretrained_checkpoint is not None
@@ -30,7 +30,7 @@ assert args.load is not None or args.pretrained_checkpoint is not None
 
 **Comment：**
 
-- torch_dist ref-load 来自 [[05-Tools-DataPrep]]
+- torch_dist ref-load 来自 [[05-Tools-DataPrep-00-MOC]]
 - Bridge 模式可能 `--load` 指向 HF 同步后的 ckpt
 
 ---
@@ -42,7 +42,7 @@ assert args.load is not None or args.pretrained_checkpoint is not None
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L87-L93
+## 来源：slime/backends/megatron_utils/model_provider.py L87-L93
 # 提交版本：22cdc6e1
 if args.megatron_to_hf_mode == "bridge":
     bridge = patch_auto_bridge_hf_config(AutoBridge.from_hf_pretrained(args.hf_checkpoint, ...))
@@ -58,7 +58,7 @@ if args.megatron_to_hf_mode == "bridge":
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L161-L165
+## 来源：slime/backends/megatron_utils/model.py L161-L165
 # 提交版本：22cdc6e1
 logger.warning(
     "Will reinitialize critic %s after checkpoint load because it is %s",
@@ -77,7 +77,7 @@ return True
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L304-L306
+## 来源：slime/backends/megatron_utils/model.py L304-L306
 # 提交版本：22cdc6e1
 assert config.optimizer == "adam", "Stateless Adam only supports --optimizer adam."
 assert args.no_save_optim, "Stateless Adam does not save Adam moment states."
@@ -92,7 +92,7 @@ assert args.no_save_optim, "Stateless Adam does not save Adam moment states."
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L488-L489
+## 来源：slime/backends/megatron_utils/model.py L488-L489
 # 提交版本：22cdc6e1
 if mpu.is_pipeline_last_stage():
     keys = forward_data_store[0].keys()
@@ -107,7 +107,7 @@ if mpu.is_pipeline_last_stage():
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L195-L203
+## 来源：slime/backends/megatron_utils/model.py L195-L203
 # 提交版本：22cdc6e1
 # train_iters is an estimate ... actual total can drift ...
 # Pass --lr-decay-iters explicitly if you need exact decay control.
@@ -123,7 +123,7 @@ args.train_iters = args.num_rollout * args.rollout_batch_size * args.n_samples_p
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L79-L82
+## 来源：slime/backends/megatron_utils/model_provider.py L79-L82
 # 提交版本：22cdc6e1
 if post_process and role == "critic":
     model.output_layer = LinearForLastLayer(
@@ -142,7 +142,7 @@ if post_process and role == "critic":
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L56-L58
+## 来源：slime/backends/megatron_utils/actor.py L56-L58
 # 提交版本：22cdc6e1
 if args.debug_rollout_only:
     self.args = args

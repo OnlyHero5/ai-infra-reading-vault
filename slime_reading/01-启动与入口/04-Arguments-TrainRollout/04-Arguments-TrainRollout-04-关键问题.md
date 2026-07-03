@@ -26,7 +26,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L36-L42
+## 来源：docs/en/get_started/customization.md L36-L42
 # start with --custom-generate-function-path plus --custom-rm-path
 # Replace the entire rollout orchestration (only when per-sample customization is not enough)
 # --rollout-function-path
@@ -41,7 +41,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L43-L45
+## 来源：slime/utils/misc.py L43-L45
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)
     return getattr(module, attr)
@@ -58,7 +58,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L88-L91
+## 来源：slime/backends/sglang_utils/arguments.py L88-L91
                 original_flag_stem = item_flag.lstrip("-")
                 prefixed_item = f"--sglang-{original_flag_stem}"
 ```
@@ -70,7 +70,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L45-L63
+## 来源：slime/backends/sglang_utils/arguments.py L45-L63
     skipped_args = [
         "model_path", "config", "trust_remote_code", "random_seed",
         "enable_memory_saver", "tp_size", "port", "nnodes", ...
@@ -88,7 +88,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L143-L144
+## 来源：slime/backends/megatron_utils/arguments.py L143-L144
     if len(errors) > 0:
         raise AssertionError("hf_validate_args failed: " + "; ".join(errors))
 ```
@@ -102,7 +102,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L902-L919
+## 来源：slime/utils/arguments.py L902-L919
             parser.add_argument(
                 "--loss-type",
                 choices=["policy_loss", "sft_loss", "custom_loss"],
@@ -125,7 +125,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L134-L137
+## 来源：docs/en/get_started/customization.md L134-L137
 # Signature (batch mode, when --group-rm is enabled):
 # async def batched_custom_rm(args, samples: list[Sample]) -> list[float]
 ```
@@ -133,7 +133,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1338-L1340
+## 来源：slime/utils/arguments.py L1338-L1340
             parser.add_argument(
                 "--group-rm", action="store_true", default=False, help="Whether to do rm on a whole group."
             )
@@ -146,7 +146,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L462-L471
+## 来源：docs/en/get_started/customization.md L462-L471
 # test_plugin_rollout_contracts.py      → --rollout-function-path
 # test_plugin_generate_contracts.py     → --custom-generate-function-path
 # test_plugin_path_loading_contracts.py → eval, rm, filters, data-source, ...
@@ -162,7 +162,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1908-L1909
+## 来源：slime/utils/arguments.py L1908-L1909
     if args.eval_function_path is None:
         args.eval_function_path = args.rollout_function_path
 ```
@@ -178,7 +178,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L690-L701
+## 来源：slime/utils/arguments.py L690-L701
             reset_arg(parser, "--global-batch-size", type=int, default=None)
             parser.add_argument(
                 "--num-steps-per-rollout",
@@ -198,7 +198,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L448-L449
+## 来源：slime/utils/arguments.py L448-L449
                     "You could use `slime.rollout.filter_hub.dynamic_sampling_filters.check_reward_nonzero_std` as an example."
 ```
 
@@ -211,7 +211,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L453-L456
+## 来源：docs/en/get_started/customization.md L453-L456
 # --use-routing-replay           Forward-backward routing consistency in training.
 # --use-rollout-routing-replay   R3: Replay routing from rollout during training.
 ```
@@ -219,7 +219,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1950-L1951
+## 来源：slime/utils/arguments.py L1950-L1951
     if args.use_rollout_routing_replay:
         args.use_routing_replay = True
 ```

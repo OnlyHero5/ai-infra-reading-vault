@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code（对比）：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1537-L1540
+## 来源：python/sglang/srt/managers/scheduler.py L1537-L1540
             # Launch the current batch
             if batch:
                 result = self.run_batch(batch)
@@ -41,7 +41,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1632-L1649
+## 来源：python/sglang/srt/managers/scheduler.py L1632-L1649
         disable_overlap_for_batch = (
             envs.SGLANG_DISABLE_CONSECUTIVE_PREFILL_OVERLAP.get()
             and batch_is_extend
@@ -73,7 +73,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3040-L3056
+## 来源：python/sglang/srt/managers/scheduler.py L3040-L3056
         # Check if decode out of memory
         if (kv_full_retract_flag := not batch.check_decode_mem()) or (
             TEST_RETRACT and self.forward_ct % TEST_RETRACT_INTERVAL == 0
@@ -104,7 +104,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4168-L4178
+## 来源：python/sglang/srt/managers/scheduler.py L4168-L4178
     if disaggregation_mode == DisaggregationMode.NULL:
         if scheduler.enable_pdmux:
             scheduler.event_loop_pdmux()
@@ -137,7 +137,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L606-L610
+## 来源：python/sglang/srt/managers/scheduler.py L606-L610
         is_rank_zero = (
             self.ps.pp_rank == 0
             and self.ps.attn_tp_rank == 0
@@ -154,7 +154,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2604-L2615
+## 来源：python/sglang/srt/managers/scheduler.py L2604-L2615
         if self.chunked_req is not None:
             # Move the chunked request out of the batch so that we can merge
             # only finished requests to running_batch.
@@ -180,7 +180,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1529-L1531 / L1569-L1570
+## 来源：python/sglang/srt/managers/scheduler.py L1529-L1531 / L1569-L1570
             self.process_input_requests(recv_reqs)
             if self._engine_paused:
                 continue
@@ -208,7 +208,7 @@ Scheduler 在 `_get_new_batch_prefill_raw` 中 **实例化并驱动** PrefillAdd
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1618-L1649
+## 来源：python/sglang/srt/managers/scheduler.py L1618-L1649
     def is_disable_overlap_for_batch(self, batch: ScheduleBatch) -> bool:
         # For two consecutive prefill batches, we disable overlap to improve the TTFT of the first batch.
         # This might slightly hurt the throughput, so we use an environment variable to control it.
@@ -256,7 +256,7 @@ Scheduler 在 `_get_new_batch_prefill_raw` 中 **实例化并驱动** PrefillAdd
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1553-L1560
+## 来源：python/sglang/srt/managers/scheduler.py L1553-L1560
         self.result_queue: Deque[
             Tuple[ScheduleBatch, Union[GenerationBatchResult, EmbeddingBatchResult]]
         ] = deque()
@@ -278,7 +278,7 @@ Scheduler 在 `_get_new_batch_prefill_raw` 中 **实例化并驱动** PrefillAdd
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L80-L81
+## 来源：python/sglang/srt/disaggregation/prefill.py L80-L81
     if retry_prob <= 0 or req.time_stats.prefill_retry_count > 0 or req.is_retracted:
         return False
 ```
@@ -294,7 +294,7 @@ Scheduler 在 `_get_new_batch_prefill_raw` 中 **实例化并驱动** PrefillAdd
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3966-L3977
+## 来源：python/sglang/srt/managers/scheduler.py L3966-L3977
     def pause_generation(self, recv_req: PauseGenerationReqInput):
         self._engine_paused = True
 
@@ -312,12 +312,12 @@ Scheduler 在 `_get_new_batch_prefill_raw` 中 **实例化并驱动** PrefillAdd
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1530-L1531
+## 来源：python/sglang/srt/managers/scheduler.py L1530-L1531
             if self._engine_paused:
                 continue
 ```
 
-**Comment：** 权重热更新见 [[32-CheckpointEngine-00-MOC|CheckpointEngine CheckpointEngine]]；调试 pause 行为可先 `--disable-overlap-schedule` 简化状态机。
+**Comment：** 权重热更新见 [[32-CheckpointEngine-00-MOC|CheckpointEngine]]；调试 pause 行为可先 `--disable-overlap-schedule` 简化状态机。
 
 ---
 

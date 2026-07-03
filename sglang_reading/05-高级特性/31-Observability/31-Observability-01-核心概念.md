@@ -38,7 +38,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L53-L61
+## 来源：python/sglang/srt/observability/metrics_collector.py L53-L61
         # NOTE: If requests have priority=None (no --default-priority-value set),
         # Counter will produce {None: N}, resulting in priority="None" Prometheus labels.
         # Set --default-priority-value when enabling priority scheduling to avoid this.
@@ -77,7 +77,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L1070-L1081
+## 来源：python/sglang/srt/server_args.py L1070-L1081
     enable_metrics: A[bool, "Enable log prometheus metrics."] = False
     grpc_http_sidecar_port: A[
         Optional[int],
@@ -107,7 +107,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L64-L100
+## 来源：python/sglang/srt/observability/metrics_collector.py L64-L100
 @dataclass
 class SchedulerStats:
     # Basics
@@ -162,7 +162,7 @@ class SchedulerStats:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L44-L61
+## 来源：python/sglang/srt/observability/metrics_collector.py L44-L61
 @dataclass
 class QueueCount:
     """Holds both the total count and optional per-priority breakdown for a queue."""
@@ -197,7 +197,7 @@ class QueueCount:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1635-L1679
+## 来源：python/sglang/srt/observability/metrics_collector.py L1635-L1679
     def observe_one_finished_request(
         self,
         labels: Dict[str, str],
@@ -260,7 +260,7 @@ class QueueCount:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/request_logger.py L44-L60
+## 来源：python/sglang/srt/utils/request_logger.py L44-L60
 class RequestLogger:
     def __init__(
         self,
@@ -295,7 +295,7 @@ class RequestLogger:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/request_metrics_exporter.py L21-L32
+## 来源：python/sglang/srt/observability/request_metrics_exporter.py L21-L32
 class RequestMetricsExporter(ABC):
     """Abstract base class for exporting request-level performance metrics to a data destination."""
 

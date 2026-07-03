@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # KV Cache 分配与存储
 
-> **阶段 IV · 内存与 Attention** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 IV · 内存与 Attention** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `mem_cache/allocator/`、`mem_cache/memory_pool.py`、`mem_cache/storage/`
 
 ---
@@ -73,7 +73,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/base.py L27-L110
+## 来源：python/sglang/srt/mem_cache/allocator/base.py L27-L110
 class BaseTokenToKVPoolAllocator(abc.ABC):
     @abc.abstractmethod
     def __init__(

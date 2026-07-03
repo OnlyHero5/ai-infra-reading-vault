@@ -3,7 +3,7 @@ type: batch-doc
 module: 21-Loss-Advantages
 batch: "21"
 doc_type: moc
-title: "Loss · Advantages · 批次概述"
+title: "Loss · Advantages · 专题概述"
 tags:
   - slime/batch/21
   - slime/module/loss-advantages
@@ -11,16 +11,15 @@ tags:
 updated: 2026-07-02
 ---
 
-# Loss · Advantages · 批次概述
+# Loss · Advantages · 专题概述
 
-> **批次 21** | 阶段 IV 训练后端 | 基线 commit `22cdc6e1`  
 > 源码主文件：`slime/slime/backends/megatron_utils/loss.py`（优势/回报计算 + logprob/value 提取）
 
 ---
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套后，读者应能：
+读完本专题六件套后，读者应能：
 
 1. 说明 `compute_advantages_and_returns` 在 actor/critic 训练前的位置，以及它如何从 `RolloutBatch` 就地写入 `advantages` / `returns`
 2. 对比 **GRPO / PPO(GAE) / REINFORCE++ / REINFORCE++-baseline** 四条 `advantage_estimator` 分支的数据依赖
@@ -44,7 +43,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 符号 | 行号（约） | 本批覆盖 |
+| 优先级 | 符号 | 行号（约） | 本专题覆盖 |
 |--------|------|-----------|---------|
 | P0 | `compute_advantages_and_returns` | L661–828 | ✅ 全文 |
 | P0 | `get_log_probs_and_entropy` | L470–561 | ✅ 全文 |
@@ -56,18 +55,18 @@ updated: 2026-07-02
 | 延后 | `policy_loss_function` | L881+ | [[22-Loss-Policy-00-MOC]] |
 | 依赖 | `ppo_utils.get_grpo_returns` 等 | — | 01/02 引用 |
 
-**本批内嵌源码热点：≥ 400 行**（四主函数 + helper 片段，见 [[21-Loss-Advantages-02-源码走读]]）。
+**本专题内嵌源码热点：≥ 400 行**（四主函数 + helper 片段，见 [[21-Loss-Advantages-02-源码走读]]）。
 
 ---
 
 ## 入口代码：actor 训练前如何调用
 
-**Explain：** `MegatronTrainRayActor.train_actor` 在 `forward_only` 收集 `log_probs` / `ref_log_probs` / `teacher_log_probs` 与 critic `values` 之后，于 **policy backward 之前** 调用 `compute_advantages_and_returns`。该函数只在 pipeline last stage 上执行，结果写回 `rollout_data` 供后续 `policy_loss_function`（批次 22）消费。
+**Explain：** `MegatronTrainRayActor.train_actor` 在 `forward_only` 收集 `log_probs` / `ref_log_probs` / `teacher_log_probs` 与 critic `values` 之后，于 **policy backward 之前** 调用 `compute_advantages_and_returns`。该函数只在 pipeline last stage 上执行，结果写回 `rollout_data` 供后续 `policy_loss_function`（[[22-Loss-Policy-00-MOC]]）消费。
 
 **Code：**
 
 ```python
-# 来源：actor.py L440–509（节选）
+## 来源：actor.py L440–509（节选）
             if self.args.compute_advantages_and_returns:
                 if "ref" in self.weights_backuper.backup_tags:
                     self._switch_model("ref")
@@ -130,4 +129,4 @@ flowchart TB
 ## 相关测试
 
 - `tests/test_chunked_gae.py` — GAE / advantage 分块与 CP 行为
-- `tests/test_loss_cp_invariance.py` — CP 下 loss 不变性（与批次 23 共用）
+- `tests/test_loss_cp_invariance.py` — CP 下 loss 不变性（与[[23-CP-RoutingReplay-00-MOC]] 共用）

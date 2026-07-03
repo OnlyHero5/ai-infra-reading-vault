@@ -37,7 +37,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L152-L153
+## 来源：slime/backends/sglang_utils/external.py L152-L153
     def recover(self):
         logger.warning("Fault tolerance is not supported for external rollout engines; skip recover.")
 ```
@@ -78,7 +78,7 @@ updated: 2026-07-02
 **Code（失败形态）：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L191-L193
+## 来源：slime/backends/sglang_utils/sglang_engine.py L191-L193
                 assert (
                     actual_value == expect_value
                 ), f"{name=} {expect_value=} {actual_value=} ..."
@@ -95,7 +95,7 @@ updated: 2026-07-02
 **Code：**
 
 ```markdown
-# 来源：docs/en/advanced/external-rollout-engines.md L98
+## 来源：docs/en/advanced/external-rollout-engines.md L98
 - Disk transport requires trainer and SGLang engines to see the same `--update-weight-disk-dir` path
 ```
 
@@ -119,7 +119,7 @@ updated: 2026-07-02
 **Code：**
 
 ```markdown
-# 来源：docs/en/advanced/external-rollout-engines.md L101
+## 来源：docs/en/advanced/external-rollout-engines.md L101
 - Delta mode does not support `--colocate`
 ```
 
@@ -138,7 +138,7 @@ External + delta + disk 是跨 DC 大模型的典型组合（参考 Cursor Compo
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L53-L54
+## 来源：slime/backends/sglang_utils/external.py L53-L54
     if info.worker_type == "prefill":
         init_kwargs["disaggregation_bootstrap_port"] = info.disaggregation_bootstrap_port
 ```
@@ -162,7 +162,7 @@ External + delta + disk 是跨 DC 大模型的典型组合（参考 Cursor Compo
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L106-L109
+## 来源：slime/ray/placement_group.py L106-L109
     if args.rollout_external:
         if args.debug_rollout_only:
             return 0, 0
@@ -173,16 +173,16 @@ External + delta + disk 是跨 DC 大模型的典型组合（参考 Cursor Compo
 
 ---
 
-## Q10：与批次 15 SGLangEngine 的分工？
+## Q10：与[[15-SGLang-Engine-00-MOC]] SGLangEngine 的分工？
 
-| 批次 15 | 批次 16 |
+| [[15-SGLang-Engine-00-MOC]] | [[16-External-Engines-00-MOC]] |
 |---------|---------|
 | `SGLangEngine` 全 API（launch、update_weights*） | external 专用路径 + HTTP 基础设施 |
 | `launch_server_process` | **不 launch**，只对接 |
 | 内置 fault tolerance | 明确不支持 recover |
 | NCCL group 细节 | 部署选型 + disk/delta 路线图 |
 
-读 external 模式时，批次 15 的 `_init_external` 与 `_register_to_router` 是必要前置。
+读 external 模式时，[[15-SGLang-Engine-00-MOC]] 的 `_init_external` 与 `_register_to_router` 是必要前置。
 
 ---
 
@@ -193,7 +193,7 @@ External + delta + disk 是跨 DC 大模型的典型组合（参考 Cursor Compo
 **Code：**
 
 ```python
-# 来源：slime/utils/http_utils.py L165-L166
+## 来源：slime/utils/http_utils.py L165-L166
 async def _post(client, url, payload, max_retries=60, headers=None):
     retry_count = 0
 ```

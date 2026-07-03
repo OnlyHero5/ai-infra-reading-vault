@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code（Decode 预分配握手）：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L4-L7
+## 来源：python/sglang/srt/disaggregation/decode.py L4-L7
 1. PreallocQueue:
     a. Initialize a receiver for each request
     b. The request handshakes first, and pre-allocate kv once there is available kv.
@@ -45,7 +45,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/disagg_service.py L18-L19
+## 来源：python/sglang/srt/managers/disagg_service.py L18-L19
     disagg_mode = DisaggregationMode(server_args.disaggregation_mode)
     transfer_backend = TransferBackend(server_args.disaggregation_transfer_backend)
 ```
@@ -69,7 +69,7 @@ if poll == KVPoll.Success:
 **Code（正确 — 框架内置 gate）：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L114-L118
+## 来源：python/sglang/srt/disaggregation/utils.py L114-L118
             actual_room = metadata_buffers.bootstrap_room[
                 decode_req.metadata_buffer_index, 0
             ].item()
@@ -88,7 +88,7 @@ if poll == KVPoll.Success:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L115-L116
+## 来源：python/sglang/srt/disaggregation/decode.py L115-L116
     In DecodeReqToTokenPool, if `--max-running-requests` is 8,
     #running <= 8, #pre-allocated + #transfer <= pre_alloc_size, so we can use the free memory to pre-allocate requests to unblock prefill.
 ```
@@ -104,7 +104,7 @@ if poll == KVPoll.Success:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L80-L81
+## 来源：python/sglang/srt/disaggregation/prefill.py L80-L81
     if retry_prob <= 0 or req.time_stats.prefill_retry_count > 0 or req.is_retracted:
         return False
 ```
@@ -120,7 +120,7 @@ if poll == KVPoll.Success:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L23-L47
+## 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L23-L47
 @dataclass
 class DecodePrefixMatch:
     prefix_indices: torch.Tensor
@@ -166,7 +166,7 @@ class DecodePrefixMatch:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
+## 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
 def dispatch_event_loop(scheduler: Scheduler):
     # Dispatch to the appropriate event loop based on the disaggregation mode
     server_args = scheduler.server_args
@@ -211,7 +211,7 @@ def dispatch_event_loop(scheduler: Scheduler):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L114-L118
+## 来源：python/sglang/srt/disaggregation/utils.py L114-L118
             actual_room = metadata_buffers.bootstrap_room[
                 decode_req.metadata_buffer_index, 0
             ].item()
@@ -230,7 +230,7 @@ def dispatch_event_loop(scheduler: Scheduler):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L115-L116
+## 来源：python/sglang/srt/disaggregation/decode.py L115-L116
     In DecodeReqToTokenPool, if `--max-running-requests` is 8,
     #running <= 8, #pre-allocated + #transfer <= pre_alloc_size, so we can use the free memory to pre-allocate requests to unblock prefill.
 ```
@@ -246,7 +246,7 @@ def dispatch_event_loop(scheduler: Scheduler):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L61-L68
+## 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L61-L68
     def _build_decode_prefix_match(self, req: Req, result: Any) -> DecodePrefixMatch:
         """Convert a ``match_prefix_for_req`` result into ``DecodePrefixMatch``.
 

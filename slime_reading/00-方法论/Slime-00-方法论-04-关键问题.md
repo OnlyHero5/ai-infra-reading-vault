@@ -17,11 +17,11 @@ updated: 2026-07-02
 
 ## Q1：推荐阅读顺序是什么？
 
-**Explain：** 先建立三角与闭环（本批），再跟 `train.py` 主循环，然后参数/Ray，再深入 Rollout 与 Megatron。
+**Explain：** 先建立三角与闭环（本专题），再跟 `train.py` 主循环，然后参数/Ray，再深入 Rollout 与 Megatron。
 
-| 阶段 | 批次 | 主题 |
+| 阶段 | 专题 | 主题 |
 |------|------|------|
-| 0 | 01 | 方法论（本批） |
+| 0 | 01 | 方法论（本专题） |
 | I | 02–05 | 训练入口、参数、数据准备 |
 | II | 06–07 | Ray PG、RayTrainGroup |
 | III | 08–16 | Rollout 全栈 |
@@ -29,7 +29,7 @@ updated: 2026-07-02
 | V | 24–26 | 权重同步 |
 | VI–VIII | 27–30 | Agent、插件、收官 |
 
-**Comment：** 完整表见 [[Slime-progress]] 与 [[AGENT-DISPATCH]]。
+**Comment：** 
 
 ---
 
@@ -46,7 +46,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L53-L54
+## 来源：docs/en/blogs/introducing_slime.md L53-L54
 # RL workloads involve tons of online sampling during training,
 # which makes the inference performance crucial.
 # Therefore, slime exclusively integrates SGLang ...
@@ -68,7 +68,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README_zh.md L22-L24
+## 来源：README_zh.md L22-L24
 # **从设计开始就是 native**：slime 直接透传 Megatron 参数，
 # 并通过 `--sglang-` 前缀暴露当前安装版本 SGLang 支持的参数。
 # 新的上游训练和 serving 优化可以直接使用，不需要在 slime 里再加一层抽象。
@@ -77,7 +77,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README_zh.md L14-L14（致谢）
+## 来源：README_zh.md L14-L14（致谢）
 # 特别感谢 ... OpenRLHF、veRL ...
 # （Slime 借鉴生态但选择不同架构取舍）
 ```
@@ -96,7 +96,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README.md L24-L24
+## 来源：README.md L24-L24
 # By choosing one rollout backend, slime can use SGLang-specific capabilities directly
 # instead of flattening multiple inference engines into a lowest-common-denominator abstraction.
 ```
@@ -112,7 +112,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README_zh.md L91-L93
+## 来源：README_zh.md L91-L93
 # **data buffer**：桥梁模块，管理 prompt 初始化、自定义数据与 rollout 生成方法
 # （包括以同一套接口产出 sample 的 agentic workflow）。
 ```
@@ -140,7 +140,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L34-L36
+## 来源：docs/en/get_started/customization.md L34-L36
 # Agentic workflows ... plug into slime through the existing customization interfaces;
 # slime does not require a separate agent framework.
 # start with --custom-generate-function-path plus --custom-rm-path
@@ -150,6 +150,6 @@ updated: 2026-07-02
 
 ---
 
-## Q8：如何验证「读懂了」本批？
+## Q8：如何验证「读懂了」本专题？
 
 见 [[Slime-00-方法论-05-checkpoint]] 读者自测项；能不看源码口述三角 + 闭环三步即通过。

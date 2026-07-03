@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # EngineTopology · 验收清单
 
-> 完成本批五篇正文后逐项自测。状态：**已完成** ✅
+> 完成本专题五篇正文后逐项自测。状态：**已完成** ✅
 
 ---
 
@@ -45,15 +45,14 @@ updated: 2026-07-02
 - [ ] 文件名前缀 `09-EngineTopology-`，无泛化 `README` / `01-核心概念`
 - [ ] frontmatter 含 `slime/batch/09` + `slime/doc/*`
 - [ ] Mermaid 使用 `<br/>` 换行，无 `\n`
-- [ ] 双链指向相邻批次（[[08-RolloutManager-00-MOC]]、[[22-Disaggregation-00-MOC]] 等）
-- [ ] 已更新 [[Slime-progress]] 批次 09 为 ✅
+- [ ] 双链指向相邻专题（[[08-RolloutManager-00-MOC]]、[[22-Disaggregation-00-MOC]] 等）
 
 ---
 
 ## 建议动手验证（可选，需 GPU 环境）
 
 ```bash
-# 来源：slime/tests/utils/test_sglang_config.py
+## 来源：slime/tests/utils/test_sglang_config.py
 pytest slime/tests/utils/test_sglang_config.py -k resolve -v
 ```
 

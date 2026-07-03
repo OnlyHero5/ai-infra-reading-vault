@@ -6,8 +6,6 @@ tags:
  - sglang/index-layer
  - sglang/batch/30
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 
@@ -30,15 +28,6 @@ updated: 2026-07-02
 - [x] 仅读 `sglang_reading/` 可复述 HTTP 与 gRPC 双链路
 - [x] 能解释 metrics：`cache_hit_rate`、`num_grammar_queue_reqs`
 - [x] 能回答架构决策：何时 PD / 何时 spec / 何时依赖 RadixCache（见 [[08-设计追问与框架对比|08-设计追问与框架对比]]）
-
----
-
-## 维护者检查
-
-- [x] onboard 六件套与全链路文档均含内嵌源码，无「（概念）」占位
-- [x] `03-关键概念.md` 共 12 节，覆盖 HTTP/gRPC 双链路与核心运行时概念
-- [x] 内部链接有效；早期草稿已清理
-- [x] 可观测性（可观测性）、32（CheckpointEngine）文档已纳入总索引
 
 ---
 

@@ -20,10 +20,10 @@ Slime RL 闭环（generate → train → update_weights）中，**训练后端 M
 | 组件 | 典型权重来源 | 格式 |
 |------|-------------|------|
 | Megatron Actor | `--ref-load` / `--load` | Megatron **torch_dist**（分布式 checkpoint） |
-| SGLang Rollout | 经 `update_weights` 推送 | 运行时 tensor / HF 映射（非本批重点） |
+| SGLang Rollout | 经 `update_weights` 推送 | 运行时 tensor / HF 映射（非本专题重点） |
 | Tokenizer / config | `--hf-checkpoint` | Hugging Face 目录（config、tokenizer、可选 FP8 元数据） |
 
-本批工具链解决 **离线** 问题：训练启动前把 Hugging Face 权重转为 Megatron 可加载的 `torch_dist`；训练后把 Megatron checkpoint 转回 HF safetensors。
+本专题工具链解决 **离线** 问题：训练启动前把 Hugging Face 权重转为 Megatron 可加载的 `torch_dist`；训练后把 Megatron checkpoint 转回 HF safetensors。
 
 ```mermaid
 flowchart LR
@@ -55,7 +55,7 @@ flowchart LR
 **Code：**
 
 ```bash
-# 来源：docs/en/get_started/quick_start.md L76-L89
+## 来源：docs/en/get_started/quick_start.md L76-L89
 # 提交版本：22cdc6e1
 cd /root/slime
 source scripts/models/glm4-9B.sh
@@ -79,7 +79,7 @@ PYTHONPATH=/root/Megatron-LM python tools/convert_hf_to_torch_dist.py \
 **Code：**
 
 ```bash
-# 来源：scripts/models/qwen3-4B.sh L1-L16
+## 来源：scripts/models/qwen3-4B.sh L1-L16
 # 提交版本：22cdc6e1
 MODEL_ARGS=(
    --swiglu
@@ -113,7 +113,7 @@ MODEL_ARGS=(
 **Code：**
 
 ```bash
-# 来源：docs/en/get_started/quick_start.md L138-L147（摘录）
+## 来源：docs/en/get_started/quick_start.md L138-L147（摘录）
 # 提交版本：22cdc6e1
 CKPT_ARGS=(
    --hf-checkpoint /root/GLM-Z1-9B-0414
@@ -127,7 +127,7 @@ CKPT_ARGS=(
 **Comment：**
 
 - `--hf-checkpoint`：**不**用于 Megatron 加载主权重；供 tokenizer、chat template、SGLang HF 路径
-- `--ref-load`：本批 `convert_hf_to_torch_dist` 产出；首次训练或 `--load` 无效时加载
+- `--ref-load`：本专题 `convert_hf_to_torch_dist` 产出；首次训练或 `--load` 无效时加载
 - `--load` / `--save`：RL 训练过程中的 Megatron checkpoint；结构与 `ref-load` 相同
 - bf16 训练 + fp8 rollout 时，Megatron 仍用 bf16 转换的 torch_dist（quick_start § bf16 Training fp8 Inference）
 
@@ -138,7 +138,7 @@ CKPT_ARGS=(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L147-L177
+## 来源：slime/backends/megatron_utils/arguments.py L147-L177
 # 提交版本：22cdc6e1
 def _set_default_megatron_args(args):
     args.use_distributed_optimizer = True
@@ -162,7 +162,7 @@ def _set_default_megatron_args(args):
 
 - `padded_vocab_size` 是 embedding 转 HF 时可能「对不齐」的根源（见 [[05-Tools-DataPrep-04-关键问题]]）
 - tokenizer 默认指向 `--hf-checkpoint`，转换阶段不跑训练但仍需 HF 路径合法
-- 正式训练的 `parse_args()` 也会走同一套 default（批次 03–04）
+- 正式训练的 `parse_args()` 也会走同一套 default（[[03-Arguments-Ray-00-MOC]]–[[04-Arguments-TrainRollout-00-MOC]]）
 
 ## mbridge 与 slime_plugins
 
@@ -171,7 +171,7 @@ def _set_default_megatron_args(args):
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L12-L14, L124-L126
+## 来源：tools/convert_hf_to_torch_dist.py L12-L14, L124-L126
 # 提交版本：22cdc6e1
 import slime_plugins.mbridge  # noqa: F401
 from mbridge import AutoBridge
@@ -183,7 +183,7 @@ bridge.load_weights(model, hf_model_path, memory_efficient=True)
 **Comment：**
 
 - `memory_efficient=True` 降低大模型转换峰值内存
-- 新架构通常需在 `slime_plugins/mbridge/` 扩展（批次 29 plugins）
+- 新架构通常需在 `slime_plugins/mbridge/` 扩展（[[29-Plugins-Examples-00-MOC]] plugins）
 - `--custom-model-provider-path` 可覆盖 Megatron model provider（MoE / 特殊层）
 
 ## 与 RL 闭环的关系

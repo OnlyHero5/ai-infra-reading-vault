@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L170-L175
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L170-L175
     if cuda_version and cuda_version.startswith("12"):
         install_hint = (
             "pip install sglang-kernel --index-url https://docs.sglang.ai/whl/cu129/"
@@ -46,7 +46,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L59-L65
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L59-L65
     # Determine which version to load based on GPU architecture
     if compute_capability == 90:
         ops_subdir = "sm90"
@@ -70,7 +70,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L59-L66
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L59-L66
     if H < MAX_HEADS:
         q_nope_padded = q_nope.new_empty((B_q, MAX_HEADS, D_q_nope))
         q_nope_padded[:, :H] = q_nope
@@ -95,7 +95,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L16-L18
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L16-L18
     # TODO(DefTruth): Currently, the custom merge_attn_states kernel
     # does not support the FP8 data type and non - CUDA devices.
     # It may be necessary to fall back to using the Triton kernel.
@@ -115,7 +115,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/debug_utils.py L7-L11
+## 来源：sgl-kernel/python/sgl_kernel/debug_utils.py L7-L11
 def _wrap_debug_kernel(func: F, op_name: str | None = None) -> F:
     try:
         if int(os.environ.get("SGLANG_KERNEL_API_LOGLEVEL", "0")) == 0:
@@ -137,8 +137,7 @@ def _wrap_debug_kernel(func: F, op_name: str | None = None) -> F:
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/sampling.py L5-L10
-
+## 来源：sgl-kernel/python/sgl_kernel/sampling.py L5-L10
 try:
     import flashinfer.sampling as _flashinfer_sampling
 

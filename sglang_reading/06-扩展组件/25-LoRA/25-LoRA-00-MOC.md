@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # LoRA 多适配器服务
 
-> 阶段 VI · 扩展组件 | 状态：已完成 | Git：`70df09b` | **图谱更新点**
+> 阶段 VI · 扩展组件 | Git：`70df09b`
 
 ## 1. 本模块在全局架构中的位置
 
@@ -57,7 +57,7 @@ API (lora_path / lora_id)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/lora/lora_manager.py L57-L99
+## 来源：python/sglang/srt/lora/lora_manager.py L57-L99
 class LoRAManager:
     def __init__(
         self,

@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L135-L180
+## 来源：python/sglang/srt/entrypoints/engine.py L135-L180
 # 提交版本：70df09b
 def init_tokenizer_manager(
     server_args: ServerArgs,
@@ -89,7 +89,7 @@ def init_tokenizer_manager(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L782-L908
+## 来源：python/sglang/srt/entrypoints/engine.py L782-L908
 # 提交版本：70df09b
         # Configure global environment
         configure_logger(server_args)
@@ -234,7 +234,7 @@ def init_tokenizer_manager(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L607-L673
+## 来源：python/sglang/srt/entrypoints/engine.py L607-L673
 # 提交版本：70df09b
         if server_args.dp_size == 1:
             # Launch tensor parallel scheduler processes
@@ -316,7 +316,7 @@ def init_tokenizer_manager(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L1368-L1397
+## 来源：python/sglang/srt/entrypoints/engine.py L1368-L1397
 # 提交版本：70df09b
 def _wait_for_scheduler_ready(
     scheduler_pipe_readers: List,
@@ -359,7 +359,7 @@ def _wait_for_scheduler_ready(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L366-L415
+## 来源：python/sglang/srt/entrypoints/engine.py L366-L415
 # 提交版本：70df09b
         routed_dp_rank = self._resolve_routed_dp_rank(
             routed_dp_rank, data_parallel_rank
@@ -426,7 +426,7 @@ def _wait_for_scheduler_ready(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2281-L2327
+## 来源：python/sglang/srt/entrypoints/http_server.py L2281-L2327
 # 提交版本：70df09b
     # Set global states
     set_global_state(
@@ -488,7 +488,7 @@ def _wait_for_scheduler_ready(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L261-L291, L394-L417
+## 来源：python/sglang/srt/entrypoints/http_server.py L261-L291, L394-L417
 # 提交版本：70df09b
 @asynccontextmanager
 async def lifespan(fast_api_app: FastAPI):
@@ -534,7 +534,7 @@ async def lifespan(fast_api_app: FastAPI):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2161
+## 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2161
 # 提交版本：70df09b
 def _wait_and_warmup(
     server_args: ServerArgs,
@@ -558,7 +558,7 @@ def _wait_and_warmup(
 **Code（warmup 探测 `/model_info`）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1992-L2010
+## 来源：python/sglang/srt/entrypoints/http_server.py L1992-L2010
 # 提交版本：70df09b
     # Wait until the server is launched
     success = False
@@ -592,7 +592,7 @@ def _wait_and_warmup(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L785-L835
+## 来源：python/sglang/srt/entrypoints/http_server.py L785-L835
 # 提交版本：70df09b
 @app.api_route(
     "/generate",
@@ -658,7 +658,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L588-L637
+## 来源：python/sglang/srt/entrypoints/http_server.py L588-L637
 # 提交版本：70df09b
     if _global_state.tokenizer_manager.gracefully_exit:
         logger.info("Health check request received during shutdown. Returning 503.")
@@ -721,7 +721,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1606-L1613
+## 来源：python/sglang/srt/entrypoints/http_server.py L1606-L1613
 # 提交版本：70df09b
 @app.post("/v1/chat/completions", dependencies=[Depends(validate_json_request)])
 async def openai_v1_chat_completions(

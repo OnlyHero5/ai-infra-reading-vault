@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Sampling 与约束解码
 
-> **阶段 V · 高级特性** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 V · 高级特性** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/sampling/`、`srt/constrained/`、`srt/parser/`
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
+## 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
 class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
     """
     The sampling parameters.

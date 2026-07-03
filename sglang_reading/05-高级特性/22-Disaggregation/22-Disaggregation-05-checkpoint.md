@@ -8,8 +8,6 @@ tags:
  - sglang/batch/22
  - sglang/module/disaggregation
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # PD 分离 验收清单
@@ -21,11 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 `DisaggregationMode`、`poll_and_all_reduce`、`_apply_metadata_gate` 的作用
 - [x] 能解释 DecodeReqToTokenPool 为何能 unblock Prefill bootstrap
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 对照 knowledge-graph 已覆盖 disaggregation 子域
-- [x] 已更新 [[progress]]
 
 ## 核心结论
 

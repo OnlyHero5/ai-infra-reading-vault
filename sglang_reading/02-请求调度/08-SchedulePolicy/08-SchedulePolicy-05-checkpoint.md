@@ -8,8 +8,6 @@ tags:
  - sglang/batch/08
  - sglang/module/schedule-policy
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 调度策略 验收清单
@@ -21,14 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 3 个核心类/函数及其职责（文档中均有内嵌代码）
 - [x] 能追踪一条典型请求经过本模块的路径（文档中有逐步讲解）
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 无遗漏关键 file 节点
-- [x] 来源注释路径/行号与当前 git 一致
-- [x] 已更新 [[progress]]
 
 ## 核心结论（3 句话）
 

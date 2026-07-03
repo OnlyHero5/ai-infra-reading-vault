@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L257-L297
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L257-L297
 # 提交版本：70df09b
     def __init__(
         self,
@@ -91,7 +91,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L382-L413
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L382-L413
 # 提交版本：70df09b
     def init_ipc_channels(self, port_args: PortArgs):
         context = zmq.asyncio.Context(2)
@@ -143,7 +143,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L589-L646
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L589-L646
 # 提交版本：70df09b
     async def generate_request(
         self,
@@ -238,7 +238,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L637-L646（注释节选）
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L637-L646（注释节选）
         except Exception:
             # _init_req_state created a rid_to_state entry per (sub-)request up
             # front. The normal remover is the scheduler-response path
@@ -264,7 +264,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L793-L832
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L793-L832
 # 提交版本：70df09b
     async def _tokenize_one_request(
         self,
@@ -321,7 +321,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L757-L786
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L757-L786
 # 提交版本：70df09b
         # Step 3: Choose tokenization strategy
         use_async_tokenizer = (
@@ -369,7 +369,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1122-L1160
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1122-L1160
 # 提交版本：70df09b
         input_ids_arr: Optional[array[int]] = (
             array("q", input_ids) if input_ids is not None else None
@@ -426,7 +426,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1331-L1363
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1331-L1363
 # 提交版本：70df09b
     def _send_one_request(
         self,
@@ -480,7 +480,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1822-L1860
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1822-L1860
 # 提交版本：70df09b
     def auto_create_handle_loop(self):
         if self.event_loop is not None:
@@ -538,7 +538,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1970-L2011
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1970-L2011
 # 提交版本：70df09b
             state.finished = recv_obj.finished_reasons[i] is not None
             if isinstance(recv_obj, BatchStrOutput):
@@ -599,7 +599,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1455-L1492
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1455-L1492
 # 提交版本：70df09b
         while True:
             try:
@@ -655,7 +655,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager_score_mixin.py L691-L713
+## 来源：python/sglang/srt/managers/tokenizer_manager_score_mixin.py L691-L713
 # 提交版本：70df09b
         if is_generation:
             batch_request = GenerateReqInput(
@@ -694,7 +694,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L256-L262
+## 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L256-L262
 # 提交版本：70df09b
     async def flush_cache(
         self: TokenizerManager, timeout_s: Optional[float] = None
@@ -714,7 +714,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L379-L385, L449-L480
+## 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L379-L385, L449-L480
 # 提交版本：70df09b
 class MultiTokenizerRouter:
     """A router between tokenizer managers and the scheduler/detokenizer manager.

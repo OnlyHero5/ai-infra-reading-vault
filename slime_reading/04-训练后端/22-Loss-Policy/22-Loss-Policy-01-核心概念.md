@@ -35,7 +35,7 @@ Actor / critic 分步调用 `forward_only` + `train`，每步设置不同 `loss_
 | `gspo` | 序列级 KL expand 到 token，`compute_gspo_kl` |
 | `cispo` | `compute_cispo_loss`：clip ratio **detach**，梯度走 `log_probs` |
 
-**Explain：** advantage 在批次 21 算完；本批只消费 `batch["advantages"]` 与 old/rollout logprob。
+**Explain：** advantage 在[[21-Loss-Advantages-00-MOC]] 算完；本专题只消费 `batch["advantages"]` 与 old/rollout logprob。
 
 ---
 
@@ -44,7 +44,7 @@ Actor / critic 分步调用 `forward_only` + `train`，每步设置不同 `loss_
 **Code：**
 
 ```python
-# 来源：loss.py L911-L912
+## 来源：loss.py L911-L912
     advantages = torch.cat(batch["advantages"], dim=0)
     old_log_probs = batch["rollout_log_probs"] if args.use_rollout_logprobs else batch.get("log_probs")
 ```
@@ -73,7 +73,7 @@ Actor / critic 分步调用 `forward_only` + `train`，每步设置不同 `loss_
 **Code：**
 
 ```python
-# 来源：loss.py L855-L878
+## 来源：loss.py L855-L878
 def icepop_function(args, *, pg_loss, train_log_probs, rollout_log_probs, loss_masks, **kwargs):
     rollout_log_probs = torch.cat(rollout_log_probs, dim=0)
     old_log_probs = torch.cat(train_log_probs, dim=0)
@@ -99,7 +99,7 @@ def icepop_function(args, *, pg_loss, train_log_probs, rollout_log_probs, loss_m
 **Code：**
 
 ```python
-# 来源：loss.py L1290-L1298
+## 来源：loss.py L1290-L1298
     if not args.calculate_per_token_loss:
         loss = (
             loss

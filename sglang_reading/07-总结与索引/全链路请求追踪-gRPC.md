@@ -53,7 +53,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/launch_server.py L41-L45
+## 来源：python/sglang/launch_server.py L41-L45
             raise ImportError(
                 "Ray is required for --use-ray mode. "
                 "Install it with: pip install 'sglang[ray]'"
@@ -105,7 +105,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/grpc_bridge.py（职责）
+## 来源：python/sglang/srt/entrypoints/grpc_bridge.py（职责）
 # submit_request(proto_dict) -> asyncio generator of response chunks
 # 内部：tokenizer_manager.generate_request(obj, ...)
 ```
@@ -121,7 +121,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py（generate_request 核心）
+## 来源：python/sglang/srt/managers/tokenizer_manager.py（generate_request 核心）
  async def generate_request(self, obj, request=None):
  obj.normalize_batch_and_arguments()
  tokenized_obj = await self._tokenize_one_request(obj)
@@ -139,7 +139,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1574-L1595
+## 来源：python/sglang/srt/managers/scheduler.py L1574-L1595
             # Get the next batch to run
             batch = self.get_next_batch_to_run()
             self.cur_batch = batch
@@ -173,7 +173,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L406-L419
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L406-L419
     def handle_batch_token_id_out(self, recv_obj: BatchTokenIDOutput):
         # If handling idle batch, set output_strs to [].
         output_strs = (
@@ -205,3 +205,12 @@ sequenceDiagram
 | 响应 | SSE `data: {...}` | gRPC stream message |
 
 深读 [[05-gRPC-Proto-00-MOC|05-gRPC-Proto]]。
+
+---
+
+## 导航
+
+- [[全链路请求追踪]]
+- [[07-总结与索引-00-MOC]]
+- [[04-导读路径]]
+- [[91_dashboard/dual-library-path|双库联合路径]]

@@ -31,7 +31,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/base.py L27-L110
+## 来源：python/sglang/srt/mem_cache/allocator/base.py L27-L110
 class BaseTokenToKVPoolAllocator(abc.ABC):
     @abc.abstractmethod
     def __init__(
@@ -122,7 +122,6 @@ class BaseTokenToKVPoolAllocator(abc.ABC):
 - 子类必须实现 `clear/alloc/free`
 - `available_size` 默认按 page 折算
 
-
 ---
 
 ## 2. TokenToKVPoolAllocator.alloc
@@ -132,7 +131,7 @@ class BaseTokenToKVPoolAllocator(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/token.py L55-L76
+## 来源：python/sglang/srt/mem_cache/allocator/token.py L55-L76
     def alloc(self, need_size: int):
         if self.need_sort and need_size > len(self.free_pages):
             self.merge_and_sort_free()
@@ -161,7 +160,6 @@ class BaseTokenToKVPoolAllocator(abc.ABC):
 - 空间不足返回 `None`，Scheduler 触发 retract/evict
 - `free` 在 group 模式下暂存到 `free_group`
 
-
 ---
 
 ## 3. PagedTokenToKVPoolAllocator.alloc
@@ -171,7 +169,7 @@ class BaseTokenToKVPoolAllocator(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
 class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
     """
     An allocator managing the indices to kv cache data.
@@ -244,7 +242,6 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 - debug_mode 下断言 page 对齐
 - 输出 `(out_pages[:, None] * page_size + arange(page_size)).reshape(-1)`
 
-
 ---
 
 ## 4. alloc_extend（Prefill 扩展）
@@ -254,7 +251,7 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L172-L215
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L172-L215
     def alloc_extend(
         self,
         prefix_lens: torch.Tensor,
@@ -305,7 +302,6 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 - 输入 `prefix_lens/seq_lens/last_loc` 描述各 req 状态
 - `alloc_extend_kernel` 在 GPU 上并行计算索引
 
-
 ---
 
 ## 5. HostKVCache.__init__
@@ -315,7 +311,7 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/pool_host/base.py L79-L143
+## 来源：python/sglang/srt/mem_cache/pool_host/base.py L79-L143
 class HostKVCache(abc.ABC):
 
     def __init__(
@@ -387,7 +383,6 @@ class HostKVCache(abc.ABC):
 - `size_per_token` 由子类按 layout 计算
 - 容量小于设备池时打 warning
 
-
 ---
 
 ## 6. HostKVCache.alloc/free
@@ -397,7 +392,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/pool_host/base.py L240-L268
+## 来源：python/sglang/srt/mem_cache/pool_host/base.py L240-L268
     @synchronized
     def alloc(self, need_size: int) -> Optional[torch.Tensor]:
         assert (
@@ -433,7 +428,6 @@ class HostKVCache(abc.ABC):
 - 必须 page 对齐
 - `slot_used` bool 张量追踪占用状态
 
-
 ---
 
 ## 7. StorageBackendFactory.create_backend
@@ -443,7 +437,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L66-L96
+## 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L66-L96
     def create_backend(
         cls,
         backend_name: str,
@@ -481,7 +475,6 @@ class HostKVCache(abc.ABC):
 - builtin 走 `_create_builtin_backend`
 - dynamic 从 `extra_config` 加载模块路径
 
-
 ---
 
 ## 8. merge_and_sort_free
@@ -491,7 +484,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/base.py L78-L84
+## 来源：python/sglang/srt/mem_cache/allocator/base.py L78-L84
     def merge_and_sort_free(self):
         if len(self.release_pages) > 0:
             self.free_pages = torch.cat((self.free_pages, self.release_pages))
@@ -504,7 +497,6 @@ class HostKVCache(abc.ABC):
 **Comment：**
 - sort 后 free_pages 单调递增，便于 coalesce 感知
 
-
 ---
 
 ## 9. free_group 批释放
@@ -514,7 +506,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/base.py L69-L76
+## 来源：python/sglang/srt/mem_cache/allocator/base.py L69-L76
     def free_group_begin(self):
         self.is_not_in_free_group = False
         self.free_group = []
@@ -534,7 +526,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L222-L259
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L222-L259
     def alloc_decode(
         self,
         seq_lens: torch.Tensor,

@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/train.py（调用链，placement_group 为入口）
+## 来源：slime/train.py（调用链，placement_group 为入口）
 # 提交版本：22cdc6e1
 # configure_logger()
 # pgs = create_placement_groups(args)
@@ -56,7 +56,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L127-L133
+## 来源：slime/ray/placement_group.py L127-L133
 # 提交版本：22cdc6e1
 rollout_pg_reordered_bundle_indices = actor_pg_reordered_bundle_indices[rollout_offset:]
 rollout_pg_reordered_gpu_ids = actor_pg_reordered_gpu_ids[rollout_offset:]
@@ -92,7 +92,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L114-L115
+## 来源：slime/ray/placement_group.py L114-L115
 # 提交版本：22cdc6e1
 if args.colocate:
     return max(actor_num_gpus, args.rollout_num_gpus), 0
@@ -112,7 +112,7 @@ if args.colocate:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L135, L182-L188
+## 来源：slime/ray/placement_group.py L135, L182-L188
 # 提交版本：22cdc6e1
 result["critic"] = result["actor"] if args.use_critic else None
 # ...
@@ -139,7 +139,7 @@ critic_model = allocate_train_group(
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L230
+## 来源：slime/ray/placement_group.py L230
 # 提交版本：22cdc6e1
 rollout_manager = RolloutManager.options(**rollout_manager_options).remote(args, pg)
 ```
@@ -158,7 +158,7 @@ rollout_manager = RolloutManager.options(**rollout_manager_options).remote(args,
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L239-L241
+## 来源：slime/ray/placement_group.py L239-L241
 # 提交版本：22cdc6e1
 if args.check_weight_update_equal:
     ray.get(rollout_manager.check_weights.remote(action="snapshot"))
@@ -168,7 +168,7 @@ if args.check_weight_update_equal:
 **Comment：**
 
 - 发生在 first `update_weights` 之前
-- 与 [[24-WeightSync-Dist]] 的 NCCL broadcast 验证配合
+- 与 [[24-WeightSync-Dist-00-MOC]] 的 NCCL broadcast 验证配合
 
 ---
 
@@ -179,7 +179,7 @@ if args.check_weight_update_equal:
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L48-L53, L108-L115
+## 来源：slime/ray/actor_group.py L48-L53, L108-L115
 # 提交版本：22cdc6e1
 def _allocate_gpus_for_actor(self, pg, num_gpus_per_actor):
     world_size = self._num_nodes * self._num_gpus_per_node

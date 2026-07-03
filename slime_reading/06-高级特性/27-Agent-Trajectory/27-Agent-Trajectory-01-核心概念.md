@@ -32,7 +32,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L28-L38
+## 来源：slime/agent/trajectory.py L28-L38
 @dataclasses.dataclass(frozen=True)
 class TurnRecord:
     prompt_ids: list[int]
@@ -62,7 +62,7 @@ class TurnRecord:
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L65-L82
+## 来源：slime/agent/trajectory.py L65-L82
 class MessageNode:
     def __init__(self, *, role=None, message=None, metadata=None, parent=None):
         ...
@@ -91,7 +91,7 @@ class MessageNode:
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L130-L134
+## 来源：slime/agent/trajectory.py L130-L134
 class DriftKind(enum.Enum):
     CLEAN = "clean"
     REALIGN = "realign"
@@ -99,7 +99,7 @@ class DriftKind(enum.Enum):
 ```
 
 ```python
-# 来源：slime/agent/trajectory.py L169-L191
+## 来源：slime/agent/trajectory.py L169-L191
     def classify_token_drift(self, turn: TurnRecord) -> DriftKind:
         realign_at = _common_prefix_len(self.tokens, turn.prompt_ids)
         drift = len(self.tokens) - realign_at
@@ -122,7 +122,7 @@ class DriftKind(enum.Enum):
 **Code：**
 
 ```python
-# 来源：slime/agent/trajectory.py L248-L261
+## 来源：slime/agent/trajectory.py L248-L261
         return Sample(
             index=base_sample.index,
             group_index=base_sample.group_index,
@@ -150,7 +150,7 @@ class DriftKind(enum.Enum):
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L341-L344
+## 来源：slime/agent/adapters/common.py L341-L344
             translated, tools_schema = self._translate(body)
             prompt_ids = _render_token_ids(translated, tok, tools=tools_schema, add_generation_prompt=True)
             turn = await call_sglang_generate(prompt_ids, s, body, adapter=self, session_id=sid)
@@ -170,7 +170,7 @@ class DriftKind(enum.Enum):
 **Code（文档摘录）：**
 
 ```python
-# 来源：docs/en/get_started/agent.md L40-L52
+## 来源：docs/en/get_started/agent.md L40-L52
 from slime.agent.adapters import AnthropicAdapter
 
 adapter = AnthropicAdapter(
@@ -183,7 +183,7 @@ adapter.open_session(session_id, sampling_defaults=sampling_params)
 segments = await adapter.finish_session(session_id)
 ```
 
-**Comment：** 多 segment 训练需共享 `rollout_id`（见批次 28 customization 文档）。
+**Comment：** 多 segment 训练需共享 `rollout_id`（见[[28-Customization-00-MOC]] customization 文档）。
 
 ---
 

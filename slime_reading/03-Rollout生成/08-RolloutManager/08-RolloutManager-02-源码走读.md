@@ -26,7 +26,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L39-L47, L73-L78
+## 来源：slime/ray/rollout.py L39-L47, L73-L78
 _ROLLOUT_DATA_TENSOR_DTYPES = {
     "tokens": torch.long,
     "loss_masks": torch.int,
@@ -57,7 +57,7 @@ def _cpu_tensor(value, dtype: torch.dtype | None = None) -> torch.Tensor:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L420-L471
+## 来源：slime/ray/rollout.py L420-L471
 @ray.remote
 class RolloutManager:
     """The class to run rollout and convert rollout data to training data."""
@@ -117,7 +117,7 @@ class RolloutManager:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L546-L559
+## 来源：slime/ray/rollout.py L546-L559
     def generate(self, rollout_id):
         start_time = time.time()
         self.rollout_id = rollout_id
@@ -137,7 +137,7 @@ class RolloutManager:
 
 - `debug_rollout_only` 用于只测推理/RM，不进入训练管线
 - 返回值 `list[Box]` 长度 = `train_parallel_config["dp_size"]`；`train.py` 整包传给 `async_train`
-- `set_train_parallel_config` 在 Actor init 时由 Megatron 侧调用（本批不展开）
+- `set_train_parallel_config` 在 Actor init 时由 Megatron 侧调用（本专题不展开）
 
 ---
 
@@ -150,7 +150,7 @@ class RolloutManager:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L635-L665
+## 来源：slime/ray/rollout.py L635-L665
     def _get_rollout_data(self, rollout_id):
         if self.args.load_debug_rollout_data:
             data = torch.load(
@@ -185,7 +185,7 @@ class RolloutManager:
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L7-L26
+## 来源：slime/rollout/base_types.py L7-L26
 @dataclass
 class RolloutFnTrainOutput:
     samples: list[list[Sample]]
@@ -209,7 +209,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L713-L761
+## 来源：slime/ray/rollout.py L713-L761
     def _convert_samples_to_train_data(self, samples: list[Sample] | list[list[Sample]]):
         if self.custom_convert_samples_to_train_data_func is not None:
             return self.custom_convert_samples_to_train_data_func(self.args, samples)
@@ -258,7 +258,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L686-L711, L763-L778
+## 来源：slime/ray/rollout.py L686-L711, L763-L778
     def _post_process_rewards(self, samples: list[Sample] | list[list[Sample]]):
         if self.custom_reward_post_process_func is not None:
             return self.custom_reward_post_process_func(self.args, samples)
@@ -297,7 +297,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L792-L823
+## 来源：slime/ray/rollout.py L792-L823
         if samples[0].rollout_log_probs is not None:
             train_data["rollout_log_probs"] = [sample.rollout_log_probs for sample in samples]
 
@@ -325,7 +325,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L829-L895
+## 来源：slime/ray/rollout.py L829-L895
     def _split_train_data_by_dp(self, data):
         dp_size = self.train_parallel_config["dp_size"]
         total_lengths = [len(t) for t in data["tokens"]]
@@ -382,7 +382,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/utils/dp_schedule.py L82-L111
+## 来源：slime/utils/dp_schedule.py L82-L111
 def build_dp_schedule(
     args: Any,
     train_parallel_config: dict,
@@ -411,7 +411,7 @@ def build_dp_schedule(
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L80-L102
+## 来源：slime/ray/rollout.py L80-L102
 def _tensorize_rollout_data_for_training(rollout_data: dict[str, Any]) -> None:
     for key, dtype in _ROLLOUT_DATA_TENSOR_DTYPES.items():
         if key in rollout_data:
@@ -448,7 +448,7 @@ def _tensorize_rollout_data_for_training(rollout_data: dict[str, Any]) -> None:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L527-L540
+## 来源：slime/ray/rollout.py L527-L540
     def get_updatable_engines_and_lock(self):
         srv = self._get_updatable_server()
         engines = srv.engines if srv else []

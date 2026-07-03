@@ -54,7 +54,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L152-L172
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L152-L172
 # 提交版本：70df09b
 @dataclasses.dataclass
 class ReqState:
@@ -108,7 +108,7 @@ class ReqState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L244-L245, L14
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L244-L245, L14
 # 提交版本：70df09b
 class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
     """TokenizerManager is a process that tokenizes the text."""
@@ -128,7 +128,7 @@ class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L152-L172
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L152-L172
 # 提交版本：70df09b
 @dataclasses.dataclass
 class ReqState:
@@ -177,7 +177,7 @@ class ReqState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L124-L142
+## 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L124-L142
 # 提交版本：70df09b
 class TokenizerControlMixin:
     """Mixin for TokenizerManager's control-plane operations (weights, cache, lora,
@@ -214,7 +214,7 @@ class TokenizerControlMixin:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L236-L241
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L236-L241
 # 提交版本：70df09b
 class InputFormat(Enum):
     """Input format types for tokenization handling."""
@@ -225,7 +225,7 @@ class InputFormat(Enum):
 ```
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L648-L669
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L648-L669
 # 提交版本：70df09b — TokenizerManager 实例方法（与 InputFormat 同级，不在 Enum 内）
     def _detect_input_format(
         self, texts: Union[str, List[str]], is_cross_encoder: bool
@@ -265,7 +265,7 @@ class InputFormat(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/tokenizer/tiktoken_tokenizer.py L29-L56, L110-L111
+## 来源：python/sglang/srt/tokenizer/tiktoken_tokenizer.py L29-L56, L110-L111
 # 提交版本：70df09b
 class TiktokenTokenizer:
     def __init__(self, tokenizer_path):

@@ -42,7 +42,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：train.py L9-L26（bootstrap 摘录）
+## 来源：train.py L9-L26（bootstrap 摘录）
 # 提交版本：22cdc6e1
 def train(args):
     configure_logger()
@@ -55,9 +55,9 @@ def train(args):
 
 **Comment：**
 
-- `create_training_models` 内部 Megatron Actor 读 `--load` 或 fallback `--ref-load`（批次 17）
-- `create_rollout_manager` 用 `--hf-checkpoint` 初始化 SGLang / tokenizer（批次 08、15）
-- 首次 `update_weights()` 把 Megatron 权重推到 Rollout；依赖本批准备好的 torch_dist
+- `create_training_models` 内部 Megatron Actor 读 `--load` 或 fallback `--ref-load`（[[17-Megatron-Actor-Init-00-MOC]]）
+- `create_rollout_manager` 用 `--hf-checkpoint` 初始化 SGLang / tokenizer（[[08-RolloutManager-00-MOC]]、15）
+- 首次 `update_weights()` 把 Megatron 权重推到 Rollout；依赖本专题准备好的 torch_dist
 
 ## HF→torch_dist 目录布局
 
@@ -66,7 +66,7 @@ def train(args):
 **Code：**
 
 ```python
-# 来源：tools/convert_hf_to_torch_dist.py L139-L146
+## 来源：tools/convert_hf_to_torch_dist.py L139-L146
 # 提交版本：22cdc6e1
 tracker_filename = get_checkpoint_tracker_filename(args.save)
 with open(tracker_filename, "w") as f:
@@ -89,7 +89,7 @@ shutil.move(source_dir, target_dir)
 **Code：**
 
 ```python
-# 来源：tools/convert_torch_dist_to_hf.py L146-L175
+## 来源：tools/convert_torch_dist_to_hf.py L146-L175
 # 提交版本：22cdc6e1
 metadata = {"metadata": {"total_size": total_size}, "weight_map": {}}
 for i, tensors in enumerate(modeltensors):
@@ -110,7 +110,7 @@ def copy_assets(origin_hf_dir, output_dir):
 
 - 必须提供 `--origin-hf-dir` 才能复制 tokenizer、generation_config 等
 - 导出目录可直接 `hf upload` 或给 SGLang `--model-path`（纯推理场景）
-- RL 训练内权重同步通常**不**走此离线脚本，而走 `update_weights`（批次 24–25）
+- RL 训练内权重同步通常**不**走此离线脚本，而走 `update_weights`（[[24-WeightSync-Dist-00-MOC]]–[[25-WeightSync-Disk-00-MOC]]）
 
 ## convert_to_hf 模型分发
 
@@ -119,7 +119,7 @@ def copy_assets(origin_hf_dir, output_dir):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L50
+## 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L50
 # 提交版本：22cdc6e1
 def convert_to_hf(args, model_name, name, param, quantization_config=None):
     param = remove_padding(name, param, args.vocab_size)
@@ -140,11 +140,11 @@ def _convert_to_hf_core(args, model_name, name, param):
 
 - Qwen3-4B dense 通常走 `qwen2` / `qwen3` 分支（视 AutoConfig 类名）
 - 新模型需在 `megatron_to_hf/` 增加 processor（与 plugins 配合）
-- 在线 `update_weights` 复用同一套 naming 逻辑（批次 26）
+- 在线 `update_weights` 复用同一套 naming 逻辑（[[26-Checkpoint-M2HF-00-MOC]]）
 
 ## 与主循环的交互边界
 
-| 阶段 | 是否经过本批工具 | 说明 |
+| 阶段 | 是否经过本专题工具 | 说明 |
 |------|-----------------|------|
 | 训练冷启动 | ✅ 前置 | `--ref-load` 来自 convert_hf |
 | rollout generate | ❌ | 用 SGLang + 内存权重 |
@@ -152,12 +152,12 @@ def _convert_to_hf_core(args, model_name, name, param):
 | save_model | ⚠️ 间接 | 产出 iter_xxx，**可**用 convert_torch_dist_to_hf 导出 |
 | update_weights | ❌ 热路径 | Megatron→SGLang 在线同步，非本脚本 |
 
-**Explain：** 主循环每轮 `generate → train → update_weights` 不调用 tools/；本批脚本只在 **训练前** 与 **训练后导出** 两个时间点介入。
+**Explain：** 主循环每轮 `generate → train → update_weights` 不调用 tools/；本专题脚本只在 **训练前** 与 **训练后导出** 两个时间点介入。
 
 **Code：**
 
 ```python
-# 来源：train.py L63-L89（主循环摘录）
+## 来源：train.py L63-L89（主循环摘录）
 # 提交版本：22cdc6e1
 for rollout_id in range(args.start_rollout_id, args.num_rollout):
     rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
@@ -175,11 +175,11 @@ for rollout_id in range(args.start_rollout_id, args.num_rollout):
 
 ## Prompt 数据集（边界说明）
 
-quick_start 的 **dataset download**（`dapo-math-17k` 等）属于 Rollout 数据准备，经 `--prompt-data` 进入 `data_source`，**不是**本批权重工具范畴。本批仅覆盖 **模型权重** HF↔Megatron；prompt JSONL 见批次 11 DataSource。
+quick_start 的 **dataset download**（`dapo-math-17k` 等）属于 Rollout 数据准备，经 `--prompt-data` 进入 `data_source`，**不是**本专题权重工具范畴。本专题仅覆盖 **模型权重** HF↔Megatron；prompt JSONL 见[[11-DataSource-00-MOC]] DataSource。
 
 ## 上下游模块索引
 
-| 方向 | 模块 | 批次 |
+| 方向 | 模块 | 专题 |
 |------|------|------|
 | 上游 | Hugging Face Hub / 本地下载 | quick_start § Model and Dataset Download |
 | 下游 | Megatron Actor 加载 | 17-Megatron-Actor-Init |

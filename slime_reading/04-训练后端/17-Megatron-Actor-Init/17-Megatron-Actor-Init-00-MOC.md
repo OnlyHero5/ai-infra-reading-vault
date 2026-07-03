@@ -3,7 +3,7 @@ type: batch-doc
 module: 17-Megatron-Actor-Init
 batch: "17"
 doc_type: moc
-title: "Megatron Actor 初始化 · 批次概述"
+title: "Megatron Actor 初始化 · 专题概述"
 tags:
   - slime/batch/17
   - slime/module/megatron-actor-init
@@ -13,7 +13,6 @@ updated: 2026-07-02
 
 # Megatron Actor 初始化
 
-> **阶段 IV · 训练后端** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `slime/backends/megatron_utils/actor.py`（`init` / `sleep` / `wake_up` / `debug_rollout_only`）、`initialize.py`（`init()`）
 
 ---
@@ -29,8 +28,8 @@ flowchart TB
     MA["MegatronTrainRayActor.init"]
     TI["TrainRayActor.init<br/>dist + gloo"]
     MI["initialize.init<br/>mpu + seed"]
-    MO["initialize_model_and_optimizer<br/>批次18"]
-    WU["weight_updater<br/>批次24-25"]
+    MO["initialize_model_and_optimizer<br/>[[18-Model-Init-00-MOC]]"]
+    WU["weight_updater<br/>[[24-WeightSync-Dist-00-MOC]]-25"]
     TR --> RG --> MA
     MA --> TI --> MI --> MO --> WU
 ```
@@ -62,7 +61,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L46-L62
+## 来源：slime/backends/megatron_utils/actor.py L46-L62
 # 提交版本：22cdc6e1
 class MegatronTrainRayActor(TrainRayActor):
     @with_defer(lambda: Timer().start("train_wait"))
@@ -85,25 +84,25 @@ class MegatronTrainRayActor(TrainRayActor):
 
 **Comment：**
 
-- 继承 [[07-RayTrainGroup]] 调度的 `TrainRayActor`，先走父类 `dist.init_process_group`
-- `monkey_patch_torch_dist()` 为后续 `reload_process_groups` / offload 做准备（见批次 19 Checkpoint-Offload）
+- 继承 [[07-RayTrainGroup-00-MOC]] 调度的 `TrainRayActor`，先走父类 `dist.init_process_group`
+- `monkey_patch_torch_dist()` 为后续 `reload_process_groups` / offload 做准备（见[[19-Train-Step-00-MOC]] Checkpoint-Offload）
 - `init(args)` 来自同目录 `initialize.py`，建立 Megatron `mpu` 并行组
 - 正常路径返回值是 `loaded_rollout_id + 1`，供 `args.start_rollout_id` 对齐 checkpoint
 
 ---
 
-## 衔接批次
+## 衔接专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
-| 上游 | [[07-RayTrainGroup]] | `async_init` → `actor.init.remote` |
-| 下游 | [[18-Model-Init]] | `initialize_model_and_optimizer` 细节 |
-| 下游 | [[19-Train-Step]] | `train()` 内 `wake_up` → 训练 → `sleep` |
-| 下游 | [[24-WeightSync-Dist]] | `weight_updater` 选型与 `update_weights` |
+| 上游 | [[07-RayTrainGroup-00-MOC]] | `async_init` → `actor.init.remote` |
+| 下游 | [[18-Model-Init-00-MOC]] | `initialize_model_and_optimizer` 细节 |
+| 下游 | [[19-Train-Step-00-MOC]] | `train()` 内 `wake_up` → 训练 → `sleep` |
+| 下游 | [[24-WeightSync-Dist-00-MOC]] | `weight_updater` 选型与 `update_weights` |
 
 ---
 
-## 验收标准（AGENT-DISPATCH）
+## 验收标准
 
 - 能按顺序说明 actor `init` 的 10+ 个关键步骤
 - 能解释 `debug_rollout_only` / `offload_train` / `role=critic` 三条分支

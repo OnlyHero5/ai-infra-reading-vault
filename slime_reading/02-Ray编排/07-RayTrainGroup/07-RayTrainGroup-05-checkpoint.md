@@ -22,12 +22,6 @@ updated: 2026-07-02
 - [ ] 能画出 rollout_data_ref 从 RolloutManager 到各 rank `train.remote` 的数据流
 - [ ] 能说明 offload_train 时 runtime_env 中 LD_PRELOAD 的作用
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/07` + `slime/doc/*`
-- [ ] 代码块含 `# 提交版本：22cdc6e1`
-- [ ] 已更新 [[Slime-progress]] 批次 07 为 ✅
-
 ## 快速自测题
 
 1. **默认 Actor 实现类？** `MegatronTrainRayActor`。

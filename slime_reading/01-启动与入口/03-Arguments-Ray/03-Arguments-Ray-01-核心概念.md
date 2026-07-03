@@ -60,7 +60,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L70-L77
+## 来源：slime/utils/arguments.py L70-L77
             parser.add_argument(
                 "--colocate",
                 action="store_true",
@@ -81,7 +81,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L79-L100
+## 来源：slime/utils/arguments.py L79-L100
             parser.add_argument(
                 "--offload",
                 action="store_true",
@@ -109,7 +109,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1861-L1864
+## 来源：slime/utils/arguments.py L1861-L1864
     if args.offload:
         args.offload_train = True
         args.offload_rollout = True
@@ -125,7 +125,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L44-L53
+## 来源：slime/utils/arguments.py L44-L53
             parser.add_argument(
                 "--rollout-num-gpus",
                 type=int,
@@ -142,7 +142,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1886-L1894
+## 来源：slime/utils/arguments.py L1886-L1894
     if args.colocate:
         if args.offload_train is None:
             args.offload_train = True
@@ -171,7 +171,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L196-L198
+## 来源：slime/backends/megatron_utils/arguments.py L196-L198
     args.rank = 0
     args.world_size = args.actor_num_nodes * args.actor_num_gpus_per_node
     args = _set_default_megatron_args(args)
@@ -183,7 +183,7 @@ flowchart TB
 
 ## 8. Placement（预告）
 
-**Explain：** PG 物理布局在 `placement_group.py`，本批只建立 **args 语义**；读 [[06-PlacementGroup-01-核心概念]] 时对照本表。
+**Explain：** PG 物理布局在 `placement_group.py`，本专题只建立 **args 语义**；读 [[06-PlacementGroup-01-核心概念]] 时对照本表。
 
 ---
 

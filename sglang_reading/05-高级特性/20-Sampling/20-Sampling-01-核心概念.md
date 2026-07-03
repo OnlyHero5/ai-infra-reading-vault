@@ -44,7 +44,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_params.py L75-L90
+## 来源：python/sglang/srt/sampling/sampling_params.py L75-L90
 class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
     """
     The sampling parameters.
@@ -108,7 +108,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
+## 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
 class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
     """
     The sampling parameters.
@@ -168,7 +168,7 @@ class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_batch_info.py L23-L75
+## 来源：python/sglang/srt/sampling/sampling_batch_info.py L23-L75
 @dataclasses.dataclass
 class SamplingBatchInfo:
     # Basic batched sampling params
@@ -246,7 +246,7 @@ class SamplingBatchInfo:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/base_grammar_backend.py L131-L136
+## 来源：python/sglang/srt/constrained/base_grammar_backend.py L131-L136
 class BaseGrammarBackend:
     _enable_strict_thinking: bool = False
 
@@ -266,7 +266,7 @@ class BaseGrammarBackend:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/penaltylib/frequency_penalty.py L6-L63
+## 来源：python/sglang/srt/sampling/penaltylib/frequency_penalty.py L6-L63
 class BatchedFrequencyPenalizer(_BatchedPenalizer):
  def _cumulate_output_tokens(self, output_ids: torch.Tensor):
  self.cumulated_frequency_penalties.scatter_add_(

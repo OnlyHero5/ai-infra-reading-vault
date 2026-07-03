@@ -29,7 +29,7 @@ updated: 2026-07-02
 
 ## Q2：GRPO / gspo 与默认 PPO 在 loss 侧差在哪？
 
-**Explain：** GRPO 的 advantage 在批次 21 用 group baseline；loss 侧若 `advantage_estimator=="gspo"`，**额外**用序列级 KL expand 到 token（`compute_gspo_kl`），而非 per-token `old - new`。
+**Explain：** GRPO 的 advantage 在[[21-Loss-Advantages-00-MOC]] 用 group baseline；loss 侧若 `advantage_estimator=="gspo"`，**额外**用序列级 KL expand 到 token（`compute_gspo_kl`），而非 per-token `old - new`。
 
 ---
 
@@ -53,7 +53,7 @@ updated: 2026-07-02
 
 ## Q6：KL loss 与 advantage 里 KL 惩罚区别？
 
-- **advantage 阶段** `kl_coef`：从 reward 减 KL（PPO/GRPO 路径，批次 21）
+- **advantage 阶段** `kl_coef`：从 reward 减 KL（PPO/GRPO 路径，[[21-Loss-Advantages-00-MOC]]）
 - **`use_kl_loss`**：在 policy loss 上加 `kl_loss_coef * KL(ref)`，可用 `use_unbiased_kl` IS 校正
 
 二者可同时开启，需小心系数叠加。
@@ -83,7 +83,7 @@ cd slime && pytest tests/test_cispo_loss.py tests/test_ppo_logprob_entropy_gpu.p
 **Code（CLI 定义 + validate 断言）：**
 
 ```python
-# 来源：slime/utils/arguments.py L1048-L1070
+## 来源：slime/utils/arguments.py L1048-L1070
             parser.add_argument(
                 "--use-tis",
                 action="store_true",
@@ -111,7 +111,7 @@ cd slime && pytest tests/test_cispo_loss.py tests/test_ppo_logprob_entropy_gpu.p
 ```
 
 ```python
-# 来源：slime/utils/arguments.py L1804-L1810
+## 来源：slime/utils/arguments.py L1804-L1810
     if args.use_rollout_logprobs:
         assert not args.use_tis, "use_rollout_logprobs and use_tis cannot be set at the same time."
 
@@ -124,7 +124,7 @@ cd slime && pytest tests/test_cispo_loss.py tests/test_ppo_logprob_entropy_gpu.p
 **Code（运行时选用 vanilla vs custom / ICEPOP）：**
 
 ```python
-# 来源：loss.py L987-L1014
+## 来源：loss.py L987-L1014
     if args.get_mismatch_metrics or args.use_tis:
         assert "rollout_log_probs" in batch, "rollout_log_probs must be provided for TIS"
         ...

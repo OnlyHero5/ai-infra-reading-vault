@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # HTTP Server 入口
 
-> 阶段 I · 地基 | 状态：已完成 | Git：`70df09b`
+> 阶段 I · 地基 | Git：`70df09b`
 
 ## 本模块目标
 
@@ -49,7 +49,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2471-L2517
+## 来源：python/sglang/srt/entrypoints/http_server.py L2471-L2517
 # 提交版本：70df09b
 def launch_server(
     server_args: ServerArgs,
@@ -103,7 +103,7 @@ def launch_server(
 **Code（FastAPI 实例创建 — `_setup_and_run_http_server` 内，见 [[03-HTTP-Server-02-源码走读|源码走读 §2.2]]）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L342
+## 来源：python/sglang/srt/entrypoints/http_server.py L342
         from sglang.srt.entrypoints.openai.tool_server import NativeToolServer
 ```
 

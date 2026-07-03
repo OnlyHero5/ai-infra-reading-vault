@@ -85,7 +85,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L245-L253
+## 来源：slime_plugins/rollout_buffer/buffer.py L245-L253
     def read(self):
         with self.not_empty:
             if len(self.buffer) == 0:
@@ -129,4 +129,4 @@ flowchart LR
 
 ## 8. 与 CI 的关系
 
-`tests/gemma4/` 等 example 级测试在 GRAPH-BATCH-MAP 列为批次 29 验证建议；plugins 改动应跑相关 CPU/GPU smoke。
+`tests/gemma4/` 等 example 级测试在 [[08-总结与索引-04-导读路径]] 列为29 验证建议；plugins 改动应跑相关 CPU/GPU smoke。

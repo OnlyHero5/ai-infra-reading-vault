@@ -72,7 +72,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L546-L576
+## 来源：slime/ray/rollout.py L546-L576
     def generate(self, rollout_id):
         start_time = time.time()
         self.rollout_id = rollout_id
@@ -103,7 +103,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L401-L439
+## 来源：slime/rollout/sglang_rollout.py L401-L439
     target_data_size = args.rollout_batch_size
 
     data = []
@@ -143,7 +143,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L336-L372
+## 来源：slime/rollout/sglang_rollout.py L336-L372
 async def abort(args: Namespace, rollout_id: int) -> list[list[Sample]]:
     aborted_samples = []
     state = GenerateState(args)
@@ -165,7 +165,7 @@ async def abort(args: Namespace, rollout_id: int) -> list[list[Sample]]:
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L637-L639
+## 来源：slime/rollout/sglang_rollout.py L637-L639
     output, aborted_samples = run(generate_rollout_async(args, rollout_id, data_source.get_samples))
     if aborted_samples:
         data_source.add_samples(aborted_samples)
@@ -213,7 +213,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L292-L303
+## 来源：slime/utils/data.py L292-L303
 def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
     assert len(rollout_data_ref) == dp_size
     rollout_data = ray.get(rollout_data_ref[dp_rank].inner)
@@ -233,12 +233,12 @@ def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
 
 ## 8. Fully-async 变体（扩展阅读）
 
-**Explain：** `fully_async_rollout.py` 中 worker 循环 `data_buffer.get_samples(1)` 单组消费，生成后 `add_samples([result])`。与默认 batch 同步路径相比，buffer 是 **跨进程轨迹队列** 而非 partial 回收。详见批次 14 [[14-Alt-Rollout-00-MOC]]。
+**Explain：** `fully_async_rollout.py` 中 worker 循环 `data_buffer.get_samples(1)` 单组消费，生成后 `add_samples([result])`。与默认 batch 同步路径相比，buffer 是 **跨进程轨迹队列** 而非 partial 回收。详见[[14-Alt-Rollout-00-MOC]] [[14-Alt-Rollout-00-MOC]]。
 
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L137, L185（节选）
+## 来源：slime/rollout/fully_async_rollout.py L137, L185（节选）
                     groups = self.data_buffer.get_samples(1)
                     # ... generate one group ...
                     self.data_buffer.add_samples([result])

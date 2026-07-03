@@ -29,7 +29,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L352-L387
+## 来源：python/sglang/srt/model_loader/loader.py L352-L387
 # 提交版本：70df09b
 class DefaultModelLoader(BaseModelLoader):
     """Model loader that can load different file types from disk."""
@@ -80,7 +80,7 @@ class DefaultModelLoader(BaseModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L405-L429
+## 来源：python/sglang/srt/model_loader/loader.py L405-L429
 # 提交版本：70df09b
     def _maybe_download_from_modelscope(
         self, model: str, revision: Optional[str]
@@ -118,7 +118,7 @@ class DefaultModelLoader(BaseModelLoader):
 **Code（Llama 示例，Models 通用 同源）：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L680-L700
+## 来源：python/sglang/srt/models/llama.py L680-L700
 # 提交版本：70df09b（节选）
                 if name not in params_dict:
                     continue
@@ -150,7 +150,7 @@ class DefaultModelLoader(BaseModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/weight_utils.py L517-L540
+## 来源：python/sglang/srt/model_loader/weight_utils.py L517-L540
 # 提交版本：70df09b（节选）
 def download_weights_from_hf(
     model_name_or_path: str,
@@ -187,7 +187,7 @@ def download_weights_from_hf(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/weight_utils.py L237-L260
+## 来源：python/sglang/srt/model_loader/weight_utils.py L237-L260
 # 提交版本：70df09b（节选）
 def get_quant_config(
     model_config: ModelConfig,
@@ -224,7 +224,7 @@ def get_quant_config(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L2194-L2210
+## 来源：python/sglang/srt/model_loader/loader.py L2194-L2210
 # 提交版本：70df09b（节选）
 class RemoteInstanceModelLoader(BaseModelLoader):
     """Model loader that can load Tensors from remote sglang instance."""
@@ -252,7 +252,7 @@ class RemoteInstanceModelLoader(BaseModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L2086-L2100
+## 来源：python/sglang/srt/model_loader/loader.py L2086-L2100
 # 提交版本：70df09b（节选）
 class GGUFModelLoader(BaseModelLoader):
     """
@@ -280,7 +280,7 @@ class GGUFModelLoader(BaseModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/weight_sync/tensor_bucket.py L90-L107
+## 来源：python/sglang/srt/weight_sync/tensor_bucket.py L90-L107
 # 提交版本：70df09b
     def reconstruct_tensors(self) -> List[Tuple[str, torch.Tensor]]:
         """
@@ -311,7 +311,7 @@ class GGUFModelLoader(BaseModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L824-L835
+## 来源：python/sglang/srt/model_loader/loader.py L824-L835
 # 提交版本：70df09b（节选）
 class LayeredModelLoader(DefaultModelLoader):
     """Model loader that loads weights layer by layer so that one can quantize a
@@ -334,7 +334,7 @@ class LayeredModelLoader(DefaultModelLoader):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L1371-L1390
+## 来源：python/sglang/srt/model_loader/loader.py L1371-L1390
 # 提交版本：70df09b（节选）
 class DummyModelLoader(BaseModelLoader):
     """Model loader that will set model weights to random values."""

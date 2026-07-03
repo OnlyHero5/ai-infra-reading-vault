@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L43-L57
+## 来源：python/sglang/srt/speculative/spec_info.py L43-L57
     @classmethod
     def from_string(
         cls, name: Optional[str]
@@ -61,7 +61,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L121-L125
+## 来源：python/sglang/srt/speculative/spec_info.py L121-L125
     def has_draft_kv(self) -> bool:
         """Whether the draft phase writes KV chains. NGRAM does not (its tree
         lives only in the verify mask), so per-decode KV sizing needs no
@@ -80,7 +80,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_registry.py L92-L111
+## 来源：python/sglang/srt/speculative/spec_registry.py L92-L111
     def handle_server_args(self, server_args: ServerArgs) -> None:
         pass
 
@@ -114,7 +114,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/base_spec_worker.py L92-L120
+## 来源：python/sglang/srt/speculative/base_spec_worker.py L92-L120
     def prepare_for_draft_extend(
         self,
         draft_extend_input: EagleDraftExtendInput,
@@ -157,7 +157,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/eagle_worker_v2.py L54-L76
+## 来源：python/sglang/srt/speculative/eagle_worker_v2.py L54-L76
 from sglang.srt.speculative.base_spec_worker import BaseSpecWorker, EagleDraftWorkerBase
 from sglang.srt.speculative.draft_utils import DraftBackendFactory
 from sglang.srt.speculative.eagle_draft_cuda_graph_runner import (
@@ -194,7 +194,7 @@ from sglang.srt.speculative.eagle_utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/ngram_worker.py L37-L87
+## 来源：python/sglang/srt/speculative/ngram_worker.py L37-L87
 class NGRAMWorker(BaseSpecWorker):
     def alloc_memory_pool(self, **kwargs):
         # The target memory pool does not exist yet when __init__ runs.
@@ -259,7 +259,7 @@ class NGRAMWorker(BaseSpecWorker):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/reject_sampling.py L48-L87
+## 来源：python/sglang/srt/speculative/reject_sampling.py L48-L87
     # Verification Loop
     step = 1
     continue_verifying = 1
@@ -313,7 +313,7 @@ class NGRAMWorker(BaseSpecWorker):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/base_spec_worker.py L22-L36
+## 来源：python/sglang/srt/speculative/base_spec_worker.py L22-L36
 def duplicate_prefix_tail_to_draft_branches(
     token_to_kv_pool,
     rows: torch.Tensor,
@@ -342,7 +342,7 @@ def duplicate_prefix_tail_to_draft_branches(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L162-L181
+## 来源：python/sglang/srt/speculative/spec_info.py L162-L181
     def handle_server_args(self, server_args: ServerArgs) -> None:
         """Hook for per-algorithm server args mutation.
 

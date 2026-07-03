@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L42-L48
+## 来源：slime/ray/placement_group.py L42-L48
 # 提交版本：22cdc6e1
 def _create_placement_group(num_gpus):
     """Create a placement group with the specified number of GPUs."""
@@ -49,7 +49,7 @@ def _create_placement_group(num_gpus):
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L21-L39
+## 来源：slime/ray/placement_group.py L21-L39
 # 提交版本：22cdc6e1
 def sort_key(x):
     index, node_identifier, gpu_id = x
@@ -80,7 +80,7 @@ def sort_key(x):
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L100-L117
+## 来源：slime/ray/placement_group.py L100-L117
 # 提交版本：22cdc6e1
 def _get_placement_group_layout(args) -> tuple[int, int]:
     actor_num_gpus = args.actor_num_nodes * args.actor_num_gpus_per_node
@@ -120,7 +120,7 @@ def _get_placement_group_layout(args) -> tuple[int, int]:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L84-L88
+## 来源：slime/ray/placement_group.py L84-L88
 # 提交版本：22cdc6e1
 bundle_infos = [(i, gpu_ids[i][0], gpu_ids[i][1]) for i in range(num_bundles)]
 sorted_bundle_infos = sorted(bundle_infos, key=sort_key)
@@ -142,13 +142,12 @@ pg_reordered_gpu_ids = [gpu_ids[info[0]][1] for info in sorted_bundle_infos]
 **Code：**
 
 ```python
-# 来源：slime/ray/utils.py L26-L33
+## 来源：slime/ray/utils.py L26-L33
 # 提交版本：22cdc6e1
 RAY_DEFAULT_ENV_VARS = {
     # Ray's uvloop integration has caused intermittent async actor issues.
     "RAY_USE_UVLOOP": "0",
 }
-
 
 def add_default_ray_env_vars(env_vars: dict[str, str] | None = None) -> dict[str, str]:
     return RAY_DEFAULT_ENV_VARS | (env_vars or {})
@@ -168,7 +167,7 @@ def add_default_ray_env_vars(env_vars: dict[str, str] | None = None) -> dict[str
 **Code：**
 
 ```python
-# 来源：slime/ray/utils.py L46-L64
+## 来源：slime/ray/utils.py L46-L64
 # 提交版本：22cdc6e1
 @ray.remote
 class Lock(RayActor):
@@ -189,4 +188,4 @@ class Lock(RayActor):
 **Comment：**
 
 - 调用方需 spin 直到 `acquire()` 返回 True
-- 继承 [[07-RayTrainGroup]] 文档中的 `RayActor` 基类（master addr 探测）
+- 继承 [[07-RayTrainGroup-00-MOC]] 文档中的 `RayActor` 基类（master addr 探测）

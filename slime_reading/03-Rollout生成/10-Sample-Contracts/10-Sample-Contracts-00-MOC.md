@@ -3,7 +3,7 @@ type: batch-doc
 module: 10-Sample-Contracts
 batch: "10"
 doc_type: moc
-title: "Sample 契约 · 批次概述"
+title: "Sample 契约 · 专题概述"
 tags:
   - slime/batch/10
   - slime/module/sample-contracts
@@ -13,14 +13,13 @@ updated: 2026-07-02
 
 # Sample 契约与 Rollout 类型
 
-> **阶段 III · Rollout 生成** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `utils/types.py`（Sample / RolloutBatch）、`rollout/base_types.py`（RolloutFn 输出契约）、`utils/misc.py`（load_function / decode 辅助）
 
 ---
 
 ## 本模块在架构中的位置
 
-`Sample` 是 Slime RL 闭环的 **核心数据载体**：Rollout 引擎填充 prompt/response/reward/log_probs → DataSource 缓冲 → Megatron 训练消费 `RolloutBatch`。本批定义 **字段语义与契约**，不涉及 SGLang 调用细节。
+`Sample` 是 Slime RL 闭环的 **核心数据载体**：Rollout 引擎填充 prompt/response/reward/log_probs → DataSource 缓冲 → Megatron 训练消费 `RolloutBatch`。本专题定义 **字段语义与契约**，不涉及 SGLang 调用细节。
 
 ```mermaid
 flowchart LR
@@ -59,7 +58,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L93-L106
+## 来源：slime/utils/types.py L93-L106
 # 提交版本：22cdc6e1
 @dataclass
 class Sample:
@@ -75,17 +74,15 @@ class Sample:
 **Comment：**
 
 - 默认 rollout 路径 `rollout_id is None`，下游 fallback 到 `index`
-- 详见 [[11-DataSource]]、[[20-Train-Data]]
+- 详见 [[11-DataSource-00-MOC]]、[[20-Train-Data-00-MOC]]
 
 ---
 
-## 衔接批次
+## 衔接专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
-| 上游 | [[08-RolloutManager]] | generate 产出 Sample 列表 |
-| 下游 | [[11-DataSource]] | 持久化与 prompt 索引 |
-| 下游 | [[20-Train-Data]] | Sample → RolloutBatch 转换 |
-| 下游 | [[21-Loss-Advantages]] | reward / advantage 字段消费 |
-
-**图谱增量点：** 完成本批后运行 `/understand --language zh` + `/understand-domain`。
+| 上游 | [[08-RolloutManager-00-MOC]] | generate 产出 Sample 列表 |
+| 下游 | [[11-DataSource-00-MOC]] | 持久化与 prompt 索引 |
+| 下游 | [[20-Train-Data-00-MOC]] | Sample → RolloutBatch 转换 |
+| 下游 | [[21-Loss-Advantages-00-MOC]] | reward / advantage 字段消费 |

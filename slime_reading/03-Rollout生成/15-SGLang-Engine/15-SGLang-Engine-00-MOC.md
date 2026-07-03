@@ -3,7 +3,7 @@ type: batch-doc
 module: 15-SGLang-Engine
 batch: "15"
 doc_type: moc
-title: "SGLang Engine · 批次概述"
+title: "SGLang Engine · 专题概述"
 tags:
   - slime/batch/15
   - slime/module/sglang-engine
@@ -11,9 +11,9 @@ tags:
 updated: 2026-07-02
 ---
 
-# SGLang Engine · 批次概述
+# SGLang Engine · 专题概述
 
-> **阶段 III · Rollout 生成** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 III · Rollout 生成** | Git：`22cdc6e1`  
 > **源码范围：** `sglang_engine.py`（`SGLangEngine`、`launch_server_process`、`update_weights*`）、`server_control.py`
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L168-L216, L238-L245
+## 来源：slime/ray/rollout.py L168-L216, L238-L245
         RolloutRayActor = ray.remote(SGLangEngine)
         # ...
             rollout_engine = RolloutRayActor.options(
@@ -105,9 +105,9 @@ flowchart LR
 
 ---
 
-## 与相邻批次
+## 与相邻专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
 | 上游 | [[08-RolloutManager-00-MOC]]（批 08） | 创建 engine actor、分配端口 |
 | 下游 | [[24-WeightSync-Dist-00-MOC]]（批 24） | `connect_rollout_engines_from_distributed` 完整逻辑 |

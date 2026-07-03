@@ -52,7 +52,7 @@ flowchart TB
 **Code（RadixKey 构造于 finished cache）：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L456-L460
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L456-L460
         radix_key = RadixKey(
             token_ids, req.extra_key, is_bigram=self.is_eagle
         ).page_aligned(self.page_size)
@@ -103,7 +103,7 @@ Chunked prefill 每 chunk 调 `cache_unfinished_req`；完成时 `cache_finished
 **Code（unfinished rematch 断言）：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L524-L526
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L524-L526
         assert len(new_indices) == len(
             radix_key
         ), f"{len(new_indices)=}, {len(radix_key)=}"
@@ -124,7 +124,7 @@ Chunked prefill 每 chunk 调 `cache_unfinished_req`；完成时 `cache_finished
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L583-L585
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L583-L585
             if len(x.parent.children) == 0 and x.parent.lock_ref == 0:
                 new_priority = self.eviction_strategy.get_priority(x.parent)
                 heapq.heappush(eviction_heap, (new_priority, x.parent))
@@ -148,7 +148,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L108-L119
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L108-L119
     @property
     def backuped(self) -> bool:
         """Tree-level: Full KV present on host."""
@@ -177,7 +177,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L180-L184
+## 来源：python/sglang/srt/layers/radix_attention.py L180-L184
     real_num_tokens = forward_batch.num_token_non_padded_cpu
 
     query = query[:real_num_tokens]
@@ -194,7 +194,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L332-L342
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L332-L342
         assert params.tree_components is not None
         self.tree_components = tuple(params.tree_components)
         component_registry = COMPONENT_REGISTRY
@@ -225,7 +225,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L545-L550
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L545-L550
         if len(new_indices) < len(kv_indices):
             req.prefix_indices = torch.cat(
                 [new_indices, kv_indices[len(new_indices) :]]

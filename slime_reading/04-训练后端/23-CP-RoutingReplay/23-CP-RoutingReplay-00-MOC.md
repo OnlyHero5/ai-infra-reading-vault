@@ -3,7 +3,7 @@ type: batch-doc
 module: 23-CP-RoutingReplay
 batch: "23"
 doc_type: moc
-title: "CP · Routing Replay · 批次概述"
+title: "CP · Routing Replay · 专题概述"
 tags:
   - slime/batch/23
   - slime/module/cp-routing-replay
@@ -11,14 +11,13 @@ tags:
 updated: 2026-07-02
 ---
 
-# CP · Routing Replay · 批次概述
+# CP · Routing Replay · 专题概述
 
-> **批次 23** | 阶段 IV 训练后端 | 状态：✅ 已完成 | 基线 commit `22cdc6e1`  
 > 源码：`slime/backends/megatron_utils/cp_utils.py`、`slime/utils/routing_replay.py`
 
 ---
 
-## 本批目标
+## 本专题目标
 
 1. 说明 Context Parallel **zigzag** 切分：`slice_with_cp` / `get_logits_and_tokens_offset_with_cp`
 2. 解释 `all_gather_with_cp` 如何把 CP-local logprob 还原为 full response
@@ -42,7 +41,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 符号 | 本批覆盖 |
+| 优先级 | 符号 | 本专题覆盖 |
 |--------|------|---------|
 | P0 | `slice_with_cp` | ✅ |
 | P0 | `get_logits_and_tokens_offset_with_cp` | ✅ |
@@ -60,7 +59,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：actor.py L436-L495（节选）
+## 来源：actor.py L436-L495（节选）
         if self.args.use_rollout_routing_replay:
             self.fill_routing_replay(data_iterator, num_microbatches, rollout_data)
         ...

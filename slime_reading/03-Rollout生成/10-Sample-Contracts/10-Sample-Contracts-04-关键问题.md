@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L99-L105
+## 来源：slime/utils/types.py L99-L105
 # 提交版本：22cdc6e1
 # Compact / subagent paths ... should set the same rollout_id on every sibling,
 # so loss aggregation averages within the rollout instead of over-counting it.
@@ -38,7 +38,7 @@ rollout_id: int | None = None
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L249-L251
+## 来源：slime/utils/types.py L249-L251
 # 提交版本：22cdc6e1
 @property
 def effective_response_length(self):
@@ -54,7 +54,7 @@ def effective_response_length(self):
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L276-L277
+## 来源：slime/utils/types.py L276-L277
 # 提交版本：22cdc6e1
 if tokens and trainable and log_probs is None:
     raise ValueError("trainable response tokens require rollout log probabilities.")
@@ -69,7 +69,7 @@ if tokens and trainable and log_probs is None:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L392-L395
+## 来源：slime/utils/types.py L392-L395
 # 提交版本：22cdc6e1
 if self.rollout_top_p_token_ids is None or self.rollout_top_p_token_offsets is None:
     raise ValueError("rollout top-p replay must include both token ids and offsets.")
@@ -84,7 +84,7 @@ if self.rollout_top_p_token_ids is None or self.rollout_top_p_token_offsets is N
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L22-L24
+## 来源：slime/rollout/base_types.py L22-L24
 # 提交版本：22cdc6e1
 if not isinstance(output, (RolloutFnTrainOutput, RolloutFnEvalOutput)):
     output = RolloutFnEvalOutput(data=output) if evaluation else RolloutFnTrainOutput(samples=output)
@@ -99,7 +99,7 @@ if not isinstance(output, (RolloutFnTrainOutput, RolloutFnEvalOutput)):
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L246-L247
+## 来源：slime/utils/types.py L246-L247
 # 提交版本：22cdc6e1
 def get_reward_value(self, args) -> float:
     return self.reward if not args.reward_key else self.reward[args.reward_key]
@@ -114,7 +114,7 @@ def get_reward_value(self, args) -> float:
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L43-L45
+## 来源：slime/utils/misc.py L43-L45
 # 提交版本：22cdc6e1
 module = importlib.import_module(module_path)
 return getattr(module, attr)
@@ -134,7 +134,7 @@ return getattr(module, attr)
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L135-L138
+## 来源：slime/utils/types.py L135-L138
 # 提交版本：22cdc6e1
 # FAILED samples may still contain partial valid output and can be retried
 FAILED = "failed"

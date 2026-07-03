@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/embed_types.py L14-L19
+## 来源：python/sglang/srt/managers/embed_types.py L14-L19
 """
 Structs for embedding injection.
 
@@ -49,7 +49,7 @@ io_struct.py and schedule_batch.py.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L96-L106
+## 来源：python/sglang/srt/managers/io_struct.py L96-L106
 class PickleWrapper(msgspec.Struct, tag=True, array_like=True):
     """Wraps an arbitrary Python object as pickle-serialized bytes for msgpack IPC.
 
@@ -75,7 +75,7 @@ class PickleWrapper(msgspec.Struct, tag=True, array_like=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L777-L820
+## 来源：python/sglang/srt/managers/io_struct.py L777-L820
 class TokenizedGenerateReqInput(BaseReq, kw_only=True):
     input_text: Optional[Union[str, List[Union[str, List[str]]]]]
     # The input token ids
@@ -134,7 +134,7 @@ class TokenizedGenerateReqInput(BaseReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L1194-L1212
+## 来源：python/sglang/srt/managers/io_struct.py L1194-L1212
 class BatchTokenIDOutput(BaseBatchReq, kw_only=True):
     # The finish reason
     finished_reasons: List[Optional[FinishReasonDict]]
@@ -169,7 +169,7 @@ class BatchTokenIDOutput(BaseBatchReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L2176-L2184
+## 来源：python/sglang/srt/managers/io_struct.py L2176-L2184
 def enc_hook(obj: Any) -> Any:
     if isinstance(obj, array):
         return (obj.typecode, obj.tobytes())
@@ -184,14 +184,13 @@ def enc_hook(obj: Any) -> Any:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L2282-L2295
+## 来源：python/sglang/srt/managers/io_struct.py L2282-L2295
 def sock_send(socket: zmq.Socket, obj: Any, flags: int = 0) -> None:
     if _USE_PICKLE_IPC:
         socket.send_pyobj(obj, flags=flags, protocol=pickle.HIGHEST_PROTOCOL)
         return
 
     socket.send(msgpack_encode(obj), flags=flags)
-
 
 def sock_recv(socket: zmq.Socket, flags: int = 0) -> Any:
     if _USE_PICKLE_IPC:
@@ -217,13 +216,12 @@ def sock_recv(socket: zmq.Socket, flags: int = 0) -> Any:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L127-L146
+## 来源：python/sglang/srt/managers/schedule_batch.py L127-L146
 # Constant used as the base offset for MM (multimodal) pad values.
 # This ensures pad_values don't overlap with valid text token IDs.
 MM_PAD_SHIFT_VALUE = 1_000_000
 
 logger = logging.getLogger(__name__)
-
 
 @lru_cache(maxsize=1)
 def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
@@ -234,7 +232,6 @@ def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
             f"Please increase MM_PAD_SHIFT_VALUE in schedule_batch.py."
         )
 
-
 def _compute_pad_value(hash: int) -> int:
     """Compute pad value from hash."""
     return MM_PAD_SHIFT_VALUE + (hash % (1 << 30))
@@ -243,7 +240,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L296-L318
+## 来源：python/sglang/srt/managers/schedule_batch.py L296-L318
     def set_pad_value(self):
         """
         Set the pad value after first hashing the data
@@ -281,7 +278,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L713-L731
+## 来源：python/sglang/srt/managers/schedule_batch.py L713-L731
         # Input and output info
         self.rid = rid
         self.origin_input_ids = origin_input_ids
@@ -306,7 +303,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L848-L871
+## 来源：python/sglang/srt/managers/schedule_batch.py L848-L871
         # Prefix info
         # The indices to kv cache for the shared prefix.
         self.prefix_indices: torch.Tensor = torch.empty((0,), dtype=torch.int64)
@@ -346,7 +343,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L1845-L1880
+## 来源：python/sglang/srt/managers/schedule_batch.py L1845-L1880
     @classmethod
     def init_new(
         cls,
@@ -397,7 +394,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L2011-L2058
+## 来源：python/sglang/srt/managers/schedule_batch.py L2011-L2058
     def prepare_for_extend(self):
         self.forward_mode = ForwardMode.EXTEND
 
@@ -461,7 +458,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L2618-L2665
+## 来源：python/sglang/srt/managers/schedule_batch.py L2618-L2665
     def prepare_for_decode(self):
         self.forward_mode = ForwardMode.DECODE
         # Decode embeds the last output token via embed_tokens; clear the stale
@@ -525,7 +522,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L2695-L2737
+## 来源：python/sglang/srt/managers/schedule_batch.py L2695-L2737
     def filter_batch(
         self,
         chunked_req_to_exclude: Optional[Union[Req, List[Req]]] = None,
@@ -586,7 +583,7 @@ def _compute_pad_value(hash: int) -> int:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L154-L199
+## 来源：python/sglang/srt/managers/schedule_batch.py L154-L199
 class FINISH_MATCHED_TOKEN(BaseFinishReason):
     def __init__(self, matched: Union[int, List[int]]):
         super().__init__()
@@ -597,7 +594,6 @@ class FINISH_MATCHED_TOKEN(BaseFinishReason):
             "type": "stop",  # to match OpenAI API's return value
             "matched": self.matched,
         }
-
 
 class FINISH_MATCHED_STR(BaseFinishReason):
     def __init__(self, matched: str):
@@ -610,7 +606,6 @@ class FINISH_MATCHED_STR(BaseFinishReason):
             "matched": self.matched,
         }
 
-
 class FINISHED_MATCHED_REGEX(BaseFinishReason):
     def __init__(self, matched: str):
         super().__init__()
@@ -621,7 +616,6 @@ class FINISHED_MATCHED_REGEX(BaseFinishReason):
             "type": "stop",  # to match OpenAI API's return value
             "matched": self.matched,
         }
-
 
 class FINISH_LENGTH(BaseFinishReason):
     def __init__(self, length: int):

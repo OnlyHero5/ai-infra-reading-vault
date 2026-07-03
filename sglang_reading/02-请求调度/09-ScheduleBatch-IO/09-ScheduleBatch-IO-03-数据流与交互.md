@@ -104,7 +104,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L871-L879
+## 来源：python/sglang/srt/managers/io_struct.py L871-L879
     def wrap_pickle_fields(self):
         self.mm_inputs = wrap_as_pickle(self.mm_inputs)
         self.mm_data_mooncake = wrap_as_pickle(self.mm_data_mooncake)
@@ -130,7 +130,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L505-L571（MultimodalInputs.from_processor_output 核心逻辑）
+## 来源：python/sglang/srt/managers/schedule_batch.py L505-L571（MultimodalInputs.from_processor_output 核心逻辑）
     def from_processor_output(obj: MultimodalProcessorOutput):
         mm_items = obj.mm_items
         assert isinstance(mm_items, list)
@@ -228,7 +228,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L1276-L1283
+## 来源：python/sglang/srt/managers/io_struct.py L1276-L1283
 class BatchStrOutput(BaseBatchReq, kw_only=True):
     # The finish reason
     finished_reasons: List[Optional[FinishReasonDict]]
@@ -315,7 +315,7 @@ DetokenizerManager 收到 `BatchTokenIDOutput`，增量 detokenize，发出 `Bat
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L1741-L1743
+## 来源：python/sglang/srt/managers/schedule_batch.py L1741-L1743
     # Token replacement embeddings and absolute positions (optional).
     replace_embeds: Optional[torch.Tensor] = None
     replace_positions: Optional[torch.Tensor] = None

@@ -8,8 +8,6 @@ tags:
  - sglang/batch/32
  - sglang/module/checkpoint-engine
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # CheckpointEngine 验收清单
@@ -22,13 +20,6 @@ updated: 2026-07-02
 - [x] 能解释 wait_weights_before_ready 与 initial_weights_loaded 的关系
 - [x] 能说明热更新为何必须 flush_cache
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [ ] 对照 knowledge-graph 无遗漏 checkpoint_engine / weight_sync 关键节点
-- [ ] 来源注释路径/行号与 git 70df09b 一致
-- [ ] 未修改 progress.md（由 P8 统一更新）
-- [ ] 与 31-Observability、12-ModelLoader 交叉引用正确
 
 ## 核心结论（3 句话）
 

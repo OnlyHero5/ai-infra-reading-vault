@@ -8,8 +8,6 @@ tags:
  - sglang/batch/04
  - sglang/module/openai-api
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # OpenAI API 验收清单
@@ -25,14 +23,6 @@ updated: 2026-07-02
 - [ ] 能追踪 `POST /v1/chat/completions` 从路由到 SSE chunk 的完整路径
 - [ ] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
 
-## 维护者检查
-
-- [ ] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [ ] 对照 knowledge-graph 无遗漏关键 file 节点（openai/*、ollama/*）— **待后续图谱更新 图谱增量补充节点**
-- [ ] 来源注释路径/行号与当前 git 一致
-- [ ] 已更新 [[progress]] OpenAI API → ✅
-
 ## 核心结论（3 句话）
 
 1. **OpenAI 兼容层**采用 `OpenAIServingBase` 模板方法：校验 → `_convert_to_internal_request` → 流式/非流式分支，所有 `/v1/*` handler 共享错误处理与 header 解析。
@@ -44,19 +34,6 @@ updated: 2026-07-02
 - `OpenAIServingChat` 全文件（~2000 行）tool/reasoning/multimodal 细节可在Sampling（Sampling/Constrained）交叉阅读
 - OpenAI Responses API（`serving_responses.py`）与 tool_server 集成本模块仅列目录，未逐步走读
 - knowledge-graph 当前无 openai/ollama 专用节点，待后续图谱更新 图谱增量更新时补充
-
-## 代码块统计（维护者）
-
-| 文件 | 代码块数 | 约行数 |
-|------|----------|--------|
-| README.md | 1 | 18 |
-| 01-核心概念.md | 4 | 95 |
-| 02-源码走读.md | 14 | 280 |
-| 03-数据流与交互.md | 5 | 75 |
-| 04-关键问题.md | 4 | 55 |
-| **合计** | **28** | **~523** |
-
-满足 PLAN 要求：≥ 15 代码块、≥ 200 行。
 
 ## 3 个核心组件速查
 

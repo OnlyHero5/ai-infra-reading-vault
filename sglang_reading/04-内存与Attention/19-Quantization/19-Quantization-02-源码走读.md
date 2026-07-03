@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
+## 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
 class QuantizeMethodBase(ABC):
     """Base class for different quantized methods."""
 
@@ -52,7 +52,6 @@ class QuantizeMethodBase(ABC):
         This can be used for example, to transpose weights for computation.
         """
         return
-
 
 class LinearMethodBase(QuantizeMethodBase):
     """Base class for different (maybe quantized) linear methods."""
@@ -102,7 +101,7 @@ class LinearMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
+## 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
 class FusedMoEMethodBase(QuantizeMethodBase):
 
     def create_weights(
@@ -131,7 +130,7 @@ class FusedMoEMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
+## 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
 def dispatch_w8a8_block_fp8_linear() -> Callable:
     """
     Dispatch to the appropriate FP8 block linear implementation.
@@ -157,7 +156,7 @@ def dispatch_w8a8_block_fp8_linear() -> Callable:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8_utils.py L419-L428
+## 来源：python/sglang/srt/layers/quantization/fp8_utils.py L419-L428
 def _dispatch_explicit_backend(backend: Fp8GemmRunnerBackend) -> Callable:
     """Dispatch based on explicitly selected backend."""
     if backend.is_flashinfer_trtllm():
@@ -181,7 +180,7 @@ def _dispatch_explicit_backend(backend: Fp8GemmRunnerBackend) -> Callable:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8_kernel.py L1790-L1836
+## 来源：python/sglang/srt/layers/quantization/fp8_kernel.py L1790-L1836
     def scaled_fp8_quant(
         input: torch.Tensor,
         scale: Optional[torch.Tensor] = None,
@@ -248,7 +247,7 @@ def _dispatch_explicit_backend(backend: Fp8GemmRunnerBackend) -> Callable:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/schemes/gptq_linear.py L25-L60
+## 来源：python/sglang/srt/layers/quantization/gptq/schemes/gptq_linear.py L25-L60
 class GPTQLinearScheme(GPTQLinearSchemeBase):
  def __init__(self, quant_config: GPTQConfig):
  self.quant_config = quant_config
@@ -271,7 +270,7 @@ class GPTQLinearScheme(GPTQLinearSchemeBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/awq/awq.py L346-L370
+## 来源：python/sglang/srt/layers/quantization/awq/awq.py L346-L370
             return AWQLinearMethod(self)
         elif isinstance(layer, FusedMoE):
             if is_layer_skipped_awq(prefix, self.modules_to_not_convert):
@@ -310,7 +309,7 @@ class GPTQLinearScheme(GPTQLinearSchemeBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
+## 来源：python/sglang/srt/layers/quantization/kv_cache.py L18-L85
 class BaseKVCacheMethod(QuantizeMethodBase):
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)
@@ -335,7 +334,7 @@ class BaseKVCacheMethod(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/unquant.py L488-L513
+## 来源：python/sglang/srt/layers/quantization/unquant.py L488-L513
             # otherwise use_fp8=True for FP8 dispatch path
             use_fp8 = not envs.SGLANG_DEEPEP_BF16_DISPATCH.get()
             quant_info = DeepGemmMoeQuantInfo(
@@ -375,7 +374,7 @@ class BaseKVCacheMethod(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8.py L760-L776
+## 来源：python/sglang/srt/layers/quantization/fp8.py L760-L776
     def apply(
         self,
         layer: torch.nn.Module,
@@ -398,7 +397,7 @@ class BaseKVCacheMethod(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8.py L801-L840
+## 来源：python/sglang/srt/layers/quantization/fp8.py L801-L840
         if self.block_quant:
             if use_intel_amx_backend(layer):
                 return torch.ops.sgl_kernel.fp8_scaled_mm_cpu(
@@ -456,7 +455,7 @@ class BaseKVCacheMethod(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
 def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
     # compat: gptqmodel and autogptq (eol) main use checkpoint_format: str
     # compat: autogptq <=0.7.1 is_marlin_format: bool
@@ -478,7 +477,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L102-L120
+## 来源：python/sglang/srt/layers/quantization/base_config.py L102-L120
         raise NotImplementedError
 
     @abstractmethod

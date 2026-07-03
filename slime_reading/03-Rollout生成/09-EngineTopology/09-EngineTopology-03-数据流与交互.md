@@ -52,7 +52,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1073-L1086
+## 来源：slime/ray/rollout.py L1073-L1086
 # 提交版本：22cdc6e1
 def _compute_rollout_offset(args) -> int:
     """Offset (in PG bundle slots) where rollout GPUs start."""
@@ -60,7 +60,6 @@ def _compute_rollout_offset(args) -> int:
         return 0
     offset = args.actor_num_nodes * args.actor_num_gpus_per_node
     return offset
-
 
 def _compute_megatron_num_gpus(args) -> int:
     """Total number of megatron (actor + critic) GPU slots in the placement group."""
@@ -85,7 +84,7 @@ def _compute_megatron_num_gpus(args) -> int:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1117-L1126, L1225-L1226
+## 来源：slime/ray/rollout.py L1117-L1126, L1225-L1226
 # 提交版本：22cdc6e1
     for model_idx, model_cfg in enumerate(config.models):
         model_cfg.resolve(args)
@@ -128,7 +127,7 @@ sglang:
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L54-L70
+## 来源：slime/ray/rollout.py L54-L70
 # 提交版本：22cdc6e1
 _SGLANG_PREFILL_PERF_FIELDS = (
     ("prefill/bootstrap_queue_duration", "pd_prefill_bootstrap_queue_duration"),
@@ -164,7 +163,7 @@ _SGLANG_DECODE_PERF_FIELDS = (
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L296-L318
+## 来源：slime/ray/rollout.py L296-L318
 # 提交版本：22cdc6e1
     @property
     def engines(self):
@@ -188,7 +187,7 @@ _SGLANG_DECODE_PERF_FIELDS = (
 **Comment：**
 
 - PD 场景 actor 的 prefill/decode 引擎 **都** 在 `engines` 列表中，权重同步需覆盖全部 TP rank。
-- `engine_gpu_offsets` 用于 tensor 并行权重分片对齐（见权重同步批次）。
+- `engine_gpu_offsets` 用于 tensor 并行权重分片对齐（见权重同步专题）。
 - ref 模型 `update_weights=False`：训练循环跳过，但 `offload/onload` 仍可能参与 colocate。
 
 ---
@@ -200,7 +199,7 @@ _SGLANG_DECODE_PERF_FIELDS = (
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L248-L266, L383-L417
+## 来源：slime/ray/rollout.py L248-L266, L383-L417
 # 提交版本：22cdc6e1
     def offload(self):
         if not self.needs_offload:
@@ -227,8 +226,8 @@ _SGLANG_DECODE_PERF_FIELDS = (
 | 上游 | 交互 | 说明 |
 |------|------|------|
 | [[06-PlacementGroup-00-MOC]] | `pg` tuple | bundle 重排、`reordered_gpu_ids` |
-| [[03-Arguments-00-MOC]] | CLI flags | `--sglang-config`, `--prefill-num-servers`, `--rollout-num-gpus` |
-| [[08-SGLang-Engine-00-MOC]] | `SGLangEngine` | `worker_type` → ServerArgs |
+| [[03-Arguments-Ray-00-MOC]] | CLI flags | `--sglang-config`, `--prefill-num-servers`, `--rollout-num-gpus` |
+| [[15-SGLang-Engine-00-MOC]] | `SGLangEngine` | `worker_type` → ServerArgs |
 
 | 下游 | 交互 | 说明 |
 |------|------|------|
@@ -245,7 +244,7 @@ _SGLANG_DECODE_PERF_FIELDS = (
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1103-L1104
+## 来源：slime/ray/rollout.py L1103-L1104
 # 提交版本：22cdc6e1
     if args.rollout_external:
         return start_external_rollout_servers(args, start_router=_start_router)

@@ -22,14 +22,6 @@ updated: 2026-07-02
 - [ ] 知道 slime_reading 六件套文件名与 ETC 读法
 - [ ] 能指出 `train.py` 在闭环中的位置（不必记行号）
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/01` + `slime/doc/*`
-- [ ] 代码块首行含 `# 来源：` + 路径行号
-- [ ] Mermaid 使用 `<br/>`，无 `\n`
-- [ ] 双链 `[[02-训练主循环-00-MOC]]` 等可解析
-- [ ] 已更新 [[Slime-progress]] 批次 01 为 ✅
-
 ## 快速自测题
 
 1. **Slime 三角第三角「Data Buffer」在代码里主要对应谁？** RolloutManager + DataSource + rollout 函数，不是独立 daemon。
@@ -38,7 +30,7 @@ updated: 2026-07-02
 
 ## 通过标准
 
-全部读者自测项可口头回答，且在 [[Slime-00-方法论-02-源码走读]] 中找到对应内嵌代码段，即视为批次 01 通过。
+全部读者自测项可口头回答，且在 [[Slime-00-方法论-02-源码走读]] 中找到对应内嵌代码段，即视为[[Slime-00-方法论-00-MOC]] 通过。
 
 ## 下一批
 

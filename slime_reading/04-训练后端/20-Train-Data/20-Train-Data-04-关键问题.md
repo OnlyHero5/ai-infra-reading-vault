@@ -33,7 +33,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：dp_schedule.py L177-L185
+## 来源：dp_schedule.py L177-L185
                 raise AssertionError(
                     f"static path: num_mbs ({len(step_mbs)}) is not a multiple of "
                     f"dp_size * mb_group ({align_to}); ..."
@@ -99,4 +99,4 @@ updated: 2026-07-02
 
 - `tests/test_dp_schedule.py` — 不变量断言
 - `tests/test_seqlen_balancing.py` — KK / first-fit
-- `tests/test_loss_cp_invariance.py` — 与 CP 批次交叉
+- `tests/test_loss_cp_invariance.py` — 与 [[23-CP-RoutingReplay-00-MOC]] 交叉

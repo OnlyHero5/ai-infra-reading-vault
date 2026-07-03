@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L259-L268
+## 来源：slime_plugins/rollout_buffer/buffer.py L259-L268
 @app.post("/buffer/write", response_model=BufferResponse)
 async def write_to_buffer(request: Request):
     data = await request.json()
@@ -44,7 +44,7 @@ async def write_to_buffer(request: Request):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L277-L295
+## 来源：slime_plugins/rollout_buffer/buffer.py L277-L295
 @app.post("/get_rollout_data", response_model=BufferResponse)
 async def get_rollout_data(request: Request):
     items = buffer.read()
@@ -63,7 +63,7 @@ async def get_rollout_data(request: Request):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L298-L328
+## 来源：slime_plugins/rollout_buffer/buffer.py L298-L328
 def run_rollout(data: dict):
     generator_map = discover_generators()
     task_type = data["task_type"]
@@ -91,7 +91,7 @@ async def start_rollout(request: Request, background: BackgroundTasks):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L184-L205
+## 来源：slime_plugins/rollout_buffer/buffer.py L184-L205
     def get(self):
         valid_groups, finished_groups = self._get_valid_groups_with_timeout(del_data=True)
         for instance_id, group in valid_groups:
@@ -109,7 +109,7 @@ async def start_rollout(request: Request, background: BackgroundTasks):
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L179-L244
+## 来源：examples/search-r1/generate_with_search.py L179-L244
     for _turn_idx in range(SEARCH_R1_CONFIGS["max_turns"]):
         payload = {"text": prompt_text + response, "sampling_params": sampling_params}
         if SEARCH_R1_CONFIGS["return_logprob"]:
@@ -134,7 +134,7 @@ async def start_rollout(request: Request, background: BackgroundTasks):
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L173-L177
+## 来源：examples/search-r1/generate_with_search.py L173-L177
     _stop_tags = ["</search>", "</answer>"]
     sampling_params = {**sampling_params, "stop": list(dict.fromkeys([*_existing_stop, *_stop_tags]))}
 ```
@@ -148,7 +148,7 @@ async def start_rollout(request: Request, background: BackgroundTasks):
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L124-L142
+## 来源：examples/search-r1/generate_with_search.py L124-L142
 async def execute_predictions(prediction: str) -> str:
     action, content = postprocess_predictions(prediction)
     if action == "search":
@@ -171,7 +171,7 @@ async def execute_predictions(prediction: str) -> str:
 **Code：**
 
 ```python
-# 来源：examples/multi_agent/rollout_with_multi_agents.py L8-L13
+## 来源：examples/multi_agent/rollout_with_multi_agents.py L8-L13
 MULTI_AGENT_CONFIGS = {
     "custom_multi_agent_function_path": "examples.multi_agent.agent_system.run_agent_system",
     "num_parallel": 5,
@@ -189,7 +189,7 @@ MULTI_AGENT_CONFIGS = {
 **Code：**
 
 ```python
-# 来源：slime_plugins/models/glm5/glm5.py L47-L52
+## 来源：slime_plugins/models/glm5/glm5.py L47-L52
 def source_compute_layer(layer_number, skip_topk_offset, topk_freq):
     layer = layer_number
     while is_skip_topk_layer(layer, skip_topk_offset, topk_freq):
@@ -197,7 +197,7 @@ def source_compute_layer(layer_number, skip_topk_offset, topk_freq):
     return layer
 ```
 
-**Comment：** cross-layer index sharing；训练 MoE RL 时需关注 routing replay（批次 23/28 §18）。
+**Comment：** cross-layer index sharing；训练 MoE RL 时需关注 routing replay（[[23-CP-RoutingReplay-00-MOC]]/28 §18）。
 
 ---
 
@@ -206,7 +206,7 @@ def source_compute_layer(layer_number, skip_topk_offset, topk_freq):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L332-L340
+## 来源：slime_plugins/rollout_buffer/buffer.py L332-L340
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8889, limit_concurrency=1000, timeout_keep_alive=5)
 ```
@@ -220,7 +220,7 @@ if __name__ == "__main__":
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L255-L272
+## 来源：examples/search-r1/generate_with_search.py L255-L272
     sample.tokens = prompt_tokens_ids + response_token_ids
     sample.response_length = len(response_token_ids)
     sample.response = response
@@ -239,8 +239,8 @@ if __name__ == "__main__":
 **Code：**
 
 ```markdown
-# 来源：examples/README.md L3-L3
+## 来源：examples/README.md L3-L3
 These examples provide concrete examples to leverage slime in your own RL workflow.
 ```
 
-**Comment：** 多数 example 附带 shell 脚本与 README 运行说明（本批内嵌核心 Python）。
+**Comment：** 多数 example 附带 shell 脚本与 README 运行说明（本专题内嵌核心 Python）。

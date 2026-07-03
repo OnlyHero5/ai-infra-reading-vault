@@ -48,7 +48,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L590-L603
+## 来源：python/sglang/srt/managers/scheduler.py L590-L603
     def init_metrics_collector(
         self, tp_rank: int, pp_rank: int, dp_rank: Optional[int]
     ) -> None:
@@ -79,7 +79,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/metrics_reporter.py L672-L678
+## 来源：python/sglang/srt/managers/scheduler_components/metrics_reporter.py L672-L678
         if self.current_scheduler_metrics_enabled:
             decode_tokens = batch.batch_size() + num_correct_drafts
             self.metrics_collector.increment_realtime_tokens(
@@ -123,7 +123,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/req_time_stats.py L224-L233
+## 来源：python/sglang/srt/observability/req_time_stats.py L224-L233
 class ReqTimeStatsBase:
     enable_metrics: bool = False
     metrics_collector: Optional[
@@ -150,7 +150,7 @@ class ReqTimeStatsBase:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L274-L276
+## 来源：python/sglang/srt/entrypoints/http_server.py L274-L276
     if server_args.enable_metrics:
         add_prometheus_middleware(app)
         enable_func_timer()
@@ -170,7 +170,7 @@ class ReqTimeStatsBase:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/request_logger.py L94-L106
+## 来源：python/sglang/srt/utils/request_logger.py L94-L106
         if not self.log_requests:
             return
 
@@ -213,7 +213,7 @@ class ReqTimeStatsBase:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
+## 来源：python/sglang/srt/observability/metrics_collector.py L1143-L1149
     def observe_weight_load(self, duration_seconds: float, source: str) -> None:
         # Edge-triggered: engine is paused during the update, so log_stats
         # won't fire — write the gauge inline at end of update_weights_from_*.
@@ -238,7 +238,7 @@ class ReqTimeStatsBase:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/observability/request_metrics_exporter.py L34-L38
+## 来源：python/sglang/srt/observability/request_metrics_exporter.py L34-L38
     def _format_output_data(
         self, obj: Union[GenerateReqInput, EmbeddingReqInput], out_dict: dict
     ) -> dict:

@@ -34,7 +34,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：train.py L11-L17
+## 来源：train.py L11-L17
     pgs = create_placement_groups(args)
     rollout_manager, num_rollout_per_epoch = create_rollout_manager(args, pgs["rollout"])
     actor_model, critic_model = create_training_models(args, pgs, rollout_manager)
@@ -66,7 +66,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1885-L1890
+## 来源：slime/utils/arguments.py L1885-L1890
     if args.colocate:
         if args.offload_train is None:
             args.offload_train = True
@@ -83,7 +83,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L39-L42
+## 来源：slime/utils/arguments.py L39-L42
             parser.add_argument("--actor-num-nodes", type=int, default=1, ...)
             parser.add_argument(
                 "--actor-num-gpus-per-node", type=int, default=8, ...
@@ -93,7 +93,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L44-L53
+## 来源：slime/utils/arguments.py L44-L53
             parser.add_argument(
                 "--rollout-num-gpus",
                 type=int,
@@ -117,7 +117,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L55-L59
+## 来源：slime/utils/arguments.py L55-L59
             parser.add_argument(
                 "--rollout-num-gpus-per-engine",
                 type=int,
@@ -129,7 +129,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L188-L196
+## 来源：slime/backends/sglang_utils/arguments.py L188-L196
     temp_parser.add_argument("--rollout-num-gpus-per-engine", type=int, default=1)
     temp_parser.add_argument("--sglang-pp-size", type=int, default=1)
     ...
@@ -157,7 +157,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1866-L1876
+## 来源：slime/utils/arguments.py L1866-L1876
     if args.debug_rollout_only:
         if args.colocate and args.rollout_num_gpus is None:
             args.rollout_num_gpus = args.actor_num_gpus_per_node * args.actor_num_nodes
@@ -174,7 +174,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1552-L1553
+## 来源：slime/utils/arguments.py L1552-L1553
     skip_sglang = pre.debug_train_only or pre.load_debug_rollout_data is not None
 ```
 
@@ -185,7 +185,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L102-L103
+## 来源：slime/utils/arguments.py L102-L103
             reset_arg(parser, "--distributed-backend", type=str, default="nccl")
             reset_arg(parser, "--distributed-timeout-minutes", type=int, default=10)
 ```
@@ -199,7 +199,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L61-L68
+## 来源：slime/utils/arguments.py L61-L68
             parser.add_argument(
                 "--num-gpus-per-node",
                 type=int,
@@ -220,7 +220,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1857-L1859
+## 来源：slime/utils/arguments.py L1857-L1859
     args.critic_num_gpus_per_node = args.actor_num_gpus_per_node
     args.critic_num_nodes = args.actor_num_nodes
 ```
@@ -228,7 +228,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1901-L1902
+## 来源：slime/utils/arguments.py L1901-L1902
     if args.use_critic:
         args.offload_train = True
 ```
@@ -240,7 +240,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：train_async.py L11
+## 来源：train_async.py L11
     assert not args.colocate, "Colocation is not supported for async training."
 ```
 
@@ -263,7 +263,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1851
+## 来源：slime/utils/arguments.py L1851
     args.rollout_external = args.rollout_external_engine_addrs is not None
 ```
 

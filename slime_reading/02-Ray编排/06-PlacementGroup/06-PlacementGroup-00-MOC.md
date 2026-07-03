@@ -3,7 +3,7 @@ type: batch-doc
 module: 06-PlacementGroup
 batch: "06"
 doc_type: moc
-title: "Placement Group · 批次概述"
+title: "Placement Group · 专题概述"
 tags:
   - slime/batch/06
   - slime/module/placement-group
@@ -13,7 +13,6 @@ updated: 2026-07-02
 
 # Placement Group 与 GPU 资源分配
 
-> **阶段 II · Ray 编排** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `slime/ray/placement_group.py`（PG 创建/拆分/colocate）、`slime/ray/utils.py`（Ray 环境变量、Lock）
 
 ---
@@ -30,7 +29,7 @@ flowchart TB
     TM["create_training_models"]
     TR --> PG --> RM
     PG --> TM
-    TM --> RG["RayTrainGroup<br/>批次07"]
+    TM --> RG["RayTrainGroup<br/>[[07-RayTrainGroup-00-MOC]]"]
 ```
 
 ---
@@ -60,7 +59,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L120-L137
+## 来源：slime/ray/placement_group.py L120-L137
 # 提交版本：22cdc6e1
 def create_placement_groups(args):
     """Create placement groups for actor, critic, and rollout engines."""
@@ -90,18 +89,18 @@ def create_placement_groups(args):
 
 ---
 
-## 衔接批次
+## 衔接专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
-| 上游 | [[05-Tools-DataPrep]] | 训练前 HF→torch_dist；PG 与 convert 无关 |
-| 下游 | [[07-RayTrainGroup]] | `allocate_train_group` 消费 `pgs["actor"]` |
-| 下游 | [[08-RolloutManager]] | `create_rollout_manager(args, pg)` 绑定 rollout bundle |
-| 下游 | [[17-Megatron-Actor-Init]] | `create_training_models` → `async_init` |
+| 上游 | [[05-Tools-DataPrep-00-MOC]] | 训练前 HF→torch_dist；PG 与 convert 无关 |
+| 下游 | [[07-RayTrainGroup-00-MOC]] | `allocate_train_group` 消费 `pgs["actor"]` |
+| 下游 | [[08-RolloutManager-00-MOC]] | `create_rollout_manager(args, pg)` 绑定 rollout bundle |
+| 下游 | [[17-Megatron-Actor-Init-00-MOC]] | `create_training_models` → `async_init` |
 
 ---
 
-## 验收标准（AGENT-DISPATCH）
+## 验收标准
 
 - 能画出 colocate / 非 colocate / debug 三种模式下的 PG 分配图
 - 能解释 `rollout_offset` 与 `max(actor, rollout)` 的含义

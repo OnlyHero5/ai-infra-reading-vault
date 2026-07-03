@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L97-L120
+## 来源：slime/backends/megatron_utils/checkpoint.py L97-L120
 def load_checkpoint(ddp_model, optimizer, opt_param_scheduler, checkpointing_context, skip_load_to_model_and_opt):
     args = get_args()
     load_path = args.load
@@ -66,7 +66,7 @@ def load_checkpoint(ddp_model, optimizer, opt_param_scheduler, checkpointing_con
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L123-L126
+## 来源：slime/backends/megatron_utils/checkpoint.py L123-L126
 def _is_megatron_checkpoint(path: str | Path) -> bool:
     return (Path(path) / "latest_checkpointed_iteration.txt").is_file() or bool(
         re.fullmatch(r"iter_\d{7}", Path(path).name)
@@ -82,7 +82,7 @@ def _is_megatron_checkpoint(path: str | Path) -> bool:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L129-L151
+## 来源：slime/backends/megatron_utils/checkpoint.py L129-L151
 def _load_checkpoint_hf(ddp_model, optimizer, args, load_path: str):
     assert args.megatron_to_hf_mode == "bridge", "Only bridge mode is supported for loading HF checkpoint"
     from megatron.bridge import AutoBridge
@@ -113,7 +113,7 @@ def _load_checkpoint_hf(ddp_model, optimizer, args, load_path: str):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L31
+## 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L31
 def convert_to_hf(args, model_name, name, param, quantization_config=None):
     param = remove_padding(name, param, args.vocab_size)
     converted_named_tensors = _convert_to_hf_core(args, model_name, name, param)
@@ -129,7 +129,7 @@ def convert_to_hf(args, model_name, name, param, quantization_config=None):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L38-L66
+## 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L38-L66
 def _convert_to_hf_core(args, model_name, name, param):
     if "minimaxm2" in model_name or "minimax_m2" in model_name:
         converted_named_tensors = convert_minimax_m2_to_hf(args, name, param)
@@ -154,7 +154,7 @@ def _convert_to_hf_core(args, model_name, name, param):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L5-L11
+## 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L5-L11
 def convert_qwen2_to_hf(args, name, param):
     if name == "module.module.embedding.word_embeddings.weight":
         return [("model.embed_tokens.weight", param)]
@@ -173,7 +173,7 @@ def convert_qwen2_to_hf(args, name, param):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L52-L59
+## 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L52-L59
         elif rest == "mlp.linear_fc1.weight":
             gate_weight, up_weight = param.chunk(2, dim=0)
             return [
@@ -193,7 +193,7 @@ def convert_qwen2_to_hf(args, name, param):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L22-L42
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L22-L42
 def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantization_config=None, progress_desc="Save HF checkpoint"):
     if args.megatron_to_hf_mode == "bridge":
         save_hf_model_bridge_to_path(args, output_dir, model)
@@ -215,7 +215,7 @@ def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantizat
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L71-L105
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L71-L105
     is_save_rank = _is_global_rank_zero()
     if is_save_rank:
         path.mkdir(parents=True, exist_ok=True)
@@ -242,7 +242,7 @@ def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantizat
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L122-L138
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L122-L138
     writer = _SafetensorShardWriter(path, enabled=is_writer_rank)
     pending_write = None
     for chunk_idx, hf_named_tensors in enumerate(
@@ -270,7 +270,7 @@ def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantizat
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L144-L172
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L144-L172
 def save_hf_model_bridge_to_path(args, output_dir, model):
     from megatron.bridge import AutoBridge
     from megatron.core import mpu
@@ -295,7 +295,7 @@ def save_hf_model_bridge_to_path(args, output_dir, model):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L183-L209
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L183-L209
     def write(self, named_tensors, shard_idx: int) -> None:
         from safetensors.torch import save_file
         state_dict = {}

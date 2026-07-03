@@ -3,7 +3,7 @@ type: batch-doc
 module: 08-RolloutManager
 batch: "08"
 doc_type: moc
-title: "RolloutManager · 批次概述"
+title: "RolloutManager · 专题概述"
 tags:
   - slime/batch/08
   - slime/module/rollout-manager
@@ -11,16 +11,15 @@ tags:
 updated: 2026-07-02
 ---
 
-# RolloutManager · 批次概述
+# RolloutManager · 专题概述
 
-> **批次 08** | 阶段 III Rollout 生成 | 基线 commit `22cdc6e1`  
 > 源码主文件：`slime/slime/ray/rollout.py`（`RolloutManager` 类 + 辅助函数）
 
 ---
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套后，读者应能：
+读完本专题六件套后，读者应能：
 
 1. 说明 `RolloutManager` 在 Slime **三角架构**（Training ↔ Rollout ↔ Data Buffer）中的职责
 2. 追踪一次 `generate(rollout_id)` 的完整调用链：采样 → 转训练 dict → DP 分片 → `ray.put`
@@ -43,7 +42,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 符号 | 行号（约） | 本批覆盖 |
+| 优先级 | 符号 | 行号（约） | 本专题覆盖 |
 |--------|------|-----------|---------|
 | P0 | `RolloutManager.__init__` | L424–471 | ✅ |
 | P0 | `generate(rollout_id)` | L546–559 | ✅ |
@@ -65,7 +64,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：train.py L15-L17, L62-L81
+## 来源：train.py L15-L17, L62-L81
     rollout_manager, num_rollout_per_epoch = create_rollout_manager(args, pgs["rollout"])
     actor_model, critic_model = create_training_models(args, pgs, rollout_manager)
     # ...
@@ -80,7 +79,7 @@ updated: 2026-07-02
 
 - `create_rollout_manager` 在 `placement_group.py` 中以 `RolloutManager.options(...).remote(args, pg)` 实例化；若 `rollout_data_transport=nixl` 则开启 tensor transport
 - `generate` 返回值是 **list[Box]**，长度 = `dp_size`；训练侧按 rank 取各自 partition
-- 引擎拓扑（SGLangEngine、Router、PD 分离）本批只引用，详述见批次 09
+- 引擎拓扑（SGLangEngine、Router、PD 分离）本专题只引用，详述见[[09-EngineTopology-00-MOC]]
 
 ---
 

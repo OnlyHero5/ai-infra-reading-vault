@@ -33,7 +33,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L25-L37
+## 来源：python/sglang/srt/managers/schedule_batch.py L25-L37
 """
 Store information about requests and batches.
 
@@ -76,7 +76,7 @@ ScheduleBatch -> ForwardBatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L14-L21
+## 来源：python/sglang/srt/managers/io_struct.py L14-L21
 """
 The definition of objects transferred between different
 processes (TokenizerManager, DetokenizerManager, Scheduler).
@@ -121,7 +121,7 @@ sock_send(socket, req) # msgpack_encode 会 TypeError
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L2159-L2164
+## 来源：python/sglang/srt/managers/io_struct.py L2159-L2164
 def wrap_as_pickle(obj: object) -> object:
     if obj is None:
         return None
@@ -141,13 +141,12 @@ def wrap_as_pickle(obj: object) -> object:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L127-L141
+## 来源：python/sglang/srt/managers/schedule_batch.py L127-L141
 # Constant used as the base offset for MM (multimodal) pad values.
 # This ensures pad_values don't overlap with valid text token IDs.
 MM_PAD_SHIFT_VALUE = 1_000_000
 
 logger = logging.getLogger(__name__)
-
 
 @lru_cache(maxsize=1)
 def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
@@ -173,7 +172,7 @@ def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L2020-L2025
+## 来源：python/sglang/srt/managers/schedule_batch.py L2020-L2025
         input_ids = [r.get_fill_ids()[len(r.prefix_indices) :] for r in reqs]
         extend_num_tokens = sum(len(ids) for ids in input_ids)
         seq_lens = [r.extend_range.end for r in reqs]
@@ -197,7 +196,7 @@ def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L2739-L2741
+## 来源：python/sglang/srt/managers/schedule_batch.py L2739-L2741
         self.out_cache_loc = None
         # Sum is recomputed lazily by ForwardBatch.init_new.
         self.seq_lens_sum = None
@@ -226,7 +225,7 @@ def sanity_check_mm_pad_shift_value(vocab_size: int) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/embed_types.py L14-L19
+## 来源：python/sglang/srt/managers/embed_types.py L14-L19
 """
 Structs for embedding injection.
 
@@ -246,7 +245,7 @@ io_struct.py and schedule_batch.py.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L818-L821
+## 来源：python/sglang/srt/managers/schedule_batch.py L818-L821
         # If we want to abort the request in the middle of the event loop,
         # set to_finish instead of directly setting finished_reason.
         # Note: We should never set finished_reason in the middle, the req will get filtered and never respond
@@ -264,4 +263,3 @@ io_struct.py and schedule_batch.py.
 3. **PickleWrapper 边界：** 多模态请求时检查 `mm_inputs` 是否为 `PickleWrapper`；Scheduler unpickle 后应得到 `MultimodalProcessorOutput` 结构（见 03 §4）。
 
 **Comment：** 以上三步可在小模型 + 单请求下完成，无需改源码——用日志级别 DEBUG 或临时 print 即可验证 mental model。
-

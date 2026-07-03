@@ -30,7 +30,7 @@ updated: 2026-07-02
 **Code（dapo 错题信号）：**
 
 ```python
-# 来源：slime/tests/test_rm_math_dapo.py L213-L218
+## 来源：slime/tests/test_rm_math_dapo.py L213-L218
 def test_compute_score_incorrect_returns_minus_one():
     out = compute_score(r"\boxed{43}", "42", strict_box_verify=True)
     assert out["score"] == -1.0
@@ -46,7 +46,7 @@ def test_compute_score_incorrect_returns_minus_one():
 **Code（测试注释摘要）：**
 
 ```python
-# 来源：slime/tests/test_rm_math_dapo.py L1-L14
+## 来源：slime/tests/test_rm_math_dapo.py L1-L14
 #  - remove_boxed: dapo raises AssertionError vs math_utils returns None
 #  - normalize_final_answer: separate pipeline
 #  - compute_score: only last 300 chars
@@ -127,7 +127,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code（filter 判定）：**
 
 ```python
-# 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L10-L11
+## 来源：slime/slime/rollout/filter_hub/dynamic_sampling_filters.py L10-L11
     rewards = [sample.get_reward_value(args) for sample in samples]
     keep = torch.tensor(rewards, dtype=torch.float64).std() > 1e-6
 ```
@@ -141,7 +141,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-# 来源：slime/slime/utils/types.py L246-L247
+## 来源：slime/slime/utils/types.py L246-L247
     def get_reward_value(self, args) -> float:
         return self.reward if not args.reward_key else self.reward[args.reward_key]
 ```
@@ -161,7 +161,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/rm_hub/__init__.py L69-L71
+## 来源：slime/slime/rollout/rm_hub/__init__.py L69-L71
     if rm_type.startswith("boxed_"):
         response = extract_boxed_answer(response) or ""
         rm_type = rm_type[len("boxed_") :]
@@ -180,7 +180,7 @@ eval 路径 **禁止** group_rm（assert）。
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/rm_hub/__init__.py L29-L30
+## 来源：slime/slime/rollout/rm_hub/__init__.py L29-L30
         timeout = aiohttp.ClientTimeout(total=120)
 ```
 
@@ -188,14 +188,14 @@ eval 路径 **禁止** group_rm（assert）。
 
 ## Q9：与 Slime skill `add-dynamic-filter` 的关系
 
-仓库内 `.claude/skills/add-dynamic-filter/SKILL.md` 描述如何新增 filter 模块并挂 CLI。核心契约与本批一致：返回 `DynamicFilterOutput`，注册到 `filter_hub/dynamic_sampling_filters.py` 或独立模块。
+仓库内 `.claude/skills/add-dynamic-filter/SKILL.md` 描述如何新增 filter 模块并挂 CLI。核心契约与本专题一致：返回 `DynamicFilterOutput`，注册到 `filter_hub/dynamic_sampling_filters.py` 或独立模块。
 
 ---
 
 ## Q10：推荐验证命令
 
 ```bash
-# DAPO scorer 单元测试（本批测试锚点）
+# DAPO scorer 单元测试（本专题测试锚点）
 pytest slime/tests/test_rm_math_dapo.py -q
 
 # 插件路径与签名契约

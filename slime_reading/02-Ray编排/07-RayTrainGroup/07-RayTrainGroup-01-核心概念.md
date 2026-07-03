@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L10-L27
+## 来源：slime/ray/actor_group.py L10-L27
 # 提交版本：22cdc6e1
 class RayTrainGroup:
     """
@@ -53,7 +53,7 @@ class RayTrainGroup:
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L28-L48
+## 来源：slime/ray/train_actor.py L28-L48
 # 提交版本：22cdc6e1
 class TrainRayActor(RayActor):
     def __init__(self, world_size, rank, master_addr, master_port):
@@ -87,7 +87,7 @@ class TrainRayActor(RayActor):
 **Code：**
 
 ```python
-# 来源：slime/ray/ray_actor.py L4-L10
+## 来源：slime/ray/ray_actor.py L4-L10
 # 提交版本：22cdc6e1
 class RayActor:
     @staticmethod
@@ -112,7 +112,7 @@ class RayActor:
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L55-L62
+## 来源：slime/ray/actor_group.py L55-L62
 # 提交版本：22cdc6e1
 env_vars = {
     "NCCL_CUMEM_ENABLE": os.environ.get("NCCL_CUMEM_ENABLE", "0"),
@@ -136,7 +136,7 @@ env_vars = {
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L101-L119
+## 来源：slime/ray/train_actor.py L101-L119
 # 提交版本：22cdc6e1
 @abc.abstractmethod
 def sleep(self, tags):
@@ -157,7 +157,7 @@ def update_weights(self):
 
 **Comment：**
 
-- `sleep` / `wake_up` 支撑 colocate offload（批次 17/19）
+- `sleep` / `wake_up` 支撑 colocate offload（[[17-Megatron-Actor-Init-00-MOC]]/19）
 - `set_rollout_manager` 在基类有默认实现，rank 0 上报 parallel config
 
 ---
@@ -169,7 +169,7 @@ def update_weights(self):
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L125-L128
+## 来源：slime/ray/train_actor.py L125-L128
 # 提交版本：22cdc6e1
 def set_rollout_manager(self, rollout_manager):
     self.rollout_manager = rollout_manager

@@ -37,14 +37,13 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1598-L1613
+## 来源：python/sglang/srt/entrypoints/http_server.py L1598-L1613
 @app.post("/v1/completions", dependencies=[Depends(validate_json_request)])
 async def openai_v1_completions(request: CompletionRequest, raw_request: Request):
     """OpenAI-compatible text completion endpoint."""
     return await raw_request.app.state.openai_serving_completion.handle_request(
         request, raw_request
     )
-
 
 @app.post("/v1/chat/completions", dependencies=[Depends(validate_json_request)])
 async def openai_v1_chat_completions(
@@ -69,12 +68,11 @@ async def openai_v1_chat_completions(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1857-L1880
+## 来源：python/sglang/srt/entrypoints/http_server.py L1857-L1880
 @app.post(os.environ.get("SGLANG_OLLAMA_CHAT_ROUTE", "/api/chat"))
 async def ollama_chat(request: OllamaChatRequest, raw_request: Request):
     """Ollama-compatible chat endpoint."""
     return await raw_request.app.state.ollama_serving.handle_chat(request, raw_request)
-
 
 @app.post(os.environ.get("SGLANG_OLLAMA_GENERATE_ROUTE", "/api/generate"))
 async def ollama_generate(request: OllamaGenerateRequest, raw_request: Request):
@@ -83,12 +81,10 @@ async def ollama_generate(request: OllamaGenerateRequest, raw_request: Request):
         request, raw_request
     )
 
-
 @app.get(os.environ.get("SGLANG_OLLAMA_TAGS_ROUTE", "/api/tags"))
 async def ollama_tags(raw_request: Request):
     """Ollama-compatible list models endpoint."""
     return raw_request.app.state.ollama_serving.get_tags()
-
 
 @app.post(os.environ.get("SGLANG_OLLAMA_SHOW_ROUTE", "/api/show"))
 async def ollama_show(request: OllamaShowRequest, raw_request: Request):
@@ -112,7 +108,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L40-L71
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L40-L71
     def _parse_model_parameter(self, model: str) -> Tuple[str, Optional[str]]:
         """Parse 'base-model:adapter-name' syntax to extract LoRA adapter.
 
@@ -159,7 +155,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L209-L241
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L209-L241
     def create_error_response(
         self,
         message: str,
@@ -207,7 +203,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L277-L306
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L277-L306
     def extract_routed_dp_rank_from_header(
         self, raw_request: Request, body_routed_dp_rank: Optional[int] = None
     ) -> Optional[int]:
@@ -256,7 +252,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L57-L97
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L57-L97
     def _validate_request(self, request: CompletionRequest) -> Optional[str]:
         """Validate that the input is valid."""
         prompt = request.prompt
@@ -312,7 +308,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L139-L185
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L139-L185
     def _build_sampling_params(self, request: CompletionRequest) -> Dict[str, Any]:
         """Build sampling parameters for the request"""
         # Start with common parameters
@@ -374,7 +370,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L187-L213
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L187-L213
     async def _handle_streaming_request(
         self,
         adapted_request: GenerateReqInput,
@@ -416,7 +412,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L244-L320
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L244-L320
             async for content in self.tokenizer_manager.generate_request(
                 adapted_request, raw_request
             ):
@@ -514,7 +510,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L82-L108
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L82-L108
             # Validate request
             error_msg = self._validate_request(request)
             if error_msg:
@@ -555,7 +551,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L551-L622
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L551-L622
         is_multimodal = self.tokenizer_manager.model_config.is_multimodal
 
         # Process messages and apply chat template
@@ -633,7 +629,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Comment：**
 
 - `text` vs `input_ids`：template 输出字符串走 `text`；已 tokenize 的 id 列表走 `input_ids`。
-- VLM 多模态走 `image_data` / `modalities`，与 [[24-Multimodal-00-MOC|Multimodal Multimodal]] 衔接。
+- VLM 多模态走 `image_data` / `modalities`，与 [[24-Multimodal-00-MOC|Multimodal]] 衔接。
 
 ---
 
@@ -644,7 +640,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L626-L695
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L626-L695
     def _process_messages(
         self, request: ChatCompletionRequest, is_multimodal: bool
     ) -> MessageProcessingResult:
@@ -720,7 +716,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L721-L727
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L721-L727
         messages = [msg.model_dump() for msg in request.messages]
         for message in messages:
             normalize_assistant_tool_call_arguments(message)
@@ -741,7 +737,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L975-L1001
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L975-L1001
     async def _handle_streaming_request(
         self,
         adapted_request: GenerateReqInput,
@@ -780,7 +776,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L1034-L1047
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L1034-L1047
         try:
             include_usage, continuous_usage_stats = should_include_usage(
                 request.stream_options,
@@ -815,7 +811,7 @@ async def ollama_show(request: OllamaShowRequest, raw_request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L79-L98
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L79-L98
 def normalize_tool_content(role: str, content):
     """Normalize tool message content from OpenAI array format to plain string.
 
@@ -867,7 +863,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L13-L46
+## 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L13-L46
 class StreamDelta(msgspec.Struct, omit_defaults=True):
     """Delta content for streaming responses.
 
@@ -882,7 +878,6 @@ class StreamDelta(msgspec.Struct, omit_defaults=True):
     role: Optional[str] = None
     content: Optional[str] = None
 
-
 class StreamChoice(msgspec.Struct):
     """A single choice in a streaming response."""
 
@@ -891,7 +886,6 @@ class StreamChoice(msgspec.Struct):
     logprobs: Optional[dict] = None
     finish_reason: Optional[str] = None
     matched_stop: Union[None, int, str] = None
-
 
 class StreamChunk(msgspec.Struct, omit_defaults=True):
     """A complete streaming chunk."""
@@ -907,7 +901,7 @@ class StreamChunk(msgspec.Struct, omit_defaults=True):
 **Code（build_sse_content）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L52-L99
+## 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L52-L99
 def build_sse_content(
     chunk_id: str,
     created: int,
@@ -972,7 +966,7 @@ def build_sse_content(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/usage_processor.py L18-L55
+## 来源：python/sglang/srt/entrypoints/openai/usage_processor.py L18-L55
     def calculate_response_usage(
         responses: List[Dict[str, Any]],
         n_choices: int = 1,
@@ -1027,7 +1021,7 @@ def build_sse_content(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/serving.py L41-L66
+## 来源：python/sglang/srt/entrypoints/ollama/serving.py L41-L66
     def _convert_options_to_sampling_params(self, options: dict = None) -> dict:
         """Convert Ollama options to SGLang sampling params."""
         sampling_params = {}
@@ -1061,7 +1055,7 @@ def build_sse_content(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/serving.py L137-L171
+## 来源：python/sglang/srt/entrypoints/ollama/serving.py L137-L171
         async def generate_stream() -> AsyncIterator[bytes]:
             previous_text = ""
             async for chunk in self.tokenizer_manager.generate_request(
@@ -1112,7 +1106,7 @@ def build_sse_content(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/protocol.py L21-L30
+## 来源：python/sglang/srt/entrypoints/ollama/protocol.py L21-L30
 class OllamaChatRequest(BaseModel):
     """Ollama /api/chat request format."""
 

@@ -8,8 +8,6 @@ tags:
  - sglang/batch/31
  - sglang/module/observability
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 可观测性 验收清单
@@ -22,12 +20,6 @@ updated: 2026-07-02
 - [x] 能追踪 metrics 从 record 到 `/metrics` 暴露的完整链路
 - [x] 能说明 weight_load metrics 与 32-CheckpointEngine 的关系
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [ ] 对照 knowledge-graph 无遗漏 observability 关键节点
-- [ ] 来源注释路径/行号与 git 70df09b 一致
-- [ ] 未修改 progress.md（由 P8 统一更新）
 
 ## 核心结论（3 句话）
 

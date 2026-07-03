@@ -8,8 +8,6 @@ tags:
  - sglang/batch/03
  - sglang/module/http-server
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # HTTP Server 验收清单
@@ -26,14 +24,6 @@ updated: 2026-07-02
  - `generate_request`（HTTP）— Native API 入口，委托 `tokenizer_manager.generate_request`
 - [x] 能追踪 `POST /generate` 从 FastAPI 到 TokenizerManager 的路径（见 03-数据流与交互.md §5）
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph：`launch_server.py → module:srt` 与本模块 `http_server`/`engine` 叙述一致
-- [x] 来源注释路径/行号与 commit `70df09b` 一致
-- [x] 已更新 [[progress]]
 
 ## 内嵌源码统计
 

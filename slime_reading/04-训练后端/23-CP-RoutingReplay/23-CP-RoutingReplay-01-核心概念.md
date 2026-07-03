@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：cp_utils.py L307-L317
+## 来源：cp_utils.py L307-L317
     chunk_size = (token_len + 2 * cp_size - 1) // (2 * cp_size)
     pad = 2 * cp_size * chunk_size - token_len
     ...
@@ -55,7 +55,7 @@ updated: 2026-07-02
 
 ## 4. get_sum_of_sample_mean
 
-**Explain：** CP>1 时先把 `loss_mask` 按 `tokens_offset` 切成两段再 cat，与 local logprob 长度对齐；分母 `sample_denoms` 仍用 **full** rollout 预计算值（[[20-Train-Data]]）。
+**Explain：** CP>1 时先把 `loss_mask` 按 `tokens_offset` 切成两段再 cat，与 local logprob 长度对齐；分母 `sample_denoms` 仍用 **full** rollout 预计算值（[[20-Train-Data-00-MOC]]）。
 
 ---
 

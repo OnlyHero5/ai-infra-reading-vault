@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：train.py L67, L81
+## 来源：train.py L67, L81
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
         ray.get(actor_model.async_train(rollout_id, rollout_data_ref))
 ```
@@ -53,7 +53,7 @@ for s in siblings:
 **Code（校验逻辑）：**
 
 ```python
-# 来源：slime/ray/rollout.py L898-L924
+## 来源：slime/ray/rollout.py L898-L924
 def _validate_rollout_id_annotated(node, depth=0):
     if node and isinstance(node[0], Sample):
         if depth >= 2 and len(node) > 1:
@@ -87,7 +87,7 @@ def _validate_rollout_id_annotated(node, depth=0):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L555-L558
+## 来源：slime/ray/rollout.py L555-L558
         if self.args.debug_rollout_only:
             return
         data = self._convert_samples_to_train_data(data)
@@ -102,7 +102,7 @@ def _validate_rollout_id_annotated(node, depth=0):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L636-L641
+## 来源：slime/ray/rollout.py L636-L641
         if self.args.load_debug_rollout_data:
             data = torch.load(
                 self.args.load_debug_rollout_data.format(rollout_id=rollout_id),
@@ -122,7 +122,7 @@ def _validate_rollout_id_annotated(node, depth=0):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L511-L516
+## 来源：slime/ray/rollout.py L511-L516
     def _get_updatable_server(self) -> Any | None:
         """When multiple updatable servers exist, returns the first one
         (multi-model weight update is not yet supported)."""
@@ -165,7 +165,7 @@ generate 期间 engines 必须已 onload weights + KV；offload 在 generate **�
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L750-L759
+## 来源：slime/ray/rollout.py L750-L759
             if sample.loss_mask is None:
                 sample.loss_mask = [1] * sample.response_length
             if sample.remove_sample:

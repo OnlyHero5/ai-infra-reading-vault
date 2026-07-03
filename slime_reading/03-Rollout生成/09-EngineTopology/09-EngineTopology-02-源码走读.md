@@ -42,7 +42,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L430-L454
+## 来源：slime/ray/rollout.py L430-L454
 # 提交版本：22cdc6e1
         rollout_init_handles: list[Any] = []
         if self.args.debug_train_only:
@@ -74,7 +74,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_config.py L157-L180
+## 来源：slime/backends/sglang_utils/sglang_config.py L157-L180
 # 提交版本：22cdc6e1
     @staticmethod
     def from_yaml(path: str) -> "SglangConfig":
@@ -116,7 +116,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_config.py L68-L100
+## 来源：slime/backends/sglang_utils/sglang_config.py L68-L100
 # 提交版本：22cdc6e1
     def resolve(self, args) -> None:
         """Resolve per-group defaults from model-level then args-level values."""
@@ -164,7 +164,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1019-L1070
+## 来源：slime/ray/rollout.py L1019-L1070
 # 提交版本：22cdc6e1
 def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool = False) -> tuple[str, int]:
     """Start sglang_router and return (router_ip, router_port)."""
@@ -218,7 +218,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1133-L1169
+## 来源：slime/ray/rollout.py L1133-L1169
 # 提交版本：22cdc6e1
         def _make_group(group_cfg, router_ip, router_port, overrides_extra=None):
             nonlocal engine_offset, gpu_offset
@@ -270,7 +270,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L137-L246
+## 来源：slime/ray/rollout.py L137-L246
 # 提交版本：22cdc6e1
     def start_engines(self, port_cursors: dict[int, int] | None = None) -> tuple[list, dict[int, int]]:
         if port_cursors is None:
@@ -344,7 +344,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1206-L1228
+## 来源：slime/ray/rollout.py L1206-L1228
 # 提交版本：22cdc6e1
         else:
             all_init_handles: list = []
@@ -384,7 +384,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1171-L1205
+## 来源：slime/ray/rollout.py L1171-L1205
 # 提交版本：22cdc6e1
         if has_epd:
             encoder_urls: list[str] = []
@@ -430,7 +430,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L340-L381
+## 来源：slime/ray/rollout.py L340-L381
 # 提交版本：22cdc6e1
     def recover(self):
         dead_per_group = [[i for i, engine in enumerate(g.all_engines) if engine is None] for g in self.server_groups]
@@ -472,7 +472,7 @@ def _start_router(args, *, has_pd_disaggregation: bool = False, force_new: bool 
 **Code：**
 
 ```markdown
-# 来源：slime/docs/en/advanced/pd-disaggregation.md（摘录）
+## 来源：slime/docs/en/advanced/pd-disaggregation.md（摘录）
 ## Configuration Paths
 
 ### Simple Path: `--prefill-num-servers`

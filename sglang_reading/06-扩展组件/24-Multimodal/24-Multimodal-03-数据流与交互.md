@@ -49,7 +49,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py（类型引用）
+## 来源：python/sglang/srt/managers/schedule_batch.py（类型引用）
 # class MultimodalDataItem: 承载单模态 tensor 与 metadata
 # class MultimodalProcessorOutput: Processor 返回给 TokenizerManager 的聚合结构
 ```
@@ -73,7 +73,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/encode_server.py L2477-L2505
+## 来源：python/sglang/srt/disaggregation/encode_server.py L2477-L2505
 async def _push_embedding_to_prefill(enc: MMEncoder, request: dict) -> None:
     # No-op for mooncake (its /send is separate). embedding_port=None is
     # rejected upfront, so ports is always a concrete list here.
@@ -116,7 +116,7 @@ async def _push_embedding_to_prefill(enc: MMEncoder, request: dict) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L100-L110（build 方法示意）
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L100-L110（build 方法示意）
     def build(self, processor):
         self.convert_to_strs(processor)
         self.parse_regex()
@@ -141,7 +141,7 @@ async def _push_embedding_to_prefill(enc: MMEncoder, request: dict) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/processors/base_processor.py L44-L45
+## 来源：python/sglang/srt/multimodal/processors/base_processor.py L44-L45
 SGL_USE_CUDA_IPC = envs.SGLANG_USE_CUDA_IPC_TRANSPORT.get()
 _IPC_POOL_HANDLE_CACHE = envs.SGLANG_USE_IPC_POOL_HANDLE_CACHE.get()
 ```
@@ -157,7 +157,7 @@ _IPC_POOL_HANDLE_CACHE = envs.SGLANG_USE_IPC_POOL_HANDLE_CACHE.get()
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/multimodal/customized_mm_processor_utils.py L9-L35
+## 来源：python/sglang/srt/multimodal/customized_mm_processor_utils.py L9-L35
 def register_customized_processor(
     processor_class: Type[ProcessorMixin],
 ):

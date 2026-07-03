@@ -41,7 +41,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L1421-L1437
+## 来源：python/sglang/srt/model_executor/model_runner.py L1421-L1437
 # 提交版本：70df09b
         self.load_config = LoadConfig(
             load_format=self.server_args.load_format,
@@ -74,7 +74,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L165-L174
+## 来源：python/sglang/srt/managers/tp_worker.py L165-L174
 # 提交版本：70df09b
     def update_weights_from_tensor(self, recv_req: UpdateWeightsFromTensorReqInput):
 
@@ -93,7 +93,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L200-L208
+## 来源：python/sglang/srt/managers/tp_worker.py L200-L208
 # 提交版本：70df09b
         if recv_req.load_format == "flattened_bucket":
             flattened_data = MultiprocessingSerializer.deserialize(
@@ -119,7 +119,7 @@ Loader 只负责 **tensor 流**；架构定义在 `srt/models/*`（Models 通用
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L234-L248（概念节选）
+## 来源：python/sglang/srt/model_loader/loader.py L234-L248（概念节选）
             }
         )
 
@@ -152,7 +152,7 @@ Loader 只负责 **tensor 流**；架构定义在 `srt/models/*`（Models 通用
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L1421-L1437
+## 来源：python/sglang/srt/model_executor/model_runner.py L1421-L1437
         self.load_config = LoadConfig(
             load_format=self.server_args.load_format,
             download_dir=self.server_args.download_dir,
@@ -173,4 +173,3 @@ Loader 只负责 **tensor 流**；架构定义在 `srt/models/*`（Models 通用
 ```
 
 **Comment：** `draft_model_idx` 非 None 时加载投机解码 draft 权重；与 target 模型共用 loader 路径但不同 `ModelRunner` 实例（投机解码）。
-

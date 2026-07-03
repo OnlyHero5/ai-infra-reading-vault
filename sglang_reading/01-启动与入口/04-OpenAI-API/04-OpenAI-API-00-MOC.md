@@ -56,7 +56,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L291-L323
+## 来源：python/sglang/srt/entrypoints/http_server.py L291-L323
     # Initialize OpenAI serving handlers
     fast_api_app.state.openai_serving_completion = OpenAIServingCompletion(
         _global_state.tokenizer_manager, _global_state.template_manager

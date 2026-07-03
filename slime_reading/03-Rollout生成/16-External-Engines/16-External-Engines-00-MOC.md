@@ -3,7 +3,7 @@ type: batch-doc
 module: 16-External-Engines
 batch: "16"
 doc_type: moc
-title: "External Engines · 批次概述"
+title: "External Engines · 专题概述"
 tags:
   - slime/batch/16
   - slime/module/external-engines
@@ -11,9 +11,9 @@ tags:
 updated: 2026-07-02
 ---
 
-# External Engines · 批次概述
+# External Engines · 专题概述
 
-> **阶段 III · Rollout 生成** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 III · Rollout 生成** | Git：`22cdc6e1`  
 > **源码范围：** `external.py`、`health_monitor.py`、`http_utils.py`、`docs/en/advanced/external-rollout-engines.md`
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1851-L1854
+## 来源：slime/utils/arguments.py L1851-L1854
     args.rollout_external = args.rollout_external_engine_addrs is not None
 
     if args.rollout_external and not args.debug_train_only:
@@ -78,7 +78,7 @@ flowchart LR
 ```
 
 ```python
-# 来源：slime/ray/rollout.py L1103-L1104
+## 来源：slime/ray/rollout.py L1103-L1104
     if args.rollout_external:
         return start_external_rollout_servers(args, start_router=_start_router)
 ```
@@ -91,14 +91,14 @@ flowchart LR
 
 ---
 
-## 与相邻批次
+## 与相邻专题
 
-| 方向 | 批次 | 关系 |
+| 方向 | 专题 | 关系 |
 |------|------|------|
 | 上游 | [[15-SGLang-Engine-00-MOC]] | `SGLangEngine._init_external` sanity check + Router 注册 |
 | 上游 | [[08-RolloutManager-00-MOC]] | `RolloutManager` 启动 servers、health monitor |
 | 下游 | [[24-WeightSync-Dist-00-MOC]] | external + disk/delta 权重同步路径 |
-| 对照 | [[24-PD-SGLangConfig-00-MOC]] | `--sglang-config` 互斥方案 |
+| 对照 | [[15-SGLang-Engine-00-MOC]] | `--sglang-config` 互斥方案 |
 
 ---
 

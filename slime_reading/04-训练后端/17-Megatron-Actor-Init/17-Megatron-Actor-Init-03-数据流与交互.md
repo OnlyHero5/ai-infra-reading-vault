@@ -42,7 +42,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L189-L210
+## 来源：slime/ray/placement_group.py L189-L210
 critic_start_rollout_ids = ray.get(critic_model.async_init(critic_model.args, role="critic", with_ref=False))
 
 actor_start_rollout_ids = ray.get(
@@ -80,7 +80,7 @@ actor_model.set_rollout_manager(rollout_manager)
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L121-L128
+## 来源：slime/ray/actor_group.py L121-L128
 def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
     self.args = args
     return [
@@ -103,7 +103,7 @@ def async_init(self, args, role, with_ref=False, with_opd_teacher=False):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L64-L84
+## 来源：slime/ray/actor_group.py L64-L84
 if self.args.offload_train and self.args.train_backend == "megatron":
     import torch_memory_saver
     for path in [
@@ -141,7 +141,7 @@ if self.args.offload_train and self.args.train_backend == "megatron":
 | Actor → 全局 | `start_rollout_id` | 各 rank 返回 int，`ray.get` 聚合 |
 | Actor ↔ Rollout | rollout_manager 引用 | `set_rollout_manager`（init 后） |
 
-无 Ray object store 大对象传输发生在 **init 本身**；rollout 数据在 [[19-Train-Step]] 的 `train()` 才经 `rollout_data_ref` 传入。
+无 Ray object store 大对象传输发生在 **init 本身**；rollout 数据在 [[19-Train-Step-00-MOC]] 的 `train()` 才经 `rollout_data_ref` 传入。
 
 ---
 
@@ -152,7 +152,7 @@ if self.args.offload_train and self.args.train_backend == "megatron":
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L380-L400
+## 来源：slime/backends/megatron_utils/actor.py L380-L400
 def train(self, rollout_id: int, rollout_data_ref: Box, external_data=None):
     if self.args.debug_rollout_only:
         return None
@@ -184,7 +184,7 @@ def train(self, rollout_id: int, rollout_data_ref: Box, external_data=None):
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L159-L163
+## 来源：slime/ray/actor_group.py L159-L163
 def onload(self):
     return ray.get([actor.wake_up.remote() for actor in self._actor_handlers])
 
@@ -233,7 +233,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L654-L682
+## 来源：slime/backends/megatron_utils/actor.py L654-L682
 def load_other_checkpoint(self, model_tag: str, path: str) -> None:
     old_args = self.args.load, self.args.no_load_optim, self.args.no_load_rng, self.args.finetune
     self.args.load = path

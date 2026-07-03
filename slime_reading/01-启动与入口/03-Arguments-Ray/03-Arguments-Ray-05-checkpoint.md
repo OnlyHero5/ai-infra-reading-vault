@@ -22,12 +22,6 @@ updated: 2026-07-02
 - [ ] 说明 debug_rollout_only 如何改写 actor 布局
 - [ ] 能解释 delta weight 与 colocate 互斥原因
 
-## 维护者检查
-
-- [ ] tags：`slime/batch/03`
-- [ ] 行号对应 `22cdc6e1`
-- [ ] 已更新 [[Slime-progress]] 批次 03 ✅
-
 ## 下一批
 
 → [[04-Arguments-TrainRollout-00-MOC]]

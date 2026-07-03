@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Detokenizer 与输出反序列化
 
-> **阶段 II · 请求调度** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 II · 请求调度** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `detokenizer_manager.py`、`communicator.py`（FanOutCommunicator）
 
 ---
@@ -68,7 +68,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L483-L499
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L483-L499
 def run_detokenizer_process(
     server_args: ServerArgs,
     port_args: PortArgs,

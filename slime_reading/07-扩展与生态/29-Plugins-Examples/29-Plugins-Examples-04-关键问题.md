@@ -44,7 +44,7 @@ updated: 2026-07-02
 ## Q4：Search-R1 partial_rollout 为何不支持？
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L146
+## 来源：examples/search-r1/generate_with_search.py L146
     assert not args.partial_rollout, "Partial rollout is not supported for this function at the moment."
 ```
 
@@ -76,7 +76,7 @@ random.shuffle(samples)
 
 ## Q8：glm5 plugin 与 examples 关系？
 
-glm5 是 **模型实现**，不是 runnable example；需在 Megatron args 选对应 model provider，并确保 [[26-Checkpoint-M2HF]] converter 路由含该架构。
+glm5 是 **模型实现**，不是 runnable example；需在 Megatron args 选对应 model provider，并确保 [[26-Checkpoint-M2HF-00-MOC]] converter 路由含该架构。
 
 ---
 

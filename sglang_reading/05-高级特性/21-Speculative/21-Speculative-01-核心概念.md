@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L28-L41
+## 来源：python/sglang/srt/speculative/spec_info.py L28-L41
 class SpeculativeAlgorithm(Enum):
     """Builtin speculative decoding algorithms. Plugin-registered ones are
     ``CustomSpecAlgo`` instances; ``from_string`` returns either type, and
@@ -70,7 +70,7 @@ class SpeculativeAlgorithm(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L28-L41
+## 来源：python/sglang/srt/speculative/spec_info.py L28-L41
 class SpeculativeAlgorithm(Enum):
     """Builtin speculative decoding algorithms. Plugin-registered ones are
     ``CustomSpecAlgo`` instances; ``from_string`` returns either type, and
@@ -102,7 +102,7 @@ class SpeculativeAlgorithm(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L243-L269
+## 来源：python/sglang/srt/speculative/spec_info.py L243-L269
 class SpecInputType(IntEnum):
     # NOTE: introduce this to distinguish the SpecInput types of multiple algorithms when asserting in attention backends.
     # If all algorithms can share the same datastrucutre of draft_input and verify_input, consider simplify it
@@ -114,7 +114,6 @@ class SpecInputType(IntEnum):
     DFLASH_DRAFT = auto()
     DFLASH_VERIFY = auto()
     NGRAM_VERIFY = auto()
-
 
 class SpecInput(ABC):
     def __init__(self, spec_input_type: SpecInputType):
@@ -163,7 +162,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_registry.py L189-L219
+## 来源：python/sglang/srt/speculative/spec_registry.py L189-L219
 def register_algorithm(
     name: str,
     *,

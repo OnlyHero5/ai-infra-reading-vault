@@ -31,7 +31,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L103-L118
+## 来源：python/sglang/srt/disaggregation/utils.py L103-L118
 def _apply_metadata_gate(polls, decode_reqs, metadata_buffers, server_args) -> None:
     """Downgrade Success → Transferring for requests whose metadata hasn't landed.
 
@@ -61,7 +61,7 @@ def _apply_metadata_gate(polls, decode_reqs, metadata_buffers, server_args) -> N
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L104-L120
+## 来源：python/sglang/srt/disaggregation/prefill.py L104-L120
 class PrefillBootstrapQueue:
     """
     Store the requests in bootstrapping
@@ -92,7 +92,7 @@ class PrefillBootstrapQueue:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L87-L101
+## 来源：python/sglang/srt/disaggregation/prefill.py L87-L101
 def maybe_release_metadata_buffer(
     req: Req, allocator: ReqToMetadataIdxAllocator
 ) -> None:
@@ -121,7 +121,7 @@ def maybe_release_metadata_buffer(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L107-L117
+## 来源：python/sglang/srt/disaggregation/decode.py L107-L117
 class DecodeReqToTokenPool:
     """
     The difference of DecodeReqToTokenPool and ReqToTokenPool is that
@@ -146,7 +146,7 @@ class DecodeReqToTokenPool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L143-L160
+## 来源：python/sglang/srt/disaggregation/utils.py L143-L160
 def poll_and_all_reduce_attn_cp_tp_group(
     pollers,
     attn_cp_cpu_group: dist.ProcessGroup,
@@ -178,7 +178,7 @@ def poll_and_all_reduce_attn_cp_tp_group(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L163-L175
+## 来源：python/sglang/srt/disaggregation/utils.py L163-L175
 def poll_and_all_reduce_with_staging(
     decode_reqs,
     staging_handler,
@@ -205,7 +205,7 @@ def poll_and_all_reduce_with_staging(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L77-L84
+## 来源：python/sglang/srt/disaggregation/prefill.py L77-L84
 def should_force_retry(req: Req) -> bool:
     """Test hook to force a request into optimistic prefill retry."""
     retry_prob = envs.SGLANG_TEST_FORCE_OPTIMISTIC_PREFILL_RETRY_PROB.get()
@@ -227,7 +227,7 @@ def should_force_retry(req: Req) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py（类引用）
+## 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py（类引用）
 class DecodeHiCachePreallocMixin:
  ...
 class DecodeHiCacheTransferMixin:
@@ -236,7 +236,7 @@ class HiCacheRestoreGatedKVReceiver:
  ...
 ```
 
-**Comment：** 与KV Cache KV Cache / RadixAttention RadixAttention 的 HiCache 存储联动；降低跨节点 KV 字节数。
+**Comment：** 与 [[16-KV-Cache-00-MOC|KV Cache]] / [[15-RadixAttention-00-MOC|RadixAttention]] 的 HiCache 存储联动；降低跨节点 KV 字节数。
 
 ---
 
@@ -247,7 +247,7 @@ class HiCacheRestoreGatedKVReceiver:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/encode_server.py L233-L294
+## 来源：python/sglang/srt/disaggregation/encode_server.py L233-L294
 class MMEncoder:
     def __init__(
         self,
@@ -312,4 +312,4 @@ class MMEncoder:
         )
 ```
 
-**Comment：** 与Multimodal Multimodal 交叉；PD + VLM 三联部署时 encode → prefill → decode。
+**Comment：** 与 [[24-Multimodal-00-MOC|Multimodal]] 交叉；PD + VLM 三联部署时 encode → prefill → decode。

@@ -60,7 +60,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/agent/adapters/common.py L472-L472
+## 来源：slime/agent/adapters/common.py L472-L472
     headers = {"X-SMG-Routing-Key": session_id} if session_id and session_id != "default" else None
 ```
 
@@ -75,7 +75,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/agent/parsing.py L25-L56
+## 来源：slime/agent/parsing.py L25-L56
 def parse_model_output(raw_output, *, tools_schema, tool_parser_name, reasoning_parser_name):
     ...
     body_text, tool_uses, ill_formed = parse_tool_uses(body_text, tools_schema, tool_parser_name)
@@ -98,7 +98,7 @@ def parse_model_output(raw_output, *, tools_schema, tool_parser_name, reasoning_
 **Code（文档 fan-out 契约摘录）：**
 
 ```markdown
-# 来源：docs/en/get_started/agent.md L25-L26
+## 来源：docs/en/get_started/agent.md L25-L26
 If one rollout splits into multiple trainable segments, return `list[Sample]` and set the same `rollout_id` on all sibling samples.
 ```
 
@@ -129,4 +129,4 @@ flowchart TB
 | [[12-SGLang-Rollout-00-MOC]] | 默认单轮 generate 对照 |
 | [[28-Customization-00-MOC]] | `--custom-generate-function-path` 挂接 |
 | [[13-RM-FilterHub-00-MOC]] | ill_formed / truncated 过滤 |
-| `slime/agent/harness/*` | sandbox 内跑 CLI agent（批次 28） |
+| `slime/agent/harness/*` | sandbox 内跑 CLI agent（[[28-Customization-00-MOC]]） |

@@ -17,7 +17,7 @@ updated: 2026-07-02
 
 ## 1. 三类参数中的「Slime 自身」段
 
-本批覆盖 README 第三类：`arguments.py` 内 **Train / Rollout / Data / Algo / RM / Customization** 段（Ray 段见批次 03）。
+本专题覆盖 README 第三类：`arguments.py` 内 **Train / Rollout / Data / Algo / RM / Customization** 段（Ray 段见[[03-Arguments-Ray-00-MOC]]）。
 
 ---
 
@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L135-L144
+## 来源：slime/utils/arguments.py L135-L144
             parser.add_argument(
                 "--update-weight-mode",
                 choices=["full", "delta"],
@@ -68,7 +68,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)
@@ -92,7 +92,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L36-L36
+## 来源：docs/en/get_started/customization.md L36-L36
 # start with --custom-generate-function-path plus --custom-rm-path
 ```
 
@@ -105,7 +105,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L86-L91
+## 来源：slime/backends/sglang_utils/arguments.py L86-L91
             if isinstance(item_flag, str) and item_flag.startswith("-"):
                 original_flag_stem = item_flag.lstrip("-")
                 prefixed_item = f"--sglang-{original_flag_stem}"
@@ -121,7 +121,7 @@ def load_function(path):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L72-L78
+## 来源：slime/backends/megatron_utils/arguments.py L72-L78
 def validate_args(args):
     _megatron_validate_args(args)
     args.variable_seq_lengths = True
@@ -134,7 +134,7 @@ def validate_args(args):
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1908-L1909
+## 来源：slime/utils/arguments.py L1908-L1909
     if args.eval_function_path is None:
         args.eval_function_path = args.rollout_function_path
 ```

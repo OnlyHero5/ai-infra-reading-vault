@@ -71,7 +71,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1546-L1589
+## 来源：slime/utils/arguments.py L1546-L1589
 def parse_args(add_custom_arguments=None):
     configure_logger()
     add_slime_arguments = get_slime_extra_args_provider(add_custom_arguments)
@@ -119,7 +119,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)
@@ -149,7 +149,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L145-L155
+## 来源：slime/utils/arguments.py L145-L155
 # --update-weight-mode: full | delta
 # --update-weight-transport: nccl | disk
 # full + nccl: broadcast chunks
@@ -173,7 +173,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：README_zh.md L124-L125
+## 来源：README_zh.md L124-L125
 # vime ... 主要特点是将 rollout 后端替换为 vLLM
 # 在现有 slime 启动脚本基础上仅调整 rollout 相关参数
 ```
@@ -191,7 +191,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1844-L1849
+## 来源：slime/utils/arguments.py L1844-L1849
     if args.load_debug_rollout_data is not None:
         logger.info("... will not instantiate sglang servers ...")
         args.debug_train_only = True

@@ -51,7 +51,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L175-L209
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L175-L209
 def fp8_blockwise_scaled_grouped_mm(
     output,
     a_ptrs,
@@ -90,7 +90,7 @@ def fp8_blockwise_scaled_grouped_mm(
 ```
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L105-L137
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L105-L137
 def moe_fused_gate(
     input_tensor,
     bias,
@@ -151,7 +151,7 @@ def moe_fused_gate(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L25-L26
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L25-L26
     torch.ops.sgl_kernel.merge_state_v2.default(v_a, s_a, v_b, s_b, v_merged, s_merged)
     return v_merged, s_merged
 ```
@@ -171,7 +171,7 @@ def moe_fused_gate(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L59-L68
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L59-L68
     # Determine which version to load based on GPU architecture
     if compute_capability == 90:
         ops_subdir = "sm90"
@@ -201,7 +201,7 @@ def moe_fused_gate(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/__init__.py L88-L100
+## 来源：sgl-kernel/python/sgl_kernel/__init__.py L88-L100
     from sgl_kernel.moe import (
         apply_shuffle_mul_sum,
         fp8_blockwise_scaled_grouped_mm,
@@ -233,7 +233,7 @@ def moe_fused_gate(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/__init__.py L128-L141
+## 来源：sgl-kernel/python/sgl_kernel/__init__.py L128-L141
     if torch.version.hip is not None:
         from sgl_kernel.elementwise import gelu_quick
         from sgl_kernel.top_k import deepseek_v4_topk_transform_512
@@ -265,7 +265,7 @@ def moe_fused_gate(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/debug_utils.py L7-L24
+## 来源：sgl-kernel/python/sgl_kernel/debug_utils.py L7-L24
 def _wrap_debug_kernel(func: F, op_name: str | None = None) -> F:
     try:
         if int(os.environ.get("SGLANG_KERNEL_API_LOGLEVEL", "0")) == 0:

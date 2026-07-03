@@ -20,7 +20,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L390, L632
+## 来源：slime/rollout/sglang_rollout.py L390, L632
     assert args.rollout_global_dataset
     # generate_rollout 入口同样 assert
 ```
@@ -41,7 +41,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L177-L189
+## 来源：slime/rollout/data_source.py L177-L189
         samples = self._get_samples_from_buffer(num_samples)
         num_samples -= len(samples)
         if num_samples == 0:
@@ -60,7 +60,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L429-L433, L435-L437
+## 来源：slime/rollout/sglang_rollout.py L429-L433, L435-L437
             dynamic_filter_output = call_dynamic_filter(dynamic_filter, args, group)
             if not dynamic_filter_output.keep:
                 metric_gatherer.on_dynamic_filter_drop(reason=dynamic_filter_output.reason)
@@ -78,7 +78,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md（模式示意，接口同 data_source.py）
+## 来源：docs/en/get_started/customization.md（模式示意，接口同 data_source.py）
 class CustomDataSource(DataSource):
     def get_samples(self, num_samples: int) -> list[list[Sample]]:
         ...
@@ -108,7 +108,7 @@ class CustomDataSource(DataSource):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L225-L229
+## 来源：slime/rollout/data_source.py L225-L229
 def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) -> list[list[Sample]]:
     num_to_pop = min(len(buffer), num_samples)
     samples = buffer[:num_to_pop]
@@ -133,7 +133,7 @@ def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) ->
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L159-L160
+## 来源：slime/rollout/data_source.py L159-L160
         if self.args.rollout_global_dataset and self.args.rollout_shuffle and self.dataset is not None:
             self.dataset.shuffle(self.epoch_id)
 ```
@@ -153,7 +153,7 @@ def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) ->
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L631-L641（help 摘要）
+## 来源：slime/utils/arguments.py L631-L641（help 摘要）
             parser.add_argument(
                 "--prompt-data",
                 type=str,
@@ -175,7 +175,7 @@ def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) ->
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L162-L165
+## 来源：slime/rollout/data_source.py L162-L165
     def __len__(self) -> int:
         if self.dataset is None:
             return 0

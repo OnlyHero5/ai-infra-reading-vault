@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：README_zh.md L9-L16
+## 来源：README_zh.md L9-L16
 # slime 是为 RL scaling 设计的 LLM post‑training 框架，提供两大核心能力：
 # 1. 高性能训练：通过连接 Megatron 与 SGLang，支持各种模式的高效训练；
 # 2. 灵活的数据生成：通过自定义数据生成接口以及 server-based engine，
@@ -65,7 +65,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：train.py L62-L89
+## 来源：train.py L62-L89
     for rollout_id in range(args.start_rollout_id, args.num_rollout):
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
         # ... offload_rollout 省略 ...
@@ -94,7 +94,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L55-L59
+## 来源：docs/en/blogs/introducing_slime.md L55-L59
 # - slime internally launches SGLang servers in a server-based mode.
 # - slime implements seamless pass-through for all SGLang parameters
 #   (with a `--sglang` prefix)
@@ -104,7 +104,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L63-L67
+## 来源：docs/en/blogs/introducing_slime.md L63-L67
 # For training, slime integrates Megatron-LM:
 # - seamless pass-through for all Megatron parameters
 # - all Megatron parallelisms (TP, PP, EP, CP)
@@ -133,7 +133,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L33-L37
+## 来源：docs/en/blogs/introducing_slime.md L33-L37
 # A prevailing misconception ... separate frameworks for different tasks ...
 # no one forks PyTorch just for a new dataloader.
 # slime views the data sampling in RL differently ...
@@ -146,7 +146,7 @@ flowchart LR
 
 | 文件后缀 | 读法 |
 |----------|------|
-| `00-MOC` | 本批地图：目标、源码范围、验收 |
+| `00-MOC` | 本专题地图：目标、源码范围、验收 |
 | `01-核心概念` | 术语与设计动机（先读） |
 | `02-源码走读` | **主文档**：按调用顺序贴源码 |
 | `03-数据流与交互` | 时序图 / 模块边界 |
@@ -164,7 +164,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：setup.py L31-L38
+## 来源：setup.py L31-L38
 setup(
     author="slime Team",
     name="slime",
@@ -178,7 +178,7 @@ setup(
 **Code：**
 
 ```python
-# 来源：requirements.txt L18-L22（RL 闭环关键依赖摘录）
+## 来源：requirements.txt L18-L22（RL 闭环关键依赖摘录）
 ray[default]
 sglang-router>=0.2.3
 transformers
@@ -200,7 +200,7 @@ wandb
 **Code：**
 
 ```python
-# 来源：docs/en/blogs/introducing_slime.md L43-L45
+## 来源：docs/en/blogs/introducing_slime.md L43-L45
 # slime uses Ray ... colocated (same GPUs) or decoupled (separate GPUs)
 # with a single flag (`--colocate`).
 # Changing synchronization behavior is as simple as moving the `ray.get` operation.

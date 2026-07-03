@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # RadixAttention 与前缀缓存
 
-> **阶段 IV · 内存与 Attention** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 IV · 内存与 Attention** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `mem_cache/radix_cache.py`、`mem_cache/unified_radix_cache.py`、`layers/radix_attention.py`
 
 ---
@@ -71,7 +71,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L355-L413
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L355-L413
     def match_prefix(self, params: MatchPrefixParams) -> MatchResult:
         """Find the longest cached prefix of ``key`` in the radix tree.
 

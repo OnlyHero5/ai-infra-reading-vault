@@ -8,8 +8,6 @@ tags:
  - sglang/batch/24
  - sglang/module/multimodal
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # Multimodal 验收清单
@@ -21,10 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 BaseMultimodalProcessor、MultimodalSpecialTokens、PROCESSOR_MAPPING 的作用
 - [x] 能解释 placeholder 展开与 grid_thw 对齐的重要性
 - [x] 五篇正文 ≥ 15 段内嵌源码
-
-## 维护者检查
-
-- [x] 已更新 [[progress]]
 
 ## 核心结论
 

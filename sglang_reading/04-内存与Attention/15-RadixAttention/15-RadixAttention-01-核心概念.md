@@ -50,22 +50,7 @@ sequenceDiagram
 
 **Explain：** 多请求共享相同 token 前缀时，KV 向量相同，应共用 GPU 内存。SGLang 用 **radix tree** 按 token 序列（分页对齐）组织节点，叶节点 `value` 存 KV pool index tensor。前缀命中发生在 `ScheduleBatch` 初始化阶段：`match_prefix` 返回的 `device_indices` 写入 `prefix_indices`，后续 extend 只对 delta 分配 KV slot 并跑 attention。**RadixAttention** 层则是 GPU Attention 算子入口，与树数据结构无直接调用关系——名字均强调「按 token 前缀共享 KV」。
 
-**Code：**
-
-```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L217-L226
-# 提交版本：70df09b
-class TreeNode:
-
-    counter = 0
-
-    def __init__(self, id: Optional[int] = None, priority: int = 0):
-        self.children = defaultdict(TreeNode)
-        self.parent: TreeNode = None
-        self.key: RadixKey = None
-        self.value: Optional[torch.Tensor] = None
-        self.lock_ref = 0
-```
+**Code：** 见下文 **§1 Radix Tree 与 Prefix Cache**（`TreeNode` 数据结构）。
 
 **Comment：**
 
@@ -85,13 +70,12 @@ class TreeNode:
 
 ## 1. Radix Tree 与 Prefix Cache
 
-
 **Explain：** 多请求若共享相同 token 前缀，KV 向量相同，应共用 GPU 内存。SGLang 用 **radix tree** 按 token 序列（分页对齐）组织节点，叶节点 `value` 存 KV pool index tensor。新请求 `match_prefix` 沿树走，命中越长 prefill 越短。
 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L217-L226
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L217-L226
 class TreeNode:
 
     counter = 0
@@ -113,7 +97,7 @@ class TreeNode:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L60-L80
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L60-L80
 class RadixKey:
     """is_bigram=True: token_ids holds raw tokens (N+1 for N bigrams); slices share one boundary token."""
 
@@ -138,7 +122,7 @@ class RadixKey:
 ```
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L198-L208
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L198-L208
     def child_key(self, page_size: int = 1):
         """Hashable dict-key for the first ``page_size`` logical units, namespaced by ``extra_key``."""
         t = self.token_ids
@@ -173,7 +157,7 @@ class RadixKey:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L592-L605
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L592-L605
     def inc_lock_ref(self, node: TreeNode) -> IncLockRefResult:
         if self.disable:
             return IncLockRefResult(delta=0)
@@ -199,7 +183,7 @@ class RadixKey:
 **Code（finished）：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L437-L471
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L437-L471
     def cache_finished_req(self, req: Req, is_insert: bool = True):
         """Cache request when it finishes."""
         # In deterministic mode, disable finished request insertion to radix cache
@@ -246,7 +230,7 @@ class RadixKey:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L57-L88
+## 来源：python/sglang/srt/layers/radix_attention.py L57-L88
 class RadixAttention(nn.Module):
     """
     The attention layer implementation.
@@ -290,7 +274,7 @@ class RadixAttention(nn.Module):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L78-L89
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L78-L89
 class UnifiedTreeNode:
     counter = 0
 
@@ -306,7 +290,7 @@ class UnifiedTreeNode:
 ```
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L305-L378
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L305-L378
 class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
     def __init__(
         self,
@@ -400,7 +384,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L142-L153
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L142-L153
     def maybe_to_bigram_view(
         self,
         is_eagle: bool,
@@ -424,7 +408,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L211-L229
+## 来源：python/sglang/srt/layers/radix_attention.py L211-L229
     original_out_cache_loc = forward_batch.out_cache_loc
     # Keep the original ForwardBatch object and only narrow cache locations for
     # this backend call so model/backend state is still written to the same batch.

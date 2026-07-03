@@ -21,12 +21,11 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8.py L124-L143
+## 来源：python/sglang/srt/layers/quantization/fp8.py L124-L143
         raise RuntimeError(
             "DeepSeek-V4 FP4 experts require torch.float4_e2m1fn_x2 support."
         )
     return fp4_dtype
-
 
 if _use_aiter or _use_hip_int4:
     from aiter.ops.shuffle import (
@@ -39,7 +38,6 @@ if _use_aiter:
         aiter_w8a8_block_fp8_linear,
         use_aiter_triton_gemm_w8a8_tuned_gfx950,
     )
-
 
 ACTIVATION_SCHEMES = ["static", "dynamic"]
 ```
@@ -60,7 +58,7 @@ ACTIVATION_SCHEMES = ["static", "dynamic"]
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
 def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
     # compat: gptqmodel and autogptq (eol) main use checkpoint_format: str
     # compat: autogptq <=0.7.1 is_marlin_format: bool
@@ -78,10 +76,8 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8.py L144-L156
-
+## 来源：python/sglang/srt/layers/quantization/fp8.py L144-L156
 logger = logging.getLogger(__name__)
-
 
 class Fp8Config(QuantizationConfig):
     """Config class for FP8."""
@@ -103,7 +99,7 @@ class Fp8Config(QuantizationConfig):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L58
+## 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L58
  def process_weights_after_loading(self, layer) -> None:
  if layer.k_scale > 0.0 and layer.v_scale > 0.0:
  k_scale = layer.k_scale.to("cpu").tolist()
@@ -122,7 +118,7 @@ class Fp8Config(QuantizationConfig):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
+## 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
 class FusedMoEMethodBase(QuantizeMethodBase):
 
     def create_weights(
@@ -149,11 +145,9 @@ class FusedMoEMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L188-L210
-
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L188-L210
         assert isinstance(layer, FusedMoE)
         raise NotImplementedError("GPTQConfig does not support MoE.")
-
 
 class GPTQAscendConfig(GPTQConfig):
     """Config class for GPTQ on Ascend NPU."""
@@ -184,7 +178,7 @@ class GPTQAscendConfig(GPTQConfig):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L43-L48
 def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
     # compat: gptqmodel and autogptq (eol) main use checkpoint_format: str
     # compat: autogptq <=0.7.1 is_marlin_format: bool
@@ -206,7 +200,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L55
+## 来源：python/sglang/srt/layers/quantization/kv_cache.py L51-L55
  def process_weights_after_loading(self, layer) -> None:
  if layer.k_scale > 0.0 and layer.v_scale > 0.0:
  k_scale = layer.k_scale.to("cpu").tolist()
@@ -223,7 +217,7 @@ def check_marlin_format(hf_quant_cfg: Dict[str, Any]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L86-L90
+## 来源：python/sglang/srt/layers/quantization/base_config.py L86-L90
 class FusedMoEMethodBase(QuantizeMethodBase):
 
     def create_weights(
@@ -242,11 +236,9 @@ class FusedMoEMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L188-L210
-
+## 来源：python/sglang/srt/layers/quantization/gptq/gptq.py L188-L210
         assert isinstance(layer, FusedMoE)
         raise NotImplementedError("GPTQConfig does not support MoE.")
-
 
 class GPTQAscendConfig(GPTQConfig):
     """Config class for GPTQ on Ascend NPU."""

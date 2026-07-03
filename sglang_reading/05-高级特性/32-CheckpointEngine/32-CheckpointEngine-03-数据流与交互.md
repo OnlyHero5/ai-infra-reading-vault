@@ -47,7 +47,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2151
+## 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2151
 def _wait_and_warmup(
     server_args: ServerArgs,
     launch_callback: Optional[Callable[[], None]] = None,
@@ -71,7 +71,7 @@ def _wait_and_warmup(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/weight_sync/tensor_bucket.py L53-L72
+## 来源：python/sglang/srt/weight_sync/tensor_bucket.py L53-L72
             for i, (name, tensor) in enumerate(named_tensors):
                 flattened = tensor.flatten().view(torch.uint8)
                 flattened_tensors[i] = flattened
@@ -108,7 +108,7 @@ def _wait_and_warmup(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L77-L82
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L77-L82
         device_uuid = self.get_device_uuid()
         device_id = self.get_device_id()
         if device_uuid not in zmq_handles:
@@ -131,7 +131,7 @@ def _wait_and_warmup(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L174
+## 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L174
     def update_weights_from_ipc(self, recv_req: UpdateWeightsFromIPCReqInput):
         """Update the online model parameter from IPC for checkpoint-engine integration."""
         with self._observe_weight_load("ipc"):
@@ -187,7 +187,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L161-L172
+## 来源：python/sglang/srt/checkpoint_engine/update.py L161-L172
     if update_method == "broadcast" or update_method == "all":
         with timer("Update weights without setting ranks"):
             ps.update(checkpoint_name, req_func)
@@ -227,7 +227,7 @@ flowchart LR
 **Code（用法注释）：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L1-L10
+## 来源：python/sglang/srt/checkpoint_engine/update.py L1-L10
 """
 Usage:
 1) Launch the server with wait-for-initial-weights option in one terminal:

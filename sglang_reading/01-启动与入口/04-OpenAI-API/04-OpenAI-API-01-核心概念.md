@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L73-L109
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L73-L109
     async def handle_request(
         self, request: OpenAIServingRequest, raw_request: Request
     ) -> Union[Any, StreamingResponse, ErrorResponse]:
@@ -125,7 +125,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L73-L109
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L73-L109
     async def handle_request(
         self, request: OpenAIServingRequest, raw_request: Request
     ) -> Union[Any, StreamingResponse, ErrorResponse]:
@@ -178,7 +178,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/protocol.py L316-L339
+## 来源：python/sglang/srt/entrypoints/openai/protocol.py L316-L339
 class CompletionRequest(BaseModel):
     # Ordered by official OpenAI API documentation
     # https://platform.openai.com/docs/api-reference/completions/create
@@ -218,7 +218,7 @@ class CompletionRequest(BaseModel):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L110-L135
+## 来源：python/sglang/srt/entrypoints/openai/serving_completions.py L110-L135
         adapted_request = GenerateReqInput(
             **prompt_kwargs,
             sampling_params=sampling_params,
@@ -260,7 +260,7 @@ class CompletionRequest(BaseModel):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/serving.py L68-L94
+## 来源：python/sglang/srt/entrypoints/ollama/serving.py L68-L94
     async def handle_chat(
         self, request: OllamaChatRequest, raw_request: Request
     ) -> Union[OllamaChatResponse, StreamingResponse]:

@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L437-L450
+## 来源：slime/ray/rollout.py L437-L450
 data_source_cls = load_function(self.args.data_source_path)
 self.data_source = data_source_cls(args)
 
@@ -39,7 +39,7 @@ logger.info(f"import {self.args.rollout_function_path} as generate_rollout funct
 
 **Comment：**
 
-- 本批 6 个模块均通过此入口接入，无需改 RolloutManager。
+- 本专题 6 个模块均通过此入口接入，无需改 RolloutManager。
 - `custom_reward_post_process_path` 用于 OPD 的 `post_process_rewards`。
 
 ---
@@ -53,7 +53,7 @@ logger.info(f"import {self.args.rollout_function_path} as generate_rollout funct
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L1-L24
+## 来源：slime/rollout/fully_async_rollout.py L1-L24
 """Fully-async rollout for slime.
 
 Decouples ``max_concurrent_tasks`` from ``rollout_batch_size``: a background
@@ -74,7 +74,7 @@ them up.
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L48-L73
+## 来源：slime/rollout/fully_async_rollout.py L48-L73
 _global_worker: AsyncRolloutWorker | None = None
 _worker_lock = threading.Lock()
 
@@ -104,7 +104,7 @@ atexit.register(_stop_global_worker)
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L76-L111
+## 来源：slime/rollout/fully_async_rollout.py L76-L111
 class AsyncRolloutWorker:
     """Background thread + asyncio loop that continuously consumes groups
     from ``data_buffer`` and runs :func:`generate_and_rm_group` on each."""
@@ -145,7 +145,7 @@ class AsyncRolloutWorker:
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L118-L152
+## 来源：slime/rollout/fully_async_rollout.py L118-L152
 async def _loop(self) -> None:
     active_tasks: set[asyncio.Task] = set()
     max_concurrent = self.concurrency
@@ -186,7 +186,7 @@ async def _loop(self) -> None:
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L169-L191
+## 来源：slime/rollout/fully_async_rollout.py L169-L191
 def _make_done_cb(self, gid: int):
     def _cb(done_task: asyncio.Task) -> None:
         try:
@@ -219,7 +219,7 @@ def _make_done_cb(self, gid: int):
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L194-L248
+## 来源：slime/rollout/fully_async_rollout.py L194-L248
 async def _generate_rollout_async(args, rollout_id: int, data_buffer) -> list[list[Sample]]:
     assert args.rollout_global_dataset
     worker = _get_global_worker(args, data_buffer)
@@ -262,7 +262,7 @@ async def _generate_rollout_async(args, rollout_id: int, data_buffer) -> list[li
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_streaming_rollout.py L69-L101
+## 来源：slime/rollout/sglang_streaming_rollout.py L69-L101
 payload: dict[str, Any] = {
     "sampling_params": sampling_params,
     "return_logprob": True,
@@ -294,7 +294,7 @@ call_text: str = ""
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_streaming_rollout.py L114-L157
+## 来源：slime/rollout/sglang_streaming_rollout.py L114-L157
 async with client.stream("POST", url, json=payload, headers=headers) as response:
     response.raise_for_status()
     async for raw_line in response.aiter_lines():
@@ -340,7 +340,7 @@ async with client.stream("POST", url, json=payload, headers=headers) as response
 **Code：**
 
 ```python
-# 来源：slime/rollout/sft_rollout.py L32-L68
+## 来源：slime/rollout/sft_rollout.py L32-L68
 global TOKENIZER, PROCESSOR, MASK_GENERATOR, SAMPLE_PRINTED
 if TOKENIZER is None:
     TOKENIZER = load_tokenizer(args.hf_checkpoint, trust_remote_code=True)
@@ -385,7 +385,7 @@ return samples
 **Code：**
 
 ```python
-# 来源：slime/rollout/on_policy_distillation.py L8-L29
+## 来源：slime/rollout/on_policy_distillation.py L8-L29
 async def reward_func(args, sample, **kwargs):
     payload = {
         "input_ids": sample.tokens,
@@ -419,7 +419,7 @@ async def reward_func(args, sample, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/rollout/on_policy_distillation.py L32-L67
+## 来源：slime/rollout/on_policy_distillation.py L32-L67
 def post_process_rewards(args, samples: list[Sample], **kwargs):
     raw_rewards = [sample.get_reward_value(args) for sample in samples]
     response_lengths = [sample.response_length for sample in samples]
@@ -454,7 +454,7 @@ def post_process_rewards(args, samples: list[Sample], **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/rollout/sleep_rollout.py L7-L12
+## 来源：slime/rollout/sleep_rollout.py L7-L12
 def sleep(args, rollout_id, data_source, evaluation=False):
     count = 0
     while True:
@@ -479,7 +479,7 @@ def sleep(args, rollout_id, data_source, evaluation=False):
 **Code：**
 
 ```python
-# 来源：slime/rollout/forge_load.py L40-L66
+## 来源：slime/rollout/forge_load.py L40-L66
 def _resolve_path(args, rollout_id: int, evaluation: bool) -> str | None:
     tpl = getattr(args, "load_forge_rollout_data", None)
     if not tpl:
@@ -505,7 +505,7 @@ def _resolve_path(args, rollout_id: int, evaluation: bool) -> str | None:
 **Code：**
 
 ```python
-# 来源：slime/rollout/forge_load.py L69-L114
+## 来源：slime/rollout/forge_load.py L69-L114
 def generate_rollout(args, rollout_id, data_source, evaluation: bool = False):
     path = _resolve_path(args, rollout_id, evaluation)
 

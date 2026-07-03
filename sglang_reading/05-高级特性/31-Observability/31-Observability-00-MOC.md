@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L274-L276
+## 来源：python/sglang/srt/entrypoints/http_server.py L274-L276
     if server_args.enable_metrics:
         add_prometheus_middleware(app)
         enable_func_timer()
@@ -48,7 +48,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/utils/common.py L1589-L1599
+## 来源：python/sglang/srt/utils/common.py L1589-L1599
 def add_prometheus_middleware(app):
     # We need to import prometheus_client after setting the env variable `PROMETHEUS_MULTIPROC_DIR`
     from prometheus_client import CollectorRegistry, make_asgi_app, multiprocess

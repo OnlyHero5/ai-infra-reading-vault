@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L70-L77
+## 来源：slime/utils/arguments.py L70-L77
                 help=(
                     "Whether to colocate the inference engines and the actor. "
                     "Turning this on will also set --offload to true."
@@ -32,7 +32,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1886-L1890
+## 来源：slime/utils/arguments.py L1886-L1890
     if args.colocate:
         if args.offload_train is None:
             args.offload_train = True
@@ -51,14 +51,14 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L48-L52
+## 来源：slime/utils/arguments.py L48-L52
                     "Set it to 0 to launch routers without local SGLang engines."
 ```
 
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1893-L1894
+## 来源：slime/utils/arguments.py L1893-L1894
         elif args.rollout_num_gpus == 0:
             logger.info("rollout_num_gpus is 0 under colocate; no local SGLang engines will be launched.")
 ```
@@ -72,7 +72,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1891-L1892
+## 来源：slime/utils/arguments.py L1891-L1892
         if args.rollout_num_gpus is None:
             args.rollout_num_gpus = args.actor_num_gpus_per_node * args.actor_num_nodes
 ```
@@ -92,7 +92,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1992-L1997
+## 来源：slime/utils/arguments.py L1992-L1997
         if args.colocate:
             raise ValueError(
                 "--update-weight-mode=delta is not supported with --colocate. Colocate transfers "
@@ -109,7 +109,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1901-L1902
+## 来源：slime/utils/arguments.py L1901-L1902
     if args.use_critic:
         args.offload_train = True
 ```
@@ -123,7 +123,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1872-L1876
+## 来源：slime/utils/arguments.py L1872-L1876
             args.actor_num_gpus_per_node = min(8, args.rollout_num_gpus)
             args.actor_num_nodes = args.rollout_num_gpus // args.actor_num_gpus_per_node
         args.colocate = False
@@ -137,7 +137,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L65-L67
+## 来源：slime/utils/arguments.py L65-L67
                     "Notice: If you are going to use less than 8 gpus per node under colocate mode, you should set this number."
 ```
 
@@ -150,7 +150,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1552-L1559
+## 来源：slime/utils/arguments.py L1552-L1559
     skip_sglang = pre.debug_train_only or pre.load_debug_rollout_data is not None
     sglang_ns = None
     if not skip_sglang:
@@ -164,7 +164,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L147-L151
+## 来源：slime/backends/sglang_utils/arguments.py L147-L151
         assert args.rollout_num_gpus_per_engine % args.sglang_pp_size == 0, (
             f"rollout_num_gpus_per_engine ({args.rollout_num_gpus_per_engine}) must be divisible by "
             f"sglang_pipeline_parallel_size ({args.sglang_pp_size})"

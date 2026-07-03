@@ -56,7 +56,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L27
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L27
 from sglang.multimodal_gen.runtime.entrypoints.openai.utils import build_sampling_params
 ```
 
@@ -92,7 +92,7 @@ from sglang.multimodal_gen.runtime.entrypoints.openai.utils import build_samplin
 **步骤 3 — ZMQ 转发**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L34-L35
+## 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L34-L35
             # 2. Forward the request to the main Scheduler via the shared client
             response_batch = await async_scheduler_client.forward(request_batch)
 ```
@@ -110,7 +110,7 @@ TextEncodingStage → DenoisingStage (× steps) → DecodingStage (VAE)
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L126-L135
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L126-L135
     def execute_with_profiling(
         self,
         stages: List["PipelineStage"],
@@ -144,7 +144,7 @@ launch_server spawn N processes
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L99-L105
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L99-L105
     # Pipes for master to talk to slaves
     task_pipes_to_slaves_w = []
     task_pipes_to_slaves_r = []
@@ -175,7 +175,7 @@ Offline Client --pickle Req--> ZMQ REP (broker)
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L28-L38
+## 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L28-L38
         try:
             # 1. Receive a request from an offline client
             payload = await socket.recv()
@@ -212,7 +212,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L13-L15
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L13-L15
 from sglang.multimodal_gen.runtime.disaggregation.orchestrator import (
     DiffusionServer,
 )
@@ -232,7 +232,7 @@ from sglang.multimodal_gen.runtime.disaggregation.orchestrator import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L133
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L133
         self._realtime_sessions = RealtimeSessionCache(max_sessions=1)
 ```
 
@@ -250,7 +250,7 @@ from sglang.multimodal_gen.runtime.disaggregation.orchestrator import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L89-L93
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L89-L93
         await run_async_client_warmup(
             server_args,
             async_scheduler_client.forward,
@@ -279,7 +279,7 @@ Parent launch_server
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L196-L208
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L196-L208
     if launch_http_server:
         logger.info("Starting FastAPI server.")
         if server_args.webui:

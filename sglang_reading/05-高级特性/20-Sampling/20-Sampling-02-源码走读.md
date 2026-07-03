@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
+## 来源：python/sglang/srt/sampling/sampling_params.py L75-L120
 class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
     """
     The sampling parameters.
@@ -91,7 +91,7 @@ class SamplingParams(msgspec.Struct, kw_only=True, omit_defaults=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/base_grammar_backend.py L223-L313
+## 来源：python/sglang/srt/constrained/base_grammar_backend.py L223-L313
 def create_grammar_backend(
     server_args: ServerArgs,
     tokenizer,
@@ -196,7 +196,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/base_grammar_backend.py L178-L210
+## 来源：python/sglang/srt/constrained/base_grammar_backend.py L178-L210
     def _init_value_dispatch(
         self, key: Tuple[str, str], require_reasoning: bool
     ) -> BaseGrammarObject:
@@ -243,7 +243,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L89-L140
+## 来源：python/sglang/srt/constrained/grammar_manager.py L89-L140
     def process_req_with_grammar(self, req: Req) -> bool:
         # Init grammar cache for this request
         add_to_grammar_queue = False
@@ -305,7 +305,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/grammar_manager.py L142-L243
+## 来源：python/sglang/srt/constrained/grammar_manager.py L142-L243
     def get_ready_grammar_requests(self) -> List[Req]:
         """
         Move requests whose grammar objects are ready from grammar_queue to waiting_queue.
@@ -425,7 +425,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_batch_info.py L76-L145
+## 来源：python/sglang/srt/sampling/sampling_batch_info.py L76-L145
     @classmethod
     def from_schedule_batch(cls, batch: ScheduleBatch, vocab_size: int):
         global_server_args = get_global_server_args()
@@ -505,7 +505,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_batch_info.py L222-L283
+## 来源：python/sglang/srt/sampling/sampling_batch_info.py L222-L283
     def update_regex_vocab_mask(self):
         if not self.grammars:
             self.vocab_mask = None
@@ -579,7 +579,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/xgrammar_backend.py L238-L245
+## 来源：python/sglang/srt/constrained/xgrammar_backend.py L238-L245
     def apply_vocab_mask(logits: torch.Tensor, vocab_mask: torch.Tensor) -> None:
         if logits.device.type in {"cuda", "npu", "xpu", "musa"}:
             if _is_hip:
@@ -601,7 +601,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L3143-L3191
+## 来源：python/sglang/srt/model_executor/model_runner.py L3143-L3191
     def _preprocess_logits(
         self, logits_output: LogitsProcessorOutput, sampling_info: SamplingBatchInfo
     ):
@@ -664,7 +664,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/sampler.py L121-L212
+## 来源：python/sglang/srt/layers/sampler.py L121-L212
         if sampling_info.is_all_greedy:
             if _use_aiter and not _disable_aiter_greedy_sample:
                 batch_next_token_ids = torch.empty(
@@ -768,7 +768,7 @@ def create_grammar_backend(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/penaltylib/orchestrator.py L13-L70
+## 来源：python/sglang/srt/sampling/penaltylib/orchestrator.py L13-L70
 class BatchedPenalizerOrchestrator:
     def __init__(
         self,

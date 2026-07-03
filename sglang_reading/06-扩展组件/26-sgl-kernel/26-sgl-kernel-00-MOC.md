@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/__init__.py L8-L30
+## 来源：sgl-kernel/python/sgl_kernel/__init__.py L8-L30
 if sys.platform == "darwin" and platform.machine() == "arm64":
     from sgl_kernel.metal import *
 else:

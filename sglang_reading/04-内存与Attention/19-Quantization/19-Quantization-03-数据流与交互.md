@@ -63,7 +63,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
+## 来源：python/sglang/srt/layers/quantization/fp8_utils.py L394-L409
 def dispatch_w8a8_block_fp8_linear() -> Callable:
     """
     Dispatch to the appropriate FP8 block linear implementation.
@@ -93,7 +93,7 @@ def dispatch_w8a8_block_fp8_linear() -> Callable:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
+## 来源：python/sglang/srt/layers/quantization/base_config.py L86-L100
 class FusedMoEMethodBase(QuantizeMethodBase):
 
     def create_weights(
@@ -118,7 +118,7 @@ class FusedMoEMethodBase(QuantizeMethodBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/kv_cache.py L32-L63
+## 来源：python/sglang/srt/layers/quantization/kv_cache.py L32-L63
  def create_weights(self, layer: torch.nn.Module):
  layer.k_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)
  layer.v_scale = torch.nn.Parameter(torch.tensor(-1.0, dtype=torch.float32), requires_grad=False)

@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L52-L99
+## 来源：slime/backends/sglang_utils/sglang_engine.py L52-L99
 def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
     if getattr(server_args, "encoder_only", False):
         from sglang.srt.disaggregation.encode_server import launch_server_process as sglang_launch_server_process
@@ -67,7 +67,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L148-L182
+## 来源：slime/backends/sglang_utils/sglang_engine.py L148-L182
         server_args_dict, external_engine_need_check_fields = _compute_server_args(
             self.args,
             self.rank,
@@ -112,7 +112,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L184-L202
+## 来源：slime/backends/sglang_utils/sglang_engine.py L184-L202
     def _init_external(self, expect_server_args, external_engine_need_check_fields):
         actual_server_args = get_server_info(f"http://{self.server_host}:{self.server_port}")
         # ... assert fields in external_engine_need_check_fields ...
@@ -136,7 +136,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L578-L623
+## 来源：slime/backends/sglang_utils/sglang_engine.py L578-L623
     _gpus_per_engine = num_gpus_per_engine or args.rollout_num_gpus_per_engine
     nnodes = max(1, _gpus_per_engine // args.num_gpus_per_node)
     node_rank = rank % nnodes
@@ -181,7 +181,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L204-L232
+## 来源：slime/backends/sglang_utils/sglang_engine.py L204-L232
     def _register_to_router(self, server_args_dict):
         if self.worker_type == "encoder":
             return
@@ -209,7 +209,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L234-L254
+## 来源：slime/backends/sglang_utils/sglang_engine.py L234-L254
     def _make_request(self, endpoint: str, payload: dict | None = None):
         if self.node_rank != 0:
             return
@@ -230,7 +230,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 ### 7.1 `init_weights_update_group`
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L439-L450
+## 来源：slime/backends/sglang_utils/sglang_engine.py L439-L450
     def init_weights_update_group(self, master_address, master_port, rank_offset, world_size, group_name, backend):
         return self._make_request(
             "init_weights_update_group",
@@ -248,7 +248,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 ### 7.2 `update_weights_from_distributed`
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L464-L488
+## 来源：slime/backends/sglang_utils/sglang_engine.py L464-L488
     def update_weights_from_distributed(
         self, names, dtypes, shapes, group_name, flush_cache=False, weight_version=None, load_format=None,
     ):
@@ -267,7 +267,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 ### 7.3 `update_weights_from_tensor` / `update_weights_from_disk`
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L278-L301, L415-L437
+## 来源：slime/backends/sglang_utils/sglang_engine.py L278-L301, L415-L437
     def update_weights_from_tensor(self, serialized_named_tensors, load_format=None, flush_cache=False, weight_version=None):
         payload = {"serialized_named_tensors": serialized_named_tensors, "load_format": load_format, "flush_cache": flush_cache}
         if weight_version is not None:
@@ -296,7 +296,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L303-L322, L380-L398, L490-L498
+## 来源：slime/backends/sglang_utils/sglang_engine.py L303-L322, L380-L398, L490-L498
     def flush_cache(self):
         if self.node_rank != 0:
             return
@@ -329,7 +329,7 @@ def launch_server_process(server_args: ServerArgs) -> multiprocessing.Process:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L329-L361
+## 来源：slime/backends/sglang_utils/sglang_engine.py L329-L361
     def shutdown(self):
         if self.args.rollout_external:
             return

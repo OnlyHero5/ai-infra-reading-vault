@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # 调度策略（SchedulePolicy）
 
-> **阶段 II · 请求调度** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 II · 请求调度** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `schedule_policy.py`、`prefill_delayer.py`、`min_free_slots_delayer.py`
 
 ---
@@ -71,7 +71,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2787-L2821
+## 来源：python/sglang/srt/managers/scheduler.py L2787-L2821
         # Get priority queue
         self.policy.calc_priority(self.waiting_queue, self.running_batch)
 

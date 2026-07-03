@@ -37,7 +37,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/communication_op.py L43-L47
+## 来源：python/sglang/srt/distributed/communication_op.py L43-L47
 def tensor_model_parallel_all_gather(
     input_: torch.Tensor, dim: int = -1
 ) -> torch.Tensor:
@@ -63,7 +63,7 @@ def tensor_model_parallel_all_gather(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L80
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L80
 class LoadBalanceMethod(Enum):
     """Load balance method."""
 
@@ -82,7 +82,7 @@ class LoadBalanceMethod(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L138-L139
+## 来源：python/sglang/srt/disaggregation/utils.py L138-L139
     tensor_to_reduce = torch.tensor(polls, dtype=torch.uint8, device="cpu")
     dist.all_reduce(tensor_to_reduce, op=dist.ReduceOp.MIN, group=gloo_group)
 ```
@@ -98,7 +98,7 @@ class LoadBalanceMethod(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/elastic_ep/elastic_ep.py L17-L38
+## 来源：python/sglang/srt/elastic_ep/elastic_ep.py L17-L38
 @dataclass
 class ElasticEPState:
     active_ranks: Optional[torch.Tensor]
@@ -128,7 +128,7 @@ class ElasticEPState:
 **Code（rank 恢复主路径）：**
 
 ```python
-# 来源：python/sglang/srt/elastic_ep/elastic_ep.py L147-L174
+## 来源：python/sglang/srt/elastic_ep/elastic_ep.py L147-L174
 def try_recover_ranks(global_ranks: List[int]) -> bool:
     from mooncake import ep as mooncake_ep
 
@@ -170,7 +170,7 @@ def try_recover_ranks(global_ranks: List[int]) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state_wrapper.py L5-L24
+## 来源：python/sglang/srt/distributed/parallel_state_wrapper.py L5-L24
 @dataclass(frozen=True, slots=True, kw_only=True)
 class ParallelState:
     tp_rank: int

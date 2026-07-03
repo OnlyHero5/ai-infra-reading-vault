@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L18-L87
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L18-L87
 class AttentionBackend(ABC):
     """The base class of attention backends.
 
@@ -97,7 +97,6 @@ class AttentionBackend(ABC):
 **Comment：**
 legacy capture/replay 方法已移除
 
-
 ## 2. init_forward_metadata 默认实现
 
 **Explain：** 非 Graph 的 eager 推理仍走同一套契约：ModelRunner 每步调用 `init_forward_metadata`，默认实现依次执行 out_graph 与 in_graph。子类若 eager 体与 capture 完全不同，可 override 整个 `init_forward_metadata` 而不拆成两段。
@@ -105,7 +104,7 @@ legacy capture/replay 方法已移除
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L45-L51
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L45-L51
     def init_forward_metadata(self, forward_batch: ForwardBatch):
         """Eager entry point. Default = ``_out_graph(fb) + _in_graph(fb)``.
 
@@ -118,7 +117,6 @@ legacy capture/replay 方法已移除
 **Comment：**
 子类可 override 整个 eager 体
 
-
 ## 3. init_forward_metadata_in_graph
 
 **Explain：** `init_forward_metadata_in_graph` 里的算子会被录进 CUDA Graph，replay 时自动重放。docstring 明确禁止 `.item()`、`.cpu()`、动态 shape 的 `torch.empty()` 等 host 同步或不可录制操作；这类逻辑必须放到 out_graph 阶段。
@@ -126,7 +124,7 @@ legacy capture/replay 方法已移除
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L75-L87
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L75-L87
     def init_forward_metadata_in_graph(self, forward_batch: ForwardBatch):
         """Graph-recordable static-shape GPU op.
 
@@ -145,7 +143,6 @@ legacy capture/replay 方法已移除
 **Comment：**
 Lint 契约写在 docstring
 
-
 ## 4. Triton ForwardMetadata
 
 **Explain：** Triton 后端用 `ForwardMetadata` dataclass 在 Python 侧携带 paged KV 布局：`kv_indptr`/`kv_indices` 描述 token→物理块映射，`num_kv_splits` 控制 split-KV attention。Sliding window 层还有独立的 window_* 字段，与 FlashInfer wrapper 参数同构以便切换后端。
@@ -153,7 +150,7 @@ Lint 契约写在 docstring
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/triton_backend.py L81-L100
+## 来源：python/sglang/srt/layers/attention/triton_backend.py L81-L100
 @dataclass
 class ForwardMetadata:
     attn_logits: torch.Tensor
@@ -179,7 +176,6 @@ class ForwardMetadata:
 **Comment：**
 含 sliding window 专用字段
 
-
 ## 5. FlashInfer merge_state 安全包装
 
 **Explain：** FlashInfer 的 `merge_state` 在 head 数过大时 CUDA blockDim 会超限（DP attention 场景常见）。`_safe_merge_state` 按 head_dim 与 element size 计算 `max_heads`，超限时自动切换到 Triton 版 `merge_state_triton`，对上层透明。
@@ -187,7 +183,7 @@ class ForwardMetadata:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L105-L116
+## 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L105-L116
     def _safe_merge_state(
         v_a: torch.Tensor,
         s_a: torch.Tensor,
@@ -205,7 +201,6 @@ class ForwardMetadata:
 **Comment：**
 max_heads 由 head_dim 与 vec_size 推导
 
-
 ## 6. WrapperDispatch 枚举
 
 **Explain：** FlashInfer 后端内部按层类型 dispatch 不同 wrapper：`WrapperDispatch.SLIDING_WINDOW` 走 SWA 专用 paged KV 路径，`CROSS_ATTENTION` 走 encoder KV 索引。枚举值在 `FlashInferBackend._get_wrapper_idx` 等处选择 prefill/decode wrapper 数组下标。
@@ -213,7 +208,7 @@ max_heads 由 head_dim 与 vec_size 推导
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L119-L121
+## 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L119-L121
 class WrapperDispatch(Enum):
     SLIDING_WINDOW = auto()
     CROSS_ATTENTION = auto()
@@ -222,7 +217,6 @@ class WrapperDispatch(Enum):
 **Comment：**
 FlashInferBackend 内按层类型 dispatch
 
-
 ## 7. needs_cpu_seq_lens
 
 **Explain：** 类属性 `needs_cpu_seq_lens` 默认为 True，表示该 backend 的 metadata 准备会读 `ForwardBatch.seq_lens_cpu` 或 `seq_lens_sum`。若某后端完全在 GPU 侧推导序列长度，可设为 False 以跳过不必要的 CPU→GPU 同步。
@@ -230,14 +224,13 @@ FlashInferBackend 内按层类型 dispatch
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L89-L90
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L89-L90
     # Opt out only when this backend never reads seq_lens_cpu / seq_lens_sum.
     needs_cpu_seq_lens: bool = True
 ```
 
 **Comment：**
 Opt-out 仅当从不读 seq_lens_cpu
-
 
 ## 8. init_cuda_graph_state
 
@@ -246,7 +239,7 @@ Opt-out 仅当从不读 seq_lens_cpu
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L99-L101
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L99-L101
     def init_cuda_graph_state(self, max_bs: int, max_num_tokens: int):
         """Init the global shared states for cuda graph."""
         raise NotImplementedError()
@@ -255,7 +248,6 @@ Opt-out 仅当从不读 seq_lens_cpu
 **Comment：**
 capture 前一次性分配
 
-
 ## 9. RadixAttention 调用链
 
 **Explain：** 模型 forward 中 `RadixAttention` 层通过 `layer_id` 从 Attention backend 取 KV 位置；KV 物理索引来自 Scheduler 在 extend 前 `match_prefix` 写入的 `req.prefix_indices`。因此 Radix 树（RadixAttention）与 Attention kernel（本模块）在 **req 对象** 上汇合。
@@ -263,7 +255,7 @@ capture 前一次性分配
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L57-L72
+## 来源：python/sglang/srt/layers/radix_attention.py L57-L72
 class RadixAttention(nn.Module):
     """
     The attention layer implementation.

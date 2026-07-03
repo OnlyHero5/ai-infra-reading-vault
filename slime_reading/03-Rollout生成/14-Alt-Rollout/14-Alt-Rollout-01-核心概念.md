@@ -24,7 +24,7 @@ Slime 把「一次 rollout step 如何产出训练样本」抽象为可替换函
 **Code：**
 
 ```python
-# 来源：slime/rollout/sft_rollout.py L17-L28
+## 来源：slime/rollout/sft_rollout.py L17-L28
 def generate_rollout(args, rollout_id, data_buffer, evaluation=False):
     """An example to implement the generate_rollout function for an rule based rm rollout generation.
 
@@ -49,7 +49,7 @@ def generate_rollout(args, rollout_id, data_buffer, evaluation=False):
 
 ## 2. 三层 hook 模型
 
-| 层级 | CLI 参数 | 职责 | 本批示例 |
+| 层级 | CLI 参数 | 职责 | 本专题示例 |
 |------|----------|------|----------|
 | 外层 rollout | `--rollout-function-path` | 整批 generate 编排 | fully-async、SFT、forge_load、sleep |
 | 内层 generate | `--custom-generate-function-path` | 单 sample 调 SGLang | `generate_streaming` |
@@ -60,7 +60,7 @@ def generate_rollout(args, rollout_id, data_buffer, evaluation=False):
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L8-L11
+## 来源：slime/rollout/fully_async_rollout.py L8-L11
 # Use with ``--rollout-function-path slime.rollout.fully_async_rollout.generate_rollout_fully_async``.
 # Plug in per-sample logic via ``--custom-generate-function-path`` and
 # per-sample reward via ``--custom-rm-path`` — the worker calls slime's stock
@@ -70,7 +70,7 @@ def generate_rollout(args, rollout_id, data_buffer, evaluation=False):
 **Comment：**
 
 - 组合灵活：fully-async + streaming generate + OPD RM 可同时启用。
-- `generate_and_rm_group` 是内层 fan-out 与 group RM 的汇聚点（见批次 12）。
+- `generate_and_rm_group` 是内层 fan-out 与 group RM 的汇聚点（见[[12-SGLang-Rollout-00-MOC]]）。
 
 ---
 
@@ -83,7 +83,7 @@ def generate_rollout(args, rollout_id, data_buffer, evaluation=False):
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L53-L61
+## 来源：slime/rollout/fully_async_rollout.py L53-L61
 def _get_global_worker(args, data_buffer) -> AsyncRolloutWorker:
     global _global_worker
     with _worker_lock:
@@ -113,7 +113,7 @@ def _get_global_worker(args, data_buffer) -> AsyncRolloutWorker:
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_streaming_rollout.py L11-L14
+## 来源：slime/rollout/sglang_streaming_rollout.py L11-L14
 # Wire it in as the per-sample generate function::
 #     --rollout-function-path slime.rollout.sglang_rollout.generate_rollout \\
 #     --custom-generate-function-path slime.rollout.sglang_streaming_rollout.generate_streaming
@@ -135,7 +135,7 @@ def _get_global_worker(args, data_buffer) -> AsyncRolloutWorker:
 **Code：**
 
 ```python
-# 来源：slime/rollout/sft_rollout.py L44-L60
+## 来源：slime/rollout/sft_rollout.py L44-L60
 for i, sample in enumerate(samples):
     (sample,) = sample
     messages = sample.prompt
@@ -165,7 +165,7 @@ for i, sample in enumerate(samples):
 **Code：**
 
 ```python
-# 来源：slime/rollout/on_policy_distillation.py L58-L67
+## 来源：slime/rollout/on_policy_distillation.py L58-L67
 for sample, t_log_probs in zip(samples, teacher_log_probs, strict=False):
     sample.teacher_log_probs = t_log_probs
 
@@ -196,7 +196,7 @@ return scalar_rewards, scalar_rewards
 **Code：**
 
 ```python
-# 来源：slime/rollout/forge_load.py L19-L25
+## 来源：slime/rollout/forge_load.py L19-L25
 # Unlike --load-debug-rollout-data, this path does NOT set
 # skip_sglang=True / debug_train_only=True (see
 # slime/utils/arguments.py: skip_sglang computation in _pre_parse_mode and

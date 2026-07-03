@@ -57,7 +57,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L120-L156
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L120-L156
     for i in range(num_gpus):
         reader, writer = mp.Pipe(duplex=False)
         scheduler_pipe_writers.append(writer)
@@ -98,7 +98,7 @@ sequenceDiagram
 ```
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/scheduler.py L953-L960
+## 来源：python/sglang/multimodal_gen/runtime/managers/scheduler.py L953-L960
     def event_loop(self) -> None:
         """
         The main event loop that listens for ZMQ requests.
@@ -135,7 +135,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L106-L109
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L106-L109
 class GPUWorker(GPUWorkerPostTrainingMixin):
     """
     A worker that executes the model on a single GPU.
@@ -156,7 +156,7 @@ class GPUWorker(GPUWorkerPostTrainingMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L120-L139
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L120-L139
     for i in range(num_gpus):
         reader, writer = mp.Pipe(duplex=False)
         scheduler_pipe_writers.append(writer)
@@ -193,7 +193,7 @@ class GPUWorker(GPUWorkerPostTrainingMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L42-L48
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L42-L48
 class PipelineExecutor(ABC):
     """
     Abstract base class for all pipeline executors.
@@ -217,7 +217,7 @@ class PipelineExecutor(ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L16-L38
+## 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L16-L38
 async def run_zeromq_broker(server_args: ServerArgs):
     """
     This function runs as a background task in the FastAPI process.
@@ -257,7 +257,7 @@ async def run_zeromq_broker(server_args: ServerArgs):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/server_args.py L9-L11
+## 来源：python/sglang/multimodal_gen/runtime/server_args.py L9-L11
 import json
 import math
 import os
@@ -277,7 +277,7 @@ import os
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L213-L223
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L213-L223
 def launch_pool_disagg_server(
     server_args: ServerArgs,
     encoder_gpus: list[list[int]],
@@ -305,7 +305,7 @@ def launch_pool_disagg_server(
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L17-L20
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L17-L20
 from sglang.multimodal_gen.runtime.entrypoints.openai import (
     image_api,
     video_api,

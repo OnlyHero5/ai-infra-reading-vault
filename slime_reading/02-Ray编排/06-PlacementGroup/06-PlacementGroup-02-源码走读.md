@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L57-L67
+## 来源：slime/ray/placement_group.py L57-L67
 # 提交版本：22cdc6e1
 ready_ref = pg.ready()
 elapsed = 0
@@ -53,7 +53,7 @@ while not ray.wait([ready_ref], timeout=log_interval)[0]:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L15-L18, L69-L82
+## 来源：slime/ray/placement_group.py L15-L18, L69-L82
 # 提交版本：22cdc6e1
 @ray.remote(num_gpus=1)
 class InfoActor:
@@ -90,7 +90,7 @@ for actor in info_actors:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L90-L95
+## 来源：slime/ray/placement_group.py L90-L95
 # 提交版本：22cdc6e1
 for i in range(num_bundles):
     actual_bundle_index = pg_reordered_bundle_indices[i]
@@ -109,12 +109,12 @@ for i in range(num_bundles):
 
 ## 4. allocate_train_group：PG → RayTrainGroup
 
-**Explain：** 不直接创建 Ray Actor，而是构造 `RayTrainGroup`，由批次 07 在 `_allocate_gpus_for_actor` 里实例化各 rank 的 TrainRayActor。
+**Explain：** 不直接创建 Ray Actor，而是构造 `RayTrainGroup`，由[[07-RayTrainGroup-00-MOC]] 在 `_allocate_gpus_for_actor` 里实例化各 rank 的 TrainRayActor。
 
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L140-L149
+## 来源：slime/ray/placement_group.py L140-L149
 # 提交版本：22cdc6e1
 def allocate_train_group(args, num_nodes, num_gpus_per_node, pg, role="actor", actor_cls=None):
     return RayTrainGroup(
@@ -142,7 +142,7 @@ def allocate_train_group(args, num_nodes, num_gpus_per_node, pg, role="actor", a
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L191-L212
+## 来源：slime/ray/placement_group.py L191-L212
 # 提交版本：22cdc6e1
 actor_start_rollout_ids = ray.get(
     actor_model.async_init(
@@ -178,7 +178,7 @@ if args.use_critic:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L152-L188
+## 来源：slime/ray/placement_group.py L152-L188
 # 提交版本：22cdc6e1
 actor_args = args
 if args.megatron_config_path is not None:
@@ -210,7 +210,7 @@ if args.use_critic:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L220-L246
+## 来源：slime/ray/placement_group.py L220-L246
 # 提交版本：22cdc6e1
 def create_rollout_manager(args, pg):
     from .rollout import RolloutManager
@@ -245,7 +245,7 @@ def create_rollout_manager(args, pg):
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L232-L237
+## 来源：slime/ray/placement_group.py L232-L237
 # 提交版本：22cdc6e1
 num_rollout_per_epoch = None
 if args.num_rollout is None:
@@ -256,7 +256,7 @@ if args.num_rollout is None:
 
 **Comment：**
 
-- 依赖 RolloutManager 已连接 DataSource（批次 11）
+- 依赖 RolloutManager 已连接 DataSource（[[11-DataSource-00-MOC]]）
 - 必须在 `create_training_models` **之前** 调用，因 Megatron LR schedule 用 `num_rollout`
 
 ---
@@ -268,7 +268,7 @@ if args.num_rollout is None:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L214-L215
+## 来源：slime/ray/placement_group.py L214-L215
 # 提交版本：22cdc6e1
 if args.rollout_global_dataset:
     ray.get(rollout_manager.load.remote(args.start_rollout_id - 1))
@@ -277,7 +277,7 @@ if args.rollout_global_dataset:
 **Comment：**
 
 - resume 训练时保证 prompt 索引与 checkpoint rollout id 一致
-- 与 [[11-DataSource]] 的持久化格式相关
+- 与 [[11-DataSource-00-MOC]] 的持久化格式相关
 
 ---
 
@@ -288,7 +288,7 @@ if args.rollout_global_dataset:
 **Code：**
 
 ```python
-# 来源：slime/ray/utils.py L16-L24, L36-L37
+## 来源：slime/ray/utils.py L16-L24, L36-L37
 # 提交版本：22cdc6e1
 NOSET_VISIBLE_DEVICES_ENV_VARS_LIST = [
     "RAY_EXPERIMENTAL_NOSET_CUDA_VISIBLE_DEVICES",

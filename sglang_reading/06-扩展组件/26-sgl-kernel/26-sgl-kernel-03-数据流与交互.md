@@ -61,7 +61,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L87-L100
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L87-L100
     out = q_nope.new_empty((B_q, MAX_HEADS, D_latent))
 
     torch.ops.sgl_kernel.cutlass_mla_decode.default(
@@ -105,7 +105,7 @@ flowchart TB
 **步骤 1 — 路由（gating → topk）**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L57-L76
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L57-L76
 def topk_sigmoid(
     topk_weights: torch.Tensor,
     topk_ids: torch.Tensor,
@@ -133,7 +133,7 @@ def topk_sigmoid(
 **步骤 2 — 对齐（token → expert block）**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L6-L22
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L6-L22
 def moe_align_block_size(
     topk_ids,
     num_experts,
@@ -158,14 +158,14 @@ def moe_align_block_size(
 **步骤 3 — grouped GEMM（FP8 示例）**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py（调用方 srt 侧典型用法示意）
+## 来源：sgl-kernel/python/sgl_kernel/moe.py（调用方 srt 侧典型用法示意）
 # fp8_blockwise_scaled_grouped_mm 在 moe.py 中 export，对对齐后 token batch 做 expert 并行 GEMM
 ```
 
 **步骤 4 — 聚合**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py
+## 来源：sgl-kernel/python/sgl_kernel/moe.py
 def moe_sum_reduce(input_tensor, output_tensor, ...):
  torch.ops.sgl_kernel.moe_sum_reduce.default(...)
 ```
@@ -191,7 +191,7 @@ import sgl_kernel
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L15-L25
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L15-L25
 def _get_compute_capability():
     """Get the compute capability of the current GPU."""
     if not torch.cuda.is_available():
@@ -219,7 +219,7 @@ def _get_compute_capability():
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/kvcacheio.py L53-L68
+## 来源：sgl-kernel/python/sgl_kernel/kvcacheio.py L53-L68
         src_v,
         dst_v,
         src_indices,
@@ -230,7 +230,6 @@ def _get_compute_capability():
         block_quota,
         num_warps_per_block,
     )
-
 
 def transfer_kv_per_layer_ph_lf(
     src_k: torch.Tensor,

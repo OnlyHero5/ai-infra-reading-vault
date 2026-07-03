@@ -52,7 +52,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/eagle_info.py L17-L43
+## 来源：python/sglang/srt/speculative/eagle_info.py L17-L43
 @dataclass
 class EagleVerifyInput(SpecInput):
     draft_token: torch.Tensor
@@ -102,7 +102,7 @@ class EagleVerifyInput(SpecInput):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L142-L157
+## 来源：python/sglang/srt/speculative/spec_info.py L142-L157
     def build_disagg_draft_input(
         self,
         batch: ScheduleBatch,
@@ -168,7 +168,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/base_spec_worker.py L87-L90
+## 来源：python/sglang/srt/speculative/base_spec_worker.py L87-L90
     def init_cuda_graphs(self):
         """Capture draft graphs (decode disabled on the draft TpModelWorker)."""
         self.draft_worker.init_cuda_graphs(capture_decode_cuda_graph=False)
@@ -186,7 +186,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_utils.py L526-L555
+## 来源：python/sglang/srt/speculative/spec_utils.py L526-L555
 def move_accept_tokens_to_target_kvcache(
     batch: ScheduleBatch,
     accept_index: torch.Tensor,
@@ -230,7 +230,7 @@ def move_accept_tokens_to_target_kvcache(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/ngram_worker.py L74-L76
+## 来源：python/sglang/srt/speculative/ngram_worker.py L74-L76
         # rids of the last decode batch; used to erase corpus match state for
         # requests that left the batch (see forward_batch_generation).
         self._prev_decode_rids: set = set()
@@ -247,7 +247,7 @@ def move_accept_tokens_to_target_kvcache(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/adaptive_runtime_state.py L61-L126
+## 来源：python/sglang/srt/speculative/adaptive_runtime_state.py L61-L126
 class AdaptiveController:
     """Facade that owns adaptive decision-making and runtime state switching.
 

@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Customization 17 类扩展接口
 
-> **阶段 VI · 高级特性** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 VI · 高级特性** | Git：`22cdc6e1`  
 > **源码范围：** `docs/en/get_started/customization.md`、`agent/harness/*`、`agent/parsing.py`
 
 ---
@@ -60,7 +60,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L36-L36
+## 来源：docs/en/get_started/customization.md L36-L36
 For most agentic use cases, **start with `--custom-generate-function-path` plus `--custom-rm-path`**, and only override the full rollout function when the default rollout loop is insufficient.
 ```
 

@@ -44,7 +44,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L19-L25
+## 来源：python/sglang/srt/models/registry.py L19-L25
 @dataclass
 class _ModelRegistry:
     # Keyed by model_arch
@@ -76,7 +76,7 @@ class _ModelRegistry:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L19-L36
+## 来源：python/sglang/srt/models/registry.py L19-L36
 @dataclass
 class _ModelRegistry:
     # Keyed by model_arch
@@ -111,7 +111,7 @@ class _ModelRegistry:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/utils.py L195-L230
+## 来源：python/sglang/srt/model_loader/utils.py L195-L230
 def get_model_architecture(model_config: ModelConfig) -> Tuple[Type[nn.Module], str]:
     from sglang.srt.models.registry import ModelRegistry
 
@@ -161,7 +161,7 @@ def get_model_architecture(model_config: ModelConfig) -> Tuple[Type[nn.Module], 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L851-L856
+## 来源：python/sglang/srt/models/llama.py L851-L856
 EntryClass = [
     LlamaForCausalLM,
     Phi3ForCausalLM,
@@ -171,7 +171,7 @@ EntryClass = [
 ```
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L719
+## 来源：python/sglang/srt/models/qwen3.py L719
 EntryClass = Qwen3ForCausalLM
 ```
 
@@ -186,7 +186,7 @@ EntryClass = Qwen3ForCausalLM
 **Code（Llama）：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L313-L335
+## 来源：python/sglang/srt/models/llama.py L313-L335
     def forward(
         self,
         positions: torch.Tensor,
@@ -223,7 +223,7 @@ EntryClass = Qwen3ForCausalLM
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L197-L205
+## 来源：python/sglang/srt/models/llama.py L197-L205
         self.attn = RadixAttention(
             self.num_heads,
             self.head_dim,
@@ -236,7 +236,7 @@ EntryClass = Qwen3ForCausalLM
 ```
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L250-L252
+## 来源：python/sglang/srt/models/llama.py L250-L252
         attn_output = self.attn(q, k, v, forward_batch)
         output, _ = self.o_proj(attn_output)
         return output
@@ -253,7 +253,7 @@ EntryClass = Qwen3ForCausalLM
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L528-L562
+## 来源：python/sglang/srt/models/llama.py L528-L562
     @torch.no_grad()
     def forward(
         self,
@@ -302,7 +302,7 @@ EntryClass = Qwen3ForCausalLM
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L349-L377
+## 来源：python/sglang/srt/models/llama.py L349-L377
         self.pp_group = get_pp_group()
         if self.pp_group.is_first_rank:
             self.embed_tokens = VocabParallelEmbedding(
@@ -345,13 +345,13 @@ EntryClass = Qwen3ForCausalLM
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L118-L119
+## 来源：python/sglang/srt/models/qwen3.py L118-L119
         self.q_norm = RMSNorm(self.head_dim, eps=rms_norm_eps, **norm_kwargs)
         self.k_norm = RMSNorm(self.head_dim, eps=rms_norm_eps, **norm_kwargs)
 ```
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L176-L184
+## 来源：python/sglang/srt/models/qwen3.py L176-L184
         q, k = apply_qk_norm(
             q=q,
             k=k,
@@ -374,7 +374,7 @@ EntryClass = Qwen3ForCausalLM
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L629-L685
+## 来源：python/sglang/srt/models/llama.py L629-L685
     def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
         stacked_params_mapping = [
             # (param_name, shard_name, shard_id)

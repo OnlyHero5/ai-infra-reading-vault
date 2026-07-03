@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：actor.py L139-L161
+## 来源：actor.py L139-L161
         if self.args.colocate:
             update_weight_cls = UpdateWeightFromTensor
         elif self.args.update_weight_mode == "delta":
@@ -52,7 +52,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight_from_disk_delta.py L98-L103
+## 来源：update_weight_from_disk_delta.py L98-L103
         """Seeds from hf_checkpoint — what each host materializes its base from — so the invariant
         ``snapshot == engine base`` holds even where the megatron->HF round-trip trims vocab-padding rows."""
 ```
@@ -72,7 +72,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：actor.py L139-L142
+## 来源：actor.py L139-L142
         if self.args.colocate:
             assert self.args.update_weight_mode == "full"
             update_weight_cls = UpdateWeightFromTensor
@@ -115,7 +115,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L174-L180
+## 来源：update_weight/update_weight_from_tensor.py L174-L180
             del long_lived_tensors, hf_named_tensors
             torch.cuda.ipc_collect()
         dist.barrier(group=get_gloo_group())
@@ -154,4 +154,4 @@ cd slime && pytest tests/test_full_disk_weight_update.py -q
 
 ## Q13：与 SGLang delta load_format 的区别
 
-**Explain：** Slime **trainer-side** delta（本批）在 host apply 成 full HF 再 reload。SGLang 原生 `load_format=delta`（external PD 测试）是 **引擎侧** 读 delta 文件——路径不同，不要混淆 `UpdateWeightFromDiskDelta` 与 engine payload `load_format=delta`。
+**Explain：** Slime **trainer-side** delta（本专题）在 host apply 成 full HF 再 reload。SGLang 原生 `load_format=delta`（external PD 测试）是 **引擎侧** 读 delta 文件——路径不同，不要混淆 `UpdateWeightFromDiskDelta` 与 engine payload `load_format=delta`。

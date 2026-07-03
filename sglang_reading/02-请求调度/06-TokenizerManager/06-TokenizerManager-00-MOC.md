@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # TokenizerManager
 
-> **阶段 II · 请求调度** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 II · 请求调度** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/managers/tokenizer_manager.py` 及 Mixin 系列
 
 ---
@@ -72,7 +72,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L589-L636
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L589-L636
     async def generate_request(
         self,
         obj: Union[GenerateReqInput, EmbeddingReqInput],

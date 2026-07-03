@@ -21,12 +21,6 @@ updated: 2026-07-02
 - [ ] 能描述 fan-out 时 `rollout_id` 契约
 - [ ] 能说明 harness + adapter 如何配合 sandbox agent
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/28`
-- [ ] 六件套 ≥15 段代码、≥200 行
-- [ ] 已更新 [[Slime-progress]] 批次 28 为 ✅
-
 ## 衔接
 
 → [[29-Plugins-Examples-00-MOC]]：把接口落到具体 example/plugin

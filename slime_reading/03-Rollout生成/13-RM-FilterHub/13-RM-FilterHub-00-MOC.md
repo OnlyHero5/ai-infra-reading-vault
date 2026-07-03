@@ -3,7 +3,7 @@ type: batch-doc
 module: 13-RM-FilterHub
 batch: "13"
 doc_type: moc
-title: "RM-FilterHub · 批次概述"
+title: "RM-FilterHub · 专题概述"
 tags:
   - slime/batch/13
   - slime/module/rm-filter-hub
@@ -11,16 +11,15 @@ tags:
 updated: 2026-07-02
 ---
 
-# RM-FilterHub · 批次概述
+# RM-FilterHub · 专题概述
 
-> **批次 13** | 阶段 III Rollout 生成 | 基线 commit `22cdc6e1`  
 > 源码主目录：`slime/slime/rollout/rm_hub/`、`slime/slime/rollout/filter_hub/`
 
 ---
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套后，读者应能：
+读完本专题六件套后，读者应能：
 
 1. 说明 `async_rm` 如何按优先级选择 **per-sample custom RM → args custom RM → 内置 rm_type 分支**
 2. 对比 `math_utils`（Verl/DeepScaler 路径）与 `math_dapo_utils`（DAPO 路径）的评分差异
@@ -43,7 +42,7 @@ updated: 2026-07-02
 
 ## 源码范围
 
-| 优先级 | 文件 / 符号 | 本批覆盖 |
+| 优先级 | 文件 / 符号 | 本专题覆盖 |
 |--------|------------|---------|
 | P0 | `rm_hub/__init__.py` — `async_rm`, `batched_async_rm`, `remote_rm` | ✅ |
 | P0 | `rm_hub/math_utils.py` — `grade_answer_verl`, `extract_boxed_answer` | ✅ |
@@ -63,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/rm_hub/__init__.py L55-L96
+## 来源：slime/slime/rollout/rm_hub/__init__.py L55-L96
 async def async_rm(args, sample: Sample, **kwargs):
     # Per-sample custom_rm_path (from eval dataset config) takes priority
     if sample.custom_rm_path:

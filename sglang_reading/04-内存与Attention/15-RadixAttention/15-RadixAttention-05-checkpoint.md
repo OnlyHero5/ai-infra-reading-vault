@@ -8,8 +8,6 @@ tags:
  - sglang/batch/15
  - sglang/module/radix-attention
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # RadixAttention 验收清单
@@ -23,12 +21,6 @@ updated: 2026-07-02
 - [x] 能对比 RadixCache 与 UnifiedRadixCache 扩展点
 - [x] 五篇正文 ≥ 15 段内嵌源码
 
-## 维护者检查
-
-- [x] 覆盖 `radix_cache.py`、`unified_radix_cache.py`、`radix_attention.py` 主路径
-- [x] 行号对齐 git `70df09b`（2026-07-02）
-- [ ] [[progress]] 由 P8 更新
-
 ## 核心结论（3 句话）
 
 1. **RadixCache 用 RadixKey+TreeNode 管理 token 前缀到 KV pool indices 的映射**，`match_prefix`/`insert`/lock/evict 构成请求生命周期管理。
@@ -40,19 +32,6 @@ updated: 2026-07-02
 - `_match_prefix_helper` / `_insert_helper` 内部 split 算法 → 可与KV Cache KV pool 联读
 - `HybridCacheController` prefetch 状态机 → HiCache 专批
 - Attention backend 注册表 → `attention/` 目录
-
-## 内嵌源码统计（维护者）
-
-| 文档 | ETC 段数（约） |
-|------|----------------|
-| README.md | 2 |
-| 01-核心概念.md | 10 |
-| 02-源码走读.md | 13 |
-| 03-数据流与交互.md | 10 |
-| 04-关键问题.md | 12 |
-| **合计** | **47 段** |
-
-合计内嵌源码行数：**约 320+ 行**
 
 ## 建议补充 KG 节点
 

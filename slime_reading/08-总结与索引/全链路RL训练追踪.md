@@ -54,14 +54,14 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：train.py L101-L103
+## 来源：train.py L101-L103
 if __name__ == "__main__":
     args = parse_args()
     train(args)
 ```
 
 ```python
-# 来源：slime/utils/arguments.py L1546-L1559
+## 来源：slime/utils/arguments.py L1546-L1559
 def parse_args(add_custom_arguments=None):
     configure_logger()
     add_slime_arguments = get_slime_extra_args_provider(add_custom_arguments)
@@ -83,13 +83,13 @@ def parse_args(add_custom_arguments=None):
 **Code：**
 
 ```python
-# 来源：train.py L11-L12
+## 来源：train.py L11-L12
     # allocate the GPUs
     pgs = create_placement_groups(args)
 ```
 
 ```python
-# 来源：slime/ray/placement_group.py L42-L48
+## 来源：slime/ray/placement_group.py L42-L48
 def _create_placement_group(num_gpus):
     if num_gpus == 0:
         return None, [], []
@@ -108,7 +108,7 @@ def _create_placement_group(num_gpus):
 **Code：**
 
 ```python
-# 来源：train.py L15-L26
+## 来源：train.py L15-L26
     rollout_manager, num_rollout_per_epoch = create_rollout_manager(args, pgs["rollout"])
     actor_model, critic_model = create_training_models(args, pgs, rollout_manager)
     if args.offload_rollout:
@@ -127,12 +127,12 @@ def _create_placement_group(num_gpus):
 **Code：**
 
 ```python
-# 来源：train.py L67
+## 来源：train.py L67
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
 ```
 
 ```python
-# 来源：slime/ray/rollout.py L546-L559
+## 来源：slime/ray/rollout.py L546-L559
     def generate(self, rollout_id):
         self.rollout_id = rollout_id
         self.health_monitoring_resume()
@@ -158,7 +158,7 @@ def _create_placement_group(num_gpus):
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L618-L633
+## 来源：slime/rollout/sglang_rollout.py L618-L633
 def generate_rollout(
     args: Namespace, rollout_id: int, data_source: Any, evaluation: bool = False
 ) -> RolloutFnTrainOutput | RolloutFnEvalOutput:
@@ -180,7 +180,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-# 来源：train.py L69-L70
+## 来源：train.py L69-L70
         if args.offload_rollout:
             ray.get(rollout_manager.offload.remote())
 ```
@@ -196,7 +196,7 @@ def generate_rollout(
 **Code：**
 
 ```python
-# 来源：train.py L72-L81
+## 来源：train.py L72-L81
         actor_trains_this_step = (not args.use_critic) or rollout_id >= args.num_critic_only_steps
         if args.use_critic:
             value_refs = critic_model.async_train(rollout_id, rollout_data_ref)
@@ -207,7 +207,7 @@ def generate_rollout(
 ```
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L380-L394
+## 来源：slime/backends/megatron_utils/actor.py L380-L394
     def train(self, rollout_id: int, rollout_data_ref: Box, external_data=None):
         if self.args.offload_train:
             self.wake_up()
@@ -220,7 +220,7 @@ def generate_rollout(
 ```
 
 ```python
-# 来源：slime/backends/megatron_utils/loss.py L661-L669
+## 来源：slime/backends/megatron_utils/loss.py L661-L669
 def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) -> None:
     """Supported methods: "grpo", "gspo", "cispo", "ppo", ..."""
 ```
@@ -236,7 +236,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **Code：**
 
 ```python
-# 来源：train.py L87-L92
+## 来源：train.py L87-L92
         if args.offload_rollout:
             ray.get(rollout_manager.onload_weights.remote())
         actor_model.update_weights()
@@ -245,7 +245,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 ```
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L583-L606
+## 来源：slime/backends/megatron_utils/actor.py L583-L606
     def update_weights(self) -> None:
         if self.args.debug_train_only or self.args.debug_rollout_only:
             return
@@ -265,7 +265,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **Code：**
 
 ```python
-# 来源：train.py L47-L60
+## 来源：train.py L47-L60
     def save(rollout_id):
         actor_trains_this_step = (not args.use_critic) or rollout_id >= args.num_critic_only_steps
         if actor_trains_this_step:
@@ -275,7 +275,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 ```
 
 ```python
-# 来源：train.py L83-L95
+## 来源：train.py L83-L95
         if should_run_periodic_action(rollout_id, args.save_interval, num_rollout_per_epoch, args.num_rollout):
             save(rollout_id)
         if should_run_periodic_action(rollout_id, args.eval_interval, num_rollout_per_epoch):

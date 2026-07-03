@@ -59,7 +59,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk.py L76-L97
+## 来源：update_weight/update_weight_from_disk.py L76-L97
         save_hf_model_to_path(self.args, version_dir, self.model, ...)
         dist.barrier(group=get_gloo_group())
         if dist.get_rank() == 0:
@@ -94,7 +94,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L174-L185
+## 来源：update_weight/update_weight_from_disk_delta.py L174-L185
         if dist.get_rank() == 0:
             ray.get([actor.sync_local_checkpoint.remote(self.weight_version) for actor in self.all_engine_actors])
             ray.get([
@@ -132,7 +132,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L255-L287
+## 来源：update_weight/update_weight_from_tensor.py L255-L287
     dist.gather_object(serialized_tensors, object_gather_list=serialized_named_tensors, dst=ipc_gather_src, group=ipc_gather_group)
     if dist.get_rank() == ipc_gather_src:
         refs.append(ipc_engine.update_weights_from_tensor.remote(
@@ -151,7 +151,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_tensor.py L94-L117
+## 来源：update_weight/update_weight_from_tensor.py L94-L117
         self.use_distribute = len(rollout_engines) > colocate_engine_nums
         if self.use_distribute:
             self.rollout_engines = rollout_engines[:colocate_engine_nums]
@@ -177,7 +177,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_disk_delta.py L108-L109, L171-L172
+## 来源：update_weight/update_weight_from_disk_delta.py L108-L109, L171-L172
             if self._commit_hook is not None:
                 self._commit_hook(self.args, self.delta_dir, list(self.rollout_engines))
         ...
@@ -195,12 +195,12 @@ flowchart LR
 
 ## 9. 与 train 主循环的衔接
 
-**Explain：** `train.py` / `train_async.py` 每 rollout 在 `actor_model.train(...)` 后调 `actor_model.update_weights()`；`pop_metrics()` 合并 `perf/update_weights_*` 到 step log。offload 路径用 `torch_memory_saver.disable()` 包裹 updater（与批次 24 相同）。
+**Explain：** `train.py` / `train_async.py` 每 rollout 在 `actor_model.train(...)` 后调 `actor_model.update_weights()`；`pop_metrics()` 合并 `perf/update_weights_*` 到 step log。offload 路径用 `torch_memory_saver.disable()` 包裹 updater（与[[24-WeightSync-Dist-00-MOC]] 相同）。
 
 **Code：**
 
 ```python
-# 来源：actor.py L583-L624（与 NCCL 共用入口）
+## 来源：actor.py L583-L624（与 NCCL 共用入口）
     def update_weights(self) -> None:
         ...
         with torch_memory_saver.disable() if self.args.offload_train else nullcontext():

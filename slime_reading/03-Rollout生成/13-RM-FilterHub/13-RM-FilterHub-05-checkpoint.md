@@ -17,7 +17,7 @@ updated: 2026-07-02
 
 ## 读者自测（不打开 slime/）
 
-- [ ] 仅读本批 slime_reading，能口头说明 **RM Hub** 与 **Filter Hub** 的分工
+- [ ] 仅读本专题 slime_reading，能口头说明 **RM Hub** 与 **Filter Hub** 的分工
 - [ ] 能画出 `generate_and_rm` → `async_rm` → `call_dynamic_filter` → `RolloutFnTrainOutput` 路径
 - [ ] 能说出 3 个核心函数及其职责：
   - `async_rm` — RM 分发入口
@@ -28,29 +28,7 @@ updated: 2026-07-02
 
 ---
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/13` + `slime/doc/*`
-- [ ] 文件名前缀 `13-RM-FilterHub-`（无泛化 `01-核心概念.md`）
-- [ ] Mermaid 块内无 `\n`（使用 `<br/>`）
-- [ ] 双链指向相关批次（如 [[12-SGLang-Rollout-00-MOC]]、[[08-RolloutManager-00-MOC]]）
-- [ ] 已更新 [[Slime-progress]] 批次 13 为 ✅
-
----
-
-## 命令验证（维护者）
-
-```bash
-cd F:/源码阅读/slime
-pytest tests/test_rm_math_dapo.py -q
-pytest tests/plugin_contracts/test_plugin_path_loading_contracts.py -k "dynamic_filter or custom_rm" -q
-```
-
-预期：`test_rm_math_dapo.py` 全部 PASSED；插件契约测试 PASSED。
-
----
-
-## 本批产出文件
+## 本专题产出文件
 
 | 文件 | 状态 |
 |------|------|

@@ -55,7 +55,7 @@ flowchart TB
 **Code（请求侧 bootstrap 字段）：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L802-L810（节选）
+## 来源：python/sglang/srt/managers/io_struct.py L802-L810（节选）
     # Whether to return captured routed experts
     return_routed_experts: bool = False
     # See GenerateReqInput.routed_experts_start_len.
@@ -95,7 +95,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
+## 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
 def dispatch_event_loop(scheduler: Scheduler):
     # Dispatch to the appropriate event loop based on the disaggregation mode
     server_args = scheduler.server_args
@@ -138,7 +138,7 @@ def dispatch_event_loop(scheduler: Scheduler):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L1-L19
+## 来源：python/sglang/srt/disaggregation/decode.py L1-L19
 """
 Life cycle of a request in the decode server
 
@@ -171,7 +171,7 @@ Life cycle of a request in the decode server
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L1-L18
+## 来源：python/sglang/srt/disaggregation/prefill.py L1-L18
 """
 Life cycle of a request in the prefill server
 
@@ -203,7 +203,7 @@ Life cycle of a request in the prefill server
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L103-L118
+## 来源：python/sglang/srt/disaggregation/utils.py L103-L118
 def _apply_metadata_gate(polls, decode_reqs, metadata_buffers, server_args) -> None:
     """Downgrade Success → Transferring for requests whose metadata hasn't landed.
 
@@ -233,7 +233,7 @@ def _apply_metadata_gate(polls, decode_reqs, metadata_buffers, server_args) -> N
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L107-L117
+## 来源：python/sglang/srt/disaggregation/decode.py L107-L117
 class DecodeReqToTokenPool:
     """
     The difference of DecodeReqToTokenPool and ReqToTokenPool is that
@@ -258,7 +258,7 @@ class DecodeReqToTokenPool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L61-L68
+## 来源：python/sglang/srt/disaggregation/decode_hicache_mixin.py L61-L68
     def _build_decode_prefix_match(self, req: Req, result: Any) -> DecodePrefixMatch:
         """Convert a ``match_prefix_for_req`` result into ``DecodePrefixMatch``.
 
@@ -269,7 +269,7 @@ class DecodeReqToTokenPool:
         l1_prefix_len = len(prefix_indices)
 ```
 
-**Comment：** 与RadixAttention RadixAttention、KV Cache KV Cache 交叉阅读；PD + 高前缀命中场景下 TCO 收益最大。
+**Comment：** 与 [[15-RadixAttention-00-MOC|RadixAttention]]、[[16-KV-Cache-00-MOC|KV Cache]] 交叉阅读；PD + 高前缀命中场景下 TCO 收益最大。
 
 ---
 

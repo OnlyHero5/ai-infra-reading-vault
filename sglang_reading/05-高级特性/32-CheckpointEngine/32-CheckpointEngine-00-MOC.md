@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1306-L1320
+## 来源：python/sglang/srt/entrypoints/http_server.py L1306-L1320
 @app.post("/update_weights_from_ipc")
 @auth_level(AuthLevel.ADMIN_OPTIONAL)
 async def update_weights_from_ipc(

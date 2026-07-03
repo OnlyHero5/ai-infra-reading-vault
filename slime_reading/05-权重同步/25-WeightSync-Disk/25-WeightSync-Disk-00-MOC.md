@@ -3,7 +3,7 @@ type: batch-doc
 module: 25-WeightSync-Disk
 batch: "25"
 doc_type: moc
-title: "磁盘权重同步 · 批次概述"
+title: "磁盘权重同步 · 专题概述"
 tags:
   - slime/batch/25
   - slime/module/weight-sync-disk
@@ -11,14 +11,13 @@ tags:
 updated: 2026-07-02
 ---
 
-# 磁盘权重同步 · 批次概述
+# 磁盘权重同步 · 专题概述
 
-> **批次 25** | 阶段 V 权重同步 | 状态：✅ 已完成 | 基线 commit `22cdc6e1`  
 > 源码：`update_weight_from_disk.py`、`update_weight_from_disk_delta.py`、`update_weight_from_tensor.py`、`utils/disk_delta.py`
 
 ---
 
-## 本批目标
+## 本专题目标
 
 1. 对比三种 transport：**full disk**、**delta disk**、**tensor（colocate IPC + 可选 NCCL）**
 2. 说明 `UpdateWeightFromDisk.update_weights` 的 pause → save HF → engine reload 流程
@@ -56,7 +55,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：actor.py L140-L161
+## 来源：actor.py L140-L161
         if self.args.colocate:
             assert self.args.update_weight_mode == "full"
             update_weight_cls = UpdateWeightFromTensor

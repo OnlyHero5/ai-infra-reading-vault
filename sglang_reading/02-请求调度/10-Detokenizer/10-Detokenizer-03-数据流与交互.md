@@ -49,7 +49,7 @@ sequenceDiagram
 **Code（输出结构摘要）：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L1276-L1282
+## 来源：python/sglang/srt/managers/io_struct.py L1276-L1282
 class BatchStrOutput(BaseBatchReq, kw_only=True):
     # The finish reason
     finished_reasons: List[Optional[FinishReasonDict]]
@@ -70,7 +70,7 @@ class BatchStrOutput(BaseBatchReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L111-L122
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L111-L122
     def init_ipc_channels(self, port_args: PortArgs, server_args: ServerArgs):
         context = zmq.Context(2)
         self.recv_from_scheduler = get_zmq_socket(
@@ -108,7 +108,7 @@ class BatchStrOutput(BaseBatchReq, kw_only=True):
 TokenizerManager 接收侧（对照理解，非本模块源码）：
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L1851（引用）
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L1851（引用）
                 recv_obj = await async_sock_recv(self.recv_from_detokenizer)
 ```
 
@@ -123,7 +123,7 @@ Scheduler 在 `BatchTokenIDOutput` 中带 `decode_ids`（本步新 token）、`r
 **步骤 2 — Detokenizer 初始化或更新 DecodeStatus**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L277-L288
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L277-L288
             rid = recv_obj.rids[i]
             if rid not in self.decode_status:
                 s = DecodeStatus(
@@ -156,7 +156,7 @@ Scheduler 在 `BatchTokenIDOutput` 中带 `decode_ids`（本步新 token）、`r
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L300-L318（逻辑节选）
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L300-L318（逻辑节选）
         if not self.disable_tokenizer_batch_decode:
             surr_texts = self._grouped_batch_decode(
                 surr_ids,
@@ -189,7 +189,7 @@ TokenizerManager 将 `output_strs` 追加到 per-rid 缓冲区，通过 HTTP SSE
 `finished_reasons[i]` 非 None → 合并全文、`trim_matched_stop`、发送 tail、`del decode_status[rid]`。
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L372-L383
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L372-L383
             if rid in self.decode_status:
                 del self.decode_status[rid]
 
@@ -213,7 +213,7 @@ TokenizerManager 将 `output_strs` 追加到 per-rid 缓冲区，通过 HTTP SSE
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L351-L368
+## 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L351-L368
     def multi_http_worker_event_loop(self: DetokenizerManager):
         """The event loop that handles requests, for multi multi-http-worker mode"""
         self.socket_mapping = SocketMapping()
@@ -250,7 +250,7 @@ TokenizerManager 将 `output_strs` 追加到 per-rid 缓冲区，通过 HTTP SSE
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L130-L141
+## 来源：python/sglang/srt/managers/tokenizer_control_mixin.py L130-L141
     def init_communicators(self: TokenizerManager, server_args: ServerArgs):
         dispatch_pairs = []
         for spec in _COMMUNICATOR_SPECS:

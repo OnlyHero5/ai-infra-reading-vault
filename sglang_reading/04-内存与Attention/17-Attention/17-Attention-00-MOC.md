@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Attention 后端
 
-> **阶段 IV · 内存与 Attention** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 IV · 内存与 Attention** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `layers/attention/`、`layers/radix_attention.py`（backend 分发部分）
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L18-L87
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L18-L87
 class AttentionBackend(ABC):
     """The base class of attention backends.
 

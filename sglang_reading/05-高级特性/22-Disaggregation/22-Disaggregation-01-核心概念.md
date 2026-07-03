@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L60-L71
+## 来源：python/sglang/srt/disaggregation/utils.py L60-L71
 class DisaggregationMode(Enum):
     NULL = "null"
     PREFILL = "prefill"
@@ -74,7 +74,7 @@ class DisaggregationMode(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L60-L71
+## 来源：python/sglang/srt/disaggregation/utils.py L60-L71
 class DisaggregationMode(Enum):
     NULL = "null"
     PREFILL = "prefill"
@@ -103,7 +103,7 @@ class DisaggregationMode(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/prefill.py L1-L18
+## 来源：python/sglang/srt/disaggregation/prefill.py L1-L18
 """
 Life cycle of a request in the prefill server
 
@@ -135,7 +135,7 @@ Life cycle of a request in the prefill server
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/decode.py L1-L19
+## 来源：python/sglang/srt/disaggregation/decode.py L1-L19
 """
 Life cycle of a request in the decode server
 
@@ -168,7 +168,7 @@ Life cycle of a request in the decode server
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/disaggregation/utils.py L121-L140
+## 来源：python/sglang/srt/disaggregation/utils.py L121-L140
 def poll_and_all_reduce(
     pollers,
     gloo_group: dist.ProcessGroup,

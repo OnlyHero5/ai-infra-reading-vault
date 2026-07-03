@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1881-L1882
+## 来源：slime/utils/arguments.py L1881-L1882
 assert not (args.debug_rollout_only and args.debug_train_only), (
     "debug_rollout_only and debug_train_only cannot be set at the same time, "
     "please set only one of them."
@@ -47,7 +47,7 @@ assert not (args.debug_rollout_only and args.debug_train_only), (
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L139-L143
+## 来源：slime/backends/megatron_utils/actor.py L139-L143
 if self.args.colocate:
     assert (
         self.args.update_weight_mode == "full"
@@ -55,7 +55,7 @@ if self.args.colocate:
     update_weight_cls = UpdateWeightFromTensor
 ```
 
-**Comment：** delta 另需 `update_weight_transport == "disk"`，见 [[25-WeightSync-Disk]]。
+**Comment：** delta 另需 `update_weight_transport == "disk"`，见 [[25-WeightSync-Disk-00-MOC]]。
 
 ---
 
@@ -95,7 +95,7 @@ Critic 只参与 value 训练，不向 SGLang 推 actor 权重；init 在 `role=
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L133-L137
+## 来源：slime/backends/megatron_utils/actor.py L133-L137
 if self.args.vocab_size is None:
     hf_vocab = getattr(self.hf_config, "vocab_size", None)
     self.args.vocab_size = hf_vocab if hf_vocab is not None else self.tokenizer.vocab_size

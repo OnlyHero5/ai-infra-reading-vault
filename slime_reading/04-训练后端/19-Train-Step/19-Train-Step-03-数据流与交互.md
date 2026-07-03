@@ -49,7 +49,7 @@ sequenceDiagram
 | `tokens` | `list[Tensor]` | `get_batch` → model forward |
 | `loss_masks` | `list[Tensor]` | loss 掩码 |
 | `total_lengths` / `response_lengths` | `list[int]` | log-prob 切片、packed seq |
-| `rewards` / `raw_reward` | 标量或 list | advantage（批次 21） |
+| `rewards` / `raw_reward` | 标量或 list | advantage（[[21-Loss-Advantages-00-MOC]]） |
 | `rollout_log_probs` | `list[Tensor]` | 可选直接作 old log-prob |
 | `num_microbatches` | `list[int]` | 每 step microbatch 数 |
 | `global_batch_sizes` | `list[int]` | loss 归一化 + LR step |
@@ -58,7 +58,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/train.py L67-L77
+## 来源：slime/train.py L67-L77
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
 
         actor_trains_this_step = (not args.use_critic) or rollout_id >= args.num_critic_only_steps
@@ -80,7 +80,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L497-L505
+## 来源：slime/backends/megatron_utils/actor.py L497-L505
                 if self.args.use_critic:
                     if external_data is not None and mpu.is_pipeline_last_stage():
                         values = external_data.get("values")
@@ -101,13 +101,13 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L431-L434
+## 来源：slime/backends/megatron_utils/actor.py L431-L434
         data_iterator = get_data_iterator(rollout_data)
         num_microbatches = rollout_data["num_microbatches"]
         global_batch_sizes = rollout_data["global_batch_sizes"]
 ```
 
-**Comment：** `fill_routing_replay` 在 actor 路径开头也会 reset iterator；routing replay 与 train 共用 microbatch 边界（批次 23）。
+**Comment：** `fill_routing_replay` 在 actor 路径开头也会 reset iterator；routing replay 与 train 共用 microbatch 边界（[[23-CP-RoutingReplay-00-MOC]]）。
 
 ---
 
@@ -122,7 +122,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L362-L377
+## 来源：slime/backends/megatron_utils/actor.py L362-L377
     def compute_log_prob(
         self,
         data_iterator: list[DataIterator],
@@ -152,7 +152,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L384-L398
+## 来源：slime/backends/megatron_utils/actor.py L384-L398
         if self.args.offload_train:
             self.wake_up()
 
@@ -175,7 +175,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/train_async.py L31-L49
+## 来源：slime/train_async.py L31-L49
     rollout_data_next_future = rollout_manager.generate.remote(args.start_rollout_id)
     for rollout_id in range(args.start_rollout_id, args.num_rollout):
         if rollout_data_next_future is not None:
@@ -199,6 +199,6 @@ sequenceDiagram
 | 上游 | 交接物 | 本模块 |
 |------|--------|--------|
 | RolloutManager.generate | `Box(rollout_batch)` | `_get_rollout_data` |
-| 批次 20 Train-Data | `num_microbatches` 等 | iterator / get_batch |
-| 批次 21 Loss | advantage / loss 闭包 | train_one_step |
+| [[20-Train-Data-00-MOC]] Train-Data | `num_microbatches` 等 | iterator / get_batch |
+| [[21-Loss-Advantages-00-MOC]] Loss | advantage / loss 闭包 | train_one_step |
 | 下游 update_weights | 最新 actor 权重 | `weights_backuper.backup("actor")` 后读取 |

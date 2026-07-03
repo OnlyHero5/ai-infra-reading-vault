@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L785-L831
+## 来源：python/sglang/srt/entrypoints/http_server.py L785-L831
 @app.api_route(
     "/generate",
     methods=["POST", "PUT"],
@@ -130,7 +130,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L183-L195
+## 来源：python/sglang/srt/entrypoints/engine.py L183-L195
 # 提交版本：70df09b
 class Engine(EngineScoreMixin, EngineBase):
     """
@@ -161,7 +161,7 @@ class Engine(EngineScoreMixin, EngineBase):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L190-L207
+## 来源：python/sglang/srt/entrypoints/http_server.py L190-L207
 # 提交版本：70df09b
 # Store global states
 @dataclasses.dataclass
@@ -170,14 +170,11 @@ class _GlobalState:
     template_manager: TemplateManager
     scheduler_info: Dict
 
-
 _global_state: Optional[_GlobalState] = None
-
 
 def set_global_state(global_state: _GlobalState):
     global _global_state
     _global_state = global_state
-
 
 def get_global_state() -> _GlobalState:
     return _global_state
@@ -197,7 +194,7 @@ def get_global_state() -> _GlobalState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L793-L796
+## 来源：python/sglang/srt/entrypoints/engine.py L793-L796
 # 提交版本：70df09b
         # Allocate ports for inter-process communications
         if port_args is None:
@@ -216,7 +213,7 @@ def get_global_state() -> _GlobalState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L291-L299
+## 来源：python/sglang/srt/entrypoints/http_server.py L291-L299
 # 提交版本：70df09b
     # Initialize OpenAI serving handlers
     fast_api_app.state.openai_serving_completion = OpenAIServingCompletion(
@@ -268,7 +265,7 @@ def get_global_state() -> _GlobalState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L798-L800
+## 来源：python/sglang/srt/entrypoints/http_server.py L798-L800
                 async for out in _global_state.tokenizer_manager.generate_request(
                     obj, request
                 ):
@@ -285,7 +282,7 @@ def get_global_state() -> _GlobalState:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L98-L107
+## 来源：python/sglang/srt/entrypoints/http_server.py L98-L107
 from sglang.srt.entrypoints.openai.serving_rerank import OpenAIServingRerank
 from sglang.srt.entrypoints.openai.serving_score import OpenAIServingScore
 from sglang.srt.entrypoints.openai.serving_tokenize import (
@@ -309,7 +306,7 @@ from sglang.srt.entrypoints.request_headers import apply_header_overrides
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L146-L148
+## 来源：python/sglang/srt/entrypoints/http_server.py L146-L148
     MultiTokenizerRouter,
     TokenizerWorker,
     get_main_process_id,

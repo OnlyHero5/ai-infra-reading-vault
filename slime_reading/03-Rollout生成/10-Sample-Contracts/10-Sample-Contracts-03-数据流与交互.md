@@ -31,7 +31,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L19-L26
+## 来源：slime/rollout/base_types.py L19-L26
 # 提交版本：22cdc6e1
 def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
     output = fn(*args, **kwargs, evaluation=evaluation)
@@ -49,7 +49,7 @@ def call_rollout_fn(fn, *args, evaluation: bool, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime/rollout/base_types.py L7-L10
+## 来源：slime/rollout/base_types.py L7-L10
 # 提交版本：22cdc6e1
 @dataclass
 class RolloutFnTrainOutput:
@@ -71,7 +71,7 @@ class RolloutFnTrainOutput:
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L118-L127
+## 来源：slime/utils/types.py L118-L127
 # 提交版本：22cdc6e1
 reward: float | dict[str, Any] | None = None
 loss_mask: list[int] | None = None
@@ -82,7 +82,7 @@ remove_sample: bool = False
 **Comment：**
 
 - `get_reward_value` 在 advantage 计算前调用
-- 见 [[13-RM-FilterHub]]
+- 见 [[13-RM-FilterHub-00-MOC]]
 
 ---
 
@@ -93,7 +93,7 @@ remove_sample: bool = False
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L421-L424
+## 来源：slime/utils/types.py L421-L424
 # 提交版本：22cdc6e1
 RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str]]
 ```
@@ -101,7 +101,7 @@ RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str
 **Comment：**
 
 - 键名与 Megatron `get_batch` 期望一致（tokens、log_probs、advantages 等）
-- 转换在 actor 侧 `_get_rollout_data`（批次 20）
+- 转换在 actor 侧 `_get_rollout_data`（[[20-Train-Data-00-MOC]]）
 
 ---
 
@@ -112,7 +112,7 @@ RolloutBatch = dict[str, list[torch.Tensor] | list[int] | list[float] | list[str
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L146-L148
+## 来源：slime/ray/actor_group.py L146-L148
 # 提交版本：22cdc6e1
 return [
     actor.train.remote(rollout_id, rollout_data_ref, external_data=external_data)
@@ -134,7 +134,7 @@ return [
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L122-L125
+## 来源：slime/utils/types.py L122-L125
 # 提交版本：22cdc6e1
 # For response token i, kept ids are rollout_top_p_token_ids[offsets[i]:offsets[i + 1]].
 rollout_top_p_token_ids: list[int] | torch.Tensor | None = None
@@ -144,7 +144,7 @@ rollout_top_p_token_offsets: list[int] | torch.Tensor | None = None
 **Comment：**
 
 - `_validate_response_metadata_lengths` 保证 offsets 长度 = response_length + 1
-- 见 [[22-Loss-Policy]]
+- 见 [[22-Loss-Policy-00-MOC]]
 
 ---
 
@@ -155,7 +155,7 @@ rollout_top_p_token_offsets: list[int] | torch.Tensor | None = None
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 # 提交版本：22cdc6e1
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
@@ -169,7 +169,7 @@ def load_function(path):
 |----------|--------|
 | `--rollout-function-path` | RolloutManager |
 | `--custom-rm-path` | rm_hub |
-| `--custom-model-provider-path` | model_provider（批次 18） |
+| `--custom-model-provider-path` | model_provider（[[18-Model-Init-00-MOC]]） |
 
 ---
 
@@ -188,7 +188,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/utils/types.py L268-L270
+## 来源：slime/utils/types.py L268-L270
 # 提交版本：22cdc6e1
 # Tool/environment tokens should pass trainable=False; they receive loss-mask zeros
 # and empty top-p spans when top-p replay is active.
@@ -196,4 +196,4 @@ flowchart LR
 
 **Comment：**
 
-- Agent 路径见 [[27-Agent-Trajectory]]
+- Agent 路径见 [[27-Agent-Trajectory-00-MOC]]

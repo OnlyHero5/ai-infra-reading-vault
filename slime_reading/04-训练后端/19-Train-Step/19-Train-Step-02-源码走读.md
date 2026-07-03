@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L131-L149
+## 来源：slime/ray/actor_group.py L131-L149
     def async_train(self, rollout_id, rollout_data_ref, external_data=None):
         """Do one rollout training. Returns a list of Ray refs (one per worker).
 
@@ -57,7 +57,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L380-L400
+## 来源：slime/backends/megatron_utils/actor.py L380-L400
     def train(self, rollout_id: int, rollout_data_ref: Box, external_data=None):
         if self.args.debug_rollout_only:
             return None
@@ -92,7 +92,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L222-L276（节选）
+## 来源：slime/backends/megatron_utils/actor.py L222-L276（节选）
     def _get_rollout_data(self, rollout_data_ref: Box) -> RolloutBatch:
         rollout_data = process_rollout_data(
             self.args,
@@ -126,7 +126,7 @@ updated: 2026-07-02
         return rollout_data
 ```
 
-**Comment：** 批次 20 详述 `process_rollout_data` 如何构造 `num_microbatches` / `global_batch_sizes`。
+**Comment：** [[20-Train-Data-00-MOC]] 详述 `process_rollout_data` 如何构造 `num_microbatches` / `global_batch_sizes`。
 
 ---
 
@@ -137,7 +137,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L402-L428
+## 来源：slime/backends/megatron_utils/actor.py L402-L428
     def train_critic(self, rollout_id: int, rollout_data: RolloutBatch):
         data_iterator = get_data_iterator(rollout_data)
         num_microbatches = rollout_data["num_microbatches"]
@@ -176,7 +176,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L430-L509（节选）
+## 来源：slime/backends/megatron_utils/actor.py L430-L509（节选）
     def train_actor(self, rollout_id: int, rollout_data: RolloutBatch, external_data=None) -> None:
         data_iterator = get_data_iterator(rollout_data)
         num_microbatches = rollout_data["num_microbatches"]
@@ -227,7 +227,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L511-L555
+## 来源：slime/backends/megatron_utils/actor.py L511-L555
             if self.rollout_data_postprocess is not None:
                 self.rollout_data_postprocess(self.args, rollout_id, rollout_data)
 
@@ -276,7 +276,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L732-L744, L810-L835
+## 来源：slime/backends/megatron_utils/model.py L732-L744, L810-L835
     args = get_args()
 
     assert len(num_microbatches) == len(global_batch_sizes), (
@@ -319,7 +319,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L549-L552, L576-L638, L640-L680
+## 来源：slime/backends/megatron_utils/model.py L549-L552, L576-L638, L640-L680
     for model_chunk in model:
         model_chunk.zero_grad_buffer()
     optimizer.zero_grad()
@@ -378,7 +378,7 @@ updated: 2026-07-02
         opt_param_scheduler.step(increment=step_global_batch_size)
 ```
 
-**Comment：** `loss_function` 根据 `args.loss_type`（policy / value / sft）分支；PPO clip、KL 在批次 22。PP last stage 通过 `reduce_train_step_metrics` 聚合 loss 写 wandb。
+**Comment：** `loss_function` 根据 `args.loss_type`（policy / value / sft）分支；PPO clip、KL 在[[22-Loss-Policy-00-MOC]]。PP last stage 通过 `reduce_train_step_metrics` 聚合 loss 写 wandb。
 
 ---
 
@@ -389,7 +389,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L892-L907
+## 来源：slime/backends/megatron_utils/model.py L892-L907
             if args.ci_test and "train/train_rollout_logprob_abs_diff" in log_dict:
                 assert log_dict["train/train_rollout_logprob_abs_diff"] <= 0.1, f"{log_dict=}"
 

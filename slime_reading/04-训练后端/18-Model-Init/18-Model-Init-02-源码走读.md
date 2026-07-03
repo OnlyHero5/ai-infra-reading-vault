@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L125-L141, L203-L235
+## 来源：slime/backends/megatron_utils/model_provider.py L125-L141, L203-L235
 # 提交版本：22cdc6e1
 def model_provider(pre_process=True, post_process=True, vp_stage=None) -> GPTModel:
     use_te = args.transformer_impl == "transformer_engine"
@@ -49,7 +49,7 @@ def model_provider(pre_process=True, post_process=True, vp_stage=None) -> GPTMod
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L291-L294
+## 来源：slime/backends/megatron_utils/model.py L291-L294
 # 提交版本：22cdc6e1
 model = get_model(get_model_provider_func(args, role), ModelType.encoder_or_decoder)
 ```
@@ -68,7 +68,7 @@ model = get_model(get_model_provider_func(args, role), ModelType.encoder_or_deco
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L304-L316
+## 来源：slime/backends/megatron_utils/model.py L304-L316
 # 提交版本：22cdc6e1
 if args.use_stateless_adam:
     assert config.optimizer == "adam", "Stateless Adam only supports --optimizer adam."
@@ -95,7 +95,7 @@ if args.use_stateless_adam:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L990-L1007
+## 来源：slime/backends/megatron_utils/model.py L990-L1007
 # 提交版本：22cdc6e1
 model, optimizer, opt_param_scheduler = setup_model_and_optimizer(args, role)
 model[0].role = role
@@ -128,7 +128,7 @@ return model, optimizer, opt_param_scheduler, iteration
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L125-L166
+## 来源：slime/backends/megatron_utils/model.py L125-L166
 # 提交版本：22cdc6e1
 def _critic_output_layer_needs_reinit(args, model, role) -> bool:
     if role != "critic" or args.load is None:
@@ -156,7 +156,7 @@ def _critic_output_layer_needs_reinit(args, model, role) -> bool:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L217-L233
+## 来源：slime/backends/megatron_utils/model.py L217-L233
 # 提交版本：22cdc6e1
 opt_param_scheduler = OptimizerParamScheduler(
     optimizer,
@@ -179,7 +179,7 @@ opt_param_scheduler = OptimizerParamScheduler(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L411-L433
+## 来源：slime/backends/megatron_utils/model.py L411-L433
 # 提交版本：22cdc6e1
 batch = get_batch(
     data_iterator,
@@ -213,7 +213,7 @@ return output_tensor, partial(f, **output_kwargs)
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L487-L505
+## 来源：slime/backends/megatron_utils/model.py L487-L505
 # 提交版本：22cdc6e1
 rollout_data = {}
 if mpu.is_pipeline_last_stage():
@@ -240,7 +240,7 @@ return rollout_data
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L143-L156
+## 来源：slime/backends/megatron_utils/model_provider.py L143-L156
 # 提交版本：22cdc6e1
 if args.spec is not None:
     transformer_layer_spec = import_module(args.spec)
@@ -262,7 +262,7 @@ if args.spec is not None:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L222-L232
+## 来源：slime/backends/megatron_utils/model_provider.py L222-L232
 # 提交版本：22cdc6e1
 if args.mtp_num_layers:
     from megatron.core.models.gpt.gpt_layer_specs import get_gpt_mtp_block_spec
@@ -272,5 +272,5 @@ if args.mtp_num_layers:
 
 **Comment：**
 
-- MTP 训练 step 见 [[19-Train-Step]]
+- MTP 训练 step 见 [[19-Train-Step-00-MOC]]
 - CI 有 mtp-only-grad 检查

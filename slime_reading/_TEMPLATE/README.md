@@ -88,10 +88,6 @@ def train(args):
 - [ ] 能画出本模块在 generate → train → update_weights 闭环中的位置
 - [ ] 能说出 3 个核心类/函数及其职责
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 slime/batch/NN + slime/doc/*
-- [ ] 已更新 [[Slime-progress]]
 ```
 
 ---

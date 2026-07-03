@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L17-L46
+## 来源：slime/rollout/data_source.py L17-L46
 # 基线 commit：22cdc6e1
 class DataSource(abc.ABC):
     @abc.abstractmethod
@@ -76,7 +76,7 @@ class DataSource(abc.ABC):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L61-L88
+## 来源：slime/rollout/data_source.py L61-L88
         if args.rollout_global_dataset and args.prompt_data is not None:
             tokenizer = load_tokenizer(args.hf_checkpoint, trust_remote_code=True)
             processor = load_processor(args.hf_checkpoint, trust_remote_code=True)
@@ -113,7 +113,7 @@ class DataSource(abc.ABC):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L104-L105
+## 来源：slime/rollout/data_source.py L104-L105
         else:
             prompt_samples = [Sample() for _ in range(num_samples)]
 ```
@@ -125,7 +125,7 @@ class DataSource(abc.ABC):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L177-L189
+## 来源：slime/rollout/data_source.py L177-L189
     def get_samples(self, num_samples: int) -> list[list[Sample]]:
         samples = self._get_samples_from_buffer(num_samples)
         num_samples -= len(samples)
@@ -165,7 +165,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L408-L412, L637-L639
+## 来源：slime/rollout/sglang_rollout.py L408-L412, L637-L639
     while len(data) < target_data_size:
         while state.remaining_batch_size < target_data_size:
             samples = data_source(args.over_sampling_batch_size)
@@ -191,7 +191,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L107-L118
+## 来源：slime/rollout/data_source.py L107-L118
         samples = []
         for prompt_sample in prompt_samples:
             group = []
@@ -210,7 +210,7 @@ sequenceDiagram
 
 - `deepcopy` 保证同组各 Sample 的 `metadata`/`multimodal_inputs` 独立，生成后 `response`/`tokens` 不会互相污染
 - `sample_index` 全局单调递增，用于 rollout 结果排序与日志对齐
-- 此时 Sample 仅有 prompt 侧字段；`tokens`/`response`/`reward` 在 SGLang 生成后填充（批次 10、12）
+- 此时 Sample 仅有 prompt 侧字段；`tokens`/`response`/`reward` 在 SGLang 生成后填充（[[10-Sample-Contracts-00-MOC]]、12）
 
 ---
 
@@ -221,7 +221,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L219-L264
+## 来源：slime/utils/data.py L219-L264
         origin_samples = []
         for data in read_file(path):
             as_conversation = apply_chat_template or (multimodal_keys is not None)

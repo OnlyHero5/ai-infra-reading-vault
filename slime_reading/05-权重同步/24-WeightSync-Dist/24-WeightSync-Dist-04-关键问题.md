@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L139-L161
+## 来源：slime/backends/megatron_utils/actor.py L139-L161
         if self.args.colocate:
             update_weight_cls = UpdateWeightFromTensor
         elif self.args.update_weight_mode == "delta":
@@ -62,7 +62,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L189-L191
+## 来源：update_weight/update_weight_from_distributed.py L189-L191
             if (
                 buffer_size + param_size
             ) * mpu.get_expert_model_parallel_world_size() > self.args.update_weight_buffer_size:
@@ -90,7 +90,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L142-L146
+## 来源：update_weight/update_weight_from_distributed.py L142-L146
         for chunk_iter in (self._iter_non_expert_chunks(), self._iter_expert_chunks()):
             for hf_chunk in chunk_iter:
                 ...
@@ -106,7 +106,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py（调用点）
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py（调用点）
     hf_weight_iterator = HfWeightIteratorDirect(
         args, model, model_name=model_name, quantization_config=quantization_config
     )
@@ -129,7 +129,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L630-L636
+## 来源：slime/backends/megatron_utils/actor.py L630-L636
             if self.args.ci_test and len(rollout_engines) > 0 and self.weight_updater.weight_version > 0:
                 engine = random.choice(rollout_engines)
                 engine_version = ray.get(engine.get_weight_version.remote())

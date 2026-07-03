@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L111-L125
+## 来源：python/sglang/srt/models/registry.py L111-L125
             if hasattr(module, "EntryClass"):
                 entry = module.EntryClass
                 if isinstance(
@@ -52,7 +52,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L50-L53
+## 来源：python/sglang/srt/models/registry.py L50-L53
         raise ValueError(
             f"Model architectures {architectures} are not supported for now. "
             f"Supported architectures: {all_supported_archs}"
@@ -72,7 +72,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L146-L187
+## 来源：python/sglang/srt/models/llama.py L146-L187
         tp_size = get_parallel().tp_size
         self.total_num_heads = num_heads
         assert self.total_num_heads % tp_size == 0
@@ -124,7 +124,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L228-L252
+## 来源：python/sglang/srt/models/llama.py L228-L252
     def forward(
         self,
         positions: torch.Tensor,
@@ -159,7 +159,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L385-L431
+## 来源：python/sglang/srt/models/llama.py L385-L431
     def forward(
         self,
         input_ids: torch.Tensor,
@@ -216,7 +216,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L497-L507
+## 来源：python/sglang/srt/models/llama.py L497-L507
         if self.config.tie_word_embeddings:
             self.lm_head = self.model.embed_tokens
         else:
@@ -241,7 +241,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L87-L101
+## 来源：python/sglang/srt/models/qwen3.py L87-L101
         attn_tp_rank = get_parallel().attn_tp_rank
         attn_tp_size = get_parallel().attn_tp_size
 
@@ -268,7 +268,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L269-L307
+## 来源：python/sglang/srt/models/qwen3.py L269-L307
     def forward(
         self,
         positions: torch.Tensor,
@@ -317,7 +317,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L376-L387
+## 来源：python/sglang/srt/models/qwen3.py L376-L387
         self.layer_scatter_modes = LayerScatterModes.init_new(
             layer_id=layer_id,
             num_layers=config.num_hidden_layers,
@@ -339,7 +339,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L512-L546
+## 来源：python/sglang/srt/models/qwen3.py L512-L546
     @torch.no_grad()
     def forward(
         self,
@@ -388,7 +388,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L647-L656
+## 来源：python/sglang/srt/models/llama.py L647-L656
             layer_id = get_layer_id(name)
             if (
                 layer_id is not None
@@ -408,7 +408,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L686-L698
+## 来源：python/sglang/srt/models/llama.py L686-L698
             else:
                 # Skip loading extra bias for GPTQ models.
                 if name.endswith(".bias") and name not in params_dict:

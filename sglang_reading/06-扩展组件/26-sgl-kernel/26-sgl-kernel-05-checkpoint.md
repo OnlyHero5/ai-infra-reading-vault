@@ -8,8 +8,6 @@ tags:
  - sglang/batch/26
  - sglang/module/sgl-kernel
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # sgl-kernel 验收清单
@@ -20,13 +18,6 @@ updated: 2026-07-02
 - [ ] 能画出 srt Layer → sgl_kernel Python → torch.ops → common_ops.so 的调用链
 - [ ] 能说出 `_load_architecture_specific_ops`、`merge_state_v2`、`moe_align_block_size` 的职责（文档中均有内嵌代码）
 - [ ] 能追踪 MoE forward 或 import 加载链经过本模块的路径（03-数据流与交互.md 有逐步讲解）
-- [ ] 五篇正文 ETC 段数与代码行数满足下方维护者统计
-
-## 维护者检查
-
-- [x] 对照 knowledge-graph 覆盖 `sgl-kernel/python/sgl_kernel/` 主模块：`__init__`, `load_utils`, `attention`, `moe`, `gemm`, `kvcacheio`, `speculative`, `sampling`, `allreduce`, `top_k`, `debug_utils`
-- [x] 来源注释路径与 git `70df09b` 一致
-- [ ] 已更新 [[progress]]（由 P8 整合时更新）
 
 ## 验证统计（2026-07-02 人工复核）
 

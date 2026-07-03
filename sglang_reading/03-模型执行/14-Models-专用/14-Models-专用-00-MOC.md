@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Models 专用：专用模型实现（DeepSeek V2/V3）
 
-> **阶段 III · 模型执行** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 III · 模型执行** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/models/deepseek_v2.py`（含 V3/V3.2 EntryClass）
 
 ---
@@ -68,7 +68,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2176-L2181
+## 来源：python/sglang/srt/models/deepseek_v2.py L2176-L2181
     def _is_layer_sparse(self, layer_id: int, is_nextn: bool) -> bool:
         return is_nextn or (
             self.config.n_routed_experts is not None
@@ -78,7 +78,7 @@ flowchart LR
 ```
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1890-L1908
+## 来源：python/sglang/srt/models/deepseek_v2.py L1890-L1908
         attn_forward_method = self.dispatch_attn_forward_method(forward_batch)
         if attn_forward_method == AttnForwardMethod.MHA:
             inner_state = self.forward_normal_prepare(

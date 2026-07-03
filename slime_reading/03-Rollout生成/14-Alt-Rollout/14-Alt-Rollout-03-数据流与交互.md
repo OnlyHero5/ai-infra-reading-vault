@@ -44,7 +44,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：train_async.py L9-L49
+## 来源：train_async.py L9-L49
 # The framework supports other asynchronous approaches such as fully async (which is shown in examples/full_async).
 def train(args):
     assert not args.colocate, "Colocation is not supported for async training."
@@ -68,7 +68,7 @@ def train(args):
 **Code：**
 
 ```python
-# 来源：train_async.py L65-L69
+## 来源：train_async.py L65-L69
 if (rollout_id + 1) % args.update_weights_interval == 0:
     rollout_data_curr_ref = ray.get(x) if (x := rollout_data_next_future) is not None else None
     rollout_data_next_future = None
@@ -118,7 +118,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/rollout/fully_async_rollout.py L182-L189
+## 来源：slime/rollout/fully_async_rollout.py L182-L189
 # Aborted group → requeue, don't ship to training.
 if any(getattr(s, "status", None) == Sample.Status.ABORTED for s in result):
     try:
@@ -175,7 +175,7 @@ gantt
 **Code：**
 
 ```python
-# 来源：slime/rollout/sglang_rollout.py L294-L333
+## 来源：slime/rollout/sglang_rollout.py L294-L333
 async def generate_and_rm_group(args, group, sampling_params, evaluation=False):
     state = GenerateState(args)
     if state.aborted:
@@ -224,7 +224,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/rollout/on_policy_distillation.py L41-L43
+## 来源：slime/rollout/on_policy_distillation.py L41-L43
 # Note: The reward_func calls the teacher server which returns token-level log-probs.
 # For pure on-policy distillation without task rewards, we return 0.0 for each sample.
 # The actual learning signal comes from the OPD KL penalty applied in compute_advantages_and_returns.
@@ -282,7 +282,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：tests/test_qwen2.5_0.5B_fully_async_short.py L30-L33
+## 来源：tests/test_qwen2.5_0.5B_fully_async_short.py L30-L33
 rollout_args = (
     "--rollout-function-path slime.rollout.fully_async_rollout.generate_rollout_fully_async "
     # ...

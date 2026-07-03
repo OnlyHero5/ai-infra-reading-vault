@@ -33,12 +33,12 @@ updated: 2026-07-02
 | T2 | rank0 POST `/update_weights_from_ipc`，body 含各 GPU UUID 的 `zmq_handles` |
 | T3 | `FlattenedTensorBucket` IPC 灌权重 → `initial_weights_loaded=True` → warmup 完成，rollout 继续 |
 
-**Explain：** CheckpointEngine 路径更新 **base model 全量权重**（非 LoRA）。外部 checkpoint-engine 经 ZMQ IPC 把扁平化 tensor 推到 `SGLangCheckpointEngineWorkerExtension.update_weights_from_ipc`；热更新期间 Scheduler 暂停部分请求（`num_paused_reqs`），完成后 flush radix cache。与ModelLoader ModelLoader weight_sync 共用 `tensor_bucket.py` 结构。
+**Explain：** CheckpointEngine 路径更新 **base model 全量权重**（非 LoRA）。外部 checkpoint-engine 经 ZMQ IPC 把扁平化 tensor 推到 `SGLangCheckpointEngineWorkerExtension.update_weights_from_ipc`；热更新期间 Scheduler 暂停部分请求（`num_paused_reqs`），完成后 flush radix cache。与 [[12-ModelLoader-00-MOC|ModelLoader]] weight_sync 共用 `tensor_bucket.py` 结构。
 
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L69-L89
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L69-L89
     def update_weights_from_ipc(self, zmq_handles: Dict[str, str]):
         """
         Update weights from IPC communication.
@@ -89,7 +89,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L2505-L2508
+## 来源：python/sglang/srt/server_args.py L2505-L2508
     checkpoint_engine_wait_weights_before_ready: A[
         bool,
         "If set, the server will wait for initial weights to be loaded via checkpoint-engine or other update methods before serving inference requests.",
@@ -110,7 +110,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tokenizer_manager.py L459-L463
+## 来源：python/sglang/srt/managers/tokenizer_manager.py L459-L463
     def init_weight_update(self):
         # Initial weights status
         self.initial_weights_loaded = True
@@ -132,7 +132,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/weight_sync/tensor_bucket.py L19-L72
+## 来源：python/sglang/srt/weight_sync/tensor_bucket.py L19-L72
 class FlattenedTensorBucket:
     """
     A bucket that flattens multiple tensors into a single tensor for efficient processing
@@ -203,7 +203,7 @@ class FlattenedTensorBucket:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/weight_sync/tensor_bucket.py L7-L16
+## 来源：python/sglang/srt/weight_sync/tensor_bucket.py L7-L16
 @dataclass
 class FlattenedTensorMetadata:
     """Metadata for a tensor in a flattened bucket"""
@@ -230,7 +230,7 @@ class FlattenedTensorMetadata:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L69-L89
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L69-L89
     def update_weights_from_ipc(self, zmq_handles: Dict[str, str]):
         """
         Update weights from IPC communication.
@@ -268,7 +268,7 @@ class FlattenedTensorMetadata:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L108-L134
+## 来源：python/sglang/srt/checkpoint_engine/update.py L108-L134
 def req_inference(
     endpoint: str,
     inference_parallel_size: int,
@@ -329,4 +329,3 @@ def req_inference(
 | ModelLoader HF 格式 | `megatron_to_hf` 转换 | [[12-ModelLoader-01-核心概念]] · [[25-WeightSync-Disk-01-核心概念]] |
 
 → [[与Slime阅读对照]] · [[91_dashboard/cross-library-map]] · [[全链路RL训练追踪]] · [[91_dashboard/dual-library-path|双库联合路径]]
-

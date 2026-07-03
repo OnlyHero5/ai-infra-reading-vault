@@ -32,7 +32,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L228-L269
+## 来源：python/sglang/srt/managers/tp_worker.py L228-L269
 # 提交版本：70df09b
     def __init__(
         self,
@@ -90,7 +90,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L316-L355
+## 来源：python/sglang/srt/managers/tp_worker.py L316-L355
 # 提交版本：70df09b
     def alloc_memory_pool(
         self,
@@ -150,7 +150,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L343-L410
+## 来源：python/sglang/srt/model_executor/model_runner.py L343-L410
 # 提交版本：70df09b
 class ModelRunner(ModelRunnerKVCacheMixin):
     """ModelRunner runs the forward passes of the models."""
@@ -234,7 +234,7 @@ class ModelRunner(ModelRunnerKVCacheMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L1388-L1437
+## 来源：python/sglang/srt/model_executor/model_runner.py L1388-L1437
 # 提交版本：70df09b
     def load_model(self):
         tic_total = time.perf_counter()
@@ -304,7 +304,7 @@ class ModelRunner(ModelRunnerKVCacheMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L2954-L3002
+## 来源：python/sglang/srt/model_executor/model_runner.py L2954-L3002
 # 提交版本：70df09b
     def forward(
         self,
@@ -369,7 +369,7 @@ class ModelRunner(ModelRunnerKVCacheMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L900-L920
+## 来源：python/sglang/srt/model_executor/model_runner.py L900-L920
 # 提交版本：70df09b（节选）
     def init_cuda_graphs(self, capture_decode_cuda_graph: bool = True):
         """Capture cuda graphs. Requires init_attention_backends() to have run.
@@ -408,7 +408,7 @@ class ModelRunner(ModelRunnerKVCacheMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/tp_worker.py L506-L560
+## 来源：python/sglang/srt/managers/tp_worker.py L506-L560
 # 提交版本：70df09b（节选）
         if self.pp_group.is_last_rank:
             out = self.model_runner.forward(
@@ -481,7 +481,7 @@ class ModelRunner(ModelRunnerKVCacheMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/forward_batch_info.py L201-L250
+## 来源：python/sglang/srt/model_executor/forward_batch_info.py L201-L250
 # 提交版本：70df09b（节选）
 def compute_local_num_token_non_padded(
     global_num_token_non_padded: torch.Tensor,
@@ -501,7 +501,6 @@ def compute_local_num_token_non_padded(
         0,
         tokens_per_rank,
     )
-
 
 @dataclass
 class DSV4OutCacheLoc:
@@ -531,7 +530,6 @@ class DSV4OutCacheLoc:
     out_c4_state_loc: Optional[torch.Tensor] = None
     out_c128_state_loc: Optional[torch.Tensor] = None
 
-
 @dataclass
 ```
 
@@ -549,7 +547,7 @@ class DSV4OutCacheLoc:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/runner/eager_runner.py L30-L55
+## 来源：python/sglang/srt/model_executor/runner/eager_runner.py L30-L55
 # 提交版本：70df09b（节选）
     is_cp_v2_active,
     prepare_cp_forward,
@@ -593,7 +591,7 @@ logger = logging.getLogger(__name__)
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/input_buffers.py L25-L50
+## 来源：python/sglang/srt/model_executor/input_buffers.py L25-L50
 # 提交版本：70df09b（节选）
     an existing entry — so the sharing *structure* is independent of
     registration order and no already-captured buffer is ever repointed.
@@ -612,7 +610,6 @@ logger = logging.getLogger(__name__)
         _forward_input_buffer_pool[key] = new_buffer
         canonical = new_buffer
     return canonical.as_strided(new_buffer.size(), new_buffer.stride())
-
 
 def share_input_buffers_in(obj) -> None:
     """Pool every tensor buffer on ``obj`` (dataclass / ``SimpleNamespace``)
@@ -637,7 +634,7 @@ def share_input_buffers_in(obj) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/cuda_graph_config.py L15-L40
+## 来源：python/sglang/srt/model_executor/cuda_graph_config.py L15-L40
 # 提交版本：70df09b（节选）
 cuda_graph_config, and the --cuda-graph-config JSON CLI parser.
 
@@ -653,14 +650,12 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-
 class Phase:
     """The two phases of model forward."""
 
     DECODE = "decode"
     PREFILL = "prefill"
     ALL = (DECODE, PREFILL)
-
 
 class Backend:
     """CUDA graph capture backends a phase can use."""

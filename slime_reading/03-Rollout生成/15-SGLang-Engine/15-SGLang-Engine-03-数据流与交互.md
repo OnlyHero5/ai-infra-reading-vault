@@ -63,7 +63,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L75-L92
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L75-L92
         self._is_pp_src_rank = (
             mpu.get_data_parallel_rank(with_context_parallel=True) == 0
             and mpu.get_tensor_model_parallel_rank() == 0
@@ -88,7 +88,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L281-L314
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L281-L314
     master_address = ray._private.services.get_node_ip_address()
     with socket.socket() as sock:
         sock.bind(("", 0))
@@ -141,7 +141,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L439-L450
+## 来源：slime/backends/sglang_utils/sglang_engine.py L439-L450
     def init_weights_update_group(self, master_address, master_port, rank_offset, world_size, group_name, backend):
         return self._make_request(
             "init_weights_update_group",
@@ -168,7 +168,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L326-L355
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L326-L355
 def update_weights_from_distributed(group_name, group, weight_version, rollout_engines, converted_named_tensors, ...):
     refs = [
         engine.update_weights_from_distributed.remote(
@@ -191,7 +191,7 @@ def update_weights_from_distributed(group_name, group, weight_version, rollout_e
 **Code — Engine 侧 payload：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L474-L487
+## 来源：slime/backends/sglang_utils/sglang_engine.py L474-L487
         payload = {
             "names": names,
             "dtypes": [str(dtype).replace("torch.", "") for dtype in dtypes],
@@ -214,7 +214,7 @@ def update_weights_from_distributed(group_name, group, weight_version, rollout_e
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L109-L134
+## 来源：slime/backends/megatron_utils/update_weight/update_weight_from_distributed.py L109-L134
         if dist.get_rank() == 0:
             ray.get([engine.pause_generation.remote() for engine in self.rollout_engines])
             ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
@@ -268,8 +268,8 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：update_weight_from_distributed.py L317-L323
-# 来源：sglang_engine.py L452-L462
+## 来源：update_weight_from_distributed.py L317-L323
+## 来源：sglang_engine.py L452-L462
     refs = [engine.destroy_weights_update_group.remote(group_name) for engine in rollout_engines]
     dist.destroy_process_group(model_update_groups)
     ray.get(refs)

@@ -3,7 +3,7 @@ type: batch-doc
 module: 09-EngineTopology
 batch: "09"
 doc_type: moc
-title: "EngineTopology · 批次概述"
+title: "EngineTopology · 专题概述"
 tags:
   - slime/batch/09
   - slime/module/engine-topology
@@ -11,16 +11,16 @@ tags:
 updated: 2026-07-02
 ---
 
-# EngineTopology · 批次概述
+# EngineTopology · 专题概述
 
-> **阶段 III · Rollout 生成** | 批次 **09** | Git：`22cdc6e1`  
+> **阶段 III · Rollout 生成** | 专题 **09** | Git：`22cdc6e1`  
 > **源码范围：** `slime/ray/rollout.py`（ServerGroup / RolloutServer / start_rollout_servers / _start_router）、`slime/backends/sglang_utils/sglang_config.py`、`docs/en/advanced/pd-disaggregation.md`
 
 ---
 
 ## 本模块在架构中的位置
 
-Slime 的 Rollout 侧不是「一个 SGLang 进程打天下」，而是 **按 YAML 或 CLI 声明的拓扑**，在 Ray Placement Group 上启动 **多模型 × 多 ServerGroup × 多 SGLangEngine**，每个模型背后挂一个 **sglang_router**。本批次聚焦 **引擎拓扑的声明（SglangConfig）与实例化（start_rollout_servers）**，是 [[08-RolloutManager-00-MOC]] 中 `RolloutManager.__init__` 调用链的下半段。
+Slime 的 Rollout 侧不是「一个 SGLang 进程打天下」，而是 **按 YAML 或 CLI 声明的拓扑**，在 Ray Placement Group 上启动 **多模型 × 多 ServerGroup × 多 SGLangEngine**，每个模型背后挂一个 **sglang_router**。本专题聚焦 **引擎拓扑的声明（SglangConfig）与实例化（start_rollout_servers）**，是 [[08-RolloutManager-00-MOC]] 中 `RolloutManager.__init__` 调用链的下半段。
 
 ```mermaid
 flowchart TB
@@ -66,7 +66,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L1089-L1126
+## 来源：slime/ray/rollout.py L1089-L1126
 # 提交版本：22cdc6e1
 def start_rollout_servers(args, pg) -> tuple[dict[str, Any], list[Any]]:
     """Start rollout servers without waiting for final engine initialization.
@@ -112,14 +112,14 @@ def start_rollout_servers(args, pg) -> tuple[dict[str, Any], list[Any]]:
 
 ---
 
-## 与相邻批次的关系
+## 与相邻专题的关系
 
 | 方向 | 模块 | 关系 |
 |------|------|------|
 | 上游 | [[08-RolloutManager-00-MOC]] | `RolloutManager.__init__` 调用 `start_rollout_servers` |
 | 下游 | [[12-SGLang-Rollout-00-MOC]] | `generate_rollout` 通过 Router HTTP 发请求 |
 | SGLang | [[22-Disaggregation-00-MOC]] | SGLang 侧 PD worker 语义与 slime Router 配置对应 |
-| 高级 | 批次 24 PD-SGLangConfig | 更完整的 YAML 运维与 session affinity |
+| 高级 | [[24-WeightSync-Dist-00-MOC]] PD-SGLangConfig | 更完整的 YAML 运维与 session affinity |
 
 ---
 

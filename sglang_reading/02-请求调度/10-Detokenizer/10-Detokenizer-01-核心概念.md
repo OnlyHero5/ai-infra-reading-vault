@@ -49,7 +49,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L74
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L74
 # 提交版本：70df09b
 @dataclasses.dataclass
 class DecodeStatus:
@@ -88,7 +88,7 @@ class DecodeStatus:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L91-L92
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L91-L92
 class DetokenizerManager(MultiHttpWorkerDetokenizerMixin):
     """DetokenizerManager is a process that detokenizes the token ids."""
 ```
@@ -107,7 +107,7 @@ class DetokenizerManager(MultiHttpWorkerDetokenizerMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L74
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L74
 @dataclasses.dataclass
 class DecodeStatus:
     """Store the status of incremental decoding."""
@@ -141,7 +141,7 @@ class DecodeStatus:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L1194-L1206
+## 来源：python/sglang/srt/managers/io_struct.py L1194-L1206
 class BatchTokenIDOutput(BaseBatchReq, kw_only=True):
     # The finish reason
     finished_reasons: List[Optional[FinishReasonDict]]
@@ -171,7 +171,7 @@ class BatchTokenIDOutput(BaseBatchReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/communicator.py L11-L21
+## 来源：python/sglang/srt/managers/communicator.py L11-L21
 class FanOutCommunicator(Generic[T]):
     """Fan-out request + collect response primitive over zmq.
 
@@ -220,7 +220,7 @@ HTTP → TokenizerManager → Scheduler → TP Worker → Scheduler
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L501-L519
+## 来源：python/sglang/srt/managers/multi_tokenizer_mixin.py L501-L519
 class MultiDetokenizerRouter:
     """Route scheduler outputs to one of N DetokenizerManager workers.
 
@@ -264,7 +264,7 @@ class MultiDetokenizerRouter:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L6153-L6158
+## 来源：python/sglang/srt/server_args.py L6153-L6158
             if self.detokenizer_worker_num != 1:
                 logger.warning(
                     "skip_tokenizer_init=True disables detokenizer workers; forcing detokenizer_worker_num=1 "
@@ -277,4 +277,3 @@ class MultiDetokenizerRouter:
 
 - bypass 路径下 Lisa 用户故事（§ 用户故事）中的 UTF-8 增量 decode **不执行**——排查乱码前先确认未误开 skip。
 - OpenAI 兼容 API 通常需要 tokenizer 做 chat template；skip 模式多用于 research / 自定义 pipeline。
-

@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # ModelLoader 与权重同步
 
-> **阶段 III · 模型执行** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 III · 模型执行** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/model_loader/`、`srt/weight_sync/`
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/loader.py L330-L349
+## 来源：python/sglang/srt/model_loader/loader.py L330-L349
 class BaseModelLoader(ABC):
     """Base class for model loaders."""
 

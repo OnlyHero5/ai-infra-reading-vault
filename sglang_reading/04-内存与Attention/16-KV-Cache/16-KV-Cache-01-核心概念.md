@@ -47,7 +47,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/token.py L52-L61
+## 来源：python/sglang/srt/mem_cache/allocator/token.py L52-L61
 # 提交版本：70df09b
         # To avoid minor "len(free_pages) * 1" overhead
         return len(self.free_pages) + len(self.release_pages)
@@ -98,7 +98,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/token.py L28-L84
+## 来源：python/sglang/srt/mem_cache/allocator/token.py L28-L84
 class TokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
     """An allocator managing the indices to kv cache data."""
 
@@ -163,7 +163,6 @@ class TokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 - `need_sort=True` 时释放的索引先进入 `release_pages`，alloc 前 merge
 - `get_cpu_copy/load_cpu_copy` 支持 HiCache 与 CPU offload
 
-
 ## 3. Page 对齐分配
 
 **Explain：** `PagedTokenToKVPoolAllocator` 将 KV 索引按 page 对齐，与 FlashInfer PagedAttention 及 `--page-size` 配置一致。
@@ -171,7 +170,7 @@ class TokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
 class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
     """
     An allocator managing the indices to kv cache data.
@@ -245,7 +244,6 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 - ROCm 上 init 时预热 `torch.unique`，避免首请求 JIT 延迟
 - `num_pages = size // page_size` 定义总 page 数
 
-
 ## 4. HiCache 主机池
 
 **Explain：** `HostKVCache` 在主机 RAM 上维护 KV 副本，实现分层缓存（L1 设备 / L2 主机 / L3 外部 storage）。
@@ -253,7 +251,7 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/pool_host/base.py L79-L143
+## 来源：python/sglang/srt/mem_cache/pool_host/base.py L79-L143
 class HostKVCache(abc.ABC):
 
     def __init__(
@@ -326,7 +324,6 @@ class HostKVCache(abc.ABC):
 - PP 并行时 `sync_fixed_hicache_size` 取各 rank 最小 token 数
 - 启动前检查 `psutil.virtual_memory()` 防止 OOM
 
-
 ## 5. Storage 后端工厂
 
 **Explain：** `StorageBackendFactory` 注册并懒加载 Mooncake、NIXL、LMCache 等 HiCache 外部存储后端。
@@ -334,7 +331,7 @@ class HostKVCache(abc.ABC):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L16-L96
+## 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L16-L96
 class StorageBackendFactory:
     """Factory for creating storage backend instances with support for dynamic loading."""
 
@@ -422,4 +419,3 @@ class StorageBackendFactory:
 - `_registry` 保存 backend 名 → loader 映射
 - `register_backend` 支持插件式扩展
 - 创建实例时传入 `HiCacheStorageConfig` 与 `mem_pool_host`
-

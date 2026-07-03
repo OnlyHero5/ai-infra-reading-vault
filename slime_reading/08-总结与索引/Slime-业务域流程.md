@@ -11,7 +11,7 @@ updated: 2026-07-02
 
 # 业务域流程
 
-> 6 条 flow · 对齐 `GRAPH-BATCH-MAP` §3 · domain-graph 文字版
+> 6 条 flow · 对齐 [[08-总结与索引-04-导读路径]] · domain-graph 文字版
 
 ---
 
@@ -19,7 +19,7 @@ updated: 2026-07-02
 
 **步骤：** parse_args → placement → generate → async_train → update_weights → save
 
-**覆盖批次：** 02, 06–08, 19, 24
+**覆盖专题：** 02, 06–08, 19, 24
 
 ```mermaid
 flowchart LR
@@ -34,7 +34,7 @@ flowchart LR
 **入口代码：**
 
 ```python
-# 来源：train.py L62-L89
+## 来源：train.py L62-L89
     for rollout_id in range(args.start_rollout_id, args.num_rollout):
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))
         ray.get(actor_model.async_train(rollout_id, rollout_data_ref))
@@ -49,14 +49,14 @@ flowchart LR
 
 **步骤：** prefetch generate(N+1) ∥ train(N)
 
-**覆盖批次：** 02, 14, 20
+**覆盖专题：** 02, 14, 20
 
 **Explain：** `train_async.py` 在 train 当前 batch 时后台启动下一批 generate；fully-async rollout 可进一步解耦 sample 生产与 train 消费。
 
 **Code：**
 
 ```python
-# 来源：train_async.py L1-L20（节选结构）
+## 来源：train_async.py L1-L20（节选结构）
 # prefetch: rollout_data_ref = rollout_manager.generate.remote(rollout_id+1)
 # 与 train(N) 并行，详见 14-Alt-Rollout
 ```
@@ -69,7 +69,7 @@ flowchart LR
 
 **步骤：** data_source → generate → rm_hub → Sample → tensorize
 
-**覆盖批次：** 10–13
+**覆盖专题：** 10–13
 
 ```mermaid
 flowchart TB
@@ -85,7 +85,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L552-L558
+## 来源：slime/ray/rollout.py L552-L558
         data, metrics = self._get_rollout_data(rollout_id=rollout_id)
         data = self._convert_samples_to_train_data(data)
         return self._split_train_data_by_dp(data)
@@ -99,7 +99,7 @@ flowchart TB
 
 **步骤：** custom_generate → trajectory → convert → train
 
-**覆盖批次：** 27–28, 29
+**覆盖专题：** 27–28, 29
 
 **Explain：** TrajectoryManager 管理多轮 tool call；最终 `convert_to_samples` 进入标准 Rollout 管道。
 
@@ -111,7 +111,7 @@ flowchart TB
 
 **步骤：** megatron_to_hf → broadcast → sglang reload
 
-**覆盖批次：** 24–26
+**覆盖专题：** 24–26
 
 ```mermaid
 sequenceDiagram
@@ -129,7 +129,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L583-L599
+## 来源：slime/backends/megatron_utils/actor.py L583-L599
     def update_weights(self) -> None:
         ...
         ) = ray.get(self.rollout_manager.get_updatable_engines_and_lock.remote())
@@ -143,7 +143,7 @@ sequenceDiagram
 
 **步骤：** delta write → engine patch
 
-**覆盖批次：** 25, 26
+**覆盖专题：** 25, 26
 
 **Explain：** 大模型全量 broadcast 成本高时，写 disk delta 后 engine 侧 patch；colocate 可用 `update_weight_from_tensor`。
 

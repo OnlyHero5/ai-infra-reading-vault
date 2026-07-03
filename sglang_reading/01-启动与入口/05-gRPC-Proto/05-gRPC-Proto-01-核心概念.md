@@ -36,7 +36,7 @@ updated: 2026-07-02
 **Code：**
 
 ```protobuf
-# 来源：proto/sglang/runtime/v1/sglang.proto L84-L86
+## 来源：proto/sglang/runtime/v1/sglang.proto L84-L86
   optional SamplingParams sampling_params = 2;
   optional bool stream = 3;
   optional bool return_logprob = 4;
@@ -89,7 +89,7 @@ Proto 文件是 **跨语言契约**；Rust 服务器负责 wire 协议与流控�
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L530-L533
+## 来源：python/sglang/srt/server_args.py L530-L533
     host: A[str, "The host of the HTTP server."] = "127.0.0.1"
     port: A[int, "The port of the HTTP server."] = 30000
     fastapi_root_path: A[str, "App is behind a path based routing proxy."] = ""
@@ -105,7 +105,7 @@ Proto 文件是 **跨语言契约**；Rust 服务器负责 wire 协议与流控�
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L2910-L2923
+## 来源：python/sglang/srt/server_args.py L2910-L2923
         # Native gRPC flags — env-only for now, not exposed as CLI args.
         # Set as instance attributes (not dataclass fields) to avoid
         # argparse namespace lookup in from_cli_args.
@@ -133,7 +133,7 @@ Proto 文件是 **跨语言契约**；Rust 服务器负责 wire 协议与流控�
 **Code：**
 
 ```protobuf
-# 来源：proto/sglang/runtime/v1/sglang.proto L4-L35
+## 来源：proto/sglang/runtime/v1/sglang.proto L4-L35
 service SglangService {
   // SGLang-native RPCs (typed proto)
   rpc TextGenerate(TextGenerateRequest) returns (stream TextGenerateResponse);
@@ -182,7 +182,7 @@ service SglangService {
 **Code：**
 
 ```toml
-# 来源：python/pyproject.toml（setuptools-rust 段，与阅读方法论 一致）
+## 来源：python/pyproject.toml（setuptools-rust 段，与阅读方法论 一致）
 [[tool.setuptools-rust.ext-modules]]
 target = "sglang.srt.grpc._core"
 path = "../rust/sglang-grpc/Cargo.toml"
@@ -200,7 +200,7 @@ binding = "PyO3"
 **Code：**
 
 ```protobuf
-# 来源：proto/sglang/runtime/v1/sglang.proto L37-L54
+## 来源：proto/sglang/runtime/v1/sglang.proto L37-L54
 // Sampling parameters shared across text and tokenized RPCs.
 message SamplingParams {
   optional float temperature = 1;

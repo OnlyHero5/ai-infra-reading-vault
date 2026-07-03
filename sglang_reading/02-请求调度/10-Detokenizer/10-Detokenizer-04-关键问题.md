@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L161-L169
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L161-L169
     def event_loop(self):
         """The event loop that handles requests"""
         while True:
@@ -52,7 +52,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L350-L369
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L350-L369
             if recv_obj.finished_reasons[i] is None:
                 # Streaming. Invariant: sent_offset >= decoded_text_len. The
                 # gap (`pending`) is "printable but uncommitted" text emitted
@@ -84,7 +84,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L340-L347
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L340-L347
             except KeyError:
                 raise RuntimeError(
                     f"Decode status not found for request {rid}. "
@@ -106,7 +106,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L311-L332
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L311-L332
         else:
             # Do not use batch decode to prevent some detokenization edge cases (e.g., gpt-oss).
             surr_texts = [
@@ -140,7 +140,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L203-L205
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L203-L205
     def handle_batch_embedding_out(self, recv_obj: BatchEmbeddingOutput):
         # If it is embedding model, no detokenization is needed.
         return recv_obj
@@ -155,7 +155,7 @@ updated: 2026-07-02
 **对照 Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/communicator.py L11-L15
+## 来源：python/sglang/srt/managers/communicator.py L11-L15
 class FanOutCommunicator(Generic[T]):
     """Fan-out request + collect response primitive over zmq.
 
@@ -189,7 +189,7 @@ Detokenizer 侧无 `FanOutCommunicator` 实例化；若文档把二者混为一�
 **Code（SGLang 流式状态机）：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L88
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L63-L88
 @dataclasses.dataclass
 class DecodeStatus:
     """Store the status of incremental decoding."""
@@ -221,7 +221,7 @@ class DecodeStatus:
 **Code（SGLang batch 分组 decode）：**
 
 ```python
-# 来源：python/sglang/srt/managers/detokenizer_manager.py L250-L262
+## 来源：python/sglang/srt/managers/detokenizer_manager.py L250-L262
                 groups: Dict[Tuple[bool, bool], List[int]] = defaultdict(list)
                 for idx, (skip, space) in enumerate(zip(skip_list, space_list)):
                     groups[(skip, space)].append(idx)

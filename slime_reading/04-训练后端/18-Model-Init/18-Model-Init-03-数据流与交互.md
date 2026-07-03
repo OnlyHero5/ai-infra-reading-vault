@@ -30,7 +30,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L83-L85
+## 来源：slime/backends/megatron_utils/actor.py L83-L85
 # 提交版本：22cdc6e1
 self.model, self.optimizer, self.opt_param_scheduler, loaded_rollout_id = initialize_model_and_optimizer(
     args, role
@@ -46,7 +46,7 @@ self.model, self.optimizer, self.opt_param_scheduler, loaded_rollout_id = initia
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L994-L1000
+## 来源：slime/backends/megatron_utils/model.py L994-L1000
 # 提交版本：22cdc6e1
 iteration, _ = load_checkpoint(
     model, optimizer, opt_param_scheduler,
@@ -58,7 +58,7 @@ iteration, _ = load_checkpoint(
 **Comment：**
 
 - Slime 用 rollout_id 语义覆盖纯 iteration（RL 步进）
-- resume 时需 [[06-PlacementGroup]] 的 global dataset load
+- resume 时需 [[06-PlacementGroup-00-MOC]] 的 global dataset load
 
 ---
 
@@ -77,7 +77,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L345-L353
+## 来源：slime/backends/megatron_utils/model.py L345-L353
 # 提交版本：22cdc6e1
 def forward_only(
     f: Callable[..., dict[str, list[torch.Tensor]]],
@@ -92,7 +92,7 @@ def forward_only(
 
 **Comment：**
 
-- 实现在 actor.py init 后半（批次 17 文档）
+- 实现在 actor.py init 后半（[[17-Megatron-Actor-Init-00-MOC]] 文档）
 - KL loss / OPD 依赖此数据
 
 ---
@@ -104,7 +104,7 @@ def forward_only(
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L268-L269
+## 来源：slime/backends/megatron_utils/model_provider.py L268-L269
 # 提交版本：22cdc6e1
 def get_model_provider_func(args, role="actor"):
     return wrap_model_provider_with_freeze(_get_model_provider_func(args, role), args)
@@ -113,7 +113,7 @@ def get_model_provider_func(args, role="actor"):
 **Comment：**
 
 - Bridge 与 legacy 权重命名可能不同；updater 按 runtime named_parameters 迭代
-- 见 [[24-WeightSync-Dist]]
+- 见 [[24-WeightSync-Dist-00-MOC]]
 
 ---
 
@@ -124,7 +124,7 @@ def get_model_provider_func(args, role="actor"):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model_provider.py L110-L119
+## 来源：slime/backends/megatron_utils/model_provider.py L110-L119
 # 提交版本：22cdc6e1
 if role == "critic":
     def _critic_provide(pre_process=True, post_process=True, vp_stage=None):
@@ -139,18 +139,18 @@ if role == "critic":
 **Comment：**
 
 - critic train 返回 `{"values": ...}`（RayTrainGroup async_train）
-- 见 [[21-Loss-Advantages]]
+- 见 [[21-Loss-Advantages-00-MOC]]
 
 ---
 
 ## 6. forward_only 与 RolloutBatch 字段对齐
 
-**Explain：** `get_batch` 从 DataIterator 读 RolloutBatch 张量；keys 必须与 [[10-Sample-Contracts]] 转换输出一致。
+**Explain：** `get_batch` 从 DataIterator 读 RolloutBatch 张量；keys 必须与 [[10-Sample-Contracts-00-MOC]] 转换输出一致。
 
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L384-L390
+## 来源：slime/backends/megatron_utils/model.py L384-L390
 # 提交版本：22cdc6e1
 batch_keys = [
     "tokens",
@@ -175,7 +175,7 @@ batch_keys = [
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/model.py L991
+## 来源：slime/backends/megatron_utils/model.py L991
 # 提交版本：22cdc6e1
 model[0].role = role
 ```

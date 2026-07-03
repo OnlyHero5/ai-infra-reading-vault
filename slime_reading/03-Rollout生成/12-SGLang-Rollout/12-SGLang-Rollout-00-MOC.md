@@ -3,7 +3,7 @@ type: batch-doc
 module: 12-SGLang-Rollout
 batch: "12"
 doc_type: moc
-title: "SGLang Rollout · 批次概述"
+title: "SGLang Rollout · 专题概述"
 tags:
   - slime/batch/12
   - slime/module/sglang-rollout
@@ -11,9 +11,8 @@ tags:
 updated: 2026-07-02
 ---
 
-# SGLang Rollout · 批次概述
+# SGLang Rollout · 专题概述
 
-> **阶段 III · Rollout 生成** | 状态：已完成 | 基线 commit：`22cdc6e1`  
 > **源码范围：** `slime/slime/rollout/sglang_rollout.py`（641 行）
 
 ---
@@ -63,7 +62,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/slime/rollout/sglang_rollout.py L618-L640
+## 来源：slime/slime/rollout/sglang_rollout.py L618-L640
 def generate_rollout(
     args: Namespace, rollout_id: int, data_source: Any, evaluation: bool = False
 ) -> RolloutFnTrainOutput | RolloutFnEvalOutput:
@@ -86,7 +85,7 @@ def generate_rollout(
 
 ---
 
-## 本批精读清单
+## 本专题精读清单
 
 | 符号 | 职责 |
 |------|------|
@@ -101,7 +100,7 @@ def generate_rollout(
 
 ## 前置与衔接
 
-| 方向 | 批次 | 说明 |
+| 方向 | 专题 | 说明 |
 |------|------|------|
 | 上游 | [[08-RolloutManager-00-MOC]] | `call_rollout_fn(self.generate_rollout, ...)` |
 | 上游 | [[11-DataSource-00-MOC]] | `data_source.get_samples` / `add_samples` |

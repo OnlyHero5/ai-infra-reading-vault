@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Train Step 训练步
 
-> **阶段 IV · 训练后端** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 IV · 训练后端** | Git：`22cdc6e1`  
 > **源码范围：** `slime/backends/megatron_utils/actor.py`（`train` / `train_actor` / `train_critic`）、`model.py`（`train` / `train_one_step`）、`slime/ray/actor_group.py`（`async_train`）
 
 ---
@@ -64,7 +64,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/train.py L62-L89
+## 来源：slime/train.py L62-L89
 # 提交版本：22cdc6e1
     for rollout_id in range(args.start_rollout_id, args.num_rollout):
         rollout_data_ref = ray.get(rollout_manager.generate.remote(rollout_id))

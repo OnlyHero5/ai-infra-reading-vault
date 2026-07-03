@@ -24,7 +24,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L555-L561
+## 来源：slime/utils/arguments.py L555-L561
             parser.add_argument(
                 "--rollout-external-engine-addrs",
                 type=str,
@@ -48,7 +48,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L32-L44
+## 来源：slime/backends/sglang_utils/external.py L32-L44
 def normalize_external_engine_addr(addr: str) -> str:
     """Normalize ``host:port`` or ``http://host:port`` to an HTTP base URL."""
     if "://" not in addr:
@@ -64,7 +64,7 @@ def normalize_external_engine_addr(addr: str) -> str:
 ```
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L58-L67
+## 来源：slime/backends/sglang_utils/external.py L58-L67
 def get_server_info(url: str, timeout: float = 30.0) -> dict:
     errors = []
     for endpoint in ("/server_info", "/get_server_info"):
@@ -91,7 +91,7 @@ def get_server_info(url: str, timeout: float = 30.0) -> dict:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L79-L104
+## 来源：slime/backends/sglang_utils/external.py L79-L104
 def discover_external_engines(addrs: list[str], timeout: float = 30.0) -> list[ExternalEngineInfo]:
     infos = []
     for addr in addrs:
@@ -134,7 +134,7 @@ def discover_external_engines(addrs: list[str], timeout: float = 30.0) -> list[E
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L107-L131
+## 来源：slime/backends/sglang_utils/external.py L107-L131
 def apply_external_engine_info_to_args(args, logger=None) -> None:
     """Detect external engines and store the derived topology on ``args``."""
     addrs = args.rollout_external_engine_addrs
@@ -176,7 +176,7 @@ def apply_external_engine_info_to_args(args, logger=None) -> None:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L46-L55
+## 来源：slime/backends/sglang_utils/external.py L46-L55
 def external_engine_init_kwargs(info: ExternalEngineInfo) -> dict:
     init_kwargs = {
         "dist_init_addr": f"{info.host}:{info.port}",
@@ -203,7 +203,7 @@ def external_engine_init_kwargs(info: ExternalEngineInfo) -> dict:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/external.py L178-L232
+## 来源：slime/backends/sglang_utils/external.py L178-L232
 def start_external_rollout_servers(args, *, start_router) -> tuple[dict[str, ExternalRolloutServer], list]:
     import ray
 
@@ -276,7 +276,7 @@ def start_external_rollout_servers(args, *, start_router) -> tuple[dict[str, Ext
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L166-L197
+## 来源：slime/backends/sglang_utils/sglang_engine.py L166-L197
         if self.args.rollout_external:
             self._init_external(server_args_dict, external_engine_need_check_fields=external_engine_need_check_fields)
         else:
@@ -312,7 +312,7 @@ def start_external_rollout_servers(args, *, start_router) -> tuple[dict[str, Ext
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L204-L232
+## 来源：slime/backends/sglang_utils/sglang_engine.py L204-L232
     def _register_to_router(self, server_args_dict):
         if self.worker_type == "encoder":
             return
@@ -358,7 +358,7 @@ def start_external_rollout_servers(args, *, start_router) -> tuple[dict[str, Ext
 **Code：**
 
 ```python
-# 来源：slime/utils/http_utils.py L213-L231
+## 来源：slime/utils/http_utils.py L213-L231
 def init_http_client(args):
     """Initialize HTTP client and optionally enable distributed POST via Ray."""
     global _http_client, _client_concurrency, _distributed_post_enabled
@@ -381,7 +381,7 @@ def init_http_client(args):
 ```
 
 ```python
-# 来源：slime/utils/http_utils.py L165-L198
+## 来源：slime/utils/http_utils.py L165-L198
 async def _post(client, url, payload, max_retries=60, headers=None):
     retry_count = 0
     while retry_count < max_retries:
@@ -423,7 +423,7 @@ async def _post(client, url, payload, max_retries=60, headers=None):
 **Code：**
 
 ```python
-# 来源：slime/utils/health_monitor.py L145-L158
+## 来源：slime/utils/health_monitor.py L145-L158
     def _check_engine_health(self, rollout_engine_id, engine) -> None:
         if engine is None:
             logger.info(f"Skipping health check for engine {rollout_engine_id} (None)")
@@ -454,7 +454,7 @@ async def _post(client, url, payload, max_retries=60, headers=None):
 **Code：**
 
 ```python
-# 来源：slime/utils/http_utils.py L42-L46
+## 来源：slime/utils/http_utils.py L42-L46
 def get_host_info():
     hostname = socket.gethostname()
 
@@ -476,7 +476,7 @@ def get_host_info():
 **Code：**
 
 ```bash
-# 来源：docs/en/advanced/external-rollout-engines.md L24-L35
+## 来源：docs/en/advanced/external-rollout-engines.md L24-L35
 python -m sglang.launch_server --model-path /path/to/model --port 10090 ...
 python -m sglang.launch_server --model-path /path/to/model --port 10091 ...
 

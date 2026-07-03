@@ -59,7 +59,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/protocol.py L87-L92
+## 来源：python/sglang/srt/entrypoints/openai/protocol.py L87-L92
 class ErrorResponse(BaseModel):
     object: str = "error"
     message: str
@@ -88,7 +88,7 @@ class ErrorResponse(BaseModel):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/serving.py L111-L114
+## 来源：python/sglang/srt/entrypoints/ollama/serving.py L111-L114
         # Get response from tokenizer manager
         response = await self.tokenizer_manager.generate_request(
             gen_request, raw_request
@@ -111,7 +111,7 @@ FastAPI 将 JSON body 绑定为 `ChatCompletionRequest`（含 `messages`、`mode
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_base.py L82-L108
+## 来源：python/sglang/srt/entrypoints/openai/serving_base.py L82-L108
             # Validate request
             error_msg = self._validate_request(request)
             if error_msg:
@@ -148,7 +148,7 @@ FastAPI 将 JSON body 绑定为 `ChatCompletionRequest`（含 `messages`、`mode
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L554-L622
+## 来源：python/sglang/srt/entrypoints/openai/serving_chat.py L554-L622
         processed_messages = self._process_messages(request, is_multimodal)
         # Build sampling parameters
         sampling_params = request.to_sampling_params(
@@ -250,7 +250,7 @@ Serving 期望的每个 chunk 大致形状：
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L83-L99
+## 来源：python/sglang/srt/entrypoints/openai/sse_utils.py L83-L99
     delta = StreamDelta(role=role, content=content, reasoning_content=reasoning_content)
     choice = StreamChoice(
         index=index,
@@ -290,7 +290,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/ollama/serving.py L89-L103
+## 来源：python/sglang/srt/entrypoints/ollama/serving.py L89-L103
         # Create SGLang request with input_ids
         gen_request = GenerateReqInput(
             input_ids=prompt_ids,
@@ -315,7 +315,7 @@ flowchart TD
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/openai/serving_embedding.py L42-L55
+## 来源：python/sglang/srt/entrypoints/openai/serving_embedding.py L42-L55
     def _validate_request(self, request: EmbeddingRequest) -> Optional[str]:
         """Validate that the input is not empty or whitespace only."""
         if not (input := request.input):

@@ -25,15 +25,6 @@ updated: 2026-07-02
 - [ ] 能解释 `--custom-generate-function-path` 与 `--rollout-function-path` 的区别与优先级（sample 级 override）
 - [ ] 能说明 `tests/test_rollout_metrics.py` 验证的是什么（Sample top-p / loss_mask metrics 契约，而非直接测 HTTP）
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/12` + `slime/doc/*`
-- [ ] 六件套文件名前缀均为 `12-SGLang-Rollout-`
-- [ ] 内嵌源码 ≥ 15 段、合计 ≥ 200 行
-- [ ] Mermaid 块内无 `\n`（使用 `<br/>`）
-- [ ] 双链指向已存在专题批次（08/10/11/13），无 `./0X-*.md` 旧路径
-- [ ] 已更新 [[Slime-progress]] 批次 12 为 ✅
-
 ## 建议验证命令
 
 ```bash

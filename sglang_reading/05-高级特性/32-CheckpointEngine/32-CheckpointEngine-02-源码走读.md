@@ -33,7 +33,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2150-L2191
+## 来源：python/sglang/srt/entrypoints/http_server.py L2150-L2191
     if server_args.checkpoint_engine_wait_weights_before_ready:
         _wait_weights_ready()
 
@@ -55,7 +55,6 @@ updated: 2026-07-02
 
     if launch_callback is not None:
         launch_callback()
-
 
 def _wait_weights_ready():
     """Wait for weights to be ready within the specified timeout."""
@@ -92,7 +91,7 @@ def _wait_weights_ready():
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L1306-L1322
+## 来源：python/sglang/srt/entrypoints/http_server.py L1306-L1322
 @app.post("/update_weights_from_ipc")
 @auth_level(AuthLevel.ADMIN_OPTIONAL)
 async def update_weights_from_ipc(
@@ -126,7 +125,7 @@ async def update_weights_from_ipc(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L98-L117
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L98-L117
     def __init__(self, model_runner):
         super().__init__()
         self.model_runner = model_runner
@@ -163,7 +162,7 @@ async def update_weights_from_ipc(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L122-L141
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L122-L141
         def post_hook():
             # Perform post-processing after weight loading similar to DefaultModelLoader
             try:
@@ -200,7 +199,7 @@ async def update_weights_from_ipc(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_executor/model_runner.py L3246-L3261
+## 来源：python/sglang/srt/model_executor/model_runner.py L3246-L3261
     def update_weights_from_ipc(self, recv_req):
         """Update weights from IPC for checkpoint-engine integration."""
         try:
@@ -233,7 +232,7 @@ async def update_weights_from_ipc(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L178
+## 来源：python/sglang/srt/managers/scheduler_components/weight_updater.py L166-L178
     def update_weights_from_ipc(self, recv_req: UpdateWeightsFromIPCReqInput):
         """Update the online model parameter from IPC for checkpoint-engine integration."""
         with self._observe_weight_load("ipc"):
@@ -263,7 +262,7 @@ async def update_weights_from_ipc(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L49-L71
+## 来源：python/sglang/srt/checkpoint_engine/update.py L49-L71
 def check_sglang_ready(
     endpoint: str, inference_parallel_size: int, uds: str | None = None
 ):
@@ -303,7 +302,7 @@ def check_sglang_ready(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/update.py L137-L172
+## 来源：python/sglang/srt/checkpoint_engine/update.py L137-L172
 def update_weights(
     ps,
     checkpoint_name: str,
@@ -356,7 +355,7 @@ def update_weights(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L25-L31
+## 来源：python/sglang/srt/checkpoint_engine/checkpoint_engine_worker.py L25-L31
 try:
     from checkpoint_engine.worker import update_weights_from_ipc
 except ImportError:
@@ -380,7 +379,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/weight_sync/tensor_bucket.py L73-L80
+## 来源：python/sglang/srt/weight_sync/tensor_bucket.py L73-L80
         else:
             # Initialize from pre-flattened data
             if flattened_tensor is None or metadata is None:
@@ -405,9 +404,7 @@ except ImportError:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L1598-L1605
-
-
+## 来源：python/sglang/srt/managers/io_struct.py L1598-L1605
 # Now UpdateWeightsFromIPCReqInput and UpdateWeightsFromIPCReqOutput
 # are only used by Checkpoint Engine (https://github.com/MoonshotAI/checkpoint-engine)
 class UpdateWeightsFromIPCReqInput(BaseReq, kw_only=True):
@@ -430,7 +427,7 @@ class UpdateWeightsFromIPCReqInput(BaseReq, kw_only=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2161
+## 来源：python/sglang/srt/entrypoints/http_server.py L2145-L2161
 def _wait_and_warmup(
     server_args: ServerArgs,
     launch_callback: Optional[Callable[[], None]] = None,

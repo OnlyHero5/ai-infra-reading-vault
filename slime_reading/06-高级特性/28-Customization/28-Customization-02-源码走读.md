@@ -28,7 +28,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L58-L59
+## 来源：docs/en/get_started/customization.md L58-L59
 def generate_rollout(args, rollout_id, data_source, evaluation=False) -> RolloutFnTrainOutput | RolloutFnEvalOutput
 ```
 
@@ -41,7 +41,7 @@ def generate_rollout(args, rollout_id, data_source, evaluation=False) -> Rollout
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L131-L136
+## 来源：docs/en/get_started/customization.md L131-L136
 async def custom_rm(args, sample: Sample) -> float
 
 async def batched_custom_rm(args, samples: list[Sample]) -> list[float]
@@ -56,7 +56,7 @@ async def batched_custom_rm(args, samples: list[Sample]) -> list[float]
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L168-L172
+## 来源：docs/en/get_started/customization.md L168-L172
 @dataclass
 class DynamicFilterOutput:
     keep: bool
@@ -72,7 +72,7 @@ class DynamicFilterOutput:
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L209-L211
+## 来源：docs/en/get_started/customization.md L209-L211
 def filter_function(args, samples: list[Sample]) -> None
 # Note: This function should directly modify the `remove_sample` attribute of each `Sample` object.
 ```
@@ -86,7 +86,7 @@ def filter_function(args, samples: list[Sample]) -> None
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L288-L294
+## 来源：docs/en/get_started/customization.md L288-L294
 def get_pg_loss_reducer(
     total_lengths: list[int],
     response_lengths: list[int],
@@ -104,7 +104,7 @@ def get_pg_loss_reducer(
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L387-L401
+## 来源：docs/en/get_started/customization.md L387-L401
 class CustomDataSource(DataSource):
     def get_samples(self, num_samples: int) -> list[list[Sample]]: ...
     def add_samples(self, samples: list[list[Sample]]): ...
@@ -122,7 +122,7 @@ class CustomDataSource(DataSource):
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L440-L443
+## 来源：docs/en/get_started/customization.md L440-L443
 def custom_hook(args, rollout_id, step_id, model, optimizer, opt_param_scheduler) -> None
 ```
 
@@ -135,7 +135,7 @@ def custom_hook(args, rollout_id, step_id, model, optimizer, opt_param_scheduler
 **Code：**
 
 ```python
-# 来源：slime/agent/parsing.py L67-L85
+## 来源：slime/agent/parsing.py L67-L85
     if tool_parser_name and tools_schema:
         from sglang.srt.function_call.function_call_parser import FunctionCallParser
         sg_tools = [Tool(type="function", function=Function(**d["function"])) for d in tools_schema]
@@ -156,7 +156,7 @@ def custom_hook(args, rollout_id, step_id, model, optimizer, opt_param_scheduler
 **Code：**
 
 ```python
-# 来源：slime/agent/parsing.py L99-L110
+## 来源：slime/agent/parsing.py L99-L110
     for m in re.finditer(
         r"<tool_call>\s*<function=([^>]+)>(.*?)</function>\s*</tool_call>",
         body_text,
@@ -177,7 +177,7 @@ def custom_hook(args, rollout_id, step_id, model, optimizer, opt_param_scheduler
 **Code：**
 
 ```python
-# 来源：slime/agent/harness/common.py L107-L121
+## 来源：slime/agent/harness/common.py L107-L121
 async def run_agent(sb, *, workdir, start_cmd, env, time_budget_sec) -> int:
     exit_code, _ = await exec_and_wait(
         sb,
@@ -202,7 +202,7 @@ async def run_agent(sb, *, workdir, start_cmd, env, time_budget_sec) -> int:
 **Code：**
 
 ```python
-# 来源：slime/agent/harness/common.py L141-L150
+## 来源：slime/agent/harness/common.py L141-L150
     for attempt in range(NPM_INSTALL_RETRIES):
         exit_code, last_log = await exec_and_wait(sb, cmd=install_cmd, user="root", time_budget_sec=300, tag="harness-npm-install")
         if exit_code == 0:
@@ -219,7 +219,7 @@ async def run_agent(sb, *, workdir, start_cmd, env, time_budget_sec) -> int:
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L476-L481
+## 来源：docs/en/get_started/customization.md L476-L481
 python -m pytest \
   tests/plugin_contracts/test_plugin_rollout_contracts.py \
   tests/plugin_contracts/test_plugin_generate_contracts.py \

@@ -29,7 +29,7 @@ Slime 核心保持 **Megatron 训练 + SGLang Rollout** 闭环稳定；业务差
 **Code：**
 
 ```python
-# 来源：slime/utils/misc.py L37-L45
+## 来源：slime/utils/misc.py L37-L45
 def load_function(path):
     module_path, _, attr = path.rpartition(".")
     module = importlib.import_module(module_path)
@@ -64,7 +64,7 @@ def load_function(path):
 **Code（generate 签名）：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L79-L79
+## 来源：docs/en/get_started/customization.md L79-L79
 async def custom_generate(args, sample: Sample, sampling_params: dict) -> Sample | list[Sample]
 ```
 
@@ -85,7 +85,7 @@ async def custom_generate(args, sample: Sample, sampling_params: dict) -> Sample
 **Code（convert 返回 dict 结构节选）：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L331-L346
+## 来源：docs/en/get_started/customization.md L331-L346
 dict: {
     "tokens": list[list[int]],
     "response_lengths": list[int],
@@ -118,7 +118,7 @@ dict: {
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L99-L114
+## 来源：docs/en/get_started/customization.md L99-L114
 async def custom_generate(args, sample: Sample, sampling_params: dict) -> list[Sample]:
     segments = await run_agent_and_split_segments(args, sample, sampling_params)
     rollout_id = sample.rollout_id if sample.rollout_id is not None else sample.index
@@ -142,7 +142,7 @@ async def custom_generate(args, sample: Sample, sampling_params: dict) -> list[S
 **Code：**
 
 ```python
-# 来源：slime/agent/parsing.py L25-L56
+## 来源：slime/agent/parsing.py L25-L56
 def parse_model_output(raw_output, *, tools_schema, tool_parser_name, reasoning_parser_name):
     if reasoning_parser_name:
         from sglang.srt.parser.reasoning_parser import ReasoningParser
@@ -160,7 +160,7 @@ def parse_model_output(raw_output, *, tools_schema, tool_parser_name, reasoning_
 **Code：**
 
 ```python
-# 来源：slime/agent/harness/common.py L81-L104
+## 来源：slime/agent/harness/common.py L81-L104
     async def run(self, sb, *, workdir, session_id, adapter_url, time_budget_sec, prompt) -> int:
         await _sandbox.ensure_agent_user(sb, workdir)
         ctx = HarnessContext(workdir=workdir, session_id=session_id, adapter_url=adapter_url)
@@ -177,7 +177,7 @@ def parse_model_output(raw_output, *, tools_schema, tool_parser_name, reasoning_
 **Code：**
 
 ```python
-# 来源：slime/agent/harness/claude_code.py L57-L71
+## 来源：slime/agent/harness/claude_code.py L57-L71
         env = {
             "ANTHROPIC_BASE_URL": ctx.adapter_url,
             "ANTHROPIC_AUTH_TOKEN": ctx.session_id,

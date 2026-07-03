@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L84-L86
+## 来源：slime/ray/placement_group.py L84-L86
 # 提交版本：22cdc6e1
 sorted_bundle_infos = sorted(bundle_infos, key=sort_key)
 pg_reordered_bundle_indices = [info[0] for info in sorted_bundle_infos]
@@ -42,7 +42,7 @@ pg_reordered_bundle_indices = [info[0] for info in sorted_bundle_infos]
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L243-L244
+## 来源：slime/ray/placement_group.py L243-L244
 # 提交版本：22cdc6e1
 if args.offload_rollout:
     ray.get(rollout_manager.offload.remote())
@@ -62,7 +62,7 @@ if args.offload_rollout:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L106-L109
+## 来源：slime/ray/placement_group.py L106-L109
 # 提交版本：22cdc6e1
 if args.rollout_external:
     if args.debug_rollout_only:
@@ -73,7 +73,7 @@ if args.rollout_external:
 **Comment：**
 
 - `debug_rollout_only + external` 时完全不申请 GPU
-- 见 [[16-External-Engines]]
+- 见 [[16-External-Engines-00-MOC]]
 
 ---
 
@@ -84,7 +84,7 @@ if args.rollout_external:
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L140-L148
+## 来源：slime/ray/placement_group.py L140-L148
 # 提交版本：22cdc6e1
 return RayTrainGroup(
     # ...
@@ -108,7 +108,7 @@ return RayTrainGroup(
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L199-L205
+## 来源：slime/ray/placement_group.py L199-L205
 # 提交版本：22cdc6e1
 # TODO how to decide rollout start id when critic is involved?
 if args.use_critic:
@@ -133,7 +133,7 @@ assert len(set(start_rollout_ids)) == 1
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L51-L56
+## 来源：slime/ray/placement_group.py L51-L56
 # 提交版本：22cdc6e1
 # The wait stays unbounded, so autoscaling clusters — where a pending
 # placement group is what drives scale-up — are unaffected.
@@ -153,7 +153,7 @@ assert len(set(start_rollout_ids)) == 1
 **正确理解：**
 
 ```python
-# 来源：slime/ray/placement_group.py L117
+## 来源：slime/ray/placement_group.py L117
 # 提交版本：22cdc6e1
 return actor_num_gpus + args.rollout_num_gpus, actor_num_gpus
 ```

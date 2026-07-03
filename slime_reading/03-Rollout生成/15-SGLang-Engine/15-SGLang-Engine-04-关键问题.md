@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L244-L245
+## 来源：slime/backends/sglang_utils/sglang_engine.py L244-L245
         if self.node_rank != 0:
             return
 ```
@@ -51,7 +51,7 @@ updated: 2026-07-02
 **正确顺序：**
 
 ```python
-# 来源：update_weight_from_distributed.py L109-L111
+## 来源：update_weight_from_distributed.py L109-L111
 ray.get([engine.pause_generation.remote() for engine in self.rollout_engines])
 ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 ```
@@ -67,7 +67,7 @@ ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L166-L167, L329-L331
+## 来源：slime/backends/sglang_utils/sglang_engine.py L166-L167, L329-L331
         if self.args.rollout_external:
             self._init_external(...)
     def shutdown(self):
@@ -84,7 +84,7 @@ ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L452-L462
+## 来源：slime/backends/sglang_utils/sglang_engine.py L452-L462
         try:
             return self._make_request("destroy_weights_update_group", {"group_name": group_name})
         except requests.exceptions.RequestException:
@@ -100,7 +100,7 @@ ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L26-L30
+## 来源：slime/backends/sglang_utils/sglang_engine.py L26-L30
     if args.colocate:
         start_index = (rank * num_gpus) % args.num_gpus_per_node
     else:
@@ -123,7 +123,7 @@ ray.get([engine.flush_cache.remote() for engine in self.rollout_engines])
 **Code — async abort：**
 
 ```python
-# 来源：server_control.py L66-L67
+## 来源：server_control.py L66-L67
 async def abort_servers_until_idle(urls: list[str]) -> None:
     await asyncio.gather(*(abort_server_until_idle(url) for url in urls))
 ```
@@ -137,7 +137,7 @@ async def abort_servers_until_idle(urls: list[str]) -> None:
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L220-L226
+## 来源：slime/backends/sglang_utils/sglang_engine.py L220-L226
                     if bootstrap_port is None:
                         raise RuntimeError(
                             f"Prefill worker {worker_url} does not have disaggregation_bootstrap_port; "
@@ -156,7 +156,7 @@ async def abort_servers_until_idle(urls: list[str]) -> None:
 | disk | 高 | FS | 跨节点、超大模型 |
 | delta | 中 | FS 增量 | `--update-weight-mode delta` |
 
-Engine 侧 API 一一对应；训练侧在 `update_weight/*.py` 选择策略（批次 24–25）。
+Engine 侧 API 一一对应；训练侧在 `update_weight/*.py` 选择策略（[[24-WeightSync-Dist-00-MOC]]–[[25-WeightSync-Disk-00-MOC]]）。
 
 ---
 
@@ -167,7 +167,7 @@ Engine 侧 API 一一对应；训练侧在 `update_weight/*.py` 选择策略（�
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L363-L378
+## 来源：slime/backends/sglang_utils/sglang_engine.py L363-L378
     def get_weight_version(self):
         response = requests.get(f"http://{self.server_host}:{self.server_port}/get_weight_version")
         return response.json()["weight_version"]

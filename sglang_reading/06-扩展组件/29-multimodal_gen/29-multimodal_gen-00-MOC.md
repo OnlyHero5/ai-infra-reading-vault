@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L17-L26
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L17-L26
 from sglang.multimodal_gen.runtime.entrypoints.http_server import create_app
 from sglang.multimodal_gen.runtime.managers.gpu_worker import run_scheduler_process
 from sglang.multimodal_gen.runtime.server_args import (

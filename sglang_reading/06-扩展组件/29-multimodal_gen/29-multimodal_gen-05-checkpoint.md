@@ -8,8 +8,6 @@ tags:
  - sglang/batch/29
  - sglang/module/multimodal-gen
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # multimodal_gen 验收清单
@@ -21,12 +19,6 @@ updated: 2026-07-02
 - [ ] 能说出 `launch_server`、`run_scheduler_process`、`GPUWorker` 的职责
 - [ ] 能解释 master/slave Pipe 与 multi-GPU 关系
 - [ ] 五篇正文满足 ETC/代码行数要求
-
-## 维护者检查
-
-- [x] 覆盖 `launch_server.py`, `gpu_worker.py`, `http_server.py`, `scheduler_client.py`, `pipeline_executor.py`, `server_args.py` 引用
-- [x] 来源与 git `70df09b` 一致
-- [ ] 已更新 [[progress]]（由 P8 整合）
 
 ## 验证统计（2026-07-02 人工复核）
 

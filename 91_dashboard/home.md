@@ -28,6 +28,8 @@ updated: 2026-07-03
 | [[91_dashboard/graph-hub|关系图谱指南]] | 图谱过滤与颜色 |
 | [[90_meta/obsidian-graph-presets|图谱预设]] | 备用过滤式 |
 | [[index]] | Vault 首页 |
+| [[91_dashboard/batch-stats|批次统计]] | 每批文档数与模块分布 |
+| [[91_dashboard/doc-type-map|文档类型分布]] | doc_type 计数与图谱色对照 |
 
 ---
 

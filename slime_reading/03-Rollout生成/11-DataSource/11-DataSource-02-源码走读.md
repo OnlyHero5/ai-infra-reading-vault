@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L50-L59
+## 来源：slime/rollout/data_source.py L50-L59
 class RolloutDataSource(DataSource):
     def __init__(self, args):
         self.args = args
@@ -48,7 +48,7 @@ class RolloutDataSource(DataSource):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L90-L118
+## 来源：slime/rollout/data_source.py L90-L118
     def get_samples(self, num_samples):
         if self.dataset is not None:
             if self.sample_offset + num_samples <= len(self.dataset):
@@ -86,7 +86,7 @@ class RolloutDataSource(DataSource):
 - 只读数据源：`add_samples` 直接 `RuntimeError`
 
 ```python
-# 来源：slime/rollout/data_source.py L120-L121
+## 来源：slime/rollout/data_source.py L120-L121
     def add_samples(self, samples: list[list[Sample]]):
         raise RuntimeError(f"Cannot add samples to {self.__class__.__name__}. This is a read-only data source.")
 ```
@@ -100,7 +100,7 @@ class RolloutDataSource(DataSource):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L123-L160
+## 来源：slime/rollout/data_source.py L123-L160
     def save(self, rollout_id):
         if not self.args.rollout_global_dataset:
             return
@@ -149,7 +149,7 @@ class RolloutDataSource(DataSource):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L168-L196
+## 来源：slime/rollout/data_source.py L168-L196
 class RolloutDataSourceWithBuffer(RolloutDataSource):
     def __init__(self, args):
         super().__init__(args)
@@ -172,7 +172,7 @@ class RolloutDataSourceWithBuffer(RolloutDataSource):
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L225-L229
+## 来源：slime/rollout/data_source.py L225-L229
 def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) -> list[list[Sample]]:
     num_to_pop = min(len(buffer), num_samples)
     samples = buffer[:num_to_pop]
@@ -189,7 +189,7 @@ def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) ->
 **Code：**
 
 ```python
-# 来源：slime/rollout/data_source.py L198-L212
+## 来源：slime/rollout/data_source.py L198-L212
     def add_samples(self, samples: list[list[Sample]]):
         if not samples:
             return
@@ -212,7 +212,7 @@ def pop_first(args, rollout_id, buffer: list[list[Sample]], num_samples: int) ->
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L25-L68
+## 来源：slime/utils/data.py L25-L68
 def read_file(path):
     path, row_slice = _parse_generalized_path(path)
     reader = None
@@ -254,7 +254,7 @@ def read_file(path):
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L71-L78
+## 来源：slime/utils/data.py L71-L78
 def _parse_generalized_path(s: str):
     if (m := re.match(r"^(?P<real_path>.*)@\[(?P<start>-?\d*):(?P<end>-?\d*)\]$", s)) is not None:
         path = m.group("real_path")
@@ -273,7 +273,7 @@ def _parse_generalized_path(s: str):
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L130-L174
+## 来源：slime/utils/data.py L130-L174
 def _build_messages(data: dict, prompt_key: str, as_conversation: bool, multimodal_keys: dict = None):
     prompt = data.get(prompt_key)
 
@@ -322,7 +322,7 @@ def _build_messages(data: dict, prompt_key: str, as_conversation: bool, multimod
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L81-L127
+## 来源：slime/utils/data.py L81-L127
 def filter_long_prompt(origin_samples: list[Sample], tokenizer, processor, max_length: int | None) -> list[Sample]:
     if max_length is None:
         return origin_samples
@@ -371,7 +371,7 @@ def filter_long_prompt(origin_samples: list[Sample], tokenizer, processor, max_l
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L275-L283
+## 来源：slime/utils/data.py L275-L283
     def shuffle(self, new_epoch_id):
         if self.epoch_id == new_epoch_id:
             return
@@ -394,7 +394,7 @@ def filter_long_prompt(origin_samples: list[Sample], tokenizer, processor, max_l
 **Code：**
 
 ```python
-# 来源：slime/utils/data.py L292-L303
+## 来源：slime/utils/data.py L292-L303
 def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
     assert len(rollout_data_ref) == dp_size
     rollout_data = ray.get(rollout_data_ref[dp_rank].inner)

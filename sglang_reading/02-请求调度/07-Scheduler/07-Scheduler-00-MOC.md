@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Scheduler 核心
 
-> **阶段 II · 请求调度** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 II · 请求调度** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `srt/managers/scheduler.py`、`scheduler_pp_mixin.py`、`scheduler_components/`
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4252-L4311
+## 来源：python/sglang/srt/managers/scheduler.py L4252-L4311
 def run_scheduler_process(
     server_args: ServerArgs,
     port_args: PortArgs,
@@ -134,7 +134,7 @@ def run_scheduler_process(
 ```
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
+## 来源：python/sglang/srt/managers/scheduler.py L4164-L4192
 def dispatch_event_loop(scheduler: Scheduler):
     # Dispatch to the appropriate event loop based on the disaggregation mode
     server_args = scheduler.server_args

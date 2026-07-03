@@ -8,8 +8,6 @@ tags:
  - sglang/batch/11
  - sglang/module/model-runner
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # ModelRunner 验收清单
@@ -21,14 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 3 个核心类：`ForwardBatch`、`ModelRunner`、`TpModelWorker` 及其职责
 - [x] 能追踪 decode step：`forward_batch_generation` → `init_new` → `forward` → `sample`
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 已含 model_executor / tp_worker 节点（RadixAttention 更新）
-- [x] 来源注释路径/行号对应 git `70df09b`
-- [x] 已更新 [[progress]]
 
 ## 核心结论（3 句话）
 

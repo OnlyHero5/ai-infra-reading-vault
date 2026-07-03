@@ -29,7 +29,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L583-L628
+## 来源：slime/backends/megatron_utils/actor.py L583-L628
     @timer
     def update_weights(self) -> None:
         if self.args.debug_train_only or self.args.debug_rollout_only:
@@ -79,7 +79,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/common.py L208-L219
+## 来源：update_weight/common.py L208-L219
             layer_idx, rest = match.groups()
             layer_idx = int(layer_idx) + layer_offset
             expert_pattern = r"mlp\.experts\.(.+)\.(weight|bias)(\d+)"
@@ -103,7 +103,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L57-L92
+## 来源：update_weight/update_weight_from_distributed.py L57-L92
     def connect_rollout_engines(
         self,
         rollout_engines: Sequence[ActorHandle],
@@ -138,7 +138,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L102-L134
+## 来源：update_weight/update_weight_from_distributed.py L102-L134
     @torch.no_grad()
     def update_weights(self) -> None:
         self.weight_version += 1
@@ -164,7 +164,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L136-L146
+## 来源：update_weight/update_weight_from_distributed.py L136-L146
     def _send_weights(self, pbar: tqdm | None) -> None:
         for chunk_iter in (self._iter_non_expert_chunks(), self._iter_expert_chunks()):
             for hf_chunk in chunk_iter:
@@ -184,7 +184,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L153-L176
+## 来源：update_weight/update_weight_from_distributed.py L153-L176
     def _iter_non_expert_chunks(self) -> Iterator[list[tuple[str, torch.Tensor]]]:
         buffer_size = 0
         buffer: list[tuple[str, torch.Tensor]] = []
@@ -217,7 +217,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L216-L238
+## 来源：update_weight/update_weight_from_distributed.py L216-L238
         all_gathered_params = [[] for _ in range(mpu.get_expert_model_parallel_world_size())]
         handles = []
         for i, (_name, param) in enumerate(named_tensors):
@@ -251,7 +251,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L326-L355
+## 来源：update_weight/update_weight_from_distributed.py L326-L355
 def update_weights_from_distributed(
     group_name: str,
     group: dist.ProcessGroup,
@@ -290,7 +290,7 @@ def update_weights_from_distributed(
 **Code：**
 
 ```python
-# 来源：update_weight/update_weight_from_distributed.py L240-L265
+## 来源：update_weight/update_weight_from_distributed.py L240-L265
     def _update_bucket_weights_from_distributed(
         self,
         converted_named_tensors: list[tuple[str, torch.Tensor]],
@@ -324,7 +324,7 @@ def update_weights_from_distributed(
 **Code：**
 
 ```python
-# 来源：update_weight/hf_weight_iterator_direct.py L24-L33
+## 来源：update_weight/hf_weight_iterator_direct.py L24-L33
     def get_hf_weight_chunks(self, megatron_local_weights, progress_desc: str = "Update weights"):
         rank = dist.get_rank()
         for megatron_local_param_infos in tqdm(
@@ -347,7 +347,7 @@ def update_weights_from_distributed(
 **Code：**
 
 ```python
-# 来源：update_weight/hf_weight_iterator_direct.py L116-L133
+## 来源：update_weight/hf_weight_iterator_direct.py L116-L133
     for info in param_infos:
         if ".experts." in info.name:
             tp_size = mpu.get_expert_tensor_parallel_world_size()
@@ -372,7 +372,7 @@ def update_weights_from_distributed(
 **Code：**
 
 ```python
-# 来源：update_weight/common.py L87-L91
+## 来源：update_weight/common.py L87-L91
     for handle in handles:
         if handle is not None:
             handle.wait()

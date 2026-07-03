@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L4292-L4311
+## 来源：python/sglang/srt/managers/scheduler.py L4292-L4311
     # Create a scheduler and run the event loop
     scheduler = None
     try:
@@ -59,7 +59,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L391-L422（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L391-L422（节选）
         # Init model configs
         self.init_model_config()
 
@@ -101,7 +101,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L605-L621
+## 来源：python/sglang/srt/managers/scheduler.py L605-L621
     def init_ipc_channels(self, port_args: PortArgs):
         is_rank_zero = (
             self.ps.pp_rank == 0
@@ -134,7 +134,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1352-L1364
+## 来源：python/sglang/srt/managers/scheduler.py L1352-L1364
     def init_request_dispatcher(self):
         self._request_dispatcher = TypeBasedDispatcher(
             [
@@ -159,7 +159,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2047-L2088（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L2047-L2088（节选）
             req = Req(
                 recv_req.rid,
                 recv_req.input_text,
@@ -209,7 +209,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2288-L2310
+## 来源：python/sglang/srt/managers/scheduler.py L2288-L2310
     def _add_request_to_queue(self, req: Req, is_retracted: bool = False):
         if not self._set_or_validate_priority(req):
             return
@@ -248,7 +248,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_components/request_receiver.py L72-L99
+## 来源：python/sglang/srt/managers/scheduler_components/request_receiver.py L72-L99
     @scheduler_nvtx_method("scheduler.recv_requests")
     def recv_requests(
         self,
@@ -290,7 +290,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1521-L1548
+## 来源：python/sglang/srt/managers/scheduler.py L1521-L1548
     def event_loop_normal(self):
         """A normal scheduler loop."""
         while True:
@@ -330,7 +330,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1551-L1613（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L1551-L1613（节选）
     def event_loop_overlap(self):
         """A scheduler loop that overlaps the CPU processing and GPU computation."""
         self.result_queue: Deque[
@@ -412,7 +412,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2630-L2657
+## 来源：python/sglang/srt/managers/scheduler.py L2630-L2657
         if (
             not self.enable_hisparse
             and self.last_batch
@@ -448,7 +448,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2804-L2879（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L2804-L2879（节选）
         # Prefill policy
         adder = PrefillAdder(
             self.page_size,
@@ -534,7 +534,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3026-L3114（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L3026-L3114（节选）
     def update_running_batch(self, batch: ScheduleBatch) -> Optional[ScheduleBatch]:
         """Update the current running decoding batch."""
         initial_bs = batch.batch_size()
@@ -639,7 +639,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L3204-L3286（节选）
+## 来源：python/sglang/srt/managers/scheduler.py L3204-L3286（节选）
         if self.is_generation:
             if self.enable_overlap:
                 # Self-gates on batch.spec_info.future_indices; non-spec_v2
@@ -738,7 +738,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_pp_mixin.py L92-L168（节选）
+## 来源：python/sglang/srt/managers/scheduler_pp_mixin.py L92-L168（节选）
         self.init_pp_loop_state()
         while True:
             server_is_idle = True
@@ -825,7 +825,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler_pp_mixin.py L49-L57
+## 来源：python/sglang/srt/managers/scheduler_pp_mixin.py L49-L57
 def _pp_can_skip_output_comm(batch: ScheduleBatch) -> bool:
     """Check if output send/recv can be skipped for this batch."""
     return (
@@ -846,7 +846,7 @@ def _pp_can_skip_output_comm(batch: ScheduleBatch) -> bool:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L1239-L1282
+## 来源：python/sglang/srt/managers/scheduler.py L1239-L1282
     def init_overlap(self):
         self.device_module = torch.get_device_module(self.device)
 

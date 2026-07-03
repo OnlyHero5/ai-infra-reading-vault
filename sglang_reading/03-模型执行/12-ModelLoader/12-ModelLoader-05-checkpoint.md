@@ -8,8 +8,6 @@ tags:
  - sglang/batch/12
  - sglang/module/model-loader
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # ModelLoader 验收清单
@@ -21,11 +19,6 @@ updated: 2026-07-02
 - [x] 能描述 safetensors iterator → load_weights 数据流
 - [x] 能解释 FlattenedTensorBucket 在热更新中的作用
 - [x] 五篇正文 ≥ 15 段内嵌源码
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-- [x] 来源注释路径/行号与 git `70df09b` 一致
 
 ## 核心结论
 

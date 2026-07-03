@@ -21,7 +21,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L105-L170
 class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
     """
     An allocator managing the indices to kv cache data.
@@ -93,7 +93,6 @@ class PagedTokenToKVPoolAllocator(BaseTokenToKVPoolAllocator):
 **Comment：**
 page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 
-
 ## Q2：alloc 返回 None 怎么办？
 
 **Explain：** 空间不足时 Scheduler retract 或 evict radix 节点。
@@ -101,7 +100,7 @@ page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/token.py L55-L64
+## 来源：python/sglang/srt/mem_cache/allocator/token.py L55-L64
     def alloc(self, need_size: int):
         if self.need_sort and need_size > len(self.free_pages):
             self.merge_and_sort_free()
@@ -117,7 +116,6 @@ page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 **Comment：**
 先 merge_and_sort_free 尝试回收 release_pages；仍不足则上层处理
 
-
 ## Q3：HiCache 主机内存不足？
 
 **Explain：** HostKVCache 启动时硬性检查可用 RAM。
@@ -125,7 +123,7 @@ page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/pool_host/base.py L123-L137
+## 来源：python/sglang/srt/mem_cache/pool_host/base.py L123-L137
         # Verify there is enough available host memory.
         host_mem = psutil.virtual_memory()
         requested_bytes = self.size * self.size_per_token
@@ -146,7 +144,6 @@ page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 **Comment：**
 保留 HICACHE_HOST_MEMORY_RESERVE_BYTES（10GB）给 OS；减小 --hicache-ratio
 
-
 ## Q4：与 RadixAttention 的分工？
 
 - **RadixCache**：逻辑前缀树、match/insert、决定哪些 token 可复用
@@ -164,7 +161,7 @@ page_size=16/32 常见，需与模型 max_seq 和 kernel 对齐要求一致
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L261-L272
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L261-L272
     def free(self, free_index: torch.Tensor):
         if free_index.numel() == 0:
             return

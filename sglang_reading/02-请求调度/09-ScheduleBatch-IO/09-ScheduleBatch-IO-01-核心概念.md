@@ -60,7 +60,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L74-L93
+## 来源：python/sglang/srt/managers/io_struct.py L74-L93
 # 提交版本：70df09b
 class BaseReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     """Base for single-request IPC payloads."""
@@ -71,7 +71,6 @@ class BaseReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     @classmethod
     def __get_pydantic_core_schema__(cls, source, handler):
         return msgspec_struct_pydantic_core_schema(cls, handler)
-
 
 class BaseBatchReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     """Base for batched IPC payloads."""
@@ -145,7 +144,7 @@ TokenizerManager → HTTP 响应
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_batch.py L1674-L1696
+## 来源：python/sglang/srt/managers/schedule_batch.py L1674-L1696
 class ScheduleBatch(ScheduleBatchDisaggregationDecodeMixin):
     """Store all information of a batch on the scheduler."""
 
@@ -186,7 +185,7 @@ class ScheduleBatch(ScheduleBatchDisaggregationDecodeMixin):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L74-L93
+## 来源：python/sglang/srt/managers/io_struct.py L74-L93
 class BaseReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     """Base for single-request IPC payloads."""
 
@@ -196,7 +195,6 @@ class BaseReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     @classmethod
     def __get_pydantic_core_schema__(cls, source, handler):
         return msgspec_struct_pydantic_core_schema(cls, handler)
-
 
 class BaseBatchReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
     """Base for batched IPC payloads."""
@@ -224,7 +222,7 @@ class BaseBatchReq(msgspec.Struct, tag=True, kw_only=True, array_like=True):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/io_struct.py L151-L168
+## 来源：python/sglang/srt/managers/io_struct.py L151-L168
 @dataclass
 class GenerateReqInput:
     # Request ID(s). If omitted, generated during normalization. For batch
@@ -260,7 +258,7 @@ class GenerateReqInput:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/embed_types.py L27-L58
+## 来源：python/sglang/srt/managers/embed_types.py L27-L58
 class PositionalEmbeds(msgspec.Struct, array_like=True):
     """Embeddings to place at specific token positions.
 

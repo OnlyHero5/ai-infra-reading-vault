@@ -3,7 +3,7 @@ type: batch-doc
 module: 04-Arguments-TrainRollout
 batch: "04"
 doc_type: moc
-title: "Arguments-TrainRollout · 批次概述"
+title: "Arguments-TrainRollout · 专题概述"
 tags:
   - slime/batch/04
   - slime/module/arguments
@@ -11,14 +11,13 @@ tags:
 updated: 2026-07-02
 ---
 
-# Arguments-TrainRollout · 批次概述
+# Arguments-TrainRollout · 专题概述
 
-> **批次 04** | 阶段 I | **热点批**（≥400 行内嵌代码）  
-> 基线 commit `22cdc6e1`
+> **专题 04** | 阶段 I | **代码热点专题**（≥400 行内嵌代码）  
 
 ---
 
-## 本批目标
+## 本专题目标
 
 1. 走读 `add_train_arguments` / `add_rollout_arguments` / customization `*-path` 参数
 2. 理解 `load_function` 如何挂载 rollout / RM / loss hook
@@ -58,7 +57,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L327-L339
+## 来源：slime/utils/arguments.py L327-L339
             parser.add_argument(
                 "--rollout-function-path",
                 type=str,

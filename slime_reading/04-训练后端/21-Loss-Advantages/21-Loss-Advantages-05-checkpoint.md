@@ -15,7 +15,7 @@ updated: 2026-07-02
 
 ## 读者自测（不打开 slime/）
 
-- [ ] 仅读本批 slime_reading，能说明 `compute_advantages_and_returns` 的职责：从 reward/logprob/value 生成 per-token `advantages` 与 `returns`
+- [ ] 仅读本专题 slime_reading，能说明 `compute_advantages_and_returns` 的职责：从 reward/logprob/value 生成 per-token `advantages` 与 `returns`
 - [ ] 能画出本模块在 generate → train → update_weights 闭环中的位置（actor forward_only 之后、policy backward 之前）
 - [ ] 能说出 4 个核心函数职责：`get_log_probs_and_entropy`、`get_values`、`compute_advantages_and_returns`、`apply_opd_kl_to_advantages`
 - [ ] 能追踪一条 PPO 配置下：critic values → GAE → whitening → `policy_loss_function` 读取 advantages 的路径
@@ -26,14 +26,6 @@ updated: 2026-07-02
 
 - [ ] 能解释 `get_log_probs_and_entropy` 为何整段 `[T,V]` 计算再 `_extract_per_sample`
 - [ ] 能说明 `allgather_cp` 时 `_allgather_cp_redistribute` 的必要性
-
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/21` + `slime/doc/*`
-- [ ] 六件套文件名前缀 `21-Loss-Advantages-`
-- [ ] Mermaid 块内换行使用 `<br/>`，无 `\n` 标签
-- [ ] 已更新 [[Slime-progress]] 批次 21 → ✅
-- [ ] 双链指向 [[22-Loss-Policy-00-MOC]]、[[20-Train-Data-00-MOC]]、[[19-Train-Step-00-MOC]] 无 `./` 相对路径
 
 ## 建议动手验证
 

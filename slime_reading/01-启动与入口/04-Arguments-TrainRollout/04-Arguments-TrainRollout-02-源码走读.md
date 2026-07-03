@@ -20,7 +20,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L107-L155
+## 来源：slime/utils/arguments.py L107-L155
         def add_train_arguments(parser):
             parser.add_argument(
                 "--qwen-gdn-backend",
@@ -78,7 +78,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L304-L340
+## 来源：slime/utils/arguments.py L304-L340
         def add_rollout_arguments(parser):
             parser.add_argument(
                 "--hf-checkpoint",
@@ -106,7 +106,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L473-L481
+## 来源：slime/utils/arguments.py L473-L481
             parser.add_argument(
                 "--custom-generate-function-path",
                 type=str,
@@ -121,7 +121,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L523-L528
+## 来源：slime/utils/arguments.py L523-L528
             parser.add_argument(
                 "--update-weights-interval",
                 type=int,
@@ -137,7 +137,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L625-L688
+## 来源：slime/utils/arguments.py L625-L688
             parser.add_argument(
                 "--data-source-path",
                 type=str,
@@ -171,7 +171,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L766-L775
+## 来源：slime/utils/arguments.py L766-L775
         def add_eval_arguments(parser):
             parser.add_argument(
                 "--eval-function-path",
@@ -192,7 +192,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L902-L944
+## 来源：slime/utils/arguments.py L902-L944
             parser.add_argument(
                 "--loss-type",
                 type=str,
@@ -234,7 +234,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L955-L967
+## 来源：slime/utils/arguments.py L955-L967
             parser.add_argument(
                 "--custom-advantage-function-path",
                 type=str,
@@ -254,7 +254,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1347-L1374
+## 来源：slime/utils/arguments.py L1347-L1374
             parser.add_argument(
                 "--custom-rm-path",
                 type=str,
@@ -291,7 +291,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L441-L451
+## 来源：slime/utils/arguments.py L441-L451
             parser.add_argument(
                 "--dynamic-sampling-filter-path",
                 type=str,
@@ -306,7 +306,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L503-L512
+## 来源：slime/utils/arguments.py L503-L512
             parser.add_argument(
                 "--buffer-filter-path",
                 type=str,
@@ -321,7 +321,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1415-L1435
+## 来源：slime/utils/arguments.py L1415-L1435
             parser.add_argument(
                 "--rollout-sample-filter-path",
                 type=str,
@@ -349,7 +349,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L1438-L1458
+## 来源：slime/utils/arguments.py L1438-L1458
         def add_custom_megatron_plugins_arguments(parser):
             parser.add_argument(
                 "--custom-megatron-init-path",
@@ -376,7 +376,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L35-L41
+## 来源：slime/backends/sglang_utils/arguments.py L35-L41
 def add_sglang_arguments(parser):
     parser = add_sglang_router_arguments(parser)
     parser.set_defaults(router_balance_abs_threshold=10, router_balance_rel_threshold=1.2)
@@ -386,7 +386,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L45-L63
+## 来源：slime/backends/sglang_utils/arguments.py L45-L63
     skipped_args = [
         "model_path",
         "config",
@@ -411,7 +411,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L113-L115
+## 来源：slime/backends/sglang_utils/arguments.py L113-L115
     parser.add_argument = new_add_argument_wrapper
     ServerArgs.add_cli_args(parser)
     parser.add_argument = old_add_argument
@@ -424,7 +424,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L117-L136
+## 来源：slime/backends/sglang_utils/arguments.py L117-L136
     parser.add_argument(
         "--prefill-num-servers",
         type=int,
@@ -446,7 +446,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/arguments.py L162-L173
+## 来源：slime/backends/sglang_utils/arguments.py L162-L173
     assert not (
         getattr(args, "sglang_config", None) is not None and getattr(args, "prefill_num_servers", None) is not None
     ), "sglang_config and prefill_num_servers are mutually exclusive. Use server_groups in the YAML config instead."
@@ -459,7 +459,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L114-L133
+## 来源：slime/backends/megatron_utils/arguments.py L114-L133
     for hf_config_name, megatron_config_name, compare_fn in [
         ("hidden_size", "hidden_size", equal),
         ("num_attention_heads", "num_attention_heads", equal),
@@ -483,7 +483,7 @@ def add_sglang_arguments(parser):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/arguments.py L147-L168
+## 来源：slime/backends/megatron_utils/arguments.py L147-L168
 def _set_default_megatron_args(args):
     args.use_distributed_optimizer = True
     args.bf16 = not args.fp16
@@ -508,7 +508,7 @@ def _set_default_megatron_args(args):
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L9-L30（表格摘要）
+## 来源：docs/en/get_started/customization.md L9-L30（表格摘要）
 # --rollout-function-path          Override entire rollout
 # --custom-generate-function-path  Override generation step only
 # --custom-rm-path                 Custom reward
@@ -528,7 +528,7 @@ def _set_default_megatron_args(args):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L437-L451
+## 来源：slime/ray/rollout.py L437-L451
         data_source_cls = load_function(self.args.data_source_path)
         self.data_source = data_source_cls(args)
         self.generate_rollout = load_function(self.args.rollout_function_path)
@@ -548,7 +548,7 @@ def _set_default_megatron_args(args):
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L475-L481
+## 来源：docs/en/get_started/customization.md L475-L481
 # python -m pytest \
 #   tests/plugin_contracts/test_plugin_rollout_contracts.py \
 #   tests/plugin_contracts/test_plugin_generate_contracts.py \

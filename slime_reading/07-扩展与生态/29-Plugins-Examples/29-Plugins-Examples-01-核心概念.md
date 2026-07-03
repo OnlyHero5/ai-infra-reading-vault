@@ -31,7 +31,7 @@ plugins **被** 核心或 examples import；examples **通过** `--*-path` 被 S
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L14-L18
+## 来源：slime_plugins/rollout_buffer/buffer.py L14-L18
 app = FastAPI(title="Rollout Buffer Server", debug=True)
 
 def default_is_valid_group(group_data, min_valid_group_size, task_type):
@@ -53,7 +53,7 @@ def default_is_valid_group(group_data, min_valid_group_size, task_type):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L145-L160
+## 来源：slime_plugins/rollout_buffer/buffer.py L145-L160
     def append(self, item):
         instance_id = item["instance_id"]
         if instance_id not in self.temp_data:
@@ -75,7 +75,7 @@ def default_is_valid_group(group_data, min_valid_group_size, task_type):
 **关键配置：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L14-L37
+## 来源：examples/search-r1/generate_with_search.py L14-L37
 SEARCH_R1_CONFIGS = {
     "max_turns": 2,
     "search_backend": "local",
@@ -100,7 +100,7 @@ SEARCH_R1_CONFIGS = {
 **Code：**
 
 ```python
-# 来源：examples/multi_agent/rollout_with_multi_agents.py L16-L33
+## 来源：examples/multi_agent/rollout_with_multi_agents.py L16-L33
 async def generate_with_multi_agents(args, sample, sampling_params, evaluation=False) -> list[Sample]:
     tokenizer = AutoTokenizer.from_pretrained(args.hf_checkpoint, trust_remote_code=True)
     custom_multi_agent_func = load_function(args.custom_multi_agent_function_path)
@@ -118,7 +118,7 @@ async def generate_with_multi_agents(args, sample, sampling_params, evaluation=F
 **Code：**
 
 ```markdown
-# 来源：examples/README.md L7-L18
+## 来源：examples/README.md L7-L18
 - eval_multi_task: 多任务 eval 配置
 - fully_async: 全异步 rollout
 - multi_agent: 多 agent RL
@@ -136,7 +136,7 @@ async def generate_with_multi_agents(args, sample, sampling_params, evaluation=F
 **Code：**
 
 ```python
-# 来源：slime_plugins/models/glm5/glm5.py L37-L44
+## 来源：slime_plugins/models/glm5/glm5.py L37-L44
 def is_skip_topk_layer(layer_number, skip_topk_offset, topk_freq):
     """Whether the layer reuses a previous layer's top-k."""
     return (max(layer_number - skip_topk_offset, 0) % topk_freq) != 0
@@ -153,7 +153,7 @@ def is_skip_topk_layer(layer_number, skip_topk_offset, topk_freq):
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L93-L98
+## 来源：examples/search-r1/generate_with_search.py L93-L98
 # IMPORTANT: When we need to collect log probabilities (logp), we CANNOT do any postprocessing
 # on the strings returned from the inference engine (sglang).
 # Therefore, postprocess_responses is only used when return_logprob=False.
@@ -168,7 +168,7 @@ def is_skip_topk_layer(layer_number, skip_topk_offset, topk_freq):
 **Code：**
 
 ```python
-# 来源：examples/search-r1/generate_with_search.py L277-L293
+## 来源：examples/search-r1/generate_with_search.py L277-L293
 async def reward_func(args, sample, **kwargs):
     score = compute_score_em(
         solution_str=sample.prompt + sample.response,
@@ -187,7 +187,7 @@ async def reward_func(args, sample, **kwargs):
 **Code：**
 
 ```python
-# 来源：slime_plugins/rollout_buffer/buffer.py L54-L87
+## 来源：slime_plugins/rollout_buffer/buffer.py L54-L87
 def discover_generators():
     generator_dir = pathlib.Path(__file__).parent / "generator"
     for file_path in glob.glob(str(generator_dir / "*.py")):

@@ -22,12 +22,6 @@ updated: 2026-07-02
 - [ ] 能解释 `setup_model_and_optimizer` 对 load/pretrained_checkpoint 的 assert
 - [ ] 能说明 `train_iters` 估算公式及 dynamic sampling 漂移影响
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/18` + `slime/doc/*`
-- [ ] 代码块含 `# 提交版本：22cdc6e1`
-- [ ] 已更新 [[Slime-progress]] 批次 18 为 ✅
-
 ## 快速自测题
 
 1. **Stateless Adam 必须配什么 flag？** `--no-save-optim`。

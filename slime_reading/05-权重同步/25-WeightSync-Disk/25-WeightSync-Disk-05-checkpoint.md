@@ -25,16 +25,6 @@ updated: 2026-07-02
 - [ ] 能列举 `perf/update_weights_density` 与 `wire_bytes` 的含义
 - [ ] 能说出 full disk 同步中 rank 0 与非 0 rank 的职责差异
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/25` + `slime/doc/*`
-- [ ] 六件套前缀 `25-WeightSync-Disk-`
-- [ ] 全批内嵌代码 ≥ 15 段、≥ 200 行
-- [ ] 02 热点走读 ≥ 400 行内嵌代码
-- [ ] Mermaid 无 `\n`（用 `<br/>`）
-- [ ] 双链 [[24-WeightSync-Dist-00-MOC]]、[[26-Checkpoint-M2HF-00-MOC]] 可解析
-- [ ] [[Slime-progress]] 批次 25 → ✅
-
 ## 源码锚点核对（基线 `22cdc6e1`）
 
 | 文件 | 关键符号 | 已覆盖 |
@@ -55,4 +45,4 @@ updated: 2026-07-02
 
 ---
 
-**批次 25 状态：** ✅ 已完成
+**专题 25 完成状态：** ✅ 已完成

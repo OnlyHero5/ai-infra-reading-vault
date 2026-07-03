@@ -25,7 +25,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/model_loader/utils.py L221-L222
+## 来源：python/sglang/srt/model_loader/utils.py L221-L222
     elif not is_native_supported or model_config.model_impl == ModelImpl.TRANSFORMERS:
         architectures = resolve_transformers_arch(model_config, architectures)
 ```
@@ -41,7 +41,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L120
+## 来源：python/sglang/srt/models/registry.py L120
                         model_arch_name_to_cls[tmp.__name__] = tmp
 ```
 
@@ -56,7 +56,7 @@ updated: 2026-07-02
 **Code（Llama）：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L146-L149
+## 来源：python/sglang/srt/models/llama.py L146-L149
         tp_size = get_parallel().tp_size
         self.total_num_heads = num_heads
         assert self.total_num_heads % tp_size == 0
@@ -66,7 +66,7 @@ updated: 2026-07-02
 **Code（Qwen3）：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L87-L91
+## 来源：python/sglang/srt/models/qwen3.py L87-L91
         attn_tp_rank = get_parallel().attn_tp_rank
         attn_tp_size = get_parallel().attn_tp_size
 
@@ -83,7 +83,7 @@ updated: 2026-07-02
 **Code（RadixAttention 分支示例，模型层传入同一 batch）：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L127-L153
+## 来源：python/sglang/srt/layers/radix_attention.py L127-L153
         if (
             forward_batch.forward_mode.is_extend()
             and get_tc_piecewise_forward_context() is not None
@@ -124,7 +124,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L657-L666
+## 来源：python/sglang/srt/models/llama.py L657-L666
             if "rotary_emb.inv_freq" in name or "projector" in name:
                 continue
             if "rotary_emb.cos_cached" in name or "rotary_emb.sin_cached" in name:
@@ -146,7 +146,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/qwen3.py L118-L119
+## 来源：python/sglang/srt/models/qwen3.py L118-L119
         self.q_norm = RMSNorm(self.head_dim, eps=rms_norm_eps, **norm_kwargs)
         self.k_norm = RMSNorm(self.head_dim, eps=rms_norm_eps, **norm_kwargs)
 ```
@@ -162,7 +162,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L843-L844
+## 来源：python/sglang/srt/models/llama.py L843-L844
 class InternLM3ForCausalLM(LlamaForCausalLM):
     pass
 ```
@@ -184,7 +184,7 @@ class InternLM3ForCausalLM(LlamaForCausalLM):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/registry.py L100-L102
+## 来源：python/sglang/srt/models/registry.py L100-L102
             if name.split(".")[-1] in envs.SGLANG_DISABLED_MODEL_ARCHS.get():
                 logger.debug(f"Skip loading {name} due to SGLANG_DISABLED_MODEL_ARCHS")
                 continue
@@ -199,7 +199,7 @@ class InternLM3ForCausalLM(LlamaForCausalLM):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/llama.py L565-L588
+## 来源：python/sglang/srt/models/llama.py L565-L588
     def forward_split_prefill(
         self,
         input_ids: torch.Tensor,

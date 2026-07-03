@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/api.py L23-L32
+## 来源：python/sglang/lang/api.py L23-L32
 def function(
     func: Optional[Callable] = None, num_api_spec_tokens: Optional[int] = None
 ):

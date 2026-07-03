@@ -21,7 +21,7 @@ Slime 训练侧用 Megatron 并行（TP/PP/EP/VPP），推理侧 SGLang 消费 H
 |------|------|------|
 | 训练启动 | HF → Megatron | `checkpoint.load_checkpoint` → Bridge |
 | 权重同步 / 存盘 | Megatron → HF | `convert_to_hf` + `save_hf_model_to_path` |
-| NCCL broadcast | Megatron → HF 张量流 | `HfWeightIteratorDirect`（批次 24） |
+| NCCL broadcast | Megatron → HF 张量流 | `HfWeightIteratorDirect`（[[24-WeightSync-Dist-00-MOC]]） |
 
 ---
 
@@ -37,7 +37,7 @@ Slime 训练侧用 Megatron 并行（TP/PP/EP/VPP），推理侧 SGLang 消费 H
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L22-L42
+## 来源：slime/backends/megatron_utils/hf_checkpoint_saver.py L22-L42
 def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantization_config=None, ...):
     if args.megatron_to_hf_mode == "bridge":
         save_hf_model_bridge_to_path(args, output_dir, model)
@@ -60,7 +60,7 @@ def save_hf_model_to_path(args, output_dir, model, *, model_name=None, quantizat
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L123-L126
+## 来源：slime/backends/megatron_utils/checkpoint.py L123-L126
 def _is_megatron_checkpoint(path: str | Path) -> bool:
     return (Path(path) / "latest_checkpointed_iteration.txt").is_file() or bool(
         re.fullmatch(r"iter_\d{7}", Path(path).name)
@@ -81,7 +81,7 @@ def _is_megatron_checkpoint(path: str | Path) -> bool:
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L129-L151
+## 来源：slime/backends/megatron_utils/checkpoint.py L129-L151
 def _load_checkpoint_hf(ddp_model, optimizer, args, load_path: str):
     assert args.megatron_to_hf_mode == "bridge", "Only bridge mode is supported for loading HF checkpoint"
     from megatron.bridge import AutoBridge
@@ -110,7 +110,7 @@ def _load_checkpoint_hf(ddp_model, optimizer, args, load_path: str):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L66
+## 来源：slime/backends/megatron_utils/megatron_to_hf/__init__.py L25-L66
 def convert_to_hf(args, model_name, name, param, quantization_config=None):
     param = remove_padding(name, param, args.vocab_size)
     converted_named_tensors = _convert_to_hf_core(args, model_name, name, param)
@@ -141,7 +141,7 @@ def _convert_to_hf_core(args, model_name, name, param):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L25-L36
+## 来源：slime/backends/megatron_utils/megatron_to_hf/qwen2.py L25-L36
         elif rest == "self_attention.linear_qkv.weight":
             param = param.view(args.num_query_groups, -1, head_dim, args.hidden_size)
             q_param, k_param, v_param = torch.split(param, split_size_or_sections=[value_num_per_group, 1, 1], dim=1)
@@ -168,14 +168,14 @@ def _convert_to_hf_core(args, model_name, name, param):
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/actor.py L577（save 分支，节选）
+## 来源：slime/backends/megatron_utils/actor.py L577（save 分支，节选）
 save_hf_model_to_path(self.args, Path(self.args.save_hf.format(rollout_id=rollout_id)), self.model)
 ```
 
 **Comment：**
 
-- disk 权重同步（批次 25）在写临时目录时也调用同一 saver
-- `--save` 仍走 Megatron 原生 `save_checkpoint`（本批不展开）
+- disk 权重同步（[[25-WeightSync-Disk-00-MOC]]）在写临时目录时也调用同一 saver
+- `--save` 仍走 Megatron 原生 `save_checkpoint`（本专题不展开）
 
 ---
 
@@ -186,7 +186,7 @@ save_hf_model_to_path(self.args, Path(self.args.save_hf.format(rollout_id=rollou
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L14-L16
+## 来源：slime/backends/megatron_utils/checkpoint.py L14-L16
     # Here we patch out the `validate_non_overlapping_shards_metadata` in both functions
     # because it is really slow for large models with many shards.
     # TODO: find a less hacky way to do this.

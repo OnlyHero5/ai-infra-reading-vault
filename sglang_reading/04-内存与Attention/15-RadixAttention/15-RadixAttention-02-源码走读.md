@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L162-L196
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L162-L196
     def match(self, other: RadixKey, page_size: int = 1) -> int:
         """Logical-unit prefix length shared with ``other``. Result is rounded down to ``page_size``."""
         self._check_compatible(other)
@@ -81,7 +81,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L415-L435
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L415-L435
     def insert(self, params: InsertParams) -> InsertResult:
         if self.disable:
             return InsertResult(prefix_len=0)
@@ -118,7 +118,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L488-L552
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L488-L552
     def cache_unfinished_req(self, req: Req, chunked=False):
         """Cache request when it is unfinished."""
         if self.disable:
@@ -199,7 +199,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L563-L590
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L563-L590
     def evict(self, params: EvictParams) -> EvictResult:
         if self.disable:
             return EvictResult()
@@ -247,7 +247,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L136-L151
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L136-L151
 class UnifiedLRUList:
     def __init__(
         self,
@@ -273,7 +273,7 @@ class UnifiedLRUList:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L561-L586
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L561-L586
     def match_prefix(self, params: MatchPrefixParams) -> MatchResult:
         result = self.session.try_match_prefix(params)
         if result is not None:
@@ -315,7 +315,7 @@ class UnifiedLRUList:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L604-L624
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L604-L624
     def evict(self, params: EvictParams) -> EvictResult:
         if self.disable:
             return EvictResult()
@@ -346,7 +346,7 @@ class UnifiedLRUList:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L626-L637
+## 来源：python/sglang/srt/mem_cache/unified_radix_cache.py L626-L637
     def inc_lock_ref(self, node: Any) -> IncLockRefResult:
         result = self.session.try_inc_lock_ref(node)
         if result is not None:
@@ -378,7 +378,7 @@ class UnifiedLRUList:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L43-L54
+## 来源：python/sglang/srt/layers/radix_attention.py L43-L54
 class AttentionType(Enum):
     """
     Attention type.
@@ -403,7 +403,7 @@ class AttentionType(Enum):
 **Explain：** Attention forward 前把 flat hidden states reshape 为 `[num_tokens, num_heads, head_dim]`，供 backend kernel 消费。MLA（Multi-head Latent Attention）路径可能已通过 kwargs 传入 `k_rope`，跳过此处 view；cross-layer KV share 时 k/v 可为 None，由下层直接从 cache 读。
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L118-L125
+## 来源：python/sglang/srt/layers/radix_attention.py L118-L125
         if k is not None:
             # For cross-layer sharing, kv can be None
             assert v is not None
@@ -421,7 +421,7 @@ class AttentionType(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L188-L193
+## 来源：python/sglang/srt/layers/radix_attention.py L188-L193
     # DeepSeek MLA has two RadixAttention instances per layer (attn_mqa and
     # attn_mha) that share the same layer_id. The attention_layers list only
     # stores attn_mqa. When the MHA path is active (save_kv_cache=False), use
@@ -437,7 +437,7 @@ class AttentionType(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L235-L252
+## 来源：python/sglang/srt/layers/radix_attention.py L235-L252
     if _is_hip:
         # During PCG replay on AMD, varlen attention kernels only fill positions
         # 0..actual_tokens-1 and leave padded positions with uninitialized
@@ -465,7 +465,7 @@ class AttentionType(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L156-L158
+## 来源：python/sglang/srt/layers/radix_attention.py L156-L158
 @register_custom_op(mutates_args=["output"])
 @register_split_op()
 def unified_attention_with_output(
@@ -480,7 +480,7 @@ def unified_attention_with_output(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L331-L336
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L331-L336
     def reset(self):
         # Initialize root with minimum priority so any real priority overrides it
         self.root_node = TreeNode(priority=-sys.maxsize)

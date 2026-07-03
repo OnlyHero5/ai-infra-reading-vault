@@ -29,7 +29,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L155-L160
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L155-L160
     def _check_compatible(self, other: RadixKey) -> None:
         if self.extra_key != other.extra_key:
             raise ValueError(
@@ -47,7 +47,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L533-L537
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L533-L537
         # The cache_protected_len is not always equal to len(req.prefix_indices)
         # since for page_size > 1, the partial part is added to req.prefix_indices, but that part of kv indices is not added to the tree.
         # It should be freed in the next cache_unfinished_req and final cache_finished_req to avoid memory leak.
@@ -72,7 +72,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L444-L449
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L444-L449
         if self.disable:
             kv_indices = self.req_to_token_pool.req_to_token[
                 req.req_pool_idx, :kv_committed_len
@@ -96,7 +96,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L306-L306
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L306-L306
         self.eviction_strategy = get_eviction_strategy(self.eviction_policy)
 ```
 
@@ -109,7 +109,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/radix_attention.py L211-L230
+## 来源：python/sglang/srt/layers/radix_attention.py L211-L230
     original_out_cache_loc = forward_batch.out_cache_loc
     # Keep the original ForwardBatch object and only narrow cache locations for
     # this backend call so model/backend state is still written to the same batch.
@@ -155,7 +155,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L234-L236
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L234-L236
         # store the host indices of KV cache
         self.host_value: Optional[torch.Tensor] = None
         self.write_through_pending_id: Optional[int] = None
@@ -170,7 +170,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/radix_cache.py L518-L523
+## 来源：python/sglang/srt/mem_cache/radix_cache.py L518-L523
         # The prefix indices could be updated, reuse it
         match_result = self.match_prefix(MatchPrefixParams(key=radix_key))
         new_indices, new_last_node = (

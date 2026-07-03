@@ -53,7 +53,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L91-L131
+## 来源：python/sglang/srt/managers/schedule_policy.py L91-L131
 # 提交版本：70df09b
 def match_prefix_for_req(
     tree_cache: BasePrefixCache,
@@ -152,13 +152,12 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L139-L153
+## 来源：python/sglang/srt/managers/schedule_policy.py L139-L153
 class CacheAwarePolicy(Enum):
     """Scheduling policies that are aware of the tree cache."""
 
     LPM = "lpm"  # longest prefix match
     DFS_WEIGHT = "dfs-weight"  # depth-first search weighting
-
 
 class CacheAgnosticPolicy(Enum):
     """Scheduling policies that are not aware of the tree cache."""
@@ -192,7 +191,7 @@ class CacheAgnosticPolicy(Enum):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/schedule_policy.py L91-L136
+## 来源：python/sglang/srt/managers/schedule_policy.py L91-L136
 def match_prefix_for_req(
     tree_cache: BasePrefixCache,
     req: Req,
@@ -296,7 +295,7 @@ def match_prefix_for_req(
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/min_free_slots_delayer.py L4-L25
+## 来源：python/sglang/srt/managers/min_free_slots_delayer.py L4-L25
 def resolve_min_free_slots(
     user_value: Optional[int],
     max_running_requests: int,

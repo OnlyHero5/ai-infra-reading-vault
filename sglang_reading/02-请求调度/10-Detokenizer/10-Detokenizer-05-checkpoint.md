@@ -8,8 +8,6 @@ tags:
  - sglang/batch/10
  - sglang/module/detokenizer
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # Detokenizer 验收清单
@@ -21,14 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 3 个核心类/函数：`DetokenizerManager`、`DecodeStatus`、`_decode_batch_token_id_output`（或 `FanOutCommunicator` 与控制面关系）
 - [x] 能追踪一条 streaming 请求在 Detokenizer 内的 offset 更新与 `�` 处理
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 已添加 batch-10 Detokenizer 节点与边
-- [x] 来源注释路径/行号与 git `70df09b` 一致
-- [x] 已更新 [[progress]] 与 `sglang/.understand-anything/meta.json`（scope=batch-10）
 
 ## 核心结论（3 句话）
 

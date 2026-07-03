@@ -53,7 +53,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/allocator/paged.py L172-L215
+## 来源：python/sglang/srt/mem_cache/allocator/paged.py L172-L215
     def alloc_extend(
         self,
         prefix_lens: torch.Tensor,
@@ -105,7 +105,6 @@ sequenceDiagram
 - 步骤 2：kernel 填充 out_indices
 - 步骤 3：Attention 用 indices scatter K/V
 
-
 ## 4. HiCache 回写流
 
 **Explain：** 设备 KV evict 时 backup 到 HostKVCache，命中时 load_to_device_per_layer。
@@ -113,7 +112,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/pool_host/base.py L174-L189
+## 来源：python/sglang/srt/mem_cache/pool_host/base.py L174-L189
     def load_to_device_per_layer(
         self, device_pool, host_indices, device_indices, layer_id, io_backend
     ) -> None:
@@ -135,7 +134,6 @@ sequenceDiagram
 **Comment：**
 逐 layer 异步 IO，与 forward 流水线重叠
 
-
 ## 5. 外部 Storage 加载
 
 **Explain：** Storage 后端实现 HiCacheStorage，与 host pool 交换 page 数据。
@@ -143,7 +141,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L66-L96
+## 来源：python/sglang/srt/mem_cache/storage/backend_factory.py L66-L96
     def create_backend(
         cls,
         backend_name: str,
@@ -179,4 +177,3 @@ sequenceDiagram
 
 **Comment：**
 支持 file/NIXL/Mooncake 等多后端，factory 统一入口
-

@@ -71,7 +71,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L784-L790
+## 来源：python/sglang/srt/entrypoints/http_server.py L784-L790
 # 提交版本：70df09b
 # fastapi implicitly converts json in the request to obj (dataclass)
 @app.api_route(
@@ -103,7 +103,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code（Engine 侧 ZMQ RPC，供权重更新等管理面）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L254-L261, L1241-L1246
+## 来源：python/sglang/srt/entrypoints/engine.py L254-L261, L1241-L1246
 # 提交版本：70df09b
         # Initialize ZMQ sockets
         context = zmq.Context(2)
@@ -126,7 +126,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/launch_server.py L47-L51
+## 来源：python/sglang/launch_server.py L47-L51
 # 提交版本：70df09b
     else:
         # Default mode: HTTP mode.
@@ -142,7 +142,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/engine.py L883-L889
+## 来源：python/sglang/srt/entrypoints/engine.py L883-L889
 # 提交版本：70df09b
         # Wait for the model to finish loading
         scheduler_init_result.wait_for_ready()
@@ -158,7 +158,7 @@ async def generate_request(obj: GenerateReqInput, request: Request):
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L2401-L2414
+## 来源：python/sglang/srt/entrypoints/http_server.py L2401-L2414
 # 提交版本：70df09b
                 # Default case, one tokenizer process
                 uvicorn.run(
@@ -207,7 +207,7 @@ sequenceDiagram
 **Code（HTTP 层进入 TokenizerManager 的唯一枢纽）：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L828-L831
+## 来源：python/sglang/srt/entrypoints/http_server.py L828-L831
 # 提交版本：70df09b
         try:
             ret = await _global_state.tokenizer_manager.generate_request(
@@ -224,7 +224,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/entrypoints/http_server.py L216-L256
+## 来源：python/sglang/srt/entrypoints/http_server.py L216-L256
 # 提交版本：70df09b
     # Read configuration from shared memory
     main_pid = get_main_process_id()

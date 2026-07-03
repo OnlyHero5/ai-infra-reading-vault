@@ -52,7 +52,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L165-L172
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L165-L172
         data = {
             "text": s.text_,
             "sampling_params": {
@@ -101,7 +101,7 @@ def qa(s, question):
 **步骤 3 — 构造 HTTP 请求**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L186-L191
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L186-L191
         res = http_request(
             self.base_url + "/generate",
             json=data,
@@ -136,7 +136,7 @@ run_program_batch(batch_kwargs)
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L105-L107
+## 来源：python/sglang/lang/interpreter.py L105-L107
     # Pre-cache the common prefix for a batch. The prefix is extracted by tracing the program.
     if global_config.enable_precache_with_tracing and len(batch_arguments) > 1:
         cache_program(program, backend)
@@ -167,7 +167,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L375-L377
+## 来源：python/sglang/lang/interpreter.py L375-L377
         if size > 1 and str(self.text_):
             self.submit(SglCommitLazy())
 
@@ -187,7 +187,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L637-L642
+## 来源：python/sglang/lang/interpreter.py L637-L642
             for comp, meta_info in generator:
                 self.text_ += comp
                 self.variables[name] += comp
@@ -210,7 +210,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/tracer.py L54-L72
+## 来源：python/sglang/lang/tracer.py L54-L72
 def trace_program(program, arguments, backend):
     # Create dummy backend
     if backend is None:

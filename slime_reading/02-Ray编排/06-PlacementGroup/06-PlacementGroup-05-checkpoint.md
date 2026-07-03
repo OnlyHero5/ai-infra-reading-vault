@@ -22,13 +22,6 @@ updated: 2026-07-02
 - [ ] 能口述 `create_rollout_manager` → `create_training_models` 的调用顺序及依赖
 - [ ] 能列举 `_get_placement_group_layout` 在 debug / external / colocate 四种分支的 `(num_gpus, offset)` 返回值
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/06` + `slime/doc/*`
-- [ ] 代码块首行含 `# 来源：` + `# 提交版本：22cdc6e1`
-- [ ] Mermaid 使用 `<br/>` 换行
-- [ ] 已更新 [[Slime-progress]] 批次 06 为 ✅
-
 ## 快速自测题
 
 1. **PACK 策略是什么？** 尽量把 bundle 打包到最少节点。
@@ -37,4 +30,4 @@ updated: 2026-07-02
 
 ## 通过标准
 
-全部读者自测项可口头回答，且能在 [[06-PlacementGroup-02-源码走读]] 找到对应内嵌代码，即视为批次 06 通过。
+全部读者自测项可口头回答，且能在 [[06-PlacementGroup-02-源码走读]] 找到对应内嵌代码，即视为[[06-PlacementGroup-00-MOC]] 通过。

@@ -81,7 +81,7 @@ sequenceDiagram
 **Code — Scheduler 初始化策略与 MinFreeSlots：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L887-L896, L1038-L1068
+## 来源：python/sglang/srt/managers/scheduler.py L887-L896, L1038-L1068
         self.min_free_slots_delayer: Optional[MinFreeSlotsDelayer] = None
         min_free_slots = resolve_min_free_slots(
             self.server_args.min_free_slots_delay,
@@ -110,7 +110,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2721-L2738
+## 来源：python/sglang/srt/managers/scheduler.py L2721-L2738
     def get_new_batch_prefill(self) -> Optional[ScheduleBatch]:
         prefill_delayer_single_pass = None
         if self.prefill_delayer:
@@ -140,7 +140,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2762-L2772
+## 来源：python/sglang/srt/managers/scheduler.py L2762-L2772
         running_bs = len(self.running_batch.reqs)
         # Skipped during a chunked prefill: that pass must proceed regardless.
         if (
@@ -163,7 +163,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2787-L2879
+## 来源：python/sglang/srt/managers/scheduler.py L2787-L2879
         # Get priority queue
         self.policy.calc_priority(self.waiting_queue, self.running_batch)
 
@@ -271,7 +271,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/scheduler.py L2912-L2934
+## 来源：python/sglang/srt/managers/scheduler.py L2912-L2934
         # Update waiting queue
         can_run_list: List[Req] = adder.can_run_list
         if len(can_run_list) == 0:
@@ -311,7 +311,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/prefill_delayer.py L303-L328
+## 来源：python/sglang/srt/managers/prefill_delayer.py L303-L328
     def _gather_info(
         self,
         local_prefillable: bool,

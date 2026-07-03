@@ -12,7 +12,7 @@ updated: 2026-07-02
 
 # 验收清单（checkpoint）
 
-> 索引层 · 对应 slime `22cdc6e1` · 批次 30 收官验收
+> 索引层 · 对应 slime `22cdc6e1` · [[08-总结与索引-00-MOC]] 收官验收
 
 ---
 
@@ -41,26 +41,11 @@ updated: 2026-07-02
 
 ---
 
-## 维护者检查
-
-- [x] onboard 七件套（01–07）与索引五篇均含内嵌源码，无「（概念）」占位
-- [x] `03-关键概念.md` 共 12 节，覆盖 rollout_id / Sample / update_weights 等
-- [x] `04-导读路径.md` 12 步与 `GRAPH-BATCH-MAP` tour 一致
-- [x] `06-复杂度热点.md` 10 个热点函数含完整代码块
-- [x] `Slime-业务域流程.md` 6 条 flow 均有入口代码
-- [x] frontmatter tags 含 `slime/batch/30` + `slime/doc/*`
-- [x] Mermaid 块内使用 `<br/>`，无 `\n`
-- [x] 双链格式 `[[NN-Module-01-核心概念]]`，无 `./01-*.md`
-- [x] 阶段 MOC / [[index]] 已同步 30/30（八阶段表 + progress 进度条）
-- [x] 已更新 [[Slime-progress]] 批次 30 ✅
-
----
-
 ## 已知局限
 
 1. **行号漂移** — 基线 commit `22cdc6e1`；以函数名为锚在 upstream 检索。
 2. **megatron_server.py** — 仅在 07-可观测与CI 摘要；无独立专题批。
-3. **图谱增量** — 批次 30 可选跑 `/understand --full` + `/understand-domain` 终版（见 [[UNDERSTAND-WORKFLOW]] §4）。
+3. **知识图谱更新** — [[08-总结与索引-00-MOC]] 可选跑 `/understand --full` + `/understand-domain` 终版（见 [[08-总结与索引-04-导读路径]]）。
 
 ---
 
@@ -69,7 +54,7 @@ updated: 2026-07-02
 1. **索引层**可独立 onboarding：项目定位、7 层架构、RL 七 hop、12 核心概念、12 步导读。
 2. **业务域流程**与 **模块依赖图** 串联 01–29 专题，不重复专题深度。
 3. **与 SGLang 对照**帮助双库读者在 Rollout 层快速切换上下文。
-4. **专题深度**仍以 batch 01–29 为主体；索引层负责导航与全链路复盘。
+4. **专题深度**仍以 [[Slime-00-方法论-00-MOC]]–29 为主体；索引层负责导航与全链路复盘。
 
 ---
 
@@ -77,4 +62,4 @@ updated: 2026-07-02
 
 - [[08-总结与索引-00-MOC]]
 - [[08-总结与索引-04-导读路径]]
-- [[Slime-progress]]
+-

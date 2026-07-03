@@ -32,7 +32,7 @@ updated: 2026-07-02
 ```mermaid
 flowchart TB
     DS["DataSource<br/>prompt / buffer"]
-    RM["RolloutManager<br/>本批焦点"]
+    RM["RolloutManager<br/>本专题焦点"]
     SGL["SGLang Engines<br/>via Router"]
     TR["Megatron Actor<br/>async_train"]
 
@@ -74,7 +74,7 @@ flowchart TB
 **Code：**
 
 ```python
-# 来源：slime/ray/placement_group.py L220-L230
+## 来源：slime/ray/placement_group.py L220-L230
 def create_rollout_manager(args, pg):
     from .rollout import RolloutManager
 
@@ -102,7 +102,7 @@ def create_rollout_manager(args, pg):
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L437-L451
+## 来源：slime/ray/rollout.py L437-L451
         data_source_cls = load_function(self.args.data_source_path)
         self.data_source = data_source_cls(args)
 
@@ -160,7 +160,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L511-L540
+## 来源：slime/ray/rollout.py L511-L540
     def _get_updatable_server(self) -> Any | None:
         for srv in self.servers.values():
             if srv.update_weights:
@@ -187,4 +187,4 @@ flowchart LR
 
 ## 8. 与 SGLang 阅读的关系
 
-RolloutManager **编排** SGLang，不实现 attention/KV。若需理解引擎内部调度，参见 [[SGLang源码阅读指南]] 批次 06–07（TokenizerManager / Scheduler）。本批只需知道：rollout 函数通过 Router HTTP 把 prompt 发给 SGLangEngine，响应写回 `Sample`。
+RolloutManager **编排** SGLang，不实现 attention/KV。若需理解引擎内部调度，参见 [[SGLang源码阅读指南]] [[06-PlacementGroup-00-MOC]]–[[07-RayTrainGroup-00-MOC]]（TokenizerManager / Scheduler）。本专题只需知道：rollout 函数通过 Router HTTP 把 prompt 发给 SGLangEngine，响应写回 `Sample`。

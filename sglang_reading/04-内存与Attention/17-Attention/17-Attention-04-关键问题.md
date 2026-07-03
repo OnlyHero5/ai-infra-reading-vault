@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L1-L8（模块 docstring）
+## 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L1-L8（模块 docstring）
 from __future__ import annotations
 
 from sglang.srt.runtime_context import get_parallel
@@ -37,7 +37,7 @@ FlashInfer is faster and Triton is easier to customize.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/server_args.py L6922-L6933
+## 来源：python/sglang/srt/server_args.py L6922-L6933
     def get_attention_backends(self):
         prefill_attention_backend_str = (
             self.prefill_attention_backend
@@ -70,7 +70,7 @@ FlashInfer is faster and Triton is easier to customize.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L105-L116
+## 来源：python/sglang/srt/layers/attention/flashinfer_backend.py L105-L116
     def _safe_merge_state(
         v_a: torch.Tensor,
         s_a: torch.Tensor,
@@ -102,7 +102,7 @@ FlashInfer is faster and Triton is easier to customize.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/base_attn_backend.py L68-L77（节选）
+## 来源：python/sglang/srt/layers/attention/base_attn_backend.py L68-L77（节选）
         diverge (e.g., snapshot metadata, swap buffer pointers, install
         temp workspace). Host op / dynamic-shape / non-graph-recordable
         logic lives here.
@@ -126,7 +126,7 @@ FlashInfer is faster and Triton is easier to customize.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/mem_cache/memory_pool.py L15-L20
+## 来源：python/sglang/srt/mem_cache/memory_pool.py L15-L20
 Memory pool.
 
 SGLang has two levels of memory pool.
@@ -136,7 +136,7 @@ KVCache actually holds the physical kv cache.
 ```
 
 ```python
-# 来源：python/sglang/srt/layers/attention/triton_backend.py L413-L415
+## 来源：python/sglang/srt/layers/attention/triton_backend.py L413-L415
             kv_indptr = self._fill_kv_indptr_and_indices(
                 bs, seq_lens, req_pool_indices, self.cuda_graph_kv_indices
             )
@@ -153,7 +153,7 @@ KVCache actually holds the physical kv cache.
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/attention/hybrid_attn_backend.py L45-L50
+## 来源：python/sglang/srt/layers/attention/hybrid_attn_backend.py L45-L50
         elif forward_mode.is_target_verify():
             return (
                 self.decode_backend

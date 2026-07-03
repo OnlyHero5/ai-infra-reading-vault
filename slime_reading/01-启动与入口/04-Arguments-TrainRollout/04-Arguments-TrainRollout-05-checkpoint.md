@@ -22,12 +22,6 @@ updated: 2026-07-02
 - [ ] 能根据 agent 场景在 generate vs rollout function 间选型
 - [ ] 能指出 plugin_contracts 四个测试文件分工
 
-## 维护者检查
-
-- [ ] tags：`slime/batch/04`
-- [ ] 双链至 [[08-RolloutManager-01-核心概念]]、[[13-RM-FilterHub-00-MOC]]
-- [ ] 已更新 [[Slime-progress]] 批次 04 ✅
-
 ## 下一批
 
 → [[05-Tools-DataPrep-00-MOC]]（已完成）或 [[06-PlacementGroup-00-MOC]]

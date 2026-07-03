@@ -8,8 +8,6 @@ tags:
  - sglang/batch/02
  - sglang/module/launch
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 启动链路 验收清单
@@ -26,14 +24,6 @@ updated: 2026-07-02
  - `load_plugins` — entry_points 发现 + HookRegistry.apply_hooks
 - [x] 能追踪 `sglang serve --model-path M --tp-size 2` 的完整启动路径（见 03-数据流与交互.md §4）
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 无遗漏 batch-02 关键 file 节点（launch_server、cli/main、cli/serve、server_args、plugins）
-- [x] 内嵌代码来源注释路径/行号与 commit 70df09b 一致
-- [x] 已更新 [[progress]]
 
 ## 内嵌源码统计
 

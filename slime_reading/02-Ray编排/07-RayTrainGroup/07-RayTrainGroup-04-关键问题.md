@@ -22,7 +22,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L121-L129 vs L155-L157
+## 来源：slime/ray/actor_group.py L121-L129 vs L155-L157
 # 提交版本：22cdc6e1
 # async_init → return [actor.init.remote(...) ...]
 # update_weights → return ray.get([actor.update_weights.remote() ...])
@@ -37,7 +37,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L37-L38
+## 来源：slime/ray/train_actor.py L37-L38
 # 提交版本：22cdc6e1
 self.master_addr, self.master_port = self._get_current_node_ip_and_free_port(
     start_port=random.randint(20000, 21000)
@@ -58,7 +58,7 @@ self.master_addr, self.master_port = self._get_current_node_ip_and_free_port(
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L86-L88
+## 来源：slime/ray/actor_group.py L86-L88
 # 提交版本：22cdc6e1
 if self.args.use_routing_replay and self.role == "actor":
     env_vars["ENABLE_ROUTING_REPLAY"] = "1"
@@ -67,7 +67,7 @@ if self.args.use_routing_replay and self.role == "actor":
 **Comment：**
 
 - critic 前向不需要 MoE routing replay
-- 见 [[23-CP-RoutingReplay]]
+- 见 [[23-CP-RoutingReplay-00-MOC]]
 
 ---
 
@@ -78,7 +78,7 @@ if self.args.use_routing_replay and self.role == "actor":
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L109-L115
+## 来源：slime/ray/actor_group.py L109-L115
 # 提交版本：22cdc6e1
 actor = TrainRayActor.options(
     num_cpus=num_gpus_per_actor,
@@ -99,7 +99,7 @@ actor = TrainRayActor.options(
 **Code：**
 
 ```python
-# 来源：slime/ray/actor_group.py L140-L145
+## 来源：slime/ray/actor_group.py L140-L145
 # 提交版本：22cdc6e1
 if isinstance(external_data, list):
     assert len(external_data) == len(self._actor_handlers)
@@ -118,7 +118,7 @@ if isinstance(external_data, list):
 **Code：**
 
 ```python
-# 来源：slime/ray/train_actor.py L45-L47
+## 来源：slime/ray/train_actor.py L45-L47
 # 提交版本：22cdc6e1
 # TODO: currently this doesn't work as ray has already set torch.cuda.device_count().
 # os.environ.pop("CUDA_VISIBLE_DEVICES", None)

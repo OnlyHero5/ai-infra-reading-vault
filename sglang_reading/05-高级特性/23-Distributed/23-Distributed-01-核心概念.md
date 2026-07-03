@@ -47,7 +47,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L9-L24
+## 来源：python/sglang/srt/distributed/parallel_state.py L9-L24
 """Distributed state.
 It takes over the control of the distributed environment from PyTorch.
 The typical workflow is:
@@ -77,7 +77,7 @@ If you only need to use the distributed environment without model/pipeline
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L216-L255
+## 来源：python/sglang/srt/distributed/parallel_state.py L216-L255
 class GroupCoordinator:
     """
     PyTorch ProcessGroup wrapper for a group of processes.
@@ -131,7 +131,7 @@ class GroupCoordinator:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/distributed/communication_op.py L18-L20
+## 来源：python/sglang/srt/distributed/communication_op.py L18-L20
 def tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
     """All-reduce the input tensor across model parallel group."""
     return get_tp_group().all_reduce(input_)
@@ -148,12 +148,12 @@ def tensor_model_parallel_all_reduce(input_: torch.Tensor) -> torch.Tensor:
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L14-L14
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L14-L14
 """A controller that dispatches requests to multiple data parallel workers."""
 ```
 
 ```python
-# 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L79
+## 来源：python/sglang/srt/managers/data_parallel_controller.py L76-L79
 class LoadBalanceMethod(Enum):
     """Load balance method."""
 
@@ -178,7 +178,7 @@ class LoadBalanceMethod(Enum):
 **Code（8 GPU TP×PP 示例）：**
 
 ```python
-# 来源：python/sglang/srt/distributed/parallel_state.py L2002-L2009
+## 来源：python/sglang/srt/distributed/parallel_state.py L2002-L2009
     Let's say we have a total of 8 GPUs denoted by g0 ... g7 and we
     use 2 GPUs to parallelize the model tensor, and 4 GPUs to parallelize
     the model pipeline. The present function will

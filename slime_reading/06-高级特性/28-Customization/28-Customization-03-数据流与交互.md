@@ -81,7 +81,7 @@ sequenceDiagram
 **Code（harness env 指向 adapter）：**
 
 ```python
-# 来源：slime/agent/harness/claude_code.py L62-L66
+## 来源：slime/agent/harness/claude_code.py L62-L66
         env = {
             "ANTHROPIC_BASE_URL": ctx.adapter_url,
             "ANTHROPIC_AUTH_TOKEN": ctx.session_id,
@@ -103,7 +103,7 @@ sequenceDiagram
 
 ---
 
-## 5. 与 [[27-Agent-Trajectory]] 的分工
+## 5. 与 [[27-Agent-Trajectory-00-MOC]] 的分工
 
 | 组件 | 职责 |
 |------|------|
@@ -119,7 +119,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L364-L364
+## 来源：docs/en/get_started/customization.md L364-L364
 # Return: `True` to skip default logging, `False` to continue with default logging.
 ```
 
@@ -134,7 +134,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L408-L409
+## 来源：docs/en/get_started/customization.md L408-L409
 **Default**: Same as `--rollout-function-path`
 ```
 
@@ -145,7 +145,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：docs/en/get_started/customization.md L487-L491
+## 来源：docs/en/get_started/customization.md L487-L491
 python tests/plugin_contracts/test_plugin_rollout_contracts.py \
   --rollout-function-path my_project.custom_rollout.generate_rollout
 ```

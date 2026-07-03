@@ -22,15 +22,6 @@ updated: 2026-07-02
 - [ ] 能画出本模块在 RL 闭环中的位置：训练前 ref-load，不在 generate/train 热路径
 - [ ] **阶段 I：** 能补全 `parse_args()` → `create_placement_groups()` → `create_rollout_manager()` → `create_training_models()` → `generate → async_train → update_weights` 调用栈（见 [[05-Tools-DataPrep-00-MOC]]）
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/05` + `slime/doc/*`
-- [ ] 代码块首行含 `# 来源：` + `# 提交版本：22cdc6e1`
-- [ ] Mermaid 使用 `<br/>` 换行，无 `\n`
-- [ ] 双链指向后续批次时使用 `[[06-PlacementGroup-00-MOC]]` 等形式
-- [ ] 已更新 [[Slime-progress]] 批次 05 为 ✅
-- [ ] （图谱增量）运行 `/understand --language zh` + `/understand-domain`
-
 ## 快速自测题
 
 1. **`common.pt` 里存的是什么？** Megatron 训练 args 快照；反向转换用来获取 `num_layers` / MoE 参数。
@@ -39,4 +30,4 @@ updated: 2026-07-02
 
 ## 通过标准
 
-全部读者自测项可口头回答，且能在 [[05-Tools-DataPrep-02-源码走读]] 中找到对应内嵌代码段，即视为批次 05 通过。
+全部读者自测项可口头回答，且能在 [[05-Tools-DataPrep-02-源码走读]] 中找到对应内嵌代码段，即视为[[05-Tools-DataPrep-00-MOC]] 通过。

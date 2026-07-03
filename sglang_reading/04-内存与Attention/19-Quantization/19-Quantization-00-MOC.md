@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # Quantization：量化
 
-> **阶段 IV · 内存与 Attention** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 IV · 内存与 Attention** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `layers/quantization/`（base_config、fp8、gptq、awq、compressed_tensors 等）
 
 ---
@@ -70,7 +70,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
+## 来源：python/sglang/srt/layers/quantization/base_config.py L20-L84
 class QuantizeMethodBase(ABC):
     """Base class for different quantized methods."""
 
@@ -95,7 +95,6 @@ class QuantizeMethodBase(ABC):
         This can be used for example, to transpose weights for computation.
         """
         return
-
 
 class LinearMethodBase(QuantizeMethodBase):
     """Base class for different (maybe quantized) linear methods."""

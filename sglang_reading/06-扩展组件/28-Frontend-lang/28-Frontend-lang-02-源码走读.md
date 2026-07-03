@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/api.py L102-L139
+## 来源：python/sglang/lang/api.py L102-L139
     if choices:
         return SglSelect(
             name,
@@ -80,7 +80,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/ir.py L212-L221
+## 来源：python/sglang/lang/ir.py L212-L221
         backend = backend or global_config.default_backend
         return run_program(
             self,
@@ -109,7 +109,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L57-L90
+## 来源：python/sglang/lang/interpreter.py L57-L90
 def run_program(
     program,
     backend,
@@ -156,7 +156,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L321-L332
+## 来源：python/sglang/lang/interpreter.py L321-L332
         # Worker thread
         self.use_thread = use_thread
         if self.use_thread:
@@ -187,7 +187,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L342-L348
+## 来源：python/sglang/lang/interpreter.py L342-L348
     def submit(self, expr: SglExpr):
         self._init_var_event(expr)
 
@@ -198,7 +198,7 @@ def run_program(
 ```
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L461-L503
+## 来源：python/sglang/lang/interpreter.py L461-L503
     def _execute(self, other):
         if isinstance(other, str):
             other = SglConstantText(other)
@@ -256,7 +256,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L593-L625
+## 来源：python/sglang/lang/interpreter.py L593-L625
     def _execute_gen(self, expr: SglGen):
         sampling_params = self._resolve_sampling_params(expr.sampling_params)
         name = expr.name
@@ -308,7 +308,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L858-L871
+## 来源：python/sglang/lang/interpreter.py L858-L871
     def _role_common(self, name: str, expr: Optional[SglExpr] = None):
         if expr is not None:
             role_expr = SglExprList([SglRoleBegin(name), expr, SglRoleEnd(name)])
@@ -335,7 +335,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L370-L402
+## 来源：python/sglang/lang/interpreter.py L370-L402
     def fork(
         self,
         size: int = 1,
@@ -385,7 +385,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L27-L54
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L27-L54
     def __init__(
         self,
         base_url: str,
@@ -428,7 +428,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L159-L196
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L159-L196
     def generate(
         self,
         s: StreamExecutor,
@@ -479,7 +479,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L80-L87
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L80-L87
     def cache_prefix(self, prefix_str: str):
         res = http_request(
             self.base_url + "/generate",
@@ -506,7 +506,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L105-L114
+## 来源：python/sglang/lang/interpreter.py L105-L114
     # Pre-cache the common prefix for a batch. The prefix is extracted by tracing the program.
     if global_config.enable_precache_with_tracing and len(batch_arguments) > 1:
         cache_program(program, backend)
@@ -533,7 +533,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/ir.py L316-L324
+## 来源：python/sglang/lang/ir.py L316-L324
     def __call__(self, *args, **kwargs):
         from sglang.lang.tracer import TracingScope
 
@@ -557,7 +557,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L127-L157
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L127-L157
     def _handle_dtype_to_regex(self, sampling_params: SglSamplingParams):
         if sampling_params.dtype is None:
             return
@@ -603,7 +603,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/backend/runtime_endpoint.py L105-L114
+## 来源：python/sglang/lang/backend/runtime_endpoint.py L105-L114
     def commit_lazy_operations(self, s: StreamExecutor):
         data = {"text": s.text_, "sampling_params": {"max_new_tokens": 0}}
         self._add_images(s, data)
@@ -628,7 +628,7 @@ def run_program(
 **Code：**
 
 ```python
-# 来源：python/sglang/lang/interpreter.py L647-L655
+## 来源：python/sglang/lang/interpreter.py L647-L655
     def _execute_select(self, expr: SglSelect):
         choices_decision = self.backend.select(
             self, expr.choices, expr.temperature, expr.choices_method

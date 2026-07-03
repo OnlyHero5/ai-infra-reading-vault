@@ -13,7 +13,7 @@ updated: 2026-07-02
 
 # Train Data · 核心概念
 
-> 本批关注 **训练侧如何吃 Rollout 数据**：不是 prompt 从哪来（[[11-DataSource-00-MOC]]），而是 tensor 化之后如何分区、打包、喂给 Megatron forward。
+> 本专题关注 **训练侧如何吃 Rollout 数据**：不是 prompt 从哪来（[[11-DataSource-00-MOC]]），而是 tensor 化之后如何分区、打包、喂给 Megatron forward。
 
 ---
 
@@ -34,7 +34,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：megatron_utils/data.py L201-L217
+## 来源：megatron_utils/data.py L201-L217
 class DataIterator:
     """Iterator over a rollout dict following an explicit micro-batch index schedule."""
 
@@ -60,7 +60,7 @@ class DataIterator:
 **Code：**
 
 ```python
-# 来源：dp_schedule.py L8-L23（模块 docstring 节选）
+## 来源：dp_schedule.py L8-L23（模块 docstring 节选）
 # The scheduling philosophy is **pack first, distribute second**:
 #   1. Group samples by rollout id ...
 #   2. For each step, pack its samples into K micro-batches ...
@@ -84,7 +84,7 @@ class DataIterator:
 **Code：**
 
 ```python
-# 来源：megatron_utils/data.py L63-L64, L88-L90
+## 来源：megatron_utils/data.py L63-L64, L88-L90
     batch["unconcat_tokens"] = tokens
     ...
     else:
@@ -100,7 +100,7 @@ class DataIterator:
 **Code：**
 
 ```python
-# 来源：megatron_utils/data.py L122-L130
+## 来源：megatron_utils/data.py L122-L130
         prompt_length = total_length - response_length
         loss_mask = F.pad(loss_mask, (prompt_length - 1, 1), value=0)
 ```
@@ -114,7 +114,7 @@ class DataIterator:
 **Code：**
 
 ```python
-# 来源：utils/data.py L292-L303
+## 来源：utils/data.py L292-L303
 def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
     assert len(rollout_data_ref) == dp_size
     rollout_data = ray.get(rollout_data_ref[dp_rank].inner)
@@ -141,7 +141,7 @@ def process_rollout_data(args, rollout_data_ref, dp_rank, dp_size):
 **Code：**
 
 ```python
-# 来源：seqlen_balancing.py L146-L161
+## 来源：seqlen_balancing.py L146-L161
 def get_seqlen_balanced_partitions(seqlen_list: list[int], k_partitions: int, equal_size: bool):
     """get order of seq lengths to make partitions balanced ..."""
     assert len(seqlen_list) >= k_partitions
@@ -153,7 +153,7 @@ def get_seqlen_balanced_partitions(seqlen_list: list[int], k_partitions: int, eq
 
 ## 7. 与训练 loss 归一化的关系
 
-`get_batch` 只构造 forward 输入；**per-rollout mean** 的分母 `rollout_mask_sums` 在 Rollout 侧写入，在 `loss_function` 里传给 `get_sum_of_sample_mean`（批次 21–22）。本批只需记住：**调度按 rollout id 分 step，loss 归一化按 rollout 组聚合**。
+`get_batch` 只构造 forward 输入；**per-rollout mean** 的分母 `rollout_mask_sums` 在 Rollout 侧写入，在 `loss_function` 里传给 `get_sum_of_sample_mean`（[[21-Loss-Advantages-00-MOC]]–[[22-Loss-Policy-00-MOC]]）。本专题只需记住：**调度按 rollout id 分 step，loss 归一化按 rollout 组聚合**。
 
 ---
 

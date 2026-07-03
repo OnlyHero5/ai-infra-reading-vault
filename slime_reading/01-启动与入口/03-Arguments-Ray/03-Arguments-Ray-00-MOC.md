@@ -3,7 +3,7 @@ type: batch-doc
 module: 03-Arguments-Ray
 batch: "03"
 doc_type: moc
-title: "Arguments-Ray · 批次概述"
+title: "Arguments-Ray · 专题概述"
 tags:
   - slime/batch/03
   - slime/module/arguments
@@ -11,15 +11,14 @@ tags:
 updated: 2026-07-02
 ---
 
-# Arguments-Ray · 批次概述
+# Arguments-Ray · 专题概述
 
-> **批次 03** | 阶段 I 启动与入口 | **热点批**（内嵌代码 ≥400 行）  
-> 基线 commit `22cdc6e1`  
+> **专题 03** | 阶段 I 启动与入口 | **代码热点专题**（内嵌代码 ≥400 行）  
 > 源码：`slime/slime/utils/arguments.py` 之 **Ray / Cluster / Colocate** 段 + `parse_args` + `slime_validate_args` 集群相关 validate
 
 ---
 
-## 本批目标
+## 本专题目标
 
 1. 解释 `--actor-num-nodes`、`--rollout-num-gpus`、`--colocate`、`--offload-*` 语义
 2. 走读 `get_slime_extra_args_provider` → `add_cluster_arguments`
@@ -60,7 +59,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：slime/utils/arguments.py L38-L42
+## 来源：slime/utils/arguments.py L38-L42
         def add_cluster_arguments(parser):
             parser.add_argument("--actor-num-nodes", type=int, default=1, help="Number of nodes for training actor")
             parser.add_argument(

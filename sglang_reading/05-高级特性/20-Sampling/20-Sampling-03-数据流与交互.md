@@ -78,7 +78,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/sampling/sampling_batch_info.py L266-L283
+## 来源：python/sglang/srt/sampling/sampling_batch_info.py L266-L283
     def apply_logits_bias(self, logits: torch.Tensor):
         if self.acc_additive_penalties is not None:
             # Used in the overlap mode
@@ -110,13 +110,13 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/constrained/outlines_backend.py L74-L75
+## 来源：python/sglang/srt/constrained/outlines_backend.py L74-L75
     def apply_vocab_mask(logits: torch.Tensor, vocab_mask: torch.Tensor):
         logits.masked_fill_(vocab_mask, float("-inf"))
 ```
 
 ```python
-# 来源：python/sglang/srt/constrained/xgrammar_backend.py L238-L245
+## 来源：python/sglang/srt/constrained/xgrammar_backend.py L238-L245
     def apply_vocab_mask(logits: torch.Tensor, vocab_mask: torch.Tensor) -> None:
         if logits.device.type in {"cuda", "npu", "xpu", "musa"}:
             if _is_hip:
@@ -134,7 +134,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/layers/sampler.py L178-L188
+## 来源：python/sglang/srt/layers/sampler.py L178-L188
             else:
                 # Standard path: do softmax and sample from probs.
                 logits.div_(sampling_info.temperatures)

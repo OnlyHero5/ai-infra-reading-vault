@@ -24,7 +24,7 @@ updated: 2026-07-02
 **代码：**
 
 ```python
-# 来源：slime/backends/megatron_utils/loss.py L661-L667
+## 来源：slime/backends/megatron_utils/loss.py L661-L667
 def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) -> None:
     """Supported methods: "grpo", "gspo", "cispo", "ppo", ..."""
 ```
@@ -40,7 +40,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **代码：**
 
 ```python
-# 来源：train.py L77
+## 来源：train.py L77
                 ray.get(actor_model.async_train(rollout_id, rollout_data_ref, external_data=value_refs))
 ```
 
@@ -65,7 +65,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **代码：**
 
 ```python
-# 来源：train.py L74-L79
+## 来源：train.py L74-L79
         if args.use_critic:
             value_refs = critic_model.async_train(rollout_id, rollout_data_ref)
 ```
@@ -145,7 +145,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **代码：**
 
 ```python
-# 来源：slime/ray/placement_group.py L47-L48
+## 来源：slime/ray/placement_group.py L47-L48
     bundles = [{"GPU": 1, "CPU": 1} for _ in range(num_gpus)]
     pg = placement_group(bundles, strategy="PACK")
 ```
@@ -231,7 +231,7 @@ def compute_advantages_and_returns(args: Namespace, rollout_data: RolloutBatch) 
 **代码：**
 
 ```python
-# 来源：train.py L89
+## 来源：train.py L89
         actor_model.update_weights()
 ```
 

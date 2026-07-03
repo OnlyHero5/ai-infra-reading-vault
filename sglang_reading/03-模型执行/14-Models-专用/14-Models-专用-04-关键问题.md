@@ -23,7 +23,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2966
+## 来源：python/sglang/srt/models/deepseek_v2.py L2966
 EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausalLM]
 ```
 
@@ -36,7 +36,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1890-L1908
+## 来源：python/sglang/srt/models/deepseek_v2.py L1890-L1908
         attn_forward_method = self.dispatch_attn_forward_method(forward_batch)
         if attn_forward_method == AttnForwardMethod.MHA:
             inner_state = self.forward_normal_prepare(
@@ -69,7 +69,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L583-L587
+## 来源：python/sglang/srt/models/deepseek_v2.py L583-L587
         if self.tp_size > config.n_routed_experts:
             raise ValueError(
                 f"Tensor parallel size {self.tp_size} is greater than "
@@ -86,7 +86,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2786-L2792
+## 来源：python/sglang/srt/models/deepseek_v2.py L2786-L2792
         if disable_reason is not None:
             server_args.disable_shared_experts_fusion = True
             self.num_fused_shared_experts = 0
@@ -105,7 +105,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L1669-L1674
+## 来源：python/sglang/srt/models/deepseek_v2.py L1669-L1674
             if is_nextn:
                 self.skip_topk = True
                 self.next_skip_topk = True
@@ -123,7 +123,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L564-L567
+## 来源：python/sglang/srt/models/deepseek_v2.py L564-L567
         if _is_deepep_fusion:
             # 256 routed + EP_size shared slots = 272 experts total (for EP=16)
             num_experts_for_moe = config.n_routed_experts + self.moe_ep_size
@@ -139,7 +139,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2219
+## 来源：python/sglang/srt/models/deepseek_v2.py L2219
         get_attn_tp_context().clear_attn_inputs()
 ```
 
@@ -152,7 +152,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L637-L647
+## 来源：python/sglang/srt/models/deepseek_v2.py L637-L647
         if self.is_hash and not (is_nextn and is_deepseek_v4):
             self.topk = HashTopK(
                 topk=config.num_experts_per_tok + self.num_fused_shared_experts,
@@ -175,7 +175,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2857-L2858
+## 来源：python/sglang/srt/models/deepseek_v2.py L2857-L2858
     def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]], is_nextn=False):
         self.do_load_weights(weights, is_nextn)
 ```
@@ -189,7 +189,7 @@ EntryClass = [DeepseekV2ForCausalLM, DeepseekV3ForCausalLM, DeepseekV32ForCausal
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/models/deepseek_v2.py L2713-L2716
+## 来源：python/sglang/srt/models/deepseek_v2.py L2713-L2716
         self.dsa_enable_prefill_cp = is_dsa_enable_prefill_cp()
         self.mla_enable_prefill_cp = (
             is_prefill_context_parallel_enabled() and not is_deepseek_dsa(config)

@@ -9,7 +9,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const VAULT = path.resolve(__dirname, "..");
-const READING = path.join(VAULT, "sglang_reading");
+const SGLANG_READING = path.join(VAULT, "sglang_reading");
+const SLIME_READING = path.join(VAULT, "slime_reading");
 const SKIP = new Set(["_TEMPLATE", ".obsidian", ".git", "sglang"]);
 
 /** @type {Map<string, string[]>} basename -> full paths relative to VAULT */
@@ -58,7 +59,8 @@ function walkIndex(dir) {
 }
 
 function indexVaultNotes() {
-  walkIndex(READING);
+  walkIndex(SGLANG_READING);
+  walkIndex(SLIME_READING);
 
   for (const name of ["index.md", "AGENTS.md"]) {
     const full = path.join(VAULT, name);
@@ -90,7 +92,7 @@ function resolveTarget(target, sourceRel) {
   const t = target.trim();
   // Path-style link (contains /)
   if (t.includes("/")) {
-    const candidates = [t, `${t}.md`, `sglang_reading/${t}.md`];
+    const candidates = [t, `${t}.md`, `sglang_reading/${t}.md`, `slime_reading/${t}.md`];
     for (const c of candidates) {
       const full = path.join(VAULT, c);
       if (fs.existsSync(full)) return { ok: true, path: c.replace(/\\/g, "/") };
@@ -174,7 +176,8 @@ function scanDir(dir) {
 }
 
 function scanVault() {
-  scanDir(READING);
+  scanDir(SGLANG_READING);
+  scanDir(SLIME_READING);
 
   for (const name of ["index.md", "AGENTS.md"]) {
     const full = path.join(VAULT, name);

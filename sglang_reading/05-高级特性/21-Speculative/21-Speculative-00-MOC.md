@@ -14,7 +14,7 @@ updated: 2026-07-02
 ---
 # 投机解码（Speculative Decoding）
 
-> **阶段 V · 高级特性** | 状态：已完成 | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
+> **阶段 V · 高级特性** | Git：`70df09b83363e0127b43c83a6007d3938f815b2d` 
 > **源码范围：** `python/sglang/srt/speculative/` — EAGLE、NGRAM、DFLASH、MTP、Reject Sampling
 
 ---
@@ -67,7 +67,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：python/sglang/srt/speculative/spec_info.py L193-L238
+## 来源：python/sglang/srt/speculative/spec_info.py L193-L238
     def create_worker(
         self, server_args: ServerArgs
     ) -> Optional[Union[Type[BaseSpecWorker], Type[TpModelWorker], Type[NGRAMWorker]]]:

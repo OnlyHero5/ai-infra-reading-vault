@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/__init__.py L18-L23
+## 来源：sgl-kernel/python/sgl_kernel/__init__.py L18-L23
     # Initialize the ops library based on current GPU
     common_ops = _load_architecture_specific_ops()
 
@@ -48,7 +48,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L84-L101
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L84-L101
     if matching_files:
         ops_path = Path(matching_files[0])  # Use the first prioritized file
         logger.debug(f"[sgl_kernel] Found architecture-specific library: {ops_path}")
@@ -81,7 +81,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/load_utils.py L234-L242
+## 来源：sgl-kernel/python/sgl_kernel/load_utils.py L234-L242
     for base in candidate_dirs:
         for lib_version in lib_versions:
             candidate = base / f"libcudart.so.{lib_version}"
@@ -109,7 +109,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L6-L26
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L6-L26
 def merge_state_v2(
     v_a: torch.Tensor,
     s_a: torch.Tensor,
@@ -145,7 +145,7 @@ def merge_state_v2(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/attention.py L29-L55
+## 来源：sgl-kernel/python/sgl_kernel/attention.py L29-L55
 def cutlass_mla_decode(
     q_nope: torch.Tensor,
     q_pe: torch.Tensor,
@@ -192,7 +192,7 @@ def cutlass_mla_decode(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L6-L25
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L6-L25
 def moe_align_block_size(
     topk_ids,
     num_experts,
@@ -227,7 +227,7 @@ def moe_align_block_size(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/moe.py L57-L85
+## 来源：sgl-kernel/python/sgl_kernel/moe.py L57-L85
 def topk_sigmoid(
     topk_weights: torch.Tensor,
     topk_ids: torch.Tensor,
@@ -253,7 +253,6 @@ def topk_sigmoid(
         correction_bias,
     )
 
-
 def moe_sum_reduce(
     input_tensor,
     output_tensor,
@@ -275,7 +274,7 @@ def moe_sum_reduce(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/gemm.py L14-L35
+## 来源：sgl-kernel/python/sgl_kernel/gemm.py L14-L35
     return torch.ops.sgl_kernel.int8_scaled_mm.default(
         mat_a,
         mat_b,
@@ -285,7 +284,6 @@ def moe_sum_reduce(
         bias,
     )
 
-
 def fp8_blockwise_scaled_mm(mat_a, mat_b, scales_a, scales_b, out_dtype):
     return torch.ops.sgl_kernel.fp8_blockwise_scaled_mm.default(
         mat_a,
@@ -294,7 +292,6 @@ def fp8_blockwise_scaled_mm(mat_a, mat_b, scales_a, scales_b, out_dtype):
         scales_b,
         out_dtype,
     )
-
 
 def fp8_scaled_mm(mat_a, mat_b, scales_a, scales_b, out_dtype, bias=None):
     return torch.ops.sgl_kernel.fp8_scaled_mm.default(
@@ -316,7 +313,7 @@ def fp8_scaled_mm(mat_a, mat_b, scales_a, scales_b, out_dtype, bias=None):
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/kvcacheio.py L14-L35
+## 来源：sgl-kernel/python/sgl_kernel/kvcacheio.py L14-L35
     src_k: torch.Tensor,
     dst_k: torch.Tensor,
     src_v: torch.Tensor,
@@ -357,7 +354,7 @@ def fp8_scaled_mm(mat_a, mat_b, scales_a, scales_b, out_dtype, bias=None):
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/speculative.py L4-L24
+## 来源：sgl-kernel/python/sgl_kernel/speculative.py L4-L24
 def tree_speculative_sampling_target_only(
     predicts: torch.Tensor,  # mutable
     accept_index: torch.Tensor,  # mutable
@@ -397,7 +394,7 @@ def tree_speculative_sampling_target_only(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/sampling.py L18-L28
+## 来源：sgl-kernel/python/sgl_kernel/sampling.py L18-L28
 ) -> torch.Tensor:
     probs = probs.float()
     maybe_top_k_arr = maybe_top_k_arr.int() if maybe_top_k_arr is not None else None
@@ -406,7 +403,6 @@ def tree_speculative_sampling_target_only(
         probs, renorm_probs, maybe_top_k_arr, top_k_val
     )
     return renorm_probs
-
 
 def top_k_renorm_probs(
 ```
@@ -427,7 +423,7 @@ def top_k_renorm_probs(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/top_k.py L18-L35
+## 来源：sgl-kernel/python/sgl_kernel/top_k.py L18-L35
     lengths: torch.Tensor,
     topk: int,
     row_starts: Optional[torch.Tensor] = None,
@@ -464,7 +460,7 @@ def top_k_renorm_probs(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/allreduce.py L7-L17
+## 来源：sgl-kernel/python/sgl_kernel/allreduce.py L7-L17
     def init_custom_ar(
         meta: torch.Tensor,
         rank_data: torch.Tensor,
@@ -494,7 +490,7 @@ def top_k_renorm_probs(
 **Code：**
 
 ```python
-# 来源：sgl-kernel/python/sgl_kernel/__init__.py L216-L220
+## 来源：sgl-kernel/python/sgl_kernel/__init__.py L216-L220
     for _name in _DEBUG_EXPORT_NAMES:
         if _name in globals():
             globals()[_name] = maybe_wrap_debug_kernel(

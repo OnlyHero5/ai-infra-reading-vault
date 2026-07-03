@@ -13,14 +13,14 @@ updated: 2026-07-02
 
 # Checkpoint 与 Megatron→HF 转换
 
-> **阶段 V · 权重同步** | 状态：已完成 | Git：`22cdc6e1`  
+> **阶段 V · 权重同步** | Git：`22cdc6e1`  
 > **源码范围：** `checkpoint.py`、`megatron_to_hf/`、`hf_checkpoint_saver.py`
 
 ---
 
 ## 本模块在架构中的位置
 
-训练 Actor 在 **加载** 与 **保存** 两个方向都要与 HuggingFace 格式打交道：启动时 `--load` 可能是 Megatron 原生 ckpt 或 HF 目录；周期性 `--save-hf` 要把 Megatron 分片权重转成 HF safetensors 供 SGLang / 外部工具消费。本批覆盖 **checkpoint 路由** 与 **Megatron→HF 转换管线**。
+训练 Actor 在 **加载** 与 **保存** 两个方向都要与 HuggingFace 格式打交道：启动时 `--load` 可能是 Megatron 原生 ckpt 或 HF 目录；周期性 `--save-hf` 要把 Megatron 分片权重转成 HF safetensors 供 SGLang / 外部工具消费。本专题覆盖 **checkpoint 路由** 与 **Megatron→HF 转换管线**。
 
 ```mermaid
 flowchart LR
@@ -61,7 +61,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：slime/backends/megatron_utils/checkpoint.py L97-L120
+## 来源：slime/backends/megatron_utils/checkpoint.py L97-L120
 def load_checkpoint(ddp_model, optimizer, opt_param_scheduler, checkpointing_context, skip_load_to_model_and_opt):
     args = get_args()
     load_path = args.load
@@ -76,7 +76,7 @@ def load_checkpoint(ddp_model, optimizer, opt_param_scheduler, checkpointing_con
 
 - Megatron ckpt 判据：`latest_checkpointed_iteration.txt` 或目录名 `iter_XXXXXXX`
 - HF 加载 **仅支持** `megatron_to_hf_mode == "bridge"`
-- 保存 HF 时 raw 模式复用 `HfWeightIteratorDirect`（与批次 24 NCCL 同步同源）
+- 保存 HF 时 raw 模式复用 `HfWeightIteratorDirect`（与[[24-WeightSync-Dist-00-MOC]] NCCL 同步同源）
 
 ---
 

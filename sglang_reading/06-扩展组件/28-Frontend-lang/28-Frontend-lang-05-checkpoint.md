@@ -8,8 +8,6 @@ tags:
  - sglang/batch/28
  - sglang/module/frontend-lang
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # Frontend Language 验收清单
@@ -21,12 +19,6 @@ updated: 2026-07-02
 - [ ] 能说出 `SglFunction`、`StreamExecutor`、`RuntimeEndpoint` 的职责
 - [ ] 能解释 trace prefix cache 与 batch 的关系
 - [ ] 五篇正文满足下方 ETC/代码行数要求
-
-## 维护者检查
-
-- [x] 覆盖 `api.py`, `ir.py`, `interpreter.py`, `tracer.py`, `backend/runtime_endpoint.py`, `backend/base_backend.py`
-- [x] 来源与 git `70df09b` 一致
-- [ ] 已更新 [[progress]]（由 P8 整合）
 
 ## 验证统计（2026-07-02 人工复核）
 

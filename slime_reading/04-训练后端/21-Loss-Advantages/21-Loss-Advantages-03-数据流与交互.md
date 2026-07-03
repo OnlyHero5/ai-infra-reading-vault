@@ -41,7 +41,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：loss.py L686–695, L827–828
+## 来源：loss.py L686–695, L827–828
     rollout_log_probs: list[torch.Tensor] | None = rollout_data.get("rollout_log_probs")
     log_probs: list[torch.Tensor] | None = (
         rollout_log_probs if args.use_rollout_logprobs else rollout_data.get("log_probs")
@@ -78,12 +78,12 @@ sequenceDiagram
     Note over T,L: policy_loss_function 再次调用 get_log_probs_and_entropy
 ```
 
-**Explain：** Advantage 计算与 policy backward **两次** 经过 logprob：第一次 frozen/old 权重收集 KL 与 OPD；第二次 actor 权重带梯度算 policy loss（批次 22）。`can_reuse_log_probs_in_loss` 极窄条件下可合并为一次。
+**Explain：** Advantage 计算与 policy backward **两次** 经过 logprob：第一次 frozen/old 权重收集 KL 与 OPD；第二次 actor 权重带梯度算 policy loss（[[22-Loss-Policy-00-MOC]]）。`can_reuse_log_probs_in_loss` 极窄条件下可合并为一次。
 
 **Code：**
 
 ```python
-# 来源：actor.py L467–478
+## 来源：actor.py L467–478
                 can_reuse_log_probs_in_loss = (
                     len(num_microbatches) == 1
                     and self.args.loss_type == "policy_loss"
@@ -105,7 +105,7 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：actor.py L402–427
+## 来源：actor.py L402–427
     def train_critic(self, rollout_id: int, rollout_data: RolloutBatch):
         data_iterator = get_data_iterator(rollout_data)
         rollout_data.update(forward_only(get_values, self.args, self.model, data_iterator, num_microbatches))
@@ -127,11 +127,11 @@ sequenceDiagram
 **Code：**
 
 ```python
-# 来源：actor.py L34（import）
+## 来源：actor.py L34（import）
 from .loss import compute_advantages_and_returns, get_log_probs_and_entropy, get_values
 ```
 
-（`compute_log_prob` 实现见 [[19-Train-Step-02-源码走读]]；本批只需知输出 merge 进 `rollout_data`。）
+（`compute_log_prob` 实现见 [[19-Train-Step-02-源码走读]]；本专题只需知输出 merge 进 `rollout_data`。）
 
 ---
 
@@ -142,7 +142,7 @@ from .loss import compute_advantages_and_returns, get_log_probs_and_entropy, get
 **Code：**
 
 ```python
-# 来源：loss.py L1105–1108
+## 来源：loss.py L1105–1108
     if "opd_reverse_kl" in batch:
         opd_reverse_kl = torch.cat(batch["opd_reverse_kl"], dim=0)
         reported_loss["opd_reverse_kl"] = sum_of_sample_mean(opd_reverse_kl).clone().detach()
@@ -176,7 +176,7 @@ flowchart LR
 **Code：**
 
 ```python
-# 来源：on_policy_distillation.py L48–50（teacher 解析）
+## 来源：on_policy_distillation.py L48–50（teacher 解析）
     teacher_log_probs = [
         torch.tensor([item[0] for item in reward["meta_info"]["input_token_logprobs"][1:]], dtype=torch.float32)
         ...

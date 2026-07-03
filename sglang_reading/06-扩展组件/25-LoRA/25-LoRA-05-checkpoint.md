@@ -8,8 +8,6 @@ tags:
  - sglang/batch/25
  - sglang/module/lora
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # LoRA 验收清单
@@ -21,11 +19,6 @@ updated: 2026-07-02
 - [x] 能解释 max_loras_per_batch 与 LRU eviction 的关系
 - [x] 能说出 embedding LoRA 与 linear LoRA 计算路径差异
 - [x] 五篇正文 ≥ 15 段内嵌源码
-
-## 维护者检查
-
-- [x] 已更新 knowledge-graph.json（batch-25 增量节点）
-- [x] 已更新 [[progress]]
 
 ## 核心结论
 

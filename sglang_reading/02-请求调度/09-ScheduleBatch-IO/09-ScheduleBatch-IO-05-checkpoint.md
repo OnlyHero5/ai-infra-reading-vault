@@ -8,8 +8,6 @@ tags:
  - sglang/batch/09
  - sglang/module/schedule-batch-io
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # ScheduleBatch-IO 验收清单
@@ -23,14 +21,6 @@ updated: 2026-07-02
 - [x] 能解释 PickleWrapper 存在的理由及 wrap/unwrap 时机
 - [x] 能说明 prepare_for_extend 与 prepare_for_decode 分别在何时调用、设置什么 forward_mode
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 内嵌实码 + ETC 讲解（2026-07-02）
-
-- [x] 对照 knowledge-graph 无遗漏关键 file 节点（schedule_batch.py, io_struct.py, embed_types.py）
-- [x] 来源注释路径/行号与当前 git 一致
-- [x] 已更新 [[progress]]
 
 ## 核心结论（3 句话）
 

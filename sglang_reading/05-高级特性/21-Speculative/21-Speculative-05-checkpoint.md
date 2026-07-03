@@ -8,8 +8,6 @@ tags:
  - sglang/batch/21
  - sglang/module/speculative
  - sglang/doc/checkpoint
-aliases:
- - "checkpoint"
 updated: 2026-07-02
 ---
 # 投机解码 验收清单
@@ -21,12 +19,6 @@ updated: 2026-07-02
 - [x] 能说出 `SpeculativeAlgorithm`、`EAGLEWorkerV2`、`NGRAMWorker` 三者职责（文档中均有内嵌代码）
 - [x] 能追踪一条 EAGLE decode step：draft → verify → reject sampling → KV 写回
 - [x] 五篇正文 ≥ 15 段内嵌源码，每段后有中文讲解
-
-## 维护者检查
-
-- [x] 对照 knowledge-graph 已覆盖 speculative 子域（LoRA 图谱更新）
-- [x] 来源注释路径/行号与 git 70df09b 一致
-- [x] 已更新 [[progress]]
 
 ## 核心结论（3 句话）
 

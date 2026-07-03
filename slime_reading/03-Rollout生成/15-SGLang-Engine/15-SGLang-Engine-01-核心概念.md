@@ -24,7 +24,7 @@ updated: 2026-07-02
 | 推理内核 | SGLang `launch_server` | 模型加载、Scheduler、KV Cache |
 | 训练侧 | `UpdateWeightFromDistributed` | NCCL 建组、broadcast HF 权重 |
 
-Slime **不在 Python 层直接调用 SGLang Python API 做 generate**；generate 走 HTTP（由 Rollout 模块批次 12 负责）。本模块聚焦 **engine 进程管理** 与 **权重同步 HTTP 桥**。
+Slime **不在 Python 层直接调用 SGLang Python API 做 generate**；generate 走 HTTP（由 Rollout 模块[[12-SGLang-Rollout-00-MOC]] 负责）。本模块聚焦 **engine 进程管理** 与 **权重同步 HTTP 桥**。
 
 ---
 
@@ -70,7 +70,7 @@ stateDiagram-v2
 | disk | `update_weights_from_disk` / `sync_local_checkpoint` | 共享文件系统 | 大模型、跨节点 |
 | delta | `update_weights_from_disk(load_format="delta")` | 增量 diff 文件 | 带宽受限 |
 
-本批次重点：**distributed 路径的 NCCL group 如何通过 HTTP 在 SGLang 侧建立**（详见 [[15-SGLang-Engine-03-数据流与交互]]）。
+本专题重点：**distributed 路径的 NCCL group 如何通过 HTTP 在 SGLang 侧建立**（详见 [[15-SGLang-Engine-03-数据流与交互]]）。
 
 ---
 
@@ -81,7 +81,7 @@ stateDiagram-v2
 **Code — 负载解析与 abort 循环：**
 
 ```python
-# 来源：slime/backends/sglang_utils/server_control.py L12-L29, L43-L63
+## 来源：slime/backends/sglang_utils/server_control.py L12-L29, L43-L63
 def num_requests_from_load(load: Any) -> int:
     if isinstance(load, list):
         return sum(num_requests_from_load(item) for item in load)
@@ -96,7 +96,6 @@ def num_requests_from_load(load: Any) -> int:
     running = load.get("num_running_reqs", load.get("total_running_reqs"))
     waiting = load.get("num_waiting_reqs", load.get("total_waiting_reqs"))
     return (running if isinstance(running, int) else 0) + (waiting if isinstance(waiting, int) else 0)
-
 
 async def abort_server_until_idle(url: str, retry_interval: int = ABORT_RETRY_INTERVAL_SECONDS) -> None:
     attempt = 1
@@ -133,7 +132,7 @@ async def abort_server_until_idle(url: str, retry_interval: int = ABORT_RETRY_IN
 **Code：**
 
 ```python
-# 来源：slime/backends/sglang_utils/sglang_engine.py L24-L31
+## 来源：slime/backends/sglang_utils/sglang_engine.py L24-L31
 def get_base_gpu_id(args, rank):
     num_gpus = min(args.num_gpus_per_node, args.rollout_num_gpus_per_engine)
     if args.colocate:

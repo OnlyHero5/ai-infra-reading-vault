@@ -3,7 +3,7 @@ type: batch-doc
 module: 11-DataSource
 batch: "11"
 doc_type: moc
-title: "DataSource · 批次概述"
+title: "DataSource · 专题概述"
 tags:
   - slime/batch/11
   - slime/module/data-source
@@ -11,14 +11,13 @@ tags:
 updated: 2026-07-02
 ---
 
-# DataSource · 批次概述
+# DataSource · 专题概述
 
-> **批次 11** | 阶段 III Rollout 生成 | 基线 commit `22cdc6e1`  
 > **核心问题：** prompt 从哪来？buffer 如何优先喂给 `generate`？
 
-## 本批目标
+## 本专题目标
 
-读完本批六件套，读者应能：
+读完本专题六件套，读者应能：
 
 1. 说明 `RolloutManager` 如何通过 `--data-source-path` 实例化数据源
 2. 追踪 `--prompt-data` → `Dataset` → `Sample.prompt` 的加载链路
@@ -47,14 +46,14 @@ flowchart LR
 
 **Explain：** DataSource 是 Rollout 侧的 **prompt 供给器 + 样本回收站**。训练每步 `RolloutManager.generate()` 调用 `generate_rollout`，后者反复 `data_source.get_samples()` 取 prompt 组，生成完成后把 aborted/partial 样本 `add_samples` 回 buffer，供下一步优先消费。
 
-## 批次入口代码
+## 专题入口代码
 
 **Explain：** `RolloutManager.__init__` 通过 `load_function` 动态加载数据源类（默认 `RolloutDataSourceWithBuffer`），与 `generate_rollout` 函数一并挂载。`get_num_rollout_per_epoch` 用 `len(data_source) // rollout_batch_size` 计算 epoch 步数。
 
 **Code：**
 
 ```python
-# 来源：slime/ray/rollout.py L437-L438, L542-L544
+## 来源：slime/ray/rollout.py L437-L438, L542-L544
 # 基线 commit：22cdc6e1
         data_source_cls = load_function(self.args.data_source_path)
         self.data_source = data_source_cls(args)

@@ -30,19 +30,6 @@ updated: 2026-07-02
 
 ---
 
-## 维护者检查
-
-- [ ] frontmatter tags 含 `slime/batch/08` + `slime/doc/*` + `slime/module/rollout-manager`
-- [ ] 六件套文件名前缀 `08-RolloutManager-`，无泛化 `README` / `01-核心概念`
-- [ ] 五篇正文 ETC 结构完整（Explain → Code → Comment）
-- [ ] 内嵌源码 ≥ 15 段、合计 ≥ 400 行（热点批）
-- [ ] 代码块首行含 `# 来源：... L...-L...`；基线 commit `22cdc6e1`
-- [ ] Mermaid 换行使用 `<br/>`，无 `\n`
-- [ ] 双链指向相关批次（07/09/11/20/24），无 `./` 相对路径
-- [ ] 已更新 [[Slime-progress]] 批次 08 为 ✅
-
----
-
 ## 追踪练习（建议手写）
 
 1. 从 `train.py` 的 `rollout_manager.generate.remote(rollout_id)` 出发，列出经过的 RolloutManager 方法（≥5 个）
@@ -53,7 +40,7 @@ updated: 2026-07-02
 
 ## 下一步阅读
 
-| 批次 | 主题 | 与本批关系 |
+| 专题 | 主题 | 与本专题关系 |
 |------|------|-----------|
 | [[09-EngineTopology-00-MOC]] | ServerGroup / Router / PD | 补全 `start_rollout_servers` |
 | [[10-Sample-Contracts-00-MOC]] | Sample 全字段 | 深化 `_convert` 输入 |

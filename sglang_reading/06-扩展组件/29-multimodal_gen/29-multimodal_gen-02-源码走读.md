@@ -27,7 +27,7 @@ updated: 2026-07-02
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L86-L97
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L86-L97
 def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
     """
     Args:
@@ -52,7 +52,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L176-L191
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L176-L191
     for i, reader in enumerate(scheduler_pipe_readers):
         try:
             data = reader.recv()
@@ -81,7 +81,7 @@ def launch_server(server_args: ServerArgs, launch_http_server: bool = True):
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L29-L44
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L29-L44
 def _find_available_port(
     start: int = 10000, avoid: set[int] | None = None, max_attempts: int = 100
 ) -> int:
@@ -115,7 +115,7 @@ def _find_available_port(
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L1018-L1033
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L1018-L1033
     try:
         scheduler = Scheduler(
             server_args,
@@ -146,7 +146,7 @@ def _find_available_port(
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L111-L134
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L111-L134
     def __init__(
         self,
         local_rank: int,
@@ -189,7 +189,7 @@ def _find_available_port(
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L110-L124
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L110-L124
     # 1. Initialize the singleton client that connects to the backend Scheduler
     server_args = app.state.server_args
     async_scheduler_client.initialize(server_args)
@@ -217,7 +217,7 @@ def _find_available_port(
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L60-L76
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L60-L76
 async def _wait_until_http_ready(server_args: ServerArgs) -> None:
     """for server warmup"""
     health_url = f"{server_args.url()}/health"
@@ -251,7 +251,7 @@ async def _wait_until_http_ready(server_args: ServerArgs) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L60-L78
+## 来源：python/sglang/multimodal_gen/runtime/scheduler_client.py L60-L78
     def initialize(self, server_args: ServerArgs):
         if self.context is not None and not self.context.closed:
             logger.warning("SchedulerClient is already initialized. Re-initializing.")
@@ -291,7 +291,7 @@ async def _wait_until_http_ready(server_args: ServerArgs) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L126-L137
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L126-L137
     def execute_with_profiling(
         self,
         stages: List["PipelineStage"],
@@ -316,7 +316,7 @@ async def _wait_until_http_ready(server_args: ServerArgs) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L103-L118
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L103-L118
     def _run_stage_with_executor_hooks(
         self,
         stage: "PipelineStage",
@@ -351,7 +351,7 @@ async def _wait_until_http_ready(server_args: ServerArgs) -> None:
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L36-L40
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L36-L40
 from sglang.multimodal_gen.runtime.entrypoints.utils import (
     materialize_output_sample,
     post_process_sample,
@@ -369,7 +369,7 @@ from sglang.multimodal_gen.runtime.entrypoints.utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L136-L150
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L136-L150
     def release_realtime_session(self, session_id: str) -> OutputBatch:
         """release the session of a realtime connection"""
         if not session_id:
@@ -401,7 +401,7 @@ from sglang.multimodal_gen.runtime.entrypoints.utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L247-L249
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L247-L249
     logger.info(
         "Starting pool disagg server: %d encoder(s), %d denoiser(s), %d decoder(s)...",
         num_encoders,
@@ -421,7 +421,7 @@ from sglang.multimodal_gen.runtime.entrypoints.utils import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/launch_server.py L47-L69
+## 来源：python/sglang/multimodal_gen/runtime/launch_server.py L47-L69
 def kill_process_tree(parent_pid, include_parent: bool = True, skip_pid: int = None):
     """Kill the process and all its child processes."""
     # Remove sigchld handler to avoid spammy logs.
@@ -461,7 +461,7 @@ def kill_process_tree(parent_pid, include_parent: bool = True, skip_pid: int = N
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L15
+## 来源：python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py L15
 from sglang.multimodal_gen.runtime.pipelines_core.schedule_batch import OutputBatch, Req
 ```
 
@@ -477,7 +477,7 @@ from sglang.multimodal_gen.runtime.pipelines_core.schedule_batch import OutputBa
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L51-L57
+## 来源：python/sglang/multimodal_gen/runtime/entrypoints/http_server.py L51-L57
 VERTEX_ROUTE = os.environ.get("AIP_PREDICT_ROUTE", "/vertex_generate")
 SERVER_WARMUP_BYPASS_PATHS = (
     "/health",
@@ -501,7 +501,7 @@ SERVER_WARMUP_BYPASS_PATHS = (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L19-L25
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L19-L25
 from sglang.multimodal_gen.runtime.distributed import (
     get_sp_group,
     get_tp_rank,
@@ -523,7 +523,7 @@ from sglang.multimodal_gen.runtime.distributed import (
 **Code：**
 
 ```python
-# 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L1034-L1036
+## 来源：python/sglang/multimodal_gen/runtime/managers/gpu_worker.py L1034-L1036
     except _oom_exceptions() as _e:
         logger.warning(OOM_MSG)
         raise
