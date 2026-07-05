@@ -11,16 +11,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const VAULT = path.resolve(__dirname, "..");
 const SGLANG_READING = path.join(VAULT, "sglang_reading");
 const SLIME_READING = path.join(VAULT, "slime_reading");
-const SKIP = new Set(["_TEMPLATE", ".obsidian", ".git", "sglang"]);
+const FLASH_ATTN_READING = path.join(VAULT, "flash-attn_reading");
+const SKIP = new Set(["_TEMPLATE", ".obsidian", ".git", "sglang", "slime", "flash-attn"]);
 
 /** @type {Map<string, string[]>} basename -> full paths relative to VAULT */
 const notesByBase = new Map();
 
+function addNoteName(name, rel) {
+  if (!notesByBase.has(name)) notesByBase.set(name, []);
+  const hits = notesByBase.get(name);
+  if (!hits.includes(rel)) hits.push(rel);
+}
+
 function indexMarkdown(filePath) {
   const rel = path.relative(VAULT, filePath).replace(/\\/g, "/");
   const base = path.basename(filePath, ".md");
-  if (!notesByBase.has(base)) notesByBase.set(base, []);
-  notesByBase.get(base).push(rel);
+  addNoteName(base, rel);
 
   const text = fs.readFileSync(filePath, "utf8");
   const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -44,8 +50,7 @@ function indexMarkdown(filePath) {
   }
   for (const alias of aliases) {
     if (!alias) continue;
-    if (!notesByBase.has(alias)) notesByBase.set(alias, []);
-    notesByBase.get(alias).push(rel);
+    addNoteName(alias, rel);
   }
 }
 
@@ -61,6 +66,7 @@ function walkIndex(dir) {
 function indexVaultNotes() {
   walkIndex(SGLANG_READING);
   walkIndex(SLIME_READING);
+  if (fs.existsSync(FLASH_ATTN_READING)) walkIndex(FLASH_ATTN_READING);
 
   for (const name of ["index.md", "AGENTS.md"]) {
     const full = path.join(VAULT, name);
@@ -178,6 +184,7 @@ function scanDir(dir) {
 function scanVault() {
   scanDir(SGLANG_READING);
   scanDir(SLIME_READING);
+  if (fs.existsSync(FLASH_ATTN_READING)) scanDir(FLASH_ATTN_READING);
 
   for (const name of ["index.md", "AGENTS.md"]) {
     const full = path.join(VAULT, name);

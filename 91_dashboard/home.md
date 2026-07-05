@@ -5,6 +5,7 @@ tags:
   - dashboard
   - sglang/meta
   - slime/meta
+  - flash-attn/meta
 cssclasses:
   - 91_dashboard
 created: 2026-07-02
@@ -19,12 +20,14 @@ updated: 2026-07-03
 
 | 视图 | 说明 |
 |------|------|
-| **[[91_dashboard/dual-library-path|双库联合路径]]** | 推理 + RL 阅读顺序 |
+| **[[91_dashboard/dual-library-path|AI Infra 联合路径]]** | 推理 + RL + Kernel 阅读顺序 |
 | **[[91_dashboard/cross-library-map|跨库专题对照]]** | 专题级跳转 |
 | [[SGLang源码阅读指南]] | SGLang 总索引 |
 | [[Slime源码阅读指南]] | Slime 总索引 |
+| [[FlashAttention源码阅读指南]] | FlashAttention 总索引 |
 | [[91_dashboard/module-board|SGLang 模块总览]] | 专题 MOC 列表 |
 | [[91_dashboard/slime-module-board|Slime 模块总览]] | 专题 MOC 列表 |
+| [[91_dashboard/flash-attn-module-board|FlashAttention 模块总览]] | 专题 MOC 列表 |
 | [[91_dashboard/graph-hub|关系图谱指南]] | 图谱过滤与颜色 |
 | [[90_meta/obsidian-graph-presets|图谱预设]] | 备用过滤式 |
 | [[index]] | Vault 首页 |
@@ -49,6 +52,27 @@ TABLE WITHOUT ID
   doc_type AS "文档类型",
   length(rows) AS 篇数
 FROM "sglang_reading"
+WHERE type = "batch-doc"
+GROUP BY doc_type
+SORT doc_type ASC
+```
+
+## FlashAttention 库内统计
+
+```dataview
+TABLE WITHOUT ID
+  "专题正文" AS 类型,
+  length(rows) AS 数量
+FROM "flash-attn_reading"
+WHERE type = "batch-doc"
+GROUP BY true
+```
+
+```dataview
+TABLE WITHOUT ID
+  doc_type AS "文档类型",
+  length(rows) AS 篇数
+FROM "flash-attn_reading"
 WHERE type = "batch-doc"
 GROUP BY doc_type
 SORT doc_type ASC
@@ -92,4 +116,13 @@ FROM "slime_reading"
 WHERE contains(file.name, "-00-MOC") AND (type = "stage-moc" OR type = "batch-doc" OR type = "phase-moc")
 SORT file.name ASC
 LIMIT 20
+```
+
+## 阶段 MOC · FlashAttention
+
+```dataview
+TABLE title AS 标题
+FROM "flash-attn_reading"
+WHERE type = "stage-moc" OR type = "module-moc"
+SORT file.name ASC
 ```

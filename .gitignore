@@ -1,6 +1,7 @@
 # ── upstream 源码（本地对照用，请单独 clone）────────────────
 sglang/
 slime/
+flash-attn/
 
 # ── 工具产物 ────────────────────────────────────────────────
 90_meta/audit_slime_out.txt

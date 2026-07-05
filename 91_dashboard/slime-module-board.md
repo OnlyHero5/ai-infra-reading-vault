@@ -58,8 +58,9 @@ SORT doc_type ASC
 
 > 将 `module = "08-RolloutManager"` 改为其他模块名即可抽查。
 
-## 双库交叉
+## 联合交叉
 
 | 文档 | 说明 |
 |------|------|
-| [[91_dashboard/cross-library-map|跨库专题对照]] | Slime ↔ SGLang 专题映射 |
+| [[91_dashboard/cross-library-map|跨库专题对照]] | Slime ↔ SGLang ↔ FlashAttention 专题映射 |
+| [[91_dashboard/flash-attn-module-board|FlashAttention 模块总览]] | Attention kernel 专题 MOC |
